@@ -295,6 +295,16 @@ body{font-weight:700}
 #mkFoot{flex:0 0 auto;display:flex;justify-content:center;padding:0!important;border:0!important}
 #mkFoot .btn{width:56%!important;font-size:2em!important}
 #tbody{font-size:1.75em!important;line-height:1.35!important}#tsum{font-size:1.5em}.ord .n{font-size:.95em}.mbtn small{font-size:.5em!important}#pInfo{font-size:1.5em}
+#menu{background:#0e151a url(%%title_fill.jpg%%) top center/100% auto no-repeat!important}
+.mbtn{height:7.6%!important;font-size:2.2em!important;border-width:.42em!important;border-image-width:.42em!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;padding:0!important;line-height:1!important}
+.mbtn small{font-size:.5em!important;margin-top:.12em!important;color:#d9cfae!important;white-space:nowrap;max-width:96%;overflow:hidden;text-overflow:ellipsis;font-family:"Fira",sans-serif;font-weight:400;letter-spacing:0}
+#talon{padding-bottom:6.8em!important}#seal{bottom:.6em!important}
+#done .box{font-family:"Pix",monospace!important;font-weight:700!important;font-size:1.75em!important;line-height:1.3!important;border:1em solid transparent!important;border-image:url(%%pl_sq.png%%) 40 fill / 1em stretch!important;background:none!important;padding:.1em .3em!important}
+.rp-h{color:#e2b040;text-align:center;font-size:1.15em;margin-bottom:.35em}
+.rp-l{display:flex;justify-content:space-between;gap:.6em;border-bottom:.06em dotted #6b6450;padding:.08em 0;color:#d8d0bc}
+.rp-l span{font-weight:500}.rp-l b{text-align:right;white-space:nowrap}
+.rp-l.neg{color:#ff9a86}.rp-l.pos b{color:#b6e39a}.rp-sum{color:#ffd27a;font-size:1.1em;border-bottom:.1em solid #8a7a50;margin:.2em 0}
+.rp-next{margin-top:.5em;color:#e2b040;text-align:center}
 #rotate{position:fixed;inset:0;z-index:100;background:#050708;display:none;align-items:center;justify-content:center;text-align:center;font-size:18px;padding:20px;color:#e2b040}
 </style>
 </head>
@@ -305,8 +315,8 @@ body{font-weight:700}
   <div id="menu" class="screen on">
     <div id="menuArt"><img src="%%title.jpg%%" alt="">
       <button class="mbtn primary" id="mNew" style="top:68.6%">НОВАЯ ИГРА</button>
-      <button class="mbtn" id="mCont" style="top:76.6%">ПРОДОЛЖИТЬ<small></small></button>
-      <button class="mbtn" id="mLoad" style="top:84.7%">ЗАГРУЗИТЬ<small></small></button>
+      <button class="mbtn" id="mCont" style="top:76.4%">ПРОДОЛЖИТЬ<small></small></button>
+      <button class="mbtn" id="mLoad" style="top:84.4%">ЗАГРУЗИТЬ<small></small></button>
     </div>
     <button id="mSound">♪ ВКЛ</button>
   </div>
@@ -1003,29 +1013,31 @@ function homeCall(){R.phase="wait";R.callKey="family";say("","Окно пуст�
  later(1400,()=>{R.phase="ring";A.ringStart();refresh()})}
 async function familyCall(){const ok=await talk([[OLYA,"Алло! Алло, Паша, это ты?! Господи, наконец-то дозвонилась... Это Оля. Паша, у нас беда с Алинкой!"],
   [OLYA,"Она вся горит, я померила — температура под сорок! Бредит, почти не приходит в себя. Сосед-фельдшер заглянул — сказал, может быть тяжёлое воспаление."],
-  [OLYA,"Срочно нужны «Антибиотики», иначе она до утра не дотянет! В Секторе их нигде не достать... Умоляю, сделай что-нибудь! Достань их в аптеке!"],
-  [YOU,"Оля, успокойся. Я что-нибудь придумаю, слышишь? Я решу эту проблему и к вечеру раздобуду лекарство. Держись там, скоро буду."]]);
- if(!ok)return;R.onCall=false;say("","Щелчок. Короткие гудки. Решать нужно сейчас.");familyChoices({})}
-function familyChoices(o){const ab=S.stock.antibiotic>0,list=[
-  {l:ab?"ВЗЯТЬ «АНТИБИОТИКИ» СО СКЛАДА ДОМОЙ":"«АНТИБИОТИКОВ» НА ПОЛКЕ НЕТ",c:"y",k:"steal",dis:!ab,f:()=>startPocket("antibiotic",()=>{
-    S.flags.family="steal";S.issues.push({t:"«Антибиотики» унесены со склада домой",k:"short",drug:"antibiotic"});finishCall("Пачка «Антибиотиков» спрятана в сумку. Вечером — домой. На складе теперь недостача.")})}];
- if(!o.noMaria)list.push({l:"ПОЗВОНИТЬ МАРИИ АРКАДЬЕВНЕ",k:"maria",f:callMaria});
- list.push({l:"ВЕСТИ К ВРАЧУ ПО ПРАВИЛАМ",c:"g",k:"doctor",f:doctorPath});
+  [OLYA,"Срочно нужны «Антибиотики», иначе она до утра не дотянет! В Секторе их нигде не достать... Умоляю, сделай что-нибудь!"]]);
+ if(!ok)return;say(OLYA,"Паша, ты меня слышишь?! Что мне делать?!");familyChoices({})}
+function familyChoices(o){const ab=S.stock.antibiotic>0,onLine=!o.after,tok=runTok;R.onCall=onLine;
+ const steal=async()=>{if(onLine){R.phase="talk";refresh();const ok=await talk([[YOU,"Оля, держись. Я возьму «Антибиотики» на складе и вечером принесу. Только никому ни слова."],[OLYA,"Паша... спасибо. Только осторожно, слышишь? Мы ждём тебя."]]);if(!ok||tok!==runTok)return}
+  startPocket("antibiotic",()=>{S.flags.family="steal";S.issues.push({t:"«Антибиотики» унесены со склада домой",k:"short",drug:"antibiotic"});finishCall("Пачка «Антибиотиков» спрятана в сумку. Вечером — домой. На складе теперь недостача.")})};
+ const list=[{l:ab?"«ВОЗЬМУ АНТИБИОТИКИ НА СКЛАДЕ»":"«АНТИБИОТИКОВ» НА ПОЛКЕ НЕТ",c:"y",k:"steal",dis:!ab,f:steal}];
+ if(!o.noMaria)list.push({l:"«ПОЗВОНЮ МАРИИ АРКАДЬЕВНЕ, ВРАЧУ»",k:"maria",f:async()=>{R.phase="talk";refresh();
+   const ok=await talk([[YOU,"Оля, сейчас позвоню Марии Аркадьевне — это врач из госпиталя. Попрошу её зайти к вам вечером и посмотреть Алинку."],[OLYA,"Только скорее, Паша! Я жду."]]);
+   if(!ok||tok!==runTok)return;R.onCall=false;say("","Вы кладёте трубку и набираете госпиталь...");refresh();later(1200,callMaria)}});
+ list.push({l:onLine?"«ВЕДИ ЕЁ К ВРАЧУ ПО ПРАВИЛАМ»":"ПЕРЕЗВОНИТЬ ОЛЕ: «ВЕДИ К ВРАЧУ»",c:"g",k:"doctor",f:doctorPath});
  setChoices(list,true)}
 async function callMaria(){const tok=runTok;R.phase="talk";R.onCall=true;refresh();
  let ok=await talk([[YOU,"Мария Аркадьевна, здравствуйте! Пожалуйста, выслушайте. Моей дочке Алинке очень плохо — температура под сорок, бредит. Вы не могли бы осмотреть её после смены? Боюсь, нужны антибиотики, а у меня их... сами понимаете."]]);
  if(!ok||tok!==runTok)return;
  if(S.flags.maria==="falseq"){ok=await talk([["САНИТАР","Мария Аркадьевна на карантине — после того вызова спецбригады её из бокса не выпускают. Не звоните сюда больше."]]);
-  if(!ok)return;R.onCall=false;say("","Короткие гудки. Остаётся решать самому.");return familyChoices({noMaria:true})}
+  if(!ok)return;R.onCall=false;say("","Короткие гудки. Остаётся решать самому.");return familyChoices({noMaria:true,after:true})}
  if(S.flags.maria==="helped"){ok=await talk([[MARIA,"Господи, Павел... Бедная девочка. Конечно, я помогу! Вы так выручили наш госпиталь, когда нам нечего было давать раненым."],
    [MARIA,"Я закончу обход и сразу побегу к вам на квартиру, посмотрю Алинку. Держитесь — я сделаю всё, что в моих силах."]]);
   if(!ok)return;S.flags.family="maria";return finishCall("Мария Аркадьевна придёт к вам домой после смены. Склад цел.")}
  ok=await talk([[MARIA,"Павел... Вы просите меня о помощи? А когда мои пациенты в госпитале задыхались и бредили, вы мне отказали из-за бумажки! У меня вся смена забита больными, мне некогда бегать по частным вызовам..."],
   [MARIA,"Но... я всё-таки врач, и не могу оставить ребёнка без помощи. Сделаем так: принесите мне то, что я просила для госпиталя, — «Антирадин». Тайно, со склада. Передадите вечером — я осмотрю вашу дочь."]]);
- if(!ok)return;R.onCall=false;const ar=S.stock.antiradin>0;
+ if(!ok)return;const ar=S.stock.antiradin>0;
  setChoices([{l:ar?"ВЗЯТЬ ДЛЯ НЕЁ «АНТИРАДИН» СО СКЛАДА":"«АНТИРАДИНА» НА ПОЛКЕ НЕТ",c:"y",k:"mpay",dis:!ar,f:()=>startPocket("antiradin",()=>{
    S.flags.family="mariaPaid";S.issues.push({t:"«Антирадин» унесён со склада для Марии Аркадьевны",k:"short",drug:"antiradin"});finishCall("«Антирадин» спрятан в сумку — вечером к Марии Аркадьевне. На складе недостача.")})},
-  {l:"ОТКАЗАТЬСЯ ОТ ЕЁ УСЛОВИЯ",k:"mno",f:()=>{say("","Вы кладёте трубку. Остаётся решать самому.");familyChoices({noMaria:true})}}],true)}
+  {l:"ОТКАЗАТЬСЯ ОТ ЕЁ УСЛОВИЯ",k:"mno",f:()=>{R.onCall=false;say("","Вы кладёте трубку. Остаётся решать самому.");familyChoices({noMaria:true,after:true})}}],true)}
 async function doctorPath(){const tok=runTok;R.phase="talk";R.onCall=true;refresh();
  const ok=await talk([[YOU,"Оля, я не могу просто так взять лекарства со склада — без талона мне выдавать ничего нельзя, иначе на первой же проверке поймают на краже. Одевай Алинку и веди в поликлинику к дежурному врачу в комендатуру, пусть осмотрят на общих основаниях."],
   [OLYA,"Вести ребёнка с температурой сорок по морозу в общую очередь?! Да там люди часами в холодных коридорах сидят! Тебе твои бумажки дороже родной дочери, Паша?! Я поняла тебя... Сама справлюсь!"]]);
@@ -1079,28 +1091,19 @@ function endShift(){if(R.phase!=="endshift"||!R.closed)return;const t=ordTotal()
  if(S.dirty){S.dirty=false;addRad(5);logTP("Лоток не обработан антисептиком",-50)}
  if(t>0){for(const k in R.orders)S.stock[k]+=R.orders[k];logTP(`Закупка медикаментов на День ${S.day+1}`,-t)}
  S.orders=R.orders;A.ok();nextStage()}
-function showDone(){R.phase="done";const f=S.flags;clearTimeout(toastT);$("toast").className="";
- let h=`<p><b>Баланс:</b> ${S.tp} ТР${S.cash?` · <b>в кармане:</b> ${S.cash}`:""}<br><b>Облучение:</b> ${S.rad}% · <b>Бланков в журнале:</b> ${S.journal}${S.warnings?`<br><b>Предупреждение:</b> ${S.warnings}/2`:""}</p>`;
- if(S.day===1){
-  h+=`<p>${f.anna==="saved"?"Анна Котова ушла с лекарством. Ночью у двери аптеки кто-то оставил записку: «Должник. Свяжусь. — К.»":f.anna==="quarantine"?"Анну Котову увезла спецбригада. В сводках о ней пока ни слова. Пока.":"Анна Котова так и не получила свой «Калия Йодид»."}</p>`;
-  h+=`<p>${f.viktor==="refused"?"Виктор Захаров ушёл ни с чем. Отчёт перед майором Коршуновым чист.":f.viktor==="bribe"?"Захаров заплатил 300 ТР мимо кассы — семье хватит на тепло. В журнале недостача: 1 уп. «Антибиотиков». Ревизия когда-нибудь придёт.":f.viktor==="forged"?"Вы выдали препарат по фальшивому бланку. Майор Коршунов запомнил вашу фамилию.":f.viktor==="falseq"?"Виктора Захарова забрали по ложному вызову. Его друзья-мародёры знают, где вы работаете.":"Виктор Захаров ушёл, пообещав жалобу."}</p>`}
- else{
-  h+=`<p>${f.klavdia==="helped"?"Клавдия Степановна получила лекарство и оставила вам старинное золотое кольцо."+(f.ringSold?" Кольцо ушло Ворону за 200 ТР.":""):f.klavdia==="falseq"?"Клавдию Степановну увезла спецбригада по ложному вызову. Больше её никто не видел.":"Утренняя сводка: у порога комендатуры нашли пожилую беженку — разрыв сердца. Фамилия — Морозова."}</p>`;
-  h+=`<p>${f.gleb==="stim"?"ТЭЦ-2 удержала давление: батареи в аптеке и дома горячие.":"Ночью давление на ТЭЦ-2 упало. Квартал замёрз — на дрова для семьи ушло вдвое больше (−100 ТР)."}</p>`;
-  h+=`<p>${f.artem==="helped"?"Брат Артёма будет жить. У вас — довоенная радиолампа и пара зорких глаз на улицах.":f.artem==="quarantine"?"Артёма забрала спецбригада. Комендатура довольна вашей бдительностью.":"Артём убежал в метель с пустыми руками."}</p>`;
-  h+=`<p>${f.audit==="clean"?"Ревизия капитана Громова: всё сходится. Премия +50 ТР.":f.audit==="lie"?"Громов поверил в «треснувший ящик». В следующий раз такая отговорка не пройдёт.":f.audit==="bribe"?"Громов спрятал 100 ТР в бушлат и списал недостачу сам.":f.audit==="truth"?"Вы сказали Громову правду. Деньги целы, но это последнее предупреждение.":""}${f.blanks?` Бланков куплено у Ворона: ${f.blanks}.`:""}</p>`}
- if(S.day===3){
-  h+=`<p>${f.vera==="helped"?"Вера унесла маме «Антибиотики» и обещала принести что-нибудь с завода.":f.vera==="falseq"?"Веру увезли на карантин по ложному вызову. Её мать осталась одна.":"Вера ушла ни с чем. Её мать может не пережить эту неделю."}</p>`;
-  h+=`<p>${f.maria==="helped"?"Мария Аркадьевна получила «Антирадин» под честное слово.":f.maria==="falseq"?"Марию Аркадьевну заперли на карантине по ложному вызову. Госпиталь остался без врача.":"Мария Аркадьевна ушла ни с чем — и это запомнила."}</p>`;
-  h+=`<p>${f.fedor==="helped"?"Фёдор «Зверь» оставил волчью шкуру"+(f.peltSold?" (продана Семёну)":"")+". Теперь у вас есть угрюмый союзник на кордоне.":"Фёдор «Зверь» ушёл к болотам и больше не вернётся."}</p>`;
-  const note={steal:"«Паша, спасибо тебе! Те антибиотики, что ты принёс ночью, подействовали. Алинке стало гораздо лучше, жар спал, она уснула сама и утром попросила попить. Кризис миновал. Береги себя на работе. Люблю тебя».",
-   maria:"«Паша, Мария Аркадьевна — просто ангел! Она пришла вчера вечером и осмотрела Алинку. Оказалось, это не опасная инфекция, а простуда от переохлаждения — антибиотики вообще не нужны! Дала жаропонижающее, к утру температура спала. Алинка уже улыбается».",
-   mariaPaid:"«Паша, Мария Аркадьевна пришла вчера вечером и осмотрела Алинку. Оказалось, это простуда от переохлаждения — антибиотики не нужны. Жар спал, Алинка улыбается. Спасибо тебе».",
-   doctor:"«Можешь не переживать за свой склад, Паша. Мы с Алинкой весь день просидели в ледяном коридоре у врача. Оказалось — простая простуда, сегодня ей уже лучше. Но то, как ты бросил нас одних в такой момент, я запомню надолго»."}[f.family];
-  if(note)h+=`<p><b>Утром — записка от Оли:</b><br><i>${note}</i></p>`;
-  h+=`<p>${f.semyon==="deal"?"Семён ушёл довольный. У вас патроны, спирт и свинцовый контейнер — он спрячет одну недостачу на следующей ревизии.":"Семён затаил обиду. Он знает, где вы живёте."}</p>`;
-  const op=S.issues.filter(i=>!i.fixed).length;h+=`<p>${op?`В журнале висит расхождений: <b>${op}</b>. Капитан Громов спросит за каждую ампулу.`:"Журнал чист — следующая ревизия не страшна."}</p>`}
- const more=S.day<LAST_DAY;h+=more?"":`<p><b>Продолжение следует:</b> День ${S.day+1} — в разработке. Ваши решения сохранены.</p>`;
+function reportHTML(){const op=S.issues.filter(i=>!i.fixed).length,given=S.log.filter(l=>l.t.startsWith("Выдача:")).length;
+ let h=`<div class="rp-h">ОТЧЁТ ЗА СМЕНУ · ДЕНЬ ${S.day} · ${DATES[S.day]}</div><div class="rp-l"><span>Остаток на начало смены</span><b>${S.dayStart} ТР</b></div>`;
+ S.log.forEach(l=>{h+=`<div class="rp-l ${l.v<0?"neg":"pos"}"><span>${l.t}</span><b>${l.v>0?"+":""}${l.v}</b></div>`});
+ h+=`<div class="rp-l rp-sum"><span>ИТОГО НА СЧЁТЕ</span><b>${S.tp} ТР</b></div>`;
+ h+=`<div class="rp-l"><span>Выдано по талонам</span><b>${given}</b></div><div class="rp-l"><span>Бланков в журнале</span><b>${S.journal}</b></div>`;
+ h+=`<div class="rp-l ${op?"neg":""}"><span>Расхождений в журнале</span><b>${op}</b></div><div class="rp-l ${S.rad>=50?"neg":""}"><span>Облучение провизора</span><b>${S.rad}%</b></div>`;
+ if(S.warnings)h+=`<div class="rp-l neg"><span>Предупреждение патруля</span><b>${S.warnings}/2</b></div>`;
+ const it=[S.items.ring&&"золотое кольцо",S.items.radiolamp&&"радиолампа",S.items.pelt&&"волчья шкура",S.items.ammo&&"патроны",S.items.spirit&&"спирт",S.items.container&&"свинцовый контейнер"].filter(Boolean);
+ if(it.length)h+=`<div class="rp-l"><span>Личные вещи</span><b>${it.join(", ")}</b></div>`;
+ return h}
+function showDone(){R.phase="done";clearTimeout(toastT);$("toast").className="";
+ const more=S.day<LAST_DAY;let h=reportHTML();
+ if(!more)h+=`<div class="rp-next">Продолжение следует: День ${S.day+1} — в разработке. Ваши решения сохранены.</div>`;
  $("dTitle").textContent=`ДЕНЬ ${S.day} ЗАВЕРШЁН`;$("doneBox").innerHTML=h;$("dNext").style.display=more?"":"none";$("dNext").textContent=`НАЧАТЬ ДЕНЬ ${S.day+1}`;openM("done");refresh()}
 
 /* ================= WIRING ================= */

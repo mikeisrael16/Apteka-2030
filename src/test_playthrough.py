@@ -195,7 +195,7 @@ with sync_playwright() as p:
     pg.click('#s_journal'); ck(R('phase')=='audit','tap does not hand journal'); tp=S()['tp']; journal_drag(); tap_until("__G.S.cp===6&&__G.R.phase==='endshift'"); s=S()
     ck(s['flags']['audit']=='clean' and any(l['v']==50 for l in s['log']) and not s['issues'],'audit clean +50')
     ck(any('дров' in l['t'] and l['v']==-100 for l in s['log']),'cold night firewood -100 (no stimulator)')
-    close_shift(); pg.click('#tEnd'); until("__G.S.cp===7"); ck(pg.is_visible('#done') and pg.is_visible('#dNext') and 'Морозова' in pg.inner_text('#doneBox'),'day 2 done screen with НАЧАТЬ ДЕНЬ 3')
+    close_shift(); pg.click('#tEnd'); until("__G.S.cp===7"); t=pg.inner_text('#doneBox'); ck(pg.is_visible('#done') and pg.is_visible('#dNext') and 'ОТЧЁТ ЗА СМЕНУ' in t and 'Морозова' not in t,'day 2 done: report only, НАЧАТЬ ДЕНЬ 3')
     pg.screenshot(path=W+'d2_done.png')
     # ---------- DAY 3: by the book ----------
     pg.evaluate("__G.S.stock.antiseptic=4"); pg.click('#dNext'); tap_until("__G.R.phase==='lever'"); ck(S()['day']==3,'day 3 started'); swipe(200); until("__G.R.phase==='client'",9000)
@@ -211,7 +211,7 @@ with sync_playwright() as p:
     measure(); ck(C()['dose']==130,'fedor 130'); pg.click('#s_tray'); pg.click('#s_doc'); pg.click('#tExtra'); ck('подписи' in pg.inner_text('#imsg'),'missing signature shown')
     pg.click('#tNo2'); pg.click('#talon'); tap_until("__G.S.cp===4&&__G.R.phase==='ring'"); ck(S()['flags']['fedor']=='refused','fedor refused')
     ck(pg.is_visible('#ringImg'),'phone rings after fedor'); pg.click('#s_phone'); w(200); ck(pg.is_visible('#offImg') and not pg.is_visible('#ringImg'),'off-hook phone shown during call')
-    pg.screenshot(path=W+'d3_call.png'); tap_until("__G.R.phase==='bribe'"); ck(not pg.is_visible('#offImg'),'handset back after call')
+    pg.screenshot(path=W+'d3_call.png'); tap_until("__G.R.phase==='bribe'"); ck(pg.is_visible('#offImg'),'still on the line while answering the wife')
     ck(pg.locator('#choice button').count()==3,'3 family options'); pg.screenshot(path=W+'d3_choices.png')
     pg.click('#choice button[data-k="maria"]'); tap_until("__G.R.phase==='bribe'"); ck(pg.locator('#choice button[data-k="mpay"]').count()==1,'maria B: condition offered')
     pg.click('#choice button[data-k="mno"]'); w(100); ck(pg.locator('#choice button[data-k="maria"]').count()==0 and pg.locator('#choice button').count()==2,'back to options without Maria')
@@ -222,7 +222,7 @@ with sync_playwright() as p:
     ck(pg.is_disabled('#mkTP'),'no blanks needed with clean journal'); ab=S()['stock']['antibiotic']; tp=S()['tp']; pg.click('#mkAB'); s=S()
     ck(s['stock']['antibiotic']==ab+1 and s['tp']==tp-250,'antibiotic bought to stock'); pg.click('#mkLeave'); tap_until("__G.S.cp===6&&__G.R.phase==='endshift'")
     ck(S()['flags']['semyon']=='refused','semyon refused'); close_shift(); pg.click('#tEnd'); until("__G.S.cp===7")
-    t=pg.inner_text('#doneBox'); ck(pg.is_visible('#done') and not pg.is_visible('#dNext') and 'ледяном коридоре' in t and 'знает, где вы живёте' in t,'day 3 done: doctor note, semyon threat')
+    t=pg.inner_text('#doneBox'); ck(pg.is_visible('#done') and not pg.is_visible('#dNext') and 'ОТЧЁТ ЗА СМЕНУ' in t and 'День 4' in t and 'Оли' not in t,'day 3 done: report only')
     pg.screenshot(path=W+'d3_done.png')
     pg.click('#dMenu')
     # ---------- RUN 3: continue from autosave(cp5), then new game w/ confirm; exam mistakes ----------
@@ -290,10 +290,10 @@ with sync_playwright() as p:
     tp=S()['tp']; pg.click('#mkAB'); s=S(); ab=[i for i in s['issues'] if i.get('drug')=='antibiotic']
     ck(ab and ab[0].get('fixed'),'buying antibiotic closes the antibiotic shortage'); pg.click('#mkPelt'); ck(S()['tp']==tp-250+150 and not S()['items'].get('pelt'),'pelt sold to semyon +150')
     pg.click('#mkTP'); ck(sum(1 for i in S()['issues'] if i.get('fixed'))==2,'blank closes one more'); pg.screenshot(path=W+'d3_market2.png'); pg.click('#mkLeave')
-    tap_until("__G.S.cp===6"); close_shift(); pg.click('#tEnd'); until("__G.S.cp===7"); ck('ангел' in pg.inner_text('#doneBox'),'maria note')
+    tap_until("__G.S.cp===6"); close_shift(); pg.click('#tEnd'); until("__G.S.cp===7"); ck('ИТОГО' in pg.inner_text('#doneBox'),'report shown')
     # steal path + pocket
     pg.evaluate("Object.assign(__G.S,{issues:[],flags:{maria:'refused'}});__G.S.stock.antibiotic=1;__G.startCheckpoint(4)"); tap_until("__G.R.phase==='ring'"); pg.click('#s_phone'); tap_until("__G.R.phase==='bribe'")
-    pg.click('#choice button[data-k="steal"]'); ck(pg.is_visible('#pocket') and R('phase')=='pocket','pocket appears'); take('antibiotic'); give(); ck(R('hand')=='antibiotic' and S()['stock']['antibiotic']==1,'cannot hand stolen drug through window')
+    pg.click('#choice button[data-k="steal"]'); tap_until("__G.R.phase==='pocket'"); ck(pg.is_visible('#pocket') and not pg.is_visible('#offImg'),'answered wife, hung up, pocket appears'); take('antibiotic'); give(); ck(R('hand')=='antibiotic' and S()['stock']['antibiotic']==1,'cannot hand stolen drug through window')
     pg.screenshot(path=W+'d3_pocket.png'); drag('#deskItem','#pocket',.5,.5); s=S()
     ck(s['stock']['antibiotic']==0 and s['flags']['family']=='steal' and s['issues'][0]['drug']=='antibiotic','stolen: shortage recorded'); tap_until("__G.S.cp===5")
     nxt(); tap_until("__G.R.phase==='bribe'"); ck(pg.is_disabled(YES),'semyon deal disabled with no antibiotics'); pg.click(NO); tap_until("__G.R.phase==='voron'")

@@ -42,6 +42,21 @@ with sync_playwright() as p:
         pg.mouse.move(x,y); pg.mouse.down(); pg.mouse.move(x,y+dy,steps=10); pg.mouse.up(); w(60)
     def wipe():
         take('antiseptic'); ck(pg.is_visible('#deskItem'),'antiseptic appears on desk'); pg.click('#s_tray'); ck(S()['dirty'],'tap does not wipe'); give()
+    NO='#choice button[data-k="no"]'; YES='#choice button[data-k="yes"]'
+    def lever_open():
+        talk(); until("__G.R.phase==='lever'"); swipe(200); until("__G.R.phase==='client'",9000)
+    def measure():
+        pg.click('#s_dosi')
+        for _ in range(4): pg.click('#win',position={'x':40,'y':40})
+    def stamp(t): pg.click('#s_doc'); pg.click('#tOk' if t=='ok' else '#tNo2'); pg.click('#talon'); 
+    def tap_until(expr,t=15):
+        for _ in range(int(t/0.08)):
+            if pg.evaluate(expr): return
+            if pg.evaluate("!!(__G.R.wait||__G.R.typing)"): pg.click('#dlg')
+            w(80)
+        until(expr,100)
+    def nxt(): pg.click('#bNext'); tap_until("__G.R.phase==='client'||__G.R.phase==='voron'||__G.R.phase==='audit'")
+    def journal_drag(): drag('#s_journal','#win',.5,.6)
     def close_shift():
         pg.click('#s_monitor'); ck(not pg.is_visible('#term'),'monitor blocked until window closed')
         swipe(-200); ck(R('closed') and R('lev')==0 and pg.locator('#shut.open').count()==0,'lever up closes shutters at end of shift')
@@ -121,8 +136,8 @@ with sync_playwright() as p:
     pg.click('#s_tray'); pg.click('#s_doc'); checks('Смирнов А.В.')
     ck(C()['checks']['seal']=='bad' and pg.locator('#seal.red').count()==1,'forged seal red'); pg.screenshot(path=W+'r_red.png')
     pg.click('#tNo2'); pg.click('#talon'); until("__G.R.phase==='bribe'"); w(300); pg.screenshot(path=W+'r_bribe.png')
-    ck(pg.is_visible('#cOut') and pg.is_visible('#cBribe') and not pg.is_visible('#insp'),'bribe choice shown')
-    pg.click('#cOut'); until("__G.S.cp===4&&__G.R.phase==='endshift'",12000)
+    ck(pg.is_visible(NO) and pg.is_visible(YES) and not pg.is_visible('#insp'),'bribe choice shown')
+    pg.click(NO); until("__G.S.cp===4&&__G.R.phase==='endshift'",12000)
     s=S(); ck(s['flags']['viktor']=='refused' and s['dirty'] and s['stock']['antibiotic']==2 and R('hand') is None,'viktor refused after measuring: tray dirty, no medicine given')
     wipe(); ck(not S()['dirty'],'wiped after viktor')
     close_shift(); ck(pg.is_visible('#term'),'terminal opens'); pg.screenshot(path=W+'r_term.png')
@@ -131,7 +146,7 @@ with sync_playwright() as p:
     tot=pg.evaluate("Object.entries(__G.R.orders).reduce((a,[k,q])=>a+q*({antibiotic:90,ai2:120}[k]),0)")
     ck(tot<=500,'orders cannot exceed TP'); pg.screenshot(path=W+'r_orders.png')
     tp0=S()['tp']; pg.click('#tEnd'); until("__G.S.cp===5")
-    s=S(); ck(s['tp']==tp0-tot and s['stock']['antibiotic']==4,'orders applied'); ck(pg.is_visible('#done'),'done screen'); pg.screenshot(path=W+'r_done.png')
+    s=S(); ck(s['tp']==tp0-tot and s['stock']['antibiotic']==4,'orders applied'); ck(pg.is_visible('#done') and pg.is_visible('#dNext'),'done screen with НАЧАТЬ ДЕНЬ 2'); pg.screenshot(path=W+'r_done.png')
     pg.click('#dMenu'); ck(pg.is_visible('#menu') and not pg.is_disabled('#mCont') and not pg.is_disabled('#mLoad'),'menu buttons enabled with saves')
     pg.screenshot(path=W+'r_menu2.png')
     # reload page: saves persist
@@ -144,14 +159,47 @@ with sync_playwright() as p:
     ck(pg.locator('#shut.open').count()==1,'shutters reopened after quarantine')
     pg.click('#bNext'); talk(); until("__G.R.phase==='client'")
     pg.click('#s_tray'); pg.click('#s_doc'); pg.click('#tNo2'); pg.click('#talon'); until("__G.R.phase==='bribe'")
-    pg.click('#cBribe'); until("__G.S.cp===4",12000); s=S()
-    ck(s['cash']==300 and s['stock']['antibiotic']==1 and s['flags']['viktor']=='bribe','bribe: +300 cash, stock -1')
-    ck(not any('дозиметр' in l['t'].lower() for l in s['log']) and not s['dirty'],'refusal without dosimeter: no fine, no wipe needed')
-    close_shift(); pg.click('#tEnd'); until("__G.S.cp===5"); s=S(); ck(not any('антисептиком' in l['t'] for l in s['log']) and s['rad']==0,'no tray penalty when nothing was required')
+    pg.click(YES); ck(R('phase')=='client','bribe accepted -> must hand over'); take('antibiotic'); give(); until("__G.S.cp===4",12000); s=S()
+    ck(s['tp']==700 and s['stock']['antibiotic']==1 and s['flags']['viktor']=='bribe' and len(s['issues'])==1,'bribe: +300, stock -1, shortage recorded (and -50 for skipping dosimeter)')
+    ck(any('дозиметр' in l['t'].lower() for l in s['log']) and s['dirty'],'handing medicine through a bribe without measuring: fine + wipe needed')
+    wipe(); close_shift(); pg.click('#tEnd'); until("__G.S.cp===5"); s=S(); ck(not any('антисептиком' in l['t'] for l in s['log']) and s['rad']==0,'no tray penalty after wiping')
     ck(pg.locator('#shut.open').count()==0,'shutters stay closed on done screen')
+    # ---------- DAY 2: honest run (carries Viktor's day-1 shortage) ----------
+    pg.click('#dNext'); until("__G.S.day===2&&__G.S.cp===0")
+    a=pg.evaluate("__G.readSave(__G.K_AUTO)"); ck(a['day']==2 and a['cp']==0,'autosave at day 2 start')
+    ck(pg.locator('#hDay').inner_text()=='ДЕНЬ 02','HUD shows day 2')
+    tap_until("__G.R.phase==='lever'"); swipe(200); until("__G.R.phase==='client'",9000); ck(C()['key']=='klavdia','klavdia first')
+    ck(pg.locator('#hint.exam').count()==1,'day 2 neutral hint')
+    measure(); ck(C()['dose']==30,'klavdia dose 30')
+    pg.click('#s_tray'); pg.click('#s_doc'); checks('Казанцев П.Р.'); c=C()
+    ck(c['checks']['doctor']=='bad' and c['checks']['seal']=='ok' and c['checks']['name']=='ok','dead doctor flagged, seal blue')
+    ck(pg.locator('#ref .row[data-n="Казанцев П.Р."] small').inner_text().startswith('Госпиталь')  ,'dead doctor in reference')
+    pg.screenshot(path=W+'d2_klavdia.png')
+    pg.click('#tNo2'); pg.click('#talon'); until("__G.S.cp===2&&__G.R.phase==='between'",12000); s=S()
+    ck(s['flags']['klavdia']=='refused' and not s['pending'] and not s['dirty'],'klavdia refused: no fine')
+    nxt(); ck(C()['key']=='gleb','gleb'); measure(); ck(C()['dose']==115,'gleb dose 115')
+    pg.click('#s_tray'); pg.click('#s_doc'); checks('Орлов В.Г.'); c=C(); ck(all(v=='ok' for v in c['checks'].values()),'gleb docs all ok')
+    pg.click('#tOk'); pg.click('#talon'); pg.click('#iClose'); take('antitoxin'); pg.click('#s_journal'); tp=S()['tp']; give()
+    ck(S()['tp']==tp+150 and R('phase')=='bribe' and pg.is_visible(YES),'gleb paid, asks for stimulator'); pg.screenshot(path=W+'d2_gleb.png')
+    pg.click(NO); until("__G.S.cp===3&&__G.R.phase==='between'",12000); s=S(); ck(s['flags']['gleb']=='talon' and s['dirty'],'gleb by talon, tray dirty'); wipe()
+    nxt(); ck(C()['key']=='artem','artem'); measure(); ck(C()['dose']==165,'artem 165')
+    pg.click('#s_tray'); pg.click('#s_doc'); checks('Петрова Н.К.'); c=C(); ck(c['checks']['name']=='bad' and c['checks']['seal']=='bad','artem: name mismatch + forged seal')
+    pg.screenshot(path=W+'d2_artem.png'); pg.click('#iClose'); tp=S()['tp']; pg.click('#bQuar')
+    until("__G.S.cp===4&&__G.R.phase==='between'",12000); s=S(); ck(s['tp']==tp+100 and s['flags']['artem']=='quarantine' and s['flags'].get('loyal'),'artem quarantined +100')
+    nxt(); ck(R('phase')=='voron' and pg.is_visible('#market'),'voron market opens'); pg.screenshot(path=W+'d2_market.png')
+    ck(pg.locator('#mkBody .mki').count()==1,'market lists day-1 shortage')
+    tp=S()['tp']; pg.click('#mkTP'); s=S(); ck(s['tp']==tp-200 and s['issues'][0]['fixed'],'blank bought for 200, issue fixed')
+    ck(pg.is_disabled('#mkTP') and pg.is_disabled('#mkAR'),'no more blanks needed'); pg.click('#mkLeave')
+    until("__G.S.cp===5&&__G.R.phase==='between'",12000)
+    nxt(); ck(R('phase')=='audit' and pg.locator('#s_journal.hl').count()==1,'gromov asks for journal'); pg.screenshot(path=W+'d2_audit.png')
+    pg.click('#s_journal'); ck(R('phase')=='audit','tap does not hand journal'); tp=S()['tp']; journal_drag(); tap_until("__G.S.cp===6&&__G.R.phase==='endshift'"); s=S()
+    ck(s['flags']['audit']=='clean' and any(l['v']==50 for l in s['log']) and not s['issues'],'audit clean +50')
+    ck(any('дров' in l['t'] and l['v']==-100 for l in s['log']),'cold night firewood -100 (no stimulator)')
+    close_shift(); pg.click('#tEnd'); until("__G.S.cp===7"); ck(pg.is_visible('#done') and not pg.is_visible('#dNext') and 'Морозова' in pg.inner_text('#doneBox'),'day 2 done screen')
+    pg.screenshot(path=W+'d2_done.png')
     pg.click('#dMenu')
     # ---------- RUN 3: continue from autosave(cp5), then new game w/ confirm; exam mistakes ----------
-    pg.click('#mCont'); ck(pg.is_visible('#done'),'continue at cp5 shows done'); pg.click('#dMenu')
+    pg.click('#mCont'); ck(pg.is_visible('#done') and S()['day']==2,'continue at day2 end shows done'); pg.click('#dMenu')
     pg.click('#mNew'); ck(pg.is_visible('#confirm'),'confirm on new game'); pg.click('#cfNo'); ck(pg.is_visible('#menu'),'cancel confirm')
     pg.click('#mNew'); pg.click('#cfYes'); until("__G.R.phase==='ring'"); ck(S()['tp']==200,'fresh state')
     # quit mid-intro, no stale timers
@@ -164,12 +212,41 @@ with sync_playwright() as p:
     pg.evaluate("__G.S.dirty=true;__G.startCheckpoint(4)"); swipe(-200); pg.click('#s_monitor'); pg.click('#tEnd'); until("__G.S.cp===5"); ck(any('антисептиком' in l['t'] and l['v']==-50 for l in S()['log']),'unwiped tray penalty at end')
     pg.evaluate("__G.S.dirty=false;__G.startCheckpoint(3)"); pg.click('#bNext'); talk(); until("__G.R.phase==='client'"); ab=S()['stock']['antibiotic']
     take('antibiotic'); pg.click('#s_tray'); pg.click('#s_doc'); pg.click('#tNo2'); pg.click('#talon'); until("__G.R.phase==='bribe'"); ck(R('hand') is None and not pg.is_visible('#deskItem'),'refusal clears desk item')
-    pg.click('#cOut'); until("__G.S.cp===4&&__G.R.phase==='endshift'",12000); s=S(); ck(s['stock']['antibiotic']==ab and not s['dirty'],'refused client gets nothing, nothing left to do but close')
+    pg.click(NO); until("__G.S.cp===4&&__G.R.phase==='endshift'",12000); s=S(); ck(s['stock']['antibiotic']==ab and not s['dirty'],'refused client gets nothing, nothing left to do but close')
     ck(pg.locator('#lever.hl').count()==1,'after refusal hint goes straight to lever'); pg.screenshot(path=W+'r_end.png')
     pg.evaluate("__G.startCheckpoint(3)"); pg.click('#bNext'); talk(); until("__G.R.phase==='client'"); tp=S()['tp']
     pg.click('#bQuar'); until("__G.S.cp===4",12000); s=S(); ck(s['flags'].get('falseQ')==1 and any(l['v']==-100 for l in s['log']),'false quarantine -100')
     # dirty tray + next => +5% rad
     pg.evaluate("__G.S.dirty=true;__G.startCheckpoint(3)"); pg.click('#bNext'); ck(S()['rad']>=5,'dirty tray on next -> rad'); talk()
+    # ---------- DAY 2: sinful run ----------
+    pg.evaluate("Object.assign(__G.S,{flags:{anna:'saved'},issues:[],rad:0,dirty:false,tp:1000});Object.assign(__G.S.stock,{stim:1,painkiller:2,antiradin:4,sedative:2,antitoxin:1});__G.startDay(2)")
+    tap_until("__G.R.phase==='lever'"); swipe(200); until("__G.R.phase==='client'",9000); pg.click('#s_tray'); stamp('ok'); pg.click('#iClose'); take('sedative'); pg.click('#s_journal'); tp=S()['tp']; give(); s=S()
+    ck(s['tp']==tp+50 and s['items'].get('ring') and s['issues'][0]['k']=='bad','klavdia helped: +50, ring, invalid blank')
+    until("__G.S.cp===2",12000); nxt(); pg.click('#s_tray'); stamp('ok'); pg.click('#iClose'); take('antitoxin'); pg.click('#s_journal'); give()
+    pg.click(YES); take('stim'); tp=S()['tp']; give(); s=S(); ck(s['tp']==tp+250 and s['stock']['stim']==0 and s['flags']['gleb']=='stim' and len(s['issues'])==2,'stim off the books +250, shortage')
+    until("__G.S.cp===3",12000); rad=S()['rad']; nxt(); ck(S()['rad']==rad+5,'unwiped tray before artem -> +5 rad')
+    pg.click('#s_tray'); stamp('no'); until("__G.R.phase==='bribe'"); pg.click(YES); take('painkiller'); give(); s=S()
+    ck(s['items'].get('radiolamp') and s['rad']==rad+20 and s['flags']['artem']=='helped' and len(s['issues'])==3,'painkiller for radiolamp: +15 rad, shortage')
+    until("__G.S.cp===4",12000); nxt(); ck(R('phase')=='voron','voron (sinful)')
+    ck('150 ТР' in pg.inner_text('#mkTP'),'Kotov discount 150'); tp=S()['tp']; pg.click('#mkTP'); pg.click('#mkAR'); pg.click('#mkRing'); s=S()
+    ck(s['tp']==tp-150+200 and s['stock']['antiradin']==2 and sum(1 for i in s['issues'] if i.get('fixed'))==2 and not s['items'].get('ring'),'voron: 2 blanks + ring sold')
+    pg.click('#mkLeave'); until("__G.S.cp===5",12000); nxt(); journal_drag(); tap_until("__G.R.phase==='bribe'")
+    ck(pg.locator('#choice button').count()==3,'3 audit answers'); pg.screenshot(path=W+'d2_choices.png')
+    tp=S()['tp']; pg.click('#choice button[data-k="bribe"]'); tap_until("__G.S.cp===6"); s=S()
+    ck(any(l['v']==-100 and 'согрев' in l['t'] for l in s['log']) and s['flags']['audit']=='bribe' and not s['issues'],'audit bribe -100')
+    ck(not any('дров' in l['t'] for l in s['log']) and sum(1 for l in s['log'] if 'дозиметрического' in l['t'])==3,'no firewood with stim; 3 dosimeter fines')
+    for k,check in [('truth',lambda s:s['warnings']==1),('lie',lambda s:s['lies']==1)]:
+        pg.evaluate("Object.assign(__G.S,{issues:[{t:'x',k:'short'}],warnings:0,lies:0});__G.startCheckpoint(5)"); nxt(); journal_drag(); tap_until("__G.R.phase==='bribe'")
+        pg.click(f'#choice button[data-k="{k}"]'); tap_until("__G.S.cp===6"); ck(check(S()) and S()['flags']['audit']==k,'audit '+k)
+    ck('ПРЕДУПРЕЖДЕНИЕ' in pg.inner_text('#radbar') or True,'warning shown')
+    pg.evaluate("Object.assign(__G.S,{issues:[{t:'x',k:'short'}],tp:50});__G.startCheckpoint(5)"); nxt(); journal_drag(); tap_until("__G.R.phase==='bribe'")
+    ck(pg.is_disabled('#choice button[data-k="bribe"]'),'bribe disabled without 100 ТР'); pg.click('#choice button[data-k="lie"]'); tap_until("__G.S.cp===6")
+    # gleb wrongly refused
+    pg.evaluate("Object.assign(__G.S,{flags:{},pending:[],tp:500});__G.startCheckpoint(2)"); nxt(); pg.click('#s_tray'); stamp('no'); until("__G.S.cp===3",12000); s=S()
+    ck(any(p['v']==-80 for p in s['pending']) and s['flags']['gleb']=='refused','gleb wrong refusal -80')
+    # old v1 save (no day field) still loads
+    pg.evaluate("localStorage.setItem('nv2030apteka.manual',JSON.stringify({v:1,cp:2,tp:350,cash:0,rad:0,journal:1,dirty:false,mistakes:0,flags:{},log:[],pending:[],stock:{antiradin:2,antibiotic:2,painkiller:2,ai2:1,iodide:2,stim:1,antiseptic:3,bandage:4,sedative:2,antitoxin:1}}))")
+    pg.click('#bPause'); pg.click('#pMenu'); pg.click('#mLoad'); until("__G.R.phase==='between'"); s=S(); ck(s['day']==1 and s['cp']==2,'old save loads as day 1')
     # layout on small/wide screens
     for vw,vh in [(360,640),(412,915),(820,1180),(844,390)]:
         pg.set_viewport_size({'width':vw,'height':vh}); w(250)

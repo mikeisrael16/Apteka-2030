@@ -8,9 +8,19 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#07090b">
 <style>
+@font-face{font-family:"Pix";font-style:normal;font-weight:500;font-display:block;src:url(%%handjet-cyrillic-500-normal.woff2%%) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Pix";font-style:normal;font-weight:500;font-display:block;src:url(%%handjet-latin-500-normal.woff2%%) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD,U+2190-21FF,U+25A0-25FF,U+2600-26FF}
+@font-face{font-family:"Pix";font-style:normal;font-weight:700;font-display:block;src:url(%%handjet-cyrillic-700-normal.woff2%%) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Pix";font-style:normal;font-weight:700;font-display:block;src:url(%%handjet-latin-700-normal.woff2%%) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD,U+2190-21FF,U+25A0-25FF,U+2600-26FF}
+@font-face{font-family:"Fira";font-style:normal;font-weight:400;font-display:block;src:url(%%fira-sans-condensed-cyrillic-400-normal.woff2%%) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Fira";font-style:normal;font-weight:400;font-display:block;src:url(%%fira-sans-condensed-latin-400-normal.woff2%%) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD,U+2190-21FF,U+25A0-25FF,U+2600-26FF}
+@font-face{font-family:"Fira";font-style:italic;font-weight:400;font-display:block;src:url(%%fira-sans-condensed-cyrillic-400-italic.woff2%%) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Fira";font-style:italic;font-weight:400;font-display:block;src:url(%%fira-sans-condensed-latin-400-italic.woff2%%) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD,U+2190-21FF,U+25A0-25FF,U+2600-26FF}
+@font-face{font-family:"Fira";font-style:normal;font-weight:700;font-display:block;src:url(%%fira-sans-condensed-cyrillic-700-normal.woff2%%) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Fira";font-style:normal;font-weight:700;font-display:block;src:url(%%fira-sans-condensed-latin-700-normal.woff2%%) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD,U+2190-21FF,U+25A0-25FF,U+2600-26FF}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;background:#050708;overflow:hidden;overscroll-behavior:none}
-body{font-family:"Courier New",ui-monospace,"DejaVu Sans Mono",monospace;font-weight:700;color:#d8d2bd;
+body{font-family:"Pix","Courier New",monospace;font-weight:600;color:#d8d2bd;
   user-select:none;-webkit-user-select:none;touch-action:manipulation}
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;touch-action:manipulation}
 img{display:block;-webkit-user-drag:none;pointer-events:none}
@@ -102,10 +112,10 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
   background:linear-gradient(#2a2f31,#191c1d);border-top:.2em solid #0a0b0b;box-shadow:inset 0 .15em 0 #4b5154}
 #dlg{flex:1 1 auto;min-height:0;overflow-y:auto;background:#0c1010;border:.14em solid #3d4340;border-radius:.4em;padding:.5em .7em;position:relative}
 #who{font-size:1.3em;color:#e2b040;letter-spacing:.06em;margin-bottom:.15em}
-#txt{font-size:1.42em;line-height:1.32;color:#e3dcc6;white-space:pre-wrap;font-family:"Trebuchet MS",Verdana,system-ui,sans-serif;font-weight:400}
+#txt{font-size:1.42em;line-height:1.32;color:#e3dcc6;white-space:pre-wrap;font-family:"Fira","Trebuchet MS",sans-serif;font-weight:400}
 #more{position:absolute;right:.6em;bottom:.2em;font-size:1.4em;color:#ffd24a;animation:pulse .9s infinite;display:none}
 #dlg.wait #more{display:block}
-#hint{flex:0 0 auto;font-size:1.28em;line-height:1.28;color:#1b1605;background:#e8c64a;border-radius:.35em;padding:.4em .6em;display:none;font-family:"Trebuchet MS",Verdana,system-ui,sans-serif}
+#hint{flex:0 0 auto;font-size:1.28em;line-height:1.28;color:#1b1605;background:#e8c64a;border-radius:.35em;padding:.4em .6em;display:none;font-family:"Fira","Trebuchet MS",sans-serif}
 #hint.on{display:block}
 #hint.exam{background:#3a1f1c;color:#ffc9bf;border:.1em solid #c0392b}
 #btns{flex:0 0 auto;display:flex;gap:.5em;align-items:center;justify-content:space-between}
@@ -130,13 +140,13 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
 #choice button[disabled]{opacity:.45}
 #s_journal{touch-action:none}
 .jghost{position:fixed;z-index:99;pointer-events:none;width:6em;height:7.5em;transform:translate(-50%,-55%) rotate(-8deg);display:flex;align-items:center;justify-content:center;text-align:center;
- background:linear-gradient(90deg,#3d3524,#5a5038 12%,#4c4430);border:.15em solid #1a160e;border-radius:.2em;color:#e6d9a8;font:700 1.1em "Courier New",monospace;box-shadow:0 1em 1.5em #000c}
+ background:linear-gradient(90deg,#3d3524,#5a5038 12%,#4c4430);border:.15em solid #1a160e;border-radius:.2em;color:#e6d9a8;font:600 1.1em "Pix",monospace;box-shadow:0 1em 1.5em #000c}
 #market{background:#140c0b;color:#f0d9b0}
 #market .mhead{background:#2a1512;color:#ffb36a;border-color:#000}
 #mkBody{flex:1;overflow-y:auto;padding:.8em;display:flex;flex-direction:column;gap:.6em}
-#mkBody .mkq{font-size:1.35em;line-height:1.35;font-style:italic;color:#e8c99a;font-family:"Trebuchet MS",Verdana,sans-serif;font-weight:400}
+#mkBody .mkq{font-size:1.35em;line-height:1.35;font-style:italic;color:#e8c99a;font-family:"Fira","Trebuchet MS",sans-serif;font-weight:400}
 #mkBody .mkh{font-size:1.4em;color:#ff8a6a}#mkBody .mkh.ok{color:#9bd08a}
-#mkBody .mki{font-size:1.25em;line-height:1.3;font-family:"Trebuchet MS",Verdana,sans-serif;font-weight:400;padding-left:.4em}
+#mkBody .mki{font-size:1.25em;line-height:1.3;font-family:"Fira","Trebuchet MS",sans-serif;font-weight:400;padding-left:.4em}
 #mkBody .mki.fx{color:#9bd08a}
 #mkBody .btn{font-size:1.4em}
 #mkFoot{flex:0 0 auto;padding:.7em;border-top:.15em solid #000}
@@ -155,10 +165,10 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
 
 /* inspect */
 #insp{background:radial-gradient(ellipse at 50% 40%,#3a4046,#15181b)}
-#quote{flex:0 0 auto;margin:.6em .7em 0;padding:.5em .7em;background:#0c1010;border:.14em solid #3d4340;border-radius:.4em;font-size:1.3em;line-height:1.3;font-family:"Trebuchet MS",Verdana,system-ui,sans-serif;font-weight:400;color:#e3dcc6}
-#quote b{color:#e2b040;font-family:"Courier New",monospace}
+#quote{flex:0 0 auto;margin:.6em .7em 0;padding:.5em .7em;background:#0c1010;border:.14em solid #3d4340;border-radius:.4em;font-size:1.3em;line-height:1.3;font-family:"Fira","Trebuchet MS",sans-serif;font-weight:400;color:#e3dcc6}
+#quote b{color:#e2b040;font-family:"Pix",monospace;font-weight:600}
 #docs{flex:1 1 auto;min-height:0;overflow-y:auto;padding:.7em;display:flex;flex-direction:column;gap:.7em;position:relative}
-.paper{position:relative;background:#d8cfb2;color:#26221a;border-radius:.2em;padding:.7em .9em;box-shadow:0 .3em .8em #000a;font-size:1.5em;line-height:1.6}
+.paper{font-family:"Courier New",monospace;font-weight:700;position:relative;background:#d8cfb2;color:#26221a;border-radius:.2em;padding:.7em .9em;box-shadow:0 .3em .8em #000a;font-size:1.5em;line-height:1.6}
 .paper h4{font-size:1em;text-align:center;letter-spacing:.08em;border-bottom:.1em solid #26221a66;padding-bottom:.25em;margin-bottom:.35em}
 #pass{background:#cfc3a2;display:flex;gap:.8em;border-left:.9em solid #7a2f2a}
 #pass img{width:5.2em;height:5.72em;object-fit:cover;object-position:50% 50%;border:.12em solid #26221a;background:#555;filter:grayscale(.6) contrast(1.1)}
@@ -180,7 +190,7 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
 #checks span{flex:1;text-align:center;font-size:1.05em;padding:.35em .1em;background:#101414;border:.12em solid #3d4340;border-radius:.3em;color:#8d8a78}
 #checks span.ok{color:#b9f0a6;border-color:#5fae4d}
 #checks span.bad{color:#ffb3a8;border-color:#c0392b}
-#ihint{flex:0 0 auto;margin:.5em .7em 0;font-size:1.28em;line-height:1.28;color:#1b1605;background:#e8c64a;border-radius:.35em;padding:.4em .6em;display:none;font-family:"Trebuchet MS",Verdana,system-ui,sans-serif}
+#ihint{flex:0 0 auto;margin:.5em .7em 0;font-size:1.28em;line-height:1.28;color:#1b1605;background:#e8c64a;border-radius:.35em;padding:.4em .6em;display:none;font-family:"Fira","Trebuchet MS",sans-serif}
 #ihint.on{display:block}
 #imsg{flex:0 0 auto;min-height:2.7em;margin:.4em .7em 0;font-size:1.3em;line-height:1.25;text-align:center;color:#f1ead0}
 #imsg.bad{color:#ffb3a8}#imsg.good{color:#c9f3b8}
@@ -199,7 +209,7 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
 #ref h3{font-size:1.5em;text-align:center;padding:.6em;border-bottom:.12em solid #26221a66}
 #ref .list{flex:1;overflow-y:auto;padding:.5em .8em}
 #ref .row{font-size:1.4em;line-height:1.3;padding:.6em .5em;border-bottom:.1em dashed #26221a55;cursor:pointer}
-#ref .row small{display:block;font-size:.8em;font-weight:400;font-family:"Trebuchet MS",Verdana,sans-serif}
+#ref .row small{display:block;font-size:.8em;font-weight:400;font-family:"Fira","Trebuchet MS",sans-serif}
 #ref .row.off{color:#8a2018}
 #ref .row:active{background:#ffd24a88}
 #ref button{margin:.5em;align-self:center}
@@ -236,11 +246,55 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
 .center{align-items:center;justify-content:center;gap:1em;padding:2em}
 .center h2{font-size:2.6em;color:#e2b040;letter-spacing:.12em;margin-bottom:.4em;text-align:center}
 .center .btn{width:82%}
-.center p{font-size:1.4em;line-height:1.4;text-align:center;font-family:"Trebuchet MS",Verdana,sans-serif;font-weight:400;color:#d8d2bd}
+.center p{font-size:1.4em;line-height:1.4;text-align:center;font-family:"Fira","Trebuchet MS",sans-serif;font-weight:400;color:#d8d2bd}
 #done{z-index:25;background:#070a0bf5;overflow-y:auto}
-#done .box{width:100%;font-size:1.35em;line-height:1.45;background:#0c1010;border:.12em solid #3d4340;border-radius:.4em;padding:.8em;font-family:"Trebuchet MS",Verdana,sans-serif;font-weight:400}
+#done .box{width:100%;font-size:1.35em;line-height:1.45;background:#0c1010;border:.12em solid #3d4340;border-radius:.4em;padding:.8em;font-family:"Fira","Trebuchet MS",sans-serif;font-weight:400}
 #done .box p{font-size:1em;text-align:left;margin-bottom:.5em}
-#done .box b{color:#e2b040;font-family:"Courier New",monospace}
+#done .box b{color:#e2b040;font-family:"Pix",monospace;font-weight:600}
+/* ===== rusty plates (his frame art) ===== */
+.btn,#choice button,#bNext,.mbtn,#pocket,.plate,#mkTitle,.mhead,#who,.center h2,.tool span,#checks span,#tabs button{font-size-adjust:none}
+body{font-weight:700}
+.btn{font-size:1.95em}#choice button{font-size:1.6em!important}#bNext{font-size:1.6em}.mbtn{font-size:2.6em}#pocket{font-size:1.6em}
+.plate{font-size:2.15em}.mhead{font-size:1.95em}#who{font-size:1.55em}.center h2{font-size:3.2em}.tool span{font-size:1.3em}#checks span{font-size:1.3em}#hint,#ihint{font-weight:400}
+.btn,#choice button,#bNext,.mbtn,#pocket{border:.8em solid transparent!important;border-image:url(%%pl_btn.png%%) 44 fill / .8em stretch!important;background:none!important;box-shadow:none!important;
+ border-radius:0!important;color:#ece4c8;text-shadow:0 .1em 0 #000,0 0 .35em #000;font-family:"Pix",monospace;font-weight:700;letter-spacing:.04em;line-height:1.1}
+.btn{padding:.25em .6em!important}#choice button{padding:.2em .3em!important}#bNext{padding:.2em .6em!important}
+.mbtn:before,.mbtn:after{display:none}
+.btn:active,#choice button:active,#bNext:active,.mbtn:active{filter:brightness(1.25);transform:translateY(.08em)}
+.btn.green,#choice button.g,#bNext{color:#d2f3b0}.btn.red{color:#ffb7a6}#choice button.y,.mbtn.primary{color:#ffd27a}
+.btn[disabled],#choice button[disabled],.mbtn[disabled]{filter:grayscale(.8) brightness(.62);color:#b9b3a0}
+.plate{border:.55em solid transparent!important;border-image:url(%%pl_bar.png%%) 34 fill / .55em stretch!important;background:none!important;box-shadow:none!important;border-radius:0!important}
+.mhead{border:.75em solid transparent;border-image:url(%%pl_bar.png%%) 34 fill / .75em stretch;background:none!important;padding:.15em .3em!important;margin:.3em .3em 0}
+#dlg{border:.75em solid transparent!important;border-image:url(%%pl_sq.png%%) 40 fill / .75em stretch!important;background:none!important;border-radius:0!important;padding:.1em .3em!important}
+#who{font-family:"Pix",monospace}
+/* desk quarantine button, off-hook phone, pocket */
+#bQuar{position:absolute;z-index:4;display:block!important;padding:0;background:none;filter:drop-shadow(0 .3em .3em #000c)}
+#bQuar img{width:100%;height:auto}
+#bQuar.armed{filter:drop-shadow(0 0 .5em #ff4a2a) brightness(1.08)}
+#offImg{position:absolute;z-index:2;display:none;pointer-events:none}
+#offImg.on{display:block}
+#pocket{display:none;flex:1;font-size:1.3em;padding:.5em .3em!important;text-align:center}
+#pocket.on{display:block}
+/* market (his mockup) */
+#market{background:#0a0807e0!important;padding:.4em .5em .6em;gap:.4em}
+#mkHead{flex:0 0 auto;display:flex;gap:.4em;align-items:stretch}
+#mkPortrait{flex:0 0 7.4em;height:7.4em;border:.7em solid transparent;border-image:url(%%pl_sq.png%%) 40 fill / .7em stretch}
+#mkPortrait img{width:100%;height:100%;object-fit:cover}
+#mkTitle{flex:1;display:flex;align-items:center;justify-content:center;gap:.4em;border:.8em solid transparent;border-image:url(%%pl_bar.png%%) 34 fill / .8em stretch;
+ font-size:2.6em;color:#e0663a;text-shadow:0 .08em 0 #000;letter-spacing:.02em;line-height:1.05;text-align:center}
+#mkTitle i{font-style:normal;font-size:1.1em;color:#e0663a}
+#mkBody{flex:1;min-height:0;overflow-y:auto;border:1em solid transparent;border-image:url(%%pl_sq.png%%) 40 fill / 1em stretch;padding:.2em .3em!important;display:flex;flex-direction:column;gap:.55em}
+#mkBody .mkq{font-size:1.6em!important;line-height:1.25;font-style:italic;color:#e8c58a!important;font-family:"Fira",sans-serif!important}
+#mkBody .mkh{font-size:1.75em!important;font-weight:700!important;color:#e0663a!important;font-family:"Fira",sans-serif;font-weight:400}
+#mkBody .mkh.ok{color:#9bd08a!important}
+#mkBody .mki{font-size:1.4em!important;color:#d8d0bc;font-family:"Fira",sans-serif!important}
+#mkBody .mki.fx{color:#9bd08a}
+.mkb{display:flex!important;align-items:center;gap:.4em;width:100%;font-size:1.85em!important;min-height:3em}
+.mkb img{flex:0 0 auto;height:2.4em;width:2.6em;object-fit:contain}
+.mkb span{flex:1;text-align:center}.mkb b{color:#ffd27a;font-weight:600}
+#mkFoot{flex:0 0 auto;display:flex;justify-content:center;padding:0!important;border:0!important}
+#mkFoot .btn{width:56%!important;font-size:2em!important}
+#tbody{font-size:1.75em!important;line-height:1.35!important}#tsum{font-size:1.5em}.ord .n{font-size:.95em}.mbtn small{font-size:.5em!important}#pInfo{font-size:1.5em}
 #rotate{position:fixed;inset:0;z-index:100;background:#050708;display:none;align-items:center;justify-content:center;text-align:center;font-size:18px;padding:20px;color:#e2b040}
 </style>
 </head>
@@ -276,7 +330,9 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
         <img class="bars" src="%%bars.webp%%" alt="">
       </div>
       <img id="ringImg" src="%%phone.webp%%" alt="">
+      <img id="offImg" src="%%offhook.jpg%%" alt="">
       <div id="lever"></div>
+      <button id="bQuar" aria-label="Карантин"><img src="%%quar.webp%%" alt="КАРАНТИН"></button>
       <div id="deskItem"></div>
       <div id="gauge"><div class="sc"><img src="%%scale.webp%%" alt=""><i class="ptr"></i></div><b>0 мкР/ч</b></div>
       <div id="vig"></div>
@@ -287,14 +343,14 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
       <div id="hint"></div>
       <div id="choice"></div>
       <div id="btns">
-        <button id="bQuar" aria-label="Карантин"><img src="%%quar.webp%%" alt="КАРАНТИН"></button>
+        <div id="pocket">ЛИЧНАЯ СУМКА · перетащите сюда</div>
         <button id="bNext">СЛЕДУЮЩИЙ ▶</button>
       </div>
     </div>
 
     <!-- inspect -->
     <div class="modal" id="insp">
-      <div class="mhead"><span>РАБОЧИЙ СТОЛ</span><button id="iClose">К ОКНУ ✕</button></div>
+      <div class="mhead"><span id="iHead">РАБОЧИЙ СТОЛ</span><button id="iClose">К ОКНУ ✕</button></div>
       <div id="quote" class="fld" data-f="quote"></div>
       <div id="ihint"></div>
       <div id="docs">
@@ -308,6 +364,7 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
           Больной: <span class="fld" data-f="tName" id="tName"></span><br>
           Назначение: <span class="fld" data-f="tDrug" id="tDrug"></span><br>
           Врач: <span class="fld" data-f="tDoc" id="tDoc"></span><br>
+          <span id="tExtraW"><span class="fld" data-f="tExtra" id="tExtra"></span><br></span>
           <div id="seal">ВОЕНКОМАТ<br>★<br>СЕКТОР-86</div>
           <div id="imprint"></div>
         </div>
@@ -339,7 +396,7 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
 
     <!-- black market -->
     <div class="modal" id="market">
-      <div class="mhead"><span>ЧЁРНЫЙ РЫНОК · ВОРОН</span></div>
+      <div id="mkHead"><div id="mkPortrait"><img id="mkImg" alt=""></div><div id="mkTitle"><span id="mkName">ЧЁРНЫЙ РЫНОК · ВОРОН</span><i>☢</i></div></div>
       <div id="mkBody"></div>
       <div id="mkFoot"><button class="btn" id="mkLeave">РАЗОЙТИСЬ</button></div>
     </div>
@@ -377,8 +434,11 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
 <script>
 "use strict";
 const IMG={
- c:{petr:"%%c0.webp%%",anna:"%%c1.webp%%",viktor:"%%c2.webp%%",klavdia:"%%c3.webp%%",gleb:"%%c4.webp%%",artem:"%%c5.webp%%",voron:"%%c6.webp%%",gromov:"%%c7.webp%%"},
- f:{petr:"%%f0.webp%%",anna:"%%f1.webp%%",viktor:"%%f2.webp%%",klavdia:"%%f3.webp%%",gleb:"%%f4.webp%%",artem:"%%f5.webp%%"},
+ c:{petr:"%%c0.webp%%",anna:"%%c1.webp%%",viktor:"%%c2.webp%%",klavdia:"%%c3.webp%%",gleb:"%%c4.webp%%",artem:"%%c5.webp%%",voron:"%%c6.webp%%",gromov:"%%c7.webp%%",
+   vera:"%%vera.webp%%",maria:"%%maria.webp%%",fedor:"%%fedor.webp%%",semyon:"%%semyon.webp%%"},
+ f:{petr:"%%f0.webp%%",anna:"%%f1.webp%%",viktor:"%%f2.webp%%",klavdia:"%%f3.webp%%",gleb:"%%f4.webp%%",artem:"%%f5.webp%%",vera:"%%f_vera.webp%%",maria:"%%f_maria.webp%%",fedor:"%%f_fedor.webp%%"},
+ p:{voron:"%%p_voron.webp%%",semyon:"%%p_semyon.webp%%"},
+ ic:{blank:"%%ic_blank.png%%",tp:"%%ic_tp.png%%",ar:"%%ic_ar.png%%",ring:"%%ic_ring.png%%"},
  med:{antiradin:"%%m_antiradin.webp%%",antibiotic:"%%m_antibiotic.webp%%",painkiller:"%%m_painkiller.webp%%",ai2:"%%m_ai2.webp%%",iodide:"%%m_iodide.webp%%",
  stim:"%%m_stim.webp%%",antiseptic:"%%m_antiseptic.webp%%",bandage:"%%m_bandage.webp%%",sedative:"%%m_sedative.webp%%",antitoxin:"%%m_antitoxin.webp%%"}};
 const $=id=>document.getElementById(id);
@@ -389,45 +449,64 @@ const MEDS={antiradin:{n:"Антирадин",p:60},antibiotic:{n:"Антиби�
 const DOCTORS=[{n:"Громов И.И.",p:"Госпиталь Сектора-86",ok:true},
  {n:"Казанцев П.Р.",p:"Госпиталь Сектора-86",ok:false,note:"ПОГИБ при обрушении госпиталя 2 недели назад. Все выданные им бланки аннулированы"},
  {n:"Лаптев О.Д.",p:"Поликлиника №2",ok:false},{n:"Орлов В.Г.",p:"Главный врач гарнизона",ok:true},
- {n:"Петрова Н.К.",p:"Медпункт Комендатуры",ok:true},{n:"Смирнов А.В.",p:"Поликлиника №1",ok:true}];
+ {n:"Петрова Н.К.",p:"Медпункт Комендатуры",ok:true},{n:"Ветрова М.А.",p:"Госпиталь Комендатуры, зав. отделением",ok:true},{n:"Смирнов А.В.",p:"Поликлиника №1",ok:true}];
 const docOk=n=>{const d=DOCTORS.find(x=>x.n===n);return !!(d&&d.ok)};
 const CL={
- petr:{name:"Пётр Ильин",full:"Ильин Пётр Сергеевич",short:"Ильин П.С.",born:"1961",addr:"2-й микрорайон, д. 14",no:"№ 04-0117",drug:"antiradin",doctor:"Смирнов А.В.",seal:true,rad:22,pay:150,pitch:230,
+ petr:{h:.95,name:"Пётр Ильин",full:"Ильин Пётр Сергеевич",short:"Ильин П.С.",born:"1961",addr:"2-й микрорайон, д. 14",no:"№ 04-0117",drug:"antiradin",doctor:"Смирнов А.В.",seal:true,rad:22,pay:150,pitch:230,
   line:"Кхм... Здравствуйте, сынок. Я Пётр Ильин, со второго микрорайона. Мне доктор Смирнов выписал «Антирадин», голова совсем раскалывается после дежурства у котельной. Вот мой талон и пропуск.",
   quote:"Мне доктор Смирнов выписал «Антирадин»"},
- anna:{name:"Анна Котова",full:"Котова Анна Дмитриевна",short:"Котова А.Д.",born:"2004",addr:"ул. Омская, д. 22",no:"№ 04-0118",drug:"iodide",doctor:"Громов И.И.",seal:true,rad:185,pay:150,pitch:400,
+ anna:{h:.92,name:"Анна Котова",full:"Котова Анна Дмитриевна",short:"Котова А.Д.",born:"2004",addr:"ул. Омская, д. 22",no:"№ 04-0118",drug:"iodide",doctor:"Громов И.И.",seal:true,rad:185,pay:150,pitch:400,
   line:"Меня зовут Анна Котова... Пожалуйста, быстрее! Муж вытащил меня из завала у старой ТЭЦ. Мне выписали «Калия Йодид», вот талон от врача Громова... Умоляю, не вызывайте патруль, у меня дома маленький ребёнок один!",
   quote:"Мне выписали «Калия Йодид», вот талон от врача Громова",
   quarLine:"Нет! Пожалуйста! У меня ребёнок!.. — Падает стальная решётка. Сирена спецбригады заглушает крик. Комендатура начисляет премию: +100 ТР."},
- viktor:{name:"Виктор Захаров",full:"Захаров Виктор Николаевич",short:"Захаров В.Н.",born:"1988",addr:"10-й микрорайон, д. 3",no:"№ 04-0119",drug:"antibiotic",doctor:"Смирнов А.В.",seal:false,rad:95,pay:150,pitch:170,
+ viktor:{h:1,name:"Виктор Захаров",full:"Захаров Виктор Николаевич",short:"Захаров В.Н.",born:"1988",addr:"10-й микрорайон, д. 3",no:"№ 04-0119",drug:"antibiotic",doctor:"Смирнов А.В.",seal:false,rad:95,pay:150,pitch:170,
   line:"Здорово. Виктор Захаров. Ранили арматурой на разборе склада, рука гниёт. Доктор Смирнов выписал «Антибиотики». Давай живее, смена кончается.",
   quote:"Доктор Смирнов выписал «Антибиотики»",
   offer:{line:"Сука, глазастый какой! Ладно, слушай сюда: давай «Антибиотики» без бумажки, плачу поверх двойной тариф — 300 талонов лично тебе в карман! У тебя ж самого дома семья мёрзнет, а?",
    no:"ПРОГНАТЬ",yes:"ВЗЯТЬ 300 ТР",noLine:"Ну смотри, аптекарь. Город маленький... — Виктор сплёвывает и уходит."}},
- klavdia:{name:"Клавдия Морозова",full:"Морозова Клавдия Степановна",short:"Морозова К.С.",born:"1951",addr:"барак у старой пристани",no:"№ 03-1172",drug:"sedative",doctor:"Казанцев П.Р.",seal:true,rad:30,pay:50,pitch:330,
+ klavdia:{h:.82,name:"Клавдия Морозова",full:"Морозова Клавдия Степановна",short:"Морозова К.С.",born:"1951",addr:"барак у старой пристани",no:"№ 03-1172",drug:"sedative",doctor:"Казанцев П.Р.",seal:true,rad:30,pay:50,pitch:330,
   line:"Сынок, миленький... Морозова я, Клавдия Степановна. Наш барак у старой пристани ночью снегом завалило, крыша рухнула. Деда моего придавило насмерть... Сердце колотится, руки трясутся, дышать не могу. Дай «Успокоительное», вот талончик, мне фельдшер ещё в том месяце выписал...",
   quote:"Дай «Успокоительное», вот талончик",
   refuseLine:"Как же так, сынок... — Клавдия Степановна плачет, держась за решётку, и медленно уходит в метель."},
- gleb:{name:"Глеб Руднев",full:"Руднев Глеб Борисович",short:"Руднев Г.Б.",born:"1979",addr:"общежитие ТЭЦ-2",no:"№ 04-0203",drug:"antitoxin",doctor:"Орлов В.Г.",seal:true,rad:115,pay:150,pitch:135,
+ gleb:{h:1,name:"Глеб Руднев",full:"Руднев Глеб Борисович",short:"Руднев Г.Б.",born:"1979",addr:"общежитие ТЭЦ-2",no:"№ 04-0203",drug:"antitoxin",doctor:"Орлов В.Г.",seal:true,rad:115,pay:150,pitch:135,
   line:"Здорово, аптекарь. Руднев Глеб, старший смены с ТЭЦ-2. У нас на третьем котле прорвало трубу с химреактивами, пацаны надышались дрянью, валятся с ног. Если до вечера задвижку не заварим — давление упадёт, и весь ваш квартал ночью замёрзнет к чертям. Мне нужен «Антитоксин» от отравления и армейский «Стимулятор», чтобы продержаться на ногах сутки.",
   quote:"Мне нужен «Антитоксин» от отравления и армейский «Стимулятор»",
   wrongRefuse:"Да вы там все с ума посходили?! Бланк чистый! Ну и мёрзните тогда всем кварталом!"},
- artem:{name:"Артём Белов",full:"Белов Артём Игоревич",short:"Сидоров К.М., 64 года",born:"2013",addr:"не указана",no:"№ 04-0??7",drug:"painkiller",doctor:"Петрова Н.К.",seal:false,nameOk:false,rad:165,pay:0,pitch:420,
+ artem:{h:.84,name:"Артём Белов",full:"Белов Артём Игоревич",short:"Сидоров К.М., 64 года",born:"2013",addr:"не указана",no:"№ 04-0??7",drug:"painkiller",doctor:"Петрова Н.К.",seal:false,nameOk:false,rad:165,pay:0,pitch:420,
   line:"Дяденька, только не звоните военным! Меня Артём зовут... Мы с пацанами лазили за колючую проволоку на старый консервный завод, искали тушёнку. Там растяжка мародёрская сработала... Моему старшему брату осколком ногу пробило, он в подвале истекает кровью, кричит так, что патруль услышит! Вот талон на «Обезболивающее», я его у соседа выменял!",
   quote:"Вот талон на «Обезболивающее», я его у соседа выменял",
   quarLine:"Дяденька, не надо!! — Падает стальная решётка. Спецбригада в противогазах уводит мальчишку. Комендатура начисляет премию: +100 ТР.",
   offer:{line:"Дяденька, ну пожалуйста! Вот — довоенная радиолампа, целая! Такие на базаре не найдёшь. Забирай, только дай «Обезбол» — брат же кровью истечёт!",
    no:"ПРОГНАТЬ",yes:"«ОБЕЗБОЛ» ЗА РАДИОЛАМПУ",noLine:"Артём шмыгает носом, прячет лампу за пазуху и убегает в метель."}},
- voron:{special:"voron",name:"Ворон",rad:40,pitch:210},
- gromov:{special:"gromov",name:"Капитан Громов",rad:18,pitch:120}
+ voron:{special:"voron",h:.98,name:"Ворон",rad:40,pitch:210},
+ gromov:{special:"gromov",h:1.03,name:"Капитан Громов",rad:18,pitch:120},
+ vera:{h:.9,name:"Вера Лебедева",full:"Лебедева Вера Олеговна",short:"Лебедева В.О. (для матери)",born:"2005",addr:"общежитие консервного завода",no:"№ 04-0291",drug:"antibiotic",doctor:"Смирнов А.В.",seal:true,rad:40,pay:30,pitch:360,
+  flaw:"exp",extra:"Действителен до: 09.03.2030",flawMsg:"Талон ПРОСРОЧЕН на 3 дня (сегодня 12.03.2030). По закону Комендатуры — автоматический отказ.",
+  line:"Здравствуйте... Лебедева Вера, с консервного завода. Маме совсем плохо, кашель третью неделю, горит вся. Вот её рецепт на «Антибиотики». Я три дня не могла уйти со смены — по четырнадцать часов стоим... бланк чуть просрочен. Пожалуйста.",
+  quote:"Вот её рецепт на «Антибиотики»",
+  refuseLine:"Вера молча забирает бланк. — За невыход меня оштрафуют, а мама... Ладно. — Она уходит, не оборачиваясь."},
+ maria:{h:.9,name:"Мария Аркадьевна",full:"Ветрова Мария Аркадьевна",short:"Госпиталь Комендатуры",born:"1978",addr:"медпункт Комендатуры",no:"№ ГК-0412",drug:"antiradin",doctor:"Ветрова М.А.",seal:true,rad:70,pay:0,pitch:300,
+  flaw:"quota",extra:"Квота госпиталя на март: 20 из 20",flawMsg:"Лимит госталонов госпиталя ИСЧЕРПАН — выдача сверх квоты запрещена.",
+  line:"Здравствуйте, провизор. Ветрова, Мария Аркадьевна, госпиталь Комендатуры. После обрушения на ТЭЦ и выброса раненых несут и несут — класть некуда. Мне нужен «Антирадин». Бумаги в порядке, но лимит госталонов мы исчерпали ещё на прошлой неделе. Выдайте под моё честное слово и будущие ведомости. Я отчитаюсь, клянусь.",
+  quote:"Мне нужен «Антирадин». Выдайте под моё честное слово",
+  refuseLine:"Понимаю. Бумажка есть бумажка... — Мария Аркадьевна устало кивает и уходит. Сегодня кто-то в госпитале не дождётся лекарства."},
+ fedor:{h:1,name:"Фёдор «Зверь»",full:"Зверев Фёдор Ильич",short:"Зверев Ф.И.",born:"1975",addr:"кордон за 4-м блокпостом",no:"№ БП4-0077",drugs:["antitoxin","bandage"],doctor:"Петрова Н.К.",seal:true,rad:130,pay:0,pitch:115,
+  flaw:"sign",extra:"Подпись нач. блокпоста: ________",flawMsg:"Не хватает подписи начальника блокпоста — бланк недействителен.",
+  line:"...Зверев. Фёдор. С кордона. На болотах на гнездо диких собак напоролся — подрали, гной пошёл, лихорадит. Мне «Антитоксин» и бинтов. Бумагу на блокпосте дали — торопились, черти. Давай быстрее, не люблю я ваши окошки.",
+  quote:"Мне «Антитоксин» и бинтов",
+  refuseLine:"Фёдор сплёвывает в снег. — Ясно. Больше не приду. — Он закидывает рюкзак за плечо и уходит к болотам."},
+ semyon:{special:"semyon",h:.96,name:"Семён «Рваный»",rad:55,pitch:180}
 };
 const DAYS={
  1:{stages:["intro","c:petr","n:anna","n:viktor","end","done"],times:["07:55","08:00","11:30","16:40","19:00","19:00"],
     labels:["Звонок майора","Клиент №1","Клиент №2","Клиент №3 (экзамен)","Сдача смены","День 1 завершён"]},
  2:{stages:["morning","c:klavdia","n:gleb","n:artem","n:voron","n:gromov","end","done"],times:["07:50","08:10","10:40","13:20","17:40","18:30","19:00","19:00"],
-    labels:["Утро","Клавдия Морозова","Глеб Руднев","Артём Белов","Ворон","Ревизия Громова","Сдача смены","День 2 завершён"]}};
-const LAST_DAY=2;
-const MAJOR="МАЙОР КОРШУНОВ",GROMOV="КАПИТАН ГРОМОВ",VORON="ВОРОН",YOU="ВЫ";
+    labels:["Утро","Клавдия Морозова","Глеб Руднев","Артём Белов","Ворон","Ревизия Громова","Сдача смены","День 2 завершён"]},
+ 3:{stages:["morning","c:vera","n:maria","n:fedor","call","n:semyon","end","done"],times:["07:50","08:20","11:05","14:10","15:00","17:35","19:00","19:00"],
+    labels:["Утро","Вера Лебедева","Мария Аркадьевна","Фёдор «Зверь»","Звонок из дома","Семён «Рваный»","Сдача смены","День 3 завершён"]}};
+const LAST_DAY=3;
+const DATES={1:"10.03.2030",2:"11.03.2030",3:"12.03.2030"};
+const MAJOR="МАЙОР КОРШУНОВ",GROMOV="КАПИТАН ГРОМОВ",VORON="ВОРОН",YOU="ВЫ",OLYA="ОЛЯ (ЖЕНА)",MARIA="МАРИЯ АРКАДЬЕВНА",SEMYON="СЕМЁН «РВАНЫЙ»";
 const K_AUTO="nv2030apteka.auto",K_MAN="nv2030apteka.manual",K_SET="nv2030apteka.settings";
 
 /* ================= STORAGE (safe) ================= */
@@ -528,14 +607,16 @@ const A={ctx:null,set:{music:true,sfx:true},ringT:null,musT:null,
 let S=null;            // persisted state
 let snap=null;         // JSON of S at last checkpoint (what gets saved)
 let runTok=0;
-const R={phase:"menu",lev:0,closed:false,c:null,hand:null,tool:null,sel:null,probe:false,probeAcc:0,wait:null,typing:null,modal:null,orders:{},nextKey:null};
+const R={phase:"menu",lev:0,closed:false,c:null,hand:null,tool:null,sel:null,probe:false,probeAcc:0,wait:null,typing:null,modal:null,orders:{},nextKey:null,pocket:null,onCall:false,callKey:null,mk:null};
 function newState(){return{v:1,day:1,cp:0,tp:200,dayStart:200,cash:0,rad:0,journal:0,dirty:false,mistakes:0,warnings:0,lies:0,flags:{},log:[],pending:[],issues:[],items:{},
  stock:{antiradin:3,antibiotic:2,painkiller:2,ai2:1,iodide:2,stim:1,antiseptic:3,bandage:4,sedative:2,antitoxin:1}}}
 function later(ms,fn){const tok=runTok;setTimeout(()=>{if(tok===runTok)fn()},ms)}
 function logTP(t,v){S.log.push({t,v});S.tp+=v;hud()}
 const stage=()=>DAYS[S.day].stages[S.cp];
 const addRad=v=>{S.rad=Math.min(100,S.rad+v)};
-const valid=d=>d.seal&&docOk(d.doctor)&&d.nameOk!==false;
+const valid=d=>d.seal&&docOk(d.doctor)&&d.nameOk!==false&&!d.flaw;
+const drugsOf=d=>d.drugs||[d.drug];
+const drugNames=list=>list.map(k=>"«"+MEDS[k].n+"»").join(" и ");
 A.knock=function(){[0,.32,.5,.86].forEach(t=>{this.noise(.06,.5,"lowpass",700,t);this.tone(160,.08,"square",.15,t)})};
 
 /* ================= UI HELPERS ================= */
@@ -567,7 +648,7 @@ const px=x=>(x/1438*100)+"%",py=y=>((y-250)/2000*100)+"%";
 function rect(el,x0,y0,x1,y1){el.style.left=px(x0);el.style.top=py(y0);el.style.width=px(x1-x0);el.style.height=((y1-y0)/2000*100)+"%"}
 const SPOTS={phone:[340,1310,740,1690],monitor:[900,1190,1420,1640],doc:[515,1790,900,2105],stampd:[895,1790,1030,1930],dosi:[1010,1880,1250,2130],journal:[1245,1870,1438,2140],
  book:[0,1840,480,2140],lampd:[755,1460,885,1690],shelfR:[1110,460,1438,1180],shelfL:[0,480,225,1480],tray:[552,962,848,1175]};
-function buildScene(){const sc=$("scene");rect($("win"),370,448,1008,1175);rect($("lever"),203,470,333,1025);rect($("deskItem"),130,1600,430,1850);
+function buildScene(){const sc=$("scene");rect($("win"),370,448,1008,1175);rect($("lever"),203,470,333,1025);rect($("deskItem"),130,1600,430,1850);rect($("bQuar"),18,2035,248,2215);rect($("offImg"),280,1190,960,1800);
  const ri=$("ringImg");ri.style.left=px(262);ri.style.top=py(1232);ri.style.width=px(545);
  for(const k in SPOTS){const d=document.createElement("div");d.className="spot";d.id="s_"+k;rect(d,...SPOTS[k]);sc.insertBefore(d,$("gauge"));d.addEventListener("click",()=>onSpot(k))}
  const g=$("shelf").querySelector(".grid");for(const k in MEDS){const b=document.createElement("button");b.className="item";b.dataset.m=k;b.innerHTML=`<i></i><img src="${IMG.med[k]}" alt=""><span>${MEDS[k].n}</span>`;b.addEventListener("click",()=>takeMed(k));g.appendChild(b)}
@@ -585,15 +666,17 @@ function hintData(){
   case"lever":return{t:"Рычаг слева от окна: проведите по нему пальцем ВНИЗ (к «ОТКР»), чтобы поднять бронеставни.",h:["lever"]};
   case"between":return S.dirty?wipe():{t:"Когда будете готовы — нажмите «СЛЕДУЮЩИЙ».",h:["bNext"]};
   case"audit":return{t:"Ревизия! Перетащите «Журнал учёта» со стола в окно выдачи.",h:["s_journal"]};
+  case"pocket":{const pk=R.pocket,pn=MEDS[pk.drug].n;if(R.hand===pk.drug)return shelf?null:{t:`Перетащите «${pn}» со стола в личную сумку внизу.`,h:["deskItem","pocket"]};
+   return shelf?{t:`Возьмите «${pn}».`,h:[]}:{t:`Возьмите в шкафу «${pn}» — он появится на столе.`,h:["s_shelfR"]}}
   case"endshift":return S.dirty?wipe():!R.closed?{t:"Смена окончена. Закройте окно на ночь, чтобы никто не залез: проведите по рычагу пальцем ВВЕРХ (к «ЗАКР»).",h:["lever"]}:{t:`Окно закрыто. Нажмите на монитор: отчёт, закупка на День ${S.day+1} и «ЗАВЕРШИТЬ СМЕНУ».`,h:["s_monitor"]};
   case"client":break;
   default:return null}
- if(!c||c.def.special)return null;
- const n=c.def,med=MEDS[n.drug].n,ck=c.checks,all=ck.name&&ck.drug&&ck.doctor&&ck.seal;
- if(c.offer){const om=MEDS[c.offer.drug].n;
-  if(R.hand===c.offer.drug)return shelf?null:{t:`Сделка: перетащите «${om}» со стола в окошко.`,h:["deskItem"]};
-  return shelf?{t:`Возьмите «${om}».`,h:[]}:{t:`Сделка: возьмите «${om}» в шкафу — без талона и штампа.`,h:["s_shelfR"]}}
- if(!c.tut)return{t:S.day===1?"ЭКЗАМЕН. Подсказки отключены. Действуйте сами: дозиметр, документы, лампа, решение.":"Смена без подсказок: дозиметр → документы (ФИО, препарат, врач, печать) → решение.",exam:true,h:[]};
+ if(!c||(c.def.special&&!c.offer))return null;
+ const n=c.def,med=c.def.special?"":MEDS[drugsOf(n)[0]].n,ck=c.checks,all=ck.name&&ck.drug&&ck.doctor&&ck.seal;
+ if(c.offer){
+  if(c.offer.need.includes(R.hand))return shelf?null:{t:`Сделка: перетащите «${MEDS[R.hand].n}» со стола в окошко.`,h:["deskItem"]};
+  return shelf?{t:`Возьмите ${drugNames(c.offer.need)}.`,h:[]}:{t:`Сделка: возьмите в шкафу ${drugNames(c.offer.need)} — без талона и штампа.`,h:["s_shelfR"]}}
+ if(!c.tut)return S.day===1?{t:"ЭКЗАМЕН. Подсказки отключены. Действуйте сами: дозиметр, документы, лампа, решение.",exam:true,h:[]}:null;
  if(!c.docs)return{t:c.key==="petr"?`Запомните имя клиента (${n.name}) и препарат (${med}). Нажмите на лоток окна, чтобы забрать документы на стол.`:"Заберите документы из лотка окна.",h:["s_tray"]};
  if(!all){
   if(!insp)return{t:"Документы на столе. Нажмите на них, чтобы начать проверку (4 точки сверки).",h:["s_doc"]};
@@ -616,7 +699,7 @@ function hintData(){
  if(shelf||insp)return null;
  if(!c.filed)return{t:"Подшейте проштампованный талон: нажмите на «Журнал учёта» справа на столе.",h:["s_journal"]};
  return{t:`«${med}» лежит на столе слева. Перетащите его пальцем в окошко выдачи.`,h:["deskItem"]}}
-function quarOn(){const c=R.c;return R.phase==="client"&&!!c&&!c.done&&!c.def.special&&!c.offer&&!(S.day===1&&S.cp<2)}
+function quarOn(){const c=R.c;return R.phase==="client"&&!!c&&!c.done&&!c.def.special&&!c.offer&&!c.given&&!(S.day===1&&S.cp<2)}
 function refresh(){
  if(!S)return;hud();
  const h=hintData(),talking=!!R.wait;
@@ -625,12 +708,12 @@ function refresh(){
  ih.className=h&&!h.exam?"on":"";ih.textContent=h?h.t:"";
  setHL(h&&!talking?h.h:[]);
  const c=R.c,q=quarOn();
- $("bQuar").classList.toggle("on",q);
+ $("bQuar").classList.toggle("armed",q);$("pocket").classList.toggle("on",R.phase==="pocket");$("offImg").classList.toggle("on",R.onCall);
  $("bNext").classList.toggle("on",R.phase==="between");
  $("choice").classList.toggle("on",R.phase==="bribe");
  const di=$("deskItem");di.classList.toggle("on",!!R.hand);if(R.hand)di.style.backgroundImage=`url(${IMG.med[R.hand]})`;
- $("ringImg").classList.toggle("on",R.phase==="ring");
- $("btns").style.display=(talking||R.phase==="bribe"||!(R.phase==="between"||q))?"none":"flex";
+ $("ringImg").classList.toggle("on",R.phase==="ring"&&!R.onCall);
+ $("btns").style.display=(talking||R.phase==="bribe"||!(R.phase==="between"||R.phase==="pocket"))?"none":"flex";
  const tr=$("s_tray");tr.classList.toggle("dirty",S.dirty);tr.classList.toggle("docs",!!c&&!c.def.special&&!c.docs&&R.phase==="client");
  $("s_doc").classList.toggle("has",!!c&&c.docs&&!c.done);
  const g=$("gauge");g.classList.toggle("on",R.probe||(!!c&&c.dose!=null&&!c.done));
@@ -643,7 +726,7 @@ function refresh(){
 
 /* ================= SAVE / LOAD / CHECKPOINTS ================= */
 function resetRuntime(){A.ringStop();stopTyping();clearTimeout(toastT);$("toast").className="";
- R.c=null;R.hand=null;R.tool=null;R.sel=null;R.probe=false;R.probeAcc=0;R.wait=null;R.orders={};R.phase="wait";R.closed=false;R.nextKey=null;
+ R.c=null;R.hand=null;R.tool=null;R.sel=null;R.probe=false;R.probeAcc=0;R.wait=null;R.orders={};R.phase="wait";R.closed=false;R.nextKey=null;R.pocket=null;R.onCall=false;R.callKey=null;R.mk=null;
  ["insp","shelf","term","done","pause","market"].forEach(closeM);$("ref").classList.remove("on");R.modal=null;
  $("dlg").classList.remove("wait");$("win").classList.remove("probing");$("choice").innerHTML="";
  const cl=$("client");cl.classList.remove("in");
@@ -660,6 +743,7 @@ function startCheckpoint(n,opts){
  if(st==="intro")intro();else if(st==="morning")morning();
  else if(st.startsWith("c:"))arrive(st.slice(2));
  else if(st.startsWith("n:")){R.phase="between";R.nextKey=st.slice(2);say("","Окно свободно. Очередь за бронестеклом ждёт.");refresh()}
+ else if(st==="call")homeCall();
  else if(st==="end"){R.phase="endshift";say("ФАРМ-КОНТРОЛЬ","Последний посетитель ушёл. Загорается монитор: пора сдавать смену.");refresh()}
  else showDone()}
 function nextStage(){startCheckpoint(S.cp+1)}
@@ -682,21 +766,27 @@ function intro(){R.phase="wait";say("","Темно. За окном воет в�
 async function morning(){R.phase="talk";refresh();
  const lines=[["",`День ${S.day}. За ночь намело по самые решётки. Склад пополнен по вашей вчерашней заявке.`]];
  if(S.flags.anna==="saved")lines.push(["","Под дверью — клочок бумаги: «Должник. Свяжусь. — К.»"]);
- if(S.flags.anna==="quarantine")lines.push(["","В утренней сводке: «Спецбригада изолировала заражённую. Ребёнок передан в приёмник Комендатуры»."]);
+ if(S.day===2&&S.flags.anna==="quarantine")lines.push(["","В утренней сводке: «Спецбригада изолировала заражённую. Ребёнок передан в приёмник Комендатуры»."]);
+ if(S.day===3){
+  if(S.flags.klavdia==="refused")lines.push(["","Утренняя сводка: у порога комендатуры нашли пожилую беженку Морозову. Разрыв сердца."]);
+  lines.push(["",S.flags.gleb==="stim"?"Батареи тёплые: ТЭЦ-2 ночью выстояла.":"В аптеке собачий холод: ночью ТЭЦ-2 встала, трубы промёрзли."]);
+  if(S.flags.artem==="helped")lines.push(["","На двери аптеки кто-то нацарапал гвоздём: «Шустрый помнит»."]);
+  if(S.warnings)lines.push(["",`Помните: у вас предупреждение патруля (${S.warnings}/2).`])}
  const ok=await talk(lines);if(!ok)return;R.phase="lever";say("","Пора открывать пункт.");refresh()}
 async function onPhone(){
  if(R.phase!=="ring"){msg("Телефон молчит.");return}
- A.ringStop();A.phoneUp();R.phase="talk";refresh();const tok=runTok;
+ A.ringStop();A.phoneUp();R.phase="talk";R.onCall=true;refresh();const tok=runTok;
+ if(R.callKey==="family")return familyCall();
  if(S.day===1&&S.cp===0){
   const ok=await talk([[MAJOR,"Слушай сюда, провизор. Предыдущего аптекаря Пункта №4 вчера отправили в штрафбат за хищение казённого морфина. Теперь ты на его месте.",150],
    [MAJOR,"В Нижневартовске весна, снег тает, вместе с талой водой полезла радиация и зараза. Лекарств мало, желающих — весь город.",150],
    [MAJOR,"Запомни порядок: сверяешь документы, проверяешь печать под лампой, выдаёшь строго по талону.",150],
    [MAJOR,"Ошибёшься или пожалеешь кого без бумажки — пойдёшь следом за предшественником.",150]]);
-  if(!ok||tok!==runTok)return;R.phase="lever";say(MAJOR,"Открывай ставни, смена началась!",150);refresh();
+  if(!ok||tok!==runTok)return;R.onCall=false;R.phase="lever";say(MAJOR,"Открывай ставни, смена началась!",150);refresh();
  }else{
   const ok=await talk([[MAJOR,"Забыл предупредить! Со стороны старой промзоны ветер принёс радиоактивный пепел. Проверяй каждого дозиметром перед тем, как брать их грязные бумажки.",150],
    [MAJOR,"Прибор справа на столе. Если фонит выше 150 — жми красную кнопку Карантина под столом, получишь премию!",150]]);
-  if(!ok||tok!==runTok)return;arrive(R.nextKey)}
+  if(!ok||tok!==runTok)return;R.onCall=false;arrive(R.nextKey)}
 }
 function leverSet(f){R.lev=f;$("lever").style.backgroundPositionX=(f*25)+"%"}
 function leverOpen(){ // swipe down to ОТКР
@@ -715,16 +805,17 @@ function onNext(){if(R.phase!=="between")return;A.click();const key=R.nextKey;
  else if(key==="voron"){A.knock();later(1100,()=>A.knock());sayWait("","Кто-то стучит по решётке условным ритмом: тук — тук-тук — тук. Смена уже почти закончилась...").then(go)}
  else if(key==="gromov"){A.steps();sayWait("","Хрустит снег под армейскими берцами. К окну подходит патрульный с планшетом.").then(go)}
  else go()}
-function arrive(key){R.phase="wait";refresh();const d=CL[key],cl=$("client");cl.src=IMG.c[key];say("","К решётчатому окну кто-то подходит...");A.steps();
+function arrive(key){R.phase="wait";refresh();const d=CL[key],cl=$("client"),hh=d.h||1;cl.src=IMG.c[key];cl.style.height=(158*hh)+"%";cl.style.top=(9+(1-hh)*158)+"%";say("","К решётчатому окну кто-то подходит...");A.steps();
  later(350,()=>cl.classList.add("in"));
- later(1500,()=>{R.c={key,def:d,tut:S.day===1&&(key==="petr"||key==="anna"),docs:false,checks:{name:null,drug:null,doctor:null,seal:null},stamp:null,filed:false,given:false,dose:null,done:false,offer:null};
-  if(d.special==="voron")return voronArrive();if(d.special==="gromov")return gromovArrive();
+ later(1500,()=>{R.c={key,def:d,tut:S.day===1&&(key==="petr"||key==="anna"),docs:false,checks:{name:null,drug:null,doctor:null,seal:null},stamp:null,filed:false,given:false,dose:null,done:false,offer:null,need:drugsOf(d).slice()};
+  if(d.special==="voron")return voronArrive();if(d.special==="gromov")return gromovArrive();if(d.special==="semyon")return semyonArrive();
   R.phase="client";fillDocs(d,key);say(d.name.toUpperCase(),d.line,d.pitch);refresh()})}
 function fillDocs(n,key){$("quote").innerHTML=`<b>${n.name}:</b> — ${n.quote}.`;$("pPhoto").src=IMG.f[key];$("pName").textContent=n.full;$("pBorn").textContent=n.born;$("pAddr").textContent=n.addr;
- $("tNo").textContent=n.no;$("tName").textContent=n.short;$("tDrug").textContent=MEDS[n.drug].n+" (1 уп.)";$("tDoc").textContent=n.doctor;
+ $("tNo").textContent=n.no;$("tName").textContent=n.short;const dl=drugsOf(n);$("tDrug").textContent=dl.map(k=>MEDS[k].n).join(" + ")+(dl.length>1?" (по 1 уп.)":" (1 уп.)");$("tDoc").textContent=n.doctor;
+ $("tExtraW").style.display=n.extra?"":"none";$("tExtra").textContent=n.extra||"";$("iHead").textContent="РАБОЧИЙ СТОЛ · "+DATES[S.day];
  $("seal").className="";$("imprint").className="";document.querySelectorAll(".fld").forEach(f=>f.classList.remove("ok","bad"))}
 function clientLeave(text,who,pitch,after){const c=R.c;if(!c||c.done)return;c.done=true;const n=c.def;R.phase="wait";R.probe=false;$("win").classList.remove("probing");
- closeM("insp");closeM("shelf");closeM("market");$("ref").classList.remove("on");R.tool=null;R.sel=null;R.hand=null;
+ closeM("insp");closeM("shelf");closeM("market");$("ref").classList.remove("on");R.tool=null;R.sel=null;R.hand=null;R.onCall=false;
  if(text)say(who||"",text,pitch);
  // the tray counts as contaminated only if the player measured it or handed goods through it; a refusal without measuring costs nothing
  if(n.rad>=50&&!c.quarantined&&(c.dose!=null||c.given))S.dirty=true;
@@ -739,7 +830,7 @@ function onSpot(k){A.init();if(!S)return;const c=R.c,live=R.phase==="client"&&c&
   case"tray":onTray();break;
   case"doc":case"stampd":case"lampd":case"book":
    if(live&&c.docs){openInsp()}else msg(k==="book"?"Справочник врачей: пригодится при проверке документов.":k==="lampd"?"УФ-лампа для проверки печатей.":live&&!c.def.special?"Сначала заберите документы из лотка окна.":"Документов на столе нет.");break;
-  case"shelfR":case"shelfL":if(R.phase==="client"||R.phase==="between"||R.phase==="endshift"){A.pick();openM("shelf");refresh()}else msg("Шкаф с медикаментами. Сейчас не до него.");break;
+  case"shelfR":case"shelfL":if(R.phase==="client"||R.phase==="between"||R.phase==="endshift"||R.phase==="pocket"){A.pick();openM("shelf");refresh()}else msg("Шкаф с медикаментами. Сейчас не до него.");break;
   case"journal":onJournal();break;
   case"dosi":onDosi();break;
   case"monitor":if(R.phase==="endshift"&&!R.closed)msg("Сначала закройте окно рычагом — ночью полезут.","bad");else if(R.phase==="endshift")openTerm();else msg("ФАРМ-КОНТРОЛЬ: отчёт доступен после окончания смены.");break}}
@@ -752,18 +843,22 @@ function onTray(){const c=R.c; // TAP on the tray
  if(R.phase!=="client"||!c||c.done){msg(S.dirty?"Лоток фонит. Нужен «Антисептик» из шкафа.":"Лоток пуст.");return}
  msg(c.stamp==="ok"?"Возьмите лекарство из шкафа — оно появится на столе.":"В лотке пусто. Документы уже у вас на столе.")}
 function trayDrop(){const c=R.c; // item dragged from the desk into the window
- if(R.hand==="antiseptic"&&!(c&&c.offer&&c.offer.drug==="antiseptic")){if(S.dirty){S.dirty=false;S.stock.antiseptic--;R.hand=null;A.noise(.4,.2,"highpass",1800);msg("Лоток протёрт антисептиком. Чисто.","good")}else msg("Лоток чистый — антисептик не нужен.");refresh();return}
- if(R.phase!=="client"||!c||c.done||c.def.special){msg("У окна некому выдавать.");return}
+ if(R.hand==="antiseptic"&&!(c&&c.offer&&c.offer.need.includes("antiseptic"))){if(S.dirty){S.dirty=false;S.stock.antiseptic--;R.hand=null;A.noise(.4,.2,"highpass",1800);msg("Лоток протёрт антисептиком. Чисто.","good")}else msg("Лоток чистый — антисептик не нужен.");refresh();return}
+ if(R.phase!=="client"||!c||c.done||(c.def.special&&!c.offer)){msg(R.phase==="pocket"?"Это не для окна — перетащите в личную сумку внизу.":"У окна некому выдавать.");return}
  const n=c.def;
  if(c.offer){ // off-the-books deal: no stamp, no journal
-  if(R.hand!==c.offer.drug){S.mistakes++;msg(`Договорились на «${MEDS[c.offer.drug].n}».`,"bad");return}
-  S.stock[R.hand]--;R.hand=null;c.given=true;A.pick();A.coin();const f=c.offer.done;c.offer=null;f();return}
+  if(!c.offer.need.includes(R.hand)){S.mistakes++;msg(`Договорились на ${drugNames(c.offer.need)}.`,"bad");return}
+  S.stock[R.hand]--;c.offer.need.splice(c.offer.need.indexOf(R.hand),1);R.hand=null;A.pick();
+  if(c.offer.need.length){msg(`Передано. Ещё: ${drugNames(c.offer.need)}.`);refresh();return}
+  c.given=true;A.coin();const f=c.offer.done;c.offer=null;f();return}
  if(c.given){msg("Клиент уже получил препарат по талону.");return}
  if(c.stamp!=="ok"){msg("Выдача без штампа «ВЫДАНО» запрещена.","bad");return}
- if(R.hand!==n.drug){S.mistakes++;msg(`Не тот препарат! В талоне: «${MEDS[n.drug].n}».`,"bad");return}
+ if(!c.need.includes(R.hand)){S.mistakes++;msg(`Не тот препарат! Нужно: ${drugNames(c.need)}.`,"bad");return}
  if(!c.filed){msg("Сначала подшейте талон в «Журнал учёта».","bad");return}
- S.stock[n.drug]--;R.hand=null;c.given=true;A.pick();A.coin();
- if(n.pay)logTP(`Выдача: ${MEDS[n.drug].n} (${n.short.split(",")[0]})`,n.pay);
+ S.stock[R.hand]--;c.need.splice(c.need.indexOf(R.hand),1);R.hand=null;A.pick();
+ if(c.need.length){msg(`Передано. Ещё по талону: ${drugNames(c.need)}.`);refresh();return}
+ c.given=true;A.coin();
+ if(n.pay)logTP(`Выдача: ${drugsOf(n).map(k=>MEDS[k].n).join(" + ")} (${n.short.split(/[,(]/)[0].trim()})`,n.pay);
  onGiven()}
 function onGiven(){const c=R.c,n=c.def,W=n.name.toUpperCase();
  switch(c.key){
@@ -774,13 +869,19 @@ function onGiven(){const c=R.c,n=c.def,W=n.name.toUpperCase();
    return clientLeave("Храни тебя Господь, сынок... — Дрожащей рукой Клавдия Степановна кладёт в лоток последние 50 ТР и старинное золотое кольцо.",W,n.pitch,3400);
   case"artem":S.flags.artem="helped";S.items.radiolamp=1;addRad(15);S.issues.push({t:"Поддельный талон «Сидоров К.М.» подшит в журнал (Белов)",k:"bad"});
    return clientLeave("Спасибо, дяденька!! Вот, держите — довоенная радиолампа! — Артём исчезает в метели. (Облучение +15%)",W,n.pitch,3200);
+  case"vera":S.flags.vera="helped";S.issues.push({t:"Просроченный талон Лебедевой подшит в журнал",k:"bad"});
+   return clientLeave("Спасибо... я вам этого не забуду. — Вера кладёт в лоток мятые 30 ТР и шепчет: «Я принесу вам кое-что с завода».",W,n.pitch,3200);
+  case"maria":S.flags.maria="helped";S.issues.push({t:"«Антирадин» выдан сверх квоты госпиталя (Ветрова)",k:"bad",drug:"antiradin"});
+   return clientLeave("Спасибо, провизор. Сегодня вы спасли несколько жизней. Я этого не забуду — и ведомости принесу, слово врача.",W,n.pitch,3200);
+  case"fedor":S.flags.fedor="helped";S.items.pelt=1;S.issues.push({t:"Талон Зверева без подписи блокпоста подшит в журнал",k:"bad"});
+   return clientLeave("Фёдор молча кивает и кладёт в лоток свёрток: выделанная волчья шкура. — Должен буду. Если что — ищи на кордоне.",W,n.pitch,3200);
   case"gleb":
    say(W,"Спасибо. А теперь по-человечески: дай ещё «Стимулятор». В талоне его нет, знаю. Плачу 250 сверху, наличными. Без него я сутки на ногах не простою — и квартал ночью замёрзнет.",n.pitch);
    return setChoices([{l:"ТОЛЬКО ПО ТАЛОНУ",c:"g",k:"no",f:()=>{S.flags.gleb="talon";clientLeave("Эх... По закону так по закону. Только не жалуйся потом, что батареи холодные.",W,n.pitch)}},
     {l:S.stock.stim>0?"ОТДАТЬ «СТИМУЛЯТОР» · +250":"«СТИМУЛЯТОРА» НЕТ НА СКЛАДЕ",c:"y",k:"yes",dis:S.stock.stim<1,f:()=>startOffer("stim",()=>{
-     logTP("«Стимулятор» мимо кассы (Руднев)",250);S.issues.push({t:"«Стимулятор» выдан без талона (Руднев)",k:"short"});S.flags.gleb="stim";
+     logTP("«Стимулятор» мимо кассы (Руднев)",250);S.issues.push({t:"«Стимулятор» выдан без талона (Руднев)",k:"short",drug:"stim"});S.flags.gleb="stim";
      clientLeave("Вот это по-нашему. Батареи сегодня будут горячими — слово Руднева.",W,n.pitch)})}])}}
-function startOffer(drug,done){const c=R.c;c.offer={drug,done};R.phase="client";msg(`Возьмите «${MEDS[drug].n}» в шкафу и передайте в окно.`);refresh()}
+function startOffer(drug,done){const c=R.c,need=Array.isArray(drug)?drug.slice():[drug];c.offer={need,done};R.phase="client";msg(`Возьмите в шкафу ${drugNames(need)} и передайте в окно.`);refresh()}
 function onJournal(){const c=R.c;
  if(R.phase==="audit"){msg("Перетащите журнал пальцем в окно выдачи — Громов ждёт.");return}
  if(R.phase==="client"&&c&&c.stamp==="ok"&&!c.filed){c.filed=true;S.journal++;A.paper();A.stamp();msg(`Талон подшит. Бланков в журнале: ${S.journal}.`,"good");refresh()}
@@ -799,7 +900,7 @@ function probeAdd(d){const c=R.c;if(!R.probe||!c)return;const need=$("win").offs
  if(p>=1){R.probe=false;$("win").classList.remove("probing");c.dose=n.rad;setGauge(n.rad);
   const z=n.rad>150?["КРАСНАЯ ЗОНА! Положен карантин.","bad"]:n.rad>=50?["Жёлтая зона: после клиента протрите лоток антисептиком.",""]:["Зелёная зона: норма.","good"];
   msg(`Фон: ${n.rad} мкР/ч. ${z[0]}`,z[1]);refresh()}}
-function onQuar(){const c=R.c;if(!quarOn())return;const n=c.def;
+function onQuar(){A.init();const c=R.c;if(!S)return;if(!quarOn()){msg(c&&c.def.special?"Это не пациент — карантин не положен.":"Кнопка КАРАНТИН: сейчас у окна некого изолировать.");return}const n=c.def;
  if(c.key==="anna"&&c.dose==null){msg("Сначала измерьте фон дозиметром.","bad");return}
  c.quarantined=true;A.slam();A.siren();const sh=$("shut");sh.classList.add("slam");sh.classList.remove("open");R.hand=null;
  if(n.rad>150){logTP("Премия Комендатуры за карантин",100);S.flags[c.key]="quarantine";if(S.day>1)S.flags.loyal=1;
@@ -813,6 +914,7 @@ function setCheck(k,v,text){const c=R.c;c.checks[k]=v;msg(text,v==="ok"?"good":"
 function onField(f,e){const c=R.c;if(!c||R.tool)return; // with a tool in hand the tap goes to the document
  e.stopPropagation();A.click();
  if(f==="tDoc"){R.sel=null;msg("Врача сверяют по «Справочнику врачей» — откройте его внизу.");refresh();return}
+ if(f==="tExtra"){R.sel=null;const fl=c.def.flaw;$("tExtra").classList.add(fl?"bad":"ok");c.flawSeen=!!fl;msg(fl?c.def.flawMsg:"Отметка в порядке.",fl?"bad":"good");return}
  if(!R.sel||R.sel===f){R.sel=R.sel===f?null:f;refresh();return}
  const pair=[R.sel,f].sort().join("+");R.sel=null;
  if(pair==="pName+tName"){const ok=c.def.nameOk!==false;document.querySelectorAll("#pName,#tName").forEach(x=>x.classList.add(ok?"ok":"bad"));
@@ -846,40 +948,100 @@ function refusal(){const c=R.c;if(!c||c.done)return;const n=c.def,W=n.name.toUpp
  if(valid(n)){S.pending.push({t:`Необоснованный отказ по подлинному талону (${n.name})`,v:-80});S.flags[c.key]="refused";return clientLeave(n.wrongRefuse||"Да чтоб тебя... Жалобу в Комендатуру напишу!",W,n.pitch)}
  S.flags[c.key]="refused";clientLeave(n.refuseLine||"Клиент молча забирает бланк и уходит.","",0,3000)}
 function dealDone(key){const n=CL[key];
- if(key==="viktor"){logTP("Взятка Захарова, мимо кассы",300);S.flags.viktor="bribe";S.flags.vIss=1;S.issues.push({t:"«Антибиотики» выданы без талона (Захаров, день 1)",k:"short"});
+ if(key==="viktor"){logTP("Взятка Захарова, мимо кассы",300);S.flags.viktor="bribe";S.flags.vIss=1;S.issues.push({t:"«Антибиотики» выданы без талона (Захаров, день 1)",k:"short",drug:"antibiotic"});
   return clientLeave("На стол падает пачка неучтённых талонов. Виктор забирает «Антибиотики» и растворяется в метели. В журнале — недостача.","",0,3400)}
- if(key==="artem"){S.flags.artem="helped";S.items.radiolamp=1;addRad(15);S.issues.push({t:"«Обезболивающее» выдано без талона (Белов)",k:"short"});
+ if(key==="artem"){S.flags.artem="helped";S.items.radiolamp=1;addRad(15);S.issues.push({t:"«Обезболивающее» выдано без талона (Белов)",k:"short",drug:"painkiller"});
   return clientLeave("Артём суёт вам в лоток довоенную радиолампу и убегает к брату. (Облучение +15%, на складе дыра в 1 шприц)",n.name.toUpperCase(),n.pitch,3400)}}
 
-/* ---- Ворон: black market ---- */
+/* ---- black market: Ворон (day 2) and Семён (day 3) ---- */
 async function voronArrive(){R.phase="talk";refresh();const V=CL.voron;
  const lines=[[VORON,"(Оглядывается по сторонам.) Тихо, провизор. Меня зовут Ворон.",V.pitch],
   [VORON,"Слышал по рации на частоте военных — к тебе сейчас направляется старший патрульный с внезапной ревизией Журнала и склада.",V.pitch],
   [VORON,"Если у тебя недостача или липовые талоны в папке — тебе конец. Но мы можем договориться.",V.pitch]];
  if(S.flags.anna==="saved")lines.push([VORON,"И ещё. Котовы просили передать спасибо за Анну. Для своих — скидка.",V.pitch]);
- const ok=await talk(lines);if(!ok)return;openMarket()}
-const blankPrice=()=>S.flags.anna==="saved"?150:200;
-function openMarket(){R.phase="voron";openM("market");drawMarket();refresh()}
-function drawMarket(){const open=S.issues.filter(i=>!i.fixed),p=blankPrice(),b=$("mkBody");
- let h=`<div class="mkq">«Чистый бланк со штампом живого врача. Впишешь сам — и недостачи как не бывало».</div>`;
- h+=open.length?`<div class="mkh">Расхождения в вашем журнале: ${open.length}</div>`+open.map(i=>`<div class="mki">• ${i.t}</div>`).join(""):`<div class="mkh ok">Журнал чист. Ворон хмыкает: «Ну, значит, спать будешь спокойно».</div>`;
- S.issues.filter(i=>i.fixed).forEach(i=>{h+=`<div class="mki fx">✓ ${i.t} — закрыто бланком</div>`});
- h+=`<button class="btn" id="mkTP" ${!open.length||S.tp<p?"disabled":""}>ЧИСТЫЙ БЛАНК · ${p} ТР</button>`;
- h+=`<button class="btn" id="mkAR" ${!open.length||S.stock.antiradin<2?"disabled":""}>ЧИСТЫЙ БЛАНК · 2 «АНТИРАДИНА» (у вас ${S.stock.antiradin})</button>`;
- if(S.items.ring)h+=`<button class="btn" id="mkRing">ПРОДАТЬ ЗОЛОТОЕ КОЛЬЦО · +200 ТР</button>`;
+ const ok=await talk(lines);if(!ok)return;openMarket("voron")}
+async function semyonArrive(){R.phase="talk";refresh();const P=CL.semyon.pitch,c=R.c;
+ const ok=await talk([[SEMYON,"(Воровато оглядывается.) Метель кончится к утру... Пароль знаешь? Не знаешь — неважно. Семён я. Рваный.",P],
+  [SEMYON,"Мне для своих людей нужны «Обезболивающее» и «Антибиотики». Без талонов, сам понимаешь.",P],
+  [SEMYON,"Взамен — патроны, спирт и вот: свинцовый контейнер для тайника. Спрячешь в нём излишки — ни один Громов не найдёт.",P]]);
+ if(!ok)return;const can=S.stock.painkiller>0&&S.stock.antibiotic>0;
+ setChoices([{l:"ОТКАЗАТЬ",c:"g",k:"no",f:()=>{S.flags.semyon="refused";say(SEMYON,"Зря ты так, провизор. Город маленький, а квартирка твоя на виду... Ладно. Товар-то хоть глянь.",P);later(1800,()=>openMarket("semyon"))}},
+  {l:can?"СДЕЛКА: «ОБЕЗБОЛ» + «АНТИБИОТИКИ»":"НЕЧЕГО ОТДАТЬ — НЕТ НА СКЛАДЕ",c:"y",k:"yes",dis:!can,f:()=>startOffer(["painkiller","antibiotic"],()=>{
+   S.flags.semyon="deal";Object.assign(S.items,{ammo:1,spirit:1,container:1});
+   S.issues.push({t:"«Обезболивающее» ушло Семёну без талона",k:"short",drug:"painkiller"},{t:"«Антибиотики» ушли Семёну без талона",k:"short",drug:"antibiotic"});
+   say(SEMYON,"Приятно иметь дело. Держи: патроны, спирт и контейнер. А теперь — по товару.",P);R.phase="talk";refresh();later(1800,()=>openMarket("semyon"))})}])}
+const blankPrice=()=>R.mk==="voron"&&S.flags.anna==="saved"?150:200;
+const AB_PRICE=250;
+function openMarket(who){R.mk=who;R.phase="voron";$("mkName").textContent=who==="voron"?"ЧЁРНЫЙ РЫНОК · ВОРОН":"БАРЫГА · СЕМЁН «РВАНЫЙ»";$("mkImg").src=IMG.p[who];openM("market");drawMarket();refresh()}
+function drawMarket(){const open=S.issues.filter(i=>!i.fixed),p=blankPrice(),b=$("mkBody"),sem=R.mk==="semyon";
+ const btn=(id,ic,txt,ic2,dis)=>`<button class="btn mkb" id="${id}" ${dis?"disabled":""}><img src="${ic}" alt=""><span>${txt}</span>${ic2?`<img src="${ic2}" alt="">`:""}</button>`;
+ let h=`<div class="mkq">${sem?"«Бланки чистые, с печатью живого врача. И «Антибиотик» есть — свежий, не палёный».":"«Чистый бланк со штампом живого врача. Впишешь сам — и недостачи как не бывало»."}</div>`;
+ h+=open.length?`<div class="mkh">Расхождения в вашем журнале: ${open.length}</div>`+open.map(i=>`<div class="mki">• ${i.t}</div>`).join(""):`<div class="mkh ok">Журнал чист.</div>`;
+ S.issues.filter(i=>i.fixed).forEach(i=>{h+=`<div class="mki fx">✓ ${i.t} — закрыто</div>`});
+ h+=btn("mkTP",IMG.ic.blank,`ЧИСТЫЙ БЛАНК · <b>${p} ТР</b>`,IMG.ic.tp,!open.length||S.tp<p);
+ h+=btn("mkAR",IMG.ic.blank,`ЧИСТЫЙ БЛАНК · 2 «АНТИРАДИНА» (у вас ${S.stock.antiradin})`,IMG.ic.ar,!open.length||S.stock.antiradin<2);
+ if(sem)h+=btn("mkAB",IMG.med.antibiotic,`«АНТИБИОТИКИ» НА СКЛАД · <b>${AB_PRICE} ТР</b>`,IMG.ic.tp,S.tp<AB_PRICE);
+ if(S.items.ring)h+=btn("mkRing",IMG.ic.ring,"ПРОДАТЬ ЗОЛОТОЕ КОЛЬЦО · <b>+200 ТР</b>",IMG.ic.tp);
+ if(sem&&S.items.pelt)h+=btn("mkPelt",IMG.ic.tp,"ПРОДАТЬ ВОЛЧЬЮ ШКУРУ · <b>+150 ТР</b>","");
  b.innerHTML=h;
  const bind=(id,f)=>{const x=$(id);if(x)x.addEventListener("click",()=>{if(x.disabled)return;f();drawMarket();refresh()})};
- bind("mkTP",()=>buyBlank("tp"));bind("mkAR",()=>buyBlank("ar"));bind("mkRing",()=>{S.items.ring=0;S.flags.ringSold=1;A.coin();logTP("Золотое кольцо продано Ворону",200);msg("Ворон пробует кольцо на зуб и отсчитывает 200 ТР.","good")})}
+ bind("mkTP",()=>buyBlank("tp"));bind("mkAR",()=>buyBlank("ar"));bind("mkAB",buyAntibiotic);
+ bind("mkRing",()=>{S.items.ring=0;S.flags.ringSold=1;A.coin();logTP(`Золотое кольцо продано (${R.mk==="voron"?"Ворон":"Семён"})`,200);msg("Кольцо пробуют на зуб и отсчитывают 200 ТР.","good")});
+ bind("mkPelt",()=>{S.items.pelt=0;S.flags.peltSold=1;A.coin();logTP("Волчья шкура продана Семёну",150);msg("Семён щупает мех и отсчитывает 150 ТР.","good")})}
 function buyBlank(by){const i=S.issues.find(x=>!x.fixed);if(!i)return;
- if(by==="tp"){const p=blankPrice();if(S.tp<p)return;logTP("Чистый бланк у Ворона",-p)}else{if(S.stock.antiradin<2)return;S.stock.antiradin-=2}
+ if(by==="tp"){const p=blankPrice();if(S.tp<p)return;logTP(`Чистый бланк (${R.mk==="voron"?"Ворон":"Семён"})`,-p)}else{if(S.stock.antiradin<2)return;S.stock.antiradin-=2}
  i.fixed=true;S.flags.blanks=(S.flags.blanks||0)+1;A.paper();A.stamp();msg("Вы заполняете чистый бланк и подшиваете его в журнал. Одно расхождение закрыто.","good")}
-function leaveMarket(){if(R.phase!=="voron")return;A.click();closeM("market");clientLeave("Бывай, провизор. И помни — ты меня не видел.",VORON,CL.voron.pitch,2400)}
+function buyAntibiotic(){if(S.tp<AB_PRICE)return;logTP("«Антибиотики» у Семёна",-AB_PRICE);S.stock.antibiotic++;A.coin();
+ const i=S.issues.find(x=>!x.fixed&&x.k==="short"&&x.drug==="antibiotic");
+ if(i){i.fixed=true;msg("Пачка «Антибиотиков» встала на полку. Недостача закрыта — проверка ничего не заметит.","good")}else msg("Пачка «Антибиотиков» встала на полку.","good")}
+function leaveMarket(){if(R.phase!=="voron")return;A.click();closeM("market");
+ if(R.mk==="voron")clientLeave("Бывай, провизор. И помни — ты меня не видел.",VORON,CL.voron.pitch,2400);
+ else clientLeave(S.flags.semyon==="refused"?"Семён поднимает воротник. — Ещё увидимся, провизор. — Звучит как угроза.":"Бывай, провизор. Если что — ищи меня на толкучке у речпорта.",SEMYON,CL.semyon.pitch,2400)}
+
+/* ---- the home call (day 3): Оля, дочка Алина ---- */
+function homeCall(){R.phase="wait";R.callKey="family";say("","Окно пустеет. Из-за спины — настойчивый, дребезжащий звонок полевого телефона.");refresh();
+ later(1400,()=>{R.phase="ring";A.ringStart();refresh()})}
+async function familyCall(){const ok=await talk([[OLYA,"Алло! Алло, Паша, это ты?! Господи, наконец-то дозвонилась... Это Оля. Паша, у нас беда с Алинкой!"],
+  [OLYA,"Она вся горит, я померила — температура под сорок! Бредит, почти не приходит в себя. Сосед-фельдшер заглянул — сказал, может быть тяжёлое воспаление."],
+  [OLYA,"Срочно нужны «Антибиотики», иначе она до утра не дотянет! В Секторе их нигде не достать... Умоляю, сделай что-нибудь! Достань их в аптеке!"],
+  [YOU,"Оля, успокойся. Я что-нибудь придумаю, слышишь? Я решу эту проблему и к вечеру раздобуду лекарство. Держись там, скоро буду."]]);
+ if(!ok)return;R.onCall=false;say("","Щелчок. Короткие гудки. Решать нужно сейчас.");familyChoices({})}
+function familyChoices(o){const ab=S.stock.antibiotic>0,list=[
+  {l:ab?"ВЗЯТЬ «АНТИБИОТИКИ» СО СКЛАДА ДОМОЙ":"«АНТИБИОТИКОВ» НА ПОЛКЕ НЕТ",c:"y",k:"steal",dis:!ab,f:()=>startPocket("antibiotic",()=>{
+    S.flags.family="steal";S.issues.push({t:"«Антибиотики» унесены со склада домой",k:"short",drug:"antibiotic"});finishCall("Пачка «Антибиотиков» спрятана в сумку. Вечером — домой. На складе теперь недостача.")})}];
+ if(!o.noMaria)list.push({l:"ПОЗВОНИТЬ МАРИИ АРКАДЬЕВНЕ",k:"maria",f:callMaria});
+ list.push({l:"ВЕСТИ К ВРАЧУ ПО ПРАВИЛАМ",c:"g",k:"doctor",f:doctorPath});
+ setChoices(list,true)}
+async function callMaria(){const tok=runTok;R.phase="talk";R.onCall=true;refresh();
+ let ok=await talk([[YOU,"Мария Аркадьевна, здравствуйте! Пожалуйста, выслушайте. Моей дочке Алинке очень плохо — температура под сорок, бредит. Вы не могли бы осмотреть её после смены? Боюсь, нужны антибиотики, а у меня их... сами понимаете."]]);
+ if(!ok||tok!==runTok)return;
+ if(S.flags.maria==="falseq"){ok=await talk([["САНИТАР","Мария Аркадьевна на карантине — после того вызова спецбригады её из бокса не выпускают. Не звоните сюда больше."]]);
+  if(!ok)return;R.onCall=false;say("","Короткие гудки. Остаётся решать самому.");return familyChoices({noMaria:true})}
+ if(S.flags.maria==="helped"){ok=await talk([[MARIA,"Господи, Павел... Бедная девочка. Конечно, я помогу! Вы так выручили наш госпиталь, когда нам нечего было давать раненым."],
+   [MARIA,"Я закончу обход и сразу побегу к вам на квартиру, посмотрю Алинку. Держитесь — я сделаю всё, что в моих силах."]]);
+  if(!ok)return;S.flags.family="maria";return finishCall("Мария Аркадьевна придёт к вам домой после смены. Склад цел.")}
+ ok=await talk([[MARIA,"Павел... Вы просите меня о помощи? А когда мои пациенты в госпитале задыхались и бредили, вы мне отказали из-за бумажки! У меня вся смена забита больными, мне некогда бегать по частным вызовам..."],
+  [MARIA,"Но... я всё-таки врач, и не могу оставить ребёнка без помощи. Сделаем так: принесите мне то, что я просила для госпиталя, — «Антирадин». Тайно, со склада. Передадите вечером — я осмотрю вашу дочь."]]);
+ if(!ok)return;R.onCall=false;const ar=S.stock.antiradin>0;
+ setChoices([{l:ar?"ВЗЯТЬ ДЛЯ НЕЁ «АНТИРАДИН» СО СКЛАДА":"«АНТИРАДИНА» НА ПОЛКЕ НЕТ",c:"y",k:"mpay",dis:!ar,f:()=>startPocket("antiradin",()=>{
+   S.flags.family="mariaPaid";S.issues.push({t:"«Антирадин» унесён со склада для Марии Аркадьевны",k:"short",drug:"antiradin"});finishCall("«Антирадин» спрятан в сумку — вечером к Марии Аркадьевне. На складе недостача.")})},
+  {l:"ОТКАЗАТЬСЯ ОТ ЕЁ УСЛОВИЯ",k:"mno",f:()=>{say("","Вы кладёте трубку. Остаётся решать самому.");familyChoices({noMaria:true})}}],true)}
+async function doctorPath(){const tok=runTok;R.phase="talk";R.onCall=true;refresh();
+ const ok=await talk([[YOU,"Оля, я не могу просто так взять лекарства со склада — без талона мне выдавать ничего нельзя, иначе на первой же проверке поймают на краже. Одевай Алинку и веди в поликлинику к дежурному врачу в комендатуру, пусть осмотрят на общих основаниях."],
+  [OLYA,"Вести ребёнка с температурой сорок по морозу в общую очередь?! Да там люди часами в холодных коридорах сидят! Тебе твои бумажки дороже родной дочери, Паша?! Я поняла тебя... Сама справлюсь!"]]);
+ if(!ok||tok!==runTok)return;S.flags.family="doctor";S.flags.familyStrain=(S.flags.familyStrain||0)+1;finishCall("Оля бросила трубку. Склад цел, но на душе тяжело.")}
+function finishCall(text){R.onCall=false;R.pocket=null;R.phase="wait";say("",text);refresh();later(2600,nextStage)}
+function startPocket(drug,done){R.pocket={drug,done};R.phase="pocket";R.onCall=false;msg(`Возьмите «${MEDS[drug].n}» в шкафу и перетащите в личную сумку.`);refresh()}
+function pocketDrop(){const pk=R.pocket;if(R.phase!=="pocket"||!pk)return;
+ if(R.hand!==pk.drug){msg(`В сумку — только «${MEDS[pk.drug].n}».`,"bad");return}
+ S.stock[pk.drug]--;R.hand=null;A.pick();const f=pk.done;R.pocket=null;f()}
 
 /* ---- Капитан Громов: audit ---- */
 async function gromovArrive(){R.phase="talk";refresh();
  const ok=await talk([[GROMOV,"Капитан патруля Громов! Плановая ревизия Аптечного Пункта №4. Подать сюда Журнал учёта — сверяю остатки на складе с принятыми талонами!",CL.gromov.pitch]]);
  if(!ok)return;R.phase="audit";say(GROMOV,"Журнал! Живо!",CL.gromov.pitch);refresh()}
 async function doAudit(){if(R.phase!=="audit")return;R.phase="talk";A.paper();refresh();const G=CL.gromov.pitch;
+ if(S.items.container){const hid=S.issues.find(i=>!i.fixed&&i.k==="short");if(hid){hid.fixed=true;hid.hidden=true;S.items.container=0;msg("Свинцовый контейнер в подполе спрятал одну недостачу от Громова.","good")}}
  const open=S.issues.filter(i=>!i.fixed),pre=S.flags.loyal?[[GROMOV,"Слышал, ты сегодня сдал заражённого спецбригаде. Это зачтётся.",G]]:[];
  if(!open.length){const ok=await talk([...pre,[GROMOV,"Так... По складу и талонам всё сходится до единой ампулы. Отличная служба, провизор. Вот премия от комендатуры за образцовый порядок.",G]]);if(!ok)return;
   logTP("Премия комендатуры за образцовый порядок",50);S.flags.audit="clean";S.issues=[];return clientLeave("Смена окончена. — Громов козыряет и уходит в метель. (+50 ТР)","",0,2400)}
@@ -903,9 +1065,10 @@ function drawTerm(){document.querySelectorAll("#tabs button").forEach(b=>b.class
   S.log.forEach(l=>{h+=`<div class="ln ${l.v<0?"neg":""}"><span>${l.t}</span><span>${l.v>0?"+":""}${l.v}</span></div>`});
   h+=`<div class="sum">ИТОГО: ${S.tp} ТР</div><div>Бланков в журнале: ${S.journal}</div><div>Облучение провизора: ${S.rad}%</div>`;
   if(S.warnings)h+=`<div class="neg">Предупреждение от патруля: ${S.warnings}/2</div>`;
-  const it=[S.items.ring&&"золотое кольцо",S.items.radiolamp&&"довоенная радиолампа"].filter(Boolean);if(it.length)h+=`<div>Личные вещи: ${it.join(", ")}</div>`;
+  const it=[S.items.ring&&"золотое кольцо",S.items.radiolamp&&"довоенная радиолампа",S.items.pelt&&"волчья шкура",S.items.ammo&&"патроны",S.items.spirit&&"спирт",S.items.container&&"свинцовый контейнер (спрячет одну недостачу)"].filter(Boolean);if(it.length)h+=`<div>Личные вещи: ${it.join(", ")}</div>`;
   if(S.cash)h+=`<div class="neg">Неучтённая наличность: ${S.cash}</div>`;
   if(S.dirty)h+=`<div class="neg">ВНИМАНИЕ: лоток не обработан антисептиком!</div>`;
+  {const op=S.issues.filter(i=>!i.fixed);if(op.length)h+=`<div class="neg">Расхождений в журнале: ${op.length} — до ближайшей ревизии</div>`}
   h+=`<div style="margin-top:.6em">&gt; Откройте вкладку ЗАКАЗЫ, чтобы закупить медикаменты на День ${S.day+1}.</div>`;b.innerHTML=h}
  else{let h=`<div>&gt; ЗАЯВКА НА СКЛАД КОМЕНДАТУРЫ · ДЕНЬ ${S.day+1}</div>`;
   for(const k in MEDS){h+=`<div class="ord"><img src="${IMG.med[k]}" alt=""><div class="n">${MEDS[k].n}<small>склад: ${S.stock[k]} · ${MEDS[k].p} ТР</small></div><button data-o="${k}" data-d="-1">−</button><b>${R.orders[k]||0}</b><button data-o="${k}" data-d="1">+</button></div>`}
@@ -926,6 +1089,17 @@ function showDone(){R.phase="done";const f=S.flags;clearTimeout(toastT);$("toast
   h+=`<p>${f.gleb==="stim"?"ТЭЦ-2 удержала давление: батареи в аптеке и дома горячие.":"Ночью давление на ТЭЦ-2 упало. Квартал замёрз — на дрова для семьи ушло вдвое больше (−100 ТР)."}</p>`;
   h+=`<p>${f.artem==="helped"?"Брат Артёма будет жить. У вас — довоенная радиолампа и пара зорких глаз на улицах.":f.artem==="quarantine"?"Артёма забрала спецбригада. Комендатура довольна вашей бдительностью.":"Артём убежал в метель с пустыми руками."}</p>`;
   h+=`<p>${f.audit==="clean"?"Ревизия капитана Громова: всё сходится. Премия +50 ТР.":f.audit==="lie"?"Громов поверил в «треснувший ящик». В следующий раз такая отговорка не пройдёт.":f.audit==="bribe"?"Громов спрятал 100 ТР в бушлат и списал недостачу сам.":f.audit==="truth"?"Вы сказали Громову правду. Деньги целы, но это последнее предупреждение.":""}${f.blanks?` Бланков куплено у Ворона: ${f.blanks}.`:""}</p>`}
+ if(S.day===3){
+  h+=`<p>${f.vera==="helped"?"Вера унесла маме «Антибиотики» и обещала принести что-нибудь с завода.":f.vera==="falseq"?"Веру увезли на карантин по ложному вызову. Её мать осталась одна.":"Вера ушла ни с чем. Её мать может не пережить эту неделю."}</p>`;
+  h+=`<p>${f.maria==="helped"?"Мария Аркадьевна получила «Антирадин» под честное слово.":f.maria==="falseq"?"Марию Аркадьевну заперли на карантине по ложному вызову. Госпиталь остался без врача.":"Мария Аркадьевна ушла ни с чем — и это запомнила."}</p>`;
+  h+=`<p>${f.fedor==="helped"?"Фёдор «Зверь» оставил волчью шкуру"+(f.peltSold?" (продана Семёну)":"")+". Теперь у вас есть угрюмый союзник на кордоне.":"Фёдор «Зверь» ушёл к болотам и больше не вернётся."}</p>`;
+  const note={steal:"«Паша, спасибо тебе! Те антибиотики, что ты принёс ночью, подействовали. Алинке стало гораздо лучше, жар спал, она уснула сама и утром попросила попить. Кризис миновал. Береги себя на работе. Люблю тебя».",
+   maria:"«Паша, Мария Аркадьевна — просто ангел! Она пришла вчера вечером и осмотрела Алинку. Оказалось, это не опасная инфекция, а простуда от переохлаждения — антибиотики вообще не нужны! Дала жаропонижающее, к утру температура спала. Алинка уже улыбается».",
+   mariaPaid:"«Паша, Мария Аркадьевна пришла вчера вечером и осмотрела Алинку. Оказалось, это простуда от переохлаждения — антибиотики не нужны. Жар спал, Алинка улыбается. Спасибо тебе».",
+   doctor:"«Можешь не переживать за свой склад, Паша. Мы с Алинкой весь день просидели в ледяном коридоре у врача. Оказалось — простая простуда, сегодня ей уже лучше. Но то, как ты бросил нас одних в такой момент, я запомню надолго»."}[f.family];
+  if(note)h+=`<p><b>Утром — записка от Оли:</b><br><i>${note}</i></p>`;
+  h+=`<p>${f.semyon==="deal"?"Семён ушёл довольный. У вас патроны, спирт и свинцовый контейнер — он спрячет одну недостачу на следующей ревизии.":"Семён затаил обиду. Он знает, где вы живёте."}</p>`;
+  const op=S.issues.filter(i=>!i.fixed).length;h+=`<p>${op?`В журнале висит расхождений: <b>${op}</b>. Капитан Громов спросит за каждую ампулу.`:"Журнал чист — следующая ревизия не страшна."}</p>`}
  const more=S.day<LAST_DAY;h+=more?"":`<p><b>Продолжение следует:</b> День ${S.day+1} — в разработке. Ваши решения сохранены.</p>`;
  $("dTitle").textContent=`ДЕНЬ ${S.day} ЗАВЕРШЁН`;$("doneBox").innerHTML=h;$("dNext").style.display=more?"":"none";$("dNext").textContent=`НАЧАТЬ ДЕНЬ ${S.day+1}`;openM("done");refresh()}
 
@@ -980,7 +1154,8 @@ function wire(){
  di.addEventListener("pointermove",e=>{if(dx==null)return;if(Math.hypot(e.clientX-dx,e.clientY-dy0)>8)dmv=true;di.style.transform=`translate(${e.clientX-dx}px,${e.clientY-dy0}px) scale(.8)`});
  const dend=e=>{if(dx==null)return;dx=null;di.classList.remove("drag");di.style.transform="";
   if(!dmv){msg(`Перетащите «${MEDS[R.hand].n}» пальцем в окошко выдачи. Чтобы вернуть — перетащите на шкаф.`);return}
-  if(inside($("win"),e.clientX,e.clientY))trayDrop();
+  if(R.phase==="pocket"&&inside($("pocket"),e.clientX,e.clientY))pocketDrop();
+  else if(inside($("win"),e.clientX,e.clientY))trayDrop();
   else if(inside($("s_shelfR"),e.clientX,e.clientY)||inside($("s_shelfL"),e.clientX,e.clientY)){R.hand=null;A.pick();msg("Возвращено в шкаф.");refresh()}};
  di.addEventListener("pointerup",dend);di.addEventListener("pointercancel",()=>{dx=null;di.classList.remove("drag");di.style.transform=""});
  // journal: dragged into the window during the audit
@@ -1007,7 +1182,7 @@ function wire(){
 function newGame(){A.init();goFull();S=newState();startCheckpoint(0)}
 
 A.load();buildScene();wire();fit();menuRefresh();
-window.__G={get S(){return S},R,A,startCheckpoint,startDay,CL,readSave,K_AUTO,K_MAN};
+window.__G={get S(){return S},R,A,startCheckpoint,startDay,CL,readSave,K_AUTO,K_MAN,DAYS};
 </script>
 </body>
 </html>

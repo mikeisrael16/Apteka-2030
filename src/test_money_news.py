@@ -105,13 +105,13 @@ with sync_playwright() as p:
     ck(s['desk']==150 and s['tp']==200 and s['kdoc']==350 and pg.is_visible('#cashd') and '150' in pg.inner_text('#cashN'),'оплата легла на стол: 150 ТР, касса по журналу ждёт 350')
     tap_until("__G.R.phase==='between'",30); w(1200); shot('03_money_on_desk'); ck('КАССУ' in pg.inner_text('#hint'),'обучение: подсказка про кассу и рюкзак')
     pg.click('#bNext'); ck(R('phase')=='between' and 'Сначала уберите деньги' in pg.inner_text('#toast'),'день 1: нельзя звать следующего, пока деньги на столе')
-    pg.click('#cashd'); ck(S()['desk']==150,'простое нажатие деньги не двигает')
+    pg.click('#cashd'); ck(pg.is_visible('#cashM') and '150 ТР' in pg.inner_text('#cmV'),'нажатие на пачку открывает выбор суммы'); pg.click('#cmClose'); ck(S()['desk']==150,'отмена ничего не двигает')
     drag('#cashd','#kassa',.5,.5); s=S(); ck(s['desk']==0 and s['tp']==350 and s['pers']==0 and pg.evaluate("__G.cashShort()")==0 and not pg.is_visible('#cashd'),'деньги перетащены в кассу: 350, сходится'); shot('04_in_kassa')
     # ---- B. borrow from the cash box, backpack and back
-    pg.click('#kassa'); s=S(); ck(s['tp']==250 and s['desk']==100,'нажатие на кассу: 100 ТР на стол')
+    pg.click('#kassa'); shot('05a_picker'); pg.click('#cmQ [data-q="100"]'); pg.click('#cmAct [data-to="d"]'); s=S(); ck(s['tp']==250 and s['desk']==100,'касса: выбрал 100 ТР → на стол')
     drag('#cashd','#bag',.5,.5); s=S(); ck(s['pers']==100 and s['desk']==0 and pg.evaluate("__G.cashShort()")==100 and '100' in pg.inner_text('#bagN'),'со стола в рюкзак: личные 100, недостача кассы 100'); shot('05_borrowed')
     pg.click('#bag'); ck('Личные деньги: 100 ТР' in pg.inner_text('#invBody'),'рюкзак показывает личные деньги'); shot('06_backpack')
-    pg.click('#invBody [data-cash]'); s=S(); ck(s['pers']==0 and s['desk']==100,'из рюкзака на стол: 100 ТР'); pg.click('#invClose')
+    pg.click('#invBody [data-cash]'); pg.click('#cmQ [data-q="all"]'); pg.click('#cmAct [data-to="d"]'); s=S(); ck(s['pers']==0 and s['desk']==100,'из рюкзака на стол: всё (100 ТР)')
     drag('#cashd','#kassa',.5,.5); ck(S()['tp']==350 and pg.evaluate("__G.cashShort()")==0,'долг кассе возвращён')
     # ---- C. audit: cash shortage
     BASE="{viol:[],warnings:0,lies:0,susp:0,flags:{cashTut:1},items:{},desk:0,rad:0}"
@@ -129,7 +129,7 @@ with sync_playwright() as p:
     ck(c['pay']=='bad' and all(c[k]=='ok' for k in ['name','drug','doctor','seal','reg']) ,'Вера: документы чистые, платить нечем'); shot('08_no_money')
     stamp_on('ok'); ck('касса недосчитается 90' in pg.inner_text('#imsg'),'штамп ставится, предупреждение о недостаче 90 ТР'); pg.click('#iClose'); pg.click('#s_journal'); take('antibiotic'); give(); s=S()
     ck(s['desk']==0 and s['kdoc']==390 and s['tp']==300 and pg.evaluate("__G.cashShort()")==90 and s['flags']['vera2']=='helped' and not openv() and not short(),'выдано бесплатно: нарушения нет, касса должна 90 ТР'); shot('09_given_free')
-    tap_until(f"__G.S.cp==={pg.evaluate('__G.NEWST[5]')+1}",30); pg.click('#bag'); pg.click('#invBody [data-cash]'); pg.click('#invClose'); drag('#cashd','#kassa',.5,.5); s=S(); ck(s['tp']==400 and s['pers']==0 and pg.evaluate("__G.cashShort()")==0,'доложил 100 ТР из своих — касса сошлась')
+    tap_until(f"__G.S.cp==={pg.evaluate('__G.NEWST[5]')+1}",30); pg.click('#bag'); pg.click('#invBody [data-cash]'); pg.click('#cmQ [data-q="all"]'); pg.click('#cmAct [data-to="k"]'); s=S(); ck(s['tp']==400 and s['pers']==0 and pg.evaluate("__G.cashShort()")==0,'доложил 100 ТР из своих — касса сошлась')
     pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:5,tp:300,kdoc:300,pers:0,pending:[]}});"+FULL+";__G.startCheckpoint(__G.NEWST[5])"); nxt(); docs(); stamp_on('no'); tap_until(f"__G.S.cp==={pg.evaluate('__G.NEWST[5]')+1}",30); s=S()
     ck(s['flags']['vera2']=='refused' and not s['pending'] and s['kdoc']==300,'отказ неплатёжеспособной — без штрафа')
     for day,key,doc,name,drugs,due in [(9,'zahar2','Петрова Н.К.','Лютый Захар Васильевич',['painkiller','bandage'],70),(11,'nina2','Петрова Н.К.','Кузнецова Нина Павловна',['gem'],110)]:
@@ -194,5 +194,32 @@ with sync_playwright() as p:
     pg.click('#mLoad'); pg.click('#slotList button[data-s="10:1"]'); until("__G.S&&__G.S.day===10"); ck(pg.locator('#snow').count()==1 and not pg.evaluate("document.getElementById('scene').classList.contains('calm')"),'снег за окном, день 10 — буря')
     pg.evaluate("(()=>{const r=Math.random;Math.random=()=>0.01;__G.weatherTick();Math.random=r})()"); w(900); ck(pg.evaluate("document.getElementById('scene').classList.contains('gust')") and pg.evaluate("document.getElementById('scene').classList.contains('brown')"),'порыв ветра и перебой света'); shot('24_brownout'); w(3500)
     ck(not pg.evaluate("document.getElementById('scene').classList.contains('brown')"),'свет вернулся')
+    # ---- K. v2.2: any amount, debt, minor violations, toys, menu
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:3,tp:300,kdoc:300,pers:40,desk:0,olya:50}});"+FULL+";__G.startCheckpoint(2)"); w(400)
+    pg.click('#kassa'); pg.click('#cmQ [data-q="20"]'); pg.click('#cmRow [data-d="10"]'); ck('30 ТР' in pg.inner_text('#cmV'),'выбор суммы: 20 + 10 = 30'); pg.click('#cmAct [data-to="p"]'); s=S(); ck(s['tp']==270 and s['pers']==70 and s['desk']==0 and pg.evaluate("__G.cashShort()")==30,'30 ТР из кассы сразу в рюкзак')
+    pg.click('#bag'); pg.click('#invBody [data-cash]'); pg.evaluate("(()=>{const r=document.getElementById('cmR');r.value=15;r.dispatchEvent(new Event('input'))})()"); ck('15 ТР' in pg.inner_text('#cmV'),'ползунок: 15 ТР'); pg.click('#cmAct [data-to="k"]'); s=S(); ck(s['tp']==285 and s['pers']==55,'15 ТР из рюкзака в кассу')
+    pg.evaluate("__G.S.desk=150"); pg.click('#hDay'); w(200); pg.evaluate("__G.startCheckpoint(2)"); pg.evaluate("__G.S.desk=150"); w(300); pg.click('#hTime'); 
+    pg.evaluate("document.getElementById('cashd').classList.add('on')"); pg.click('#cashd'); pg.click('#cmQ [data-q="100"]'); pg.click('#cmAct [data-to="k"]'); s=S(); ck(s['desk']==50,'пачку со стола можно разделить: 100 в кассу, 50 осталось'); drag('#cashd','#bag',.5,.5); ck(S()['desk']==0,'остаток перетащен в рюкзак (он теперь висит у окна)')
+    bb=pg.locator('#bag').bounding_box(); l=pg.locator('#lever').bounding_box(); ck(bb['y']+bb['height']<=l['y']+4 and bb['width']>90 and not pg.is_visible('#bag img'),'рюкзак — часть сцены, рычаг под ним'); shot('25_scene')
+    # debt
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{pers:-60,flags:{{cashTut:1}}}});__G.startDay(4)"); w(700); tap_until("__G.R.phase==='lever'",30); ck(S()['flags']['debt']==1 and 'ДОЛГ' in pg.inner_text('#bagN'),'минус в личных: предупреждение, 2 дня'); shot('26_debt')
+    pg.evaluate("__G.startDay(5)"); w(700); ck(S()['flags']['debt']==2 and R('phase')!='done','второй день в минусе: последний день')
+    pg.evaluate("__G.startDay(6)"); until("__G.R.phase==='done'"); ck('НЕ ПЕРЕЖИЛА' in pg.inner_text('#dTitle') and not pg.is_visible('#dNext'),'третий день в минусе → игра проиграна'); shot('27_debt_over'); pg.click('#dMenu')
+    pg.click('#mLoad'); pg.click('#slotList button[data-s="10:1"]'); until("__G.S&&__G.S.day===10"); pg.evaluate("__G.S.pers=-10;__G.S.flags.debt=2;__G.startDay(11)"); w(500); pg.evaluate("__G.S.pers=40;__G.startDay(12)"); w(600); ck(S()['flags']['debt']==0 and R('phase')!='done','вышел в плюс — счётчик долга сброшен')
+    pg.evaluate("__G.S.pers=10;__G.S.pending=[];__G.S.log=[]"); 
+    # minor violation: the extra line
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:3,tp:300,kdoc:300,pers:200,olya:50}});"+FULL+";__G.startCheckpoint(1)"); tap_until("__G.R.phase==='client'",30); measure(); docs(); pg.click('#tExtra'); ck('ПРОСРОЧЕН' in pg.inner_text('#imsg') and 'bad' in pg.get_attribute('#tExtra','class'),'доп. проверка: срок действия талона'); shot('28_extra')
+    checks(pg.evaluate("__G.R.c.def.doctor")); stamp_on('ok'); pg.click('#iClose'); pg.click('#s_journal'); take('antibiotic'); give(); v=openv(); ck(len(v)==1 and v[0]['k']=='note' and 'просрочен' in v[0]['why'],'выдача по просроченному талону = замечание (NOTE), не грубое нарушение')
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{tp:300,kdoc:300,pers:200,viol:[{{id:'n1',k:'note',t:'Замечание: выдача по талону с изъяном — Вера',why:'талон просрочен',day:2,status:'open'}}]}});"+FULL); at_audit(2,5,"{}"); ck('NOTE' in pg.inner_text('#auBody'),'ревизия видит замечание'); shot('29_note_audit'); pg.click('#auTruth'); tap_until("__G.S.cp===6",30); s=S()
+    ck(s['warnings']==0 and any(l['v']==-50 and 'мелкое' in l['t'] for l in s['log']) and not any('Премия' in l['t'] for l in s['log']),'замечание: штраф 50 ТР, без предупреждения, без премии')
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{tp:300,kdoc:300,pers:200,viol:[{{id:'b1',k:'bad',t:'Выдача по неправильному талону',why:'врач без допуска',day:2,status:'open'}}]}});"+FULL); at_audit(2,5,"{}"); pg.click('#auTruth'); tap_until("__G.S.cp===6",30); ck(S()['warnings']==1,'основная проверка провалена → предупреждение (строже)')
+    pg.evaluate("__G.S.olya=50;__G.S.flags={};__G.S.items={};__G.addItem('toys')"); ck(S()['olya']==70 and S()['items']['toys']==1,'игрушки для Алины: +20 сразу при получении'); pg.click('#bag'); ck(pg.locator('#invBody img[src^="data:image/webp"]').count()>=2 and 'ПОДАРИТЬ' not in pg.inner_text('#invBody'),'иконка игрушек из нового набора'); 
+    pg.evaluate("for(const k of ['radiolamp','pelt','ammo','spirit','container','stew','fishoil','knife','copper','parts'])__G.addItem(k)"); pg.click('#invClose'); pg.click('#bag'); shot('30_icons'); pg.click('#invClose')
+    for vw,vh in [(390,844),(360,640),(412,915)]:
+        pg.set_viewport_size({'width':vw,'height':vh}); pg.goto(URL); w(500)
+        ys=[pg.locator(i).bounding_box() for i in ['#mNew','#mCont','#mLoad','#mSound']]; img=pg.locator('#mBot img').bounding_box()
+        ck(all(ys[i]['y']+ys[i]['height']<=ys[i+1]['y']+1 for i in range(3)) and ys[3]['y']+ys[3]['height']<=img['y']+img['height']*.45 and img['y']+img['height']<=vh+1 and vh-(img['y']+img['height'])>vw*.1,f'меню {vw}x{vh}: 4 кнопки по порядку, звук под «Загрузить», подпись студии поднята')
+        if vw==390: shot('31_menu')
+    pg.click('#mSound'); ck('ВКЛЮЧИТЬ' in pg.inner_text('#mSound'),'кнопка звука переключается'); pg.click('#mSound')
     ck(not errs,f'no JS errors: {errs[:4]}')
     print('OK',n_ok,'FAIL',len(fails)); b.close()

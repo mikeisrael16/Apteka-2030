@@ -179,6 +179,7 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
 #hand.has button{display:block}
 #bNext{flex:0 0 auto;padding:.8em .9em;margin-left:auto;font-size:1.3em;background:linear-gradient(#56753f,#34502a);border:.16em solid #10180c;border-radius:.5em;color:#eaffd8;display:none}
 #bNext.on{display:block}
+#bNoSt{display:none;margin:0;flex:1 1 auto;font-size:1.25em}#bNoSt.on{display:block}
 #choice{display:none;gap:.5em;flex:0 0 auto}
 #choice.on{display:flex}
 #choice.col{flex-direction:column}
@@ -465,6 +466,7 @@ body{font-weight:700}
       <div id="choice"></div>
       <div id="btns">
         <div id="pocket">ЛИЧНАЯ СУМКА · перетащите сюда</div>
+        <button class="btn" id="bNoSt">НЕТ В НАЛИЧИИ · ОТПУСТИТЬ</button>
         <button id="bNext">СЛЕДУЮЩИЙ ▶</button>
       </div>
     </div>
@@ -1243,13 +1245,13 @@ function refresh(){
  const c=R.c,q=quarOn();
  {const p5=S.day>=5;$("tCen").style.display=p5?"":"none";document.querySelector("#checks [data-c=reg]").style.display=p5?"":"none"}
  $("bQuar").classList.toggle("armed",q);$("offImg").classList.toggle("on",R.onCall);
- $("bNext").classList.toggle("on",R.phase==="between");
+ $("bNext").classList.toggle("on",R.phase==="between");$("bNoSt").classList.toggle("on",!OLD&&!!missing().length);
  {const bx=R.phase==="delivery"&&R.box;$("box").classList.toggle("on",!!bx);if(bx)$("boxN").textContent="осталось видов: "+R.box.length}
  $("choice").classList.toggle("on",R.phase==="bribe");
  $("cashd").classList.toggle("on",S.desk>0);$("cashN").textContent=S.desk+" ТР";
  const di=$("deskItem");di.classList.toggle("on",!!R.hand);if(R.hand)di.style.backgroundImage=`url(${IMG.med[R.hand]})`;
  $("ringImg").classList.toggle("on",R.phase==="ring"&&!R.onCall);
- $("btns").style.display=(talking||R.phase==="bribe"||!(R.phase==="between"||R.phase==="pocket"))?"none":"flex";
+ $("btns").style.display=(talking||R.phase==="bribe"||!(R.phase==="between"||R.phase==="pocket"||(!OLD&&missing().length)))?"none":"flex";
  const tr=$("s_tray");tr.classList.toggle("dirty",S.dirty);tr.classList.toggle("letter",R.phase==="letter");tr.classList.toggle("npaper",R.phase==="paper");tr.classList.toggle("docs",!!c&&!c.def.special&&!c.docs&&R.phase==="client");
  $("s_doc").classList.toggle("has",!!c&&c.docs&&!c.done);
  const g=$("gauge");g.classList.toggle("on",R.probe||(!!c&&c.dose!=null&&!c.done));
@@ -1388,6 +1390,17 @@ function leverOpen(){ // swipe down to ОТКР
 function leverClose(){ // swipe up to ЗАКР
  if(R.phase==="endshift"){R.closed=true;leverSet(0);A.lever();A.shutter();$("shut").classList.remove("open");msg("Бронеставни опущены. Ночью никто не залезет.","good");refresh();return}
  leverSet(4);A.lever();msg("Смена ещё идёт — закрывать окно нельзя.")}
+/* the talon is approved, but the shelf is empty: the client can always be let go */
+function missing(){const c=R.c;if(!c||c.done||R.phase!=="client"||c.stamp!=="ok"||!c.need)return[];return c.need.filter(k=>S.stock[k]<1)}
+function stockNote(c){const z=[...new Set(drugsOf(c.def).filter(k=>S.stock[k]<1))];if(!z.length)return"";
+ const alt=z.filter(k=>S.bag[k]>0),fk=z.filter(k=>MEDS[k].f&&S.stock["fake"+MEDS[k].f]>0);
+ return` НА ПОЛКЕ НЕТ: ${drugNames(z)}.`+(alt.length?" Есть в рюкзаке — можно вернуть на полку.":"")+(fk.length?" Есть пустышка той же формы.":"")+" Нечего выдать — ставьте «ОТКАЗАНО»: за отказ из-за пустого склада не штрафуют."}
+function noStock(){const m=missing();if(!m.length)return;const c=R.c,n=c.def,all=drugsOf(n),got=all.length-c.need.length;A.click();
+ S.flags[c.key]=got?"partial":"nostock";if(c.fakes)S.flags[c.key+"Fake"]=c.fakes.join(",");
+ if(got&&!n.noMoney&&n.pay){const v=Math.round(n.pay*got/all.length/10)*10;deskPay(`Выдача частично (${got} из ${all.length}): ${n.short.split(/[,(]/)[0].trim()}`,v,v)}
+ else if(got&&n.noMoney&&!OLD){S.kdoc+=Math.round(dueOf(n)*got/all.length)}
+ clientLeave(got?`— Остального нет? Ладно... хоть это. — ${n.name} забирает то, что есть${n.pay&&!n.noMoney?", и платит только за выданное":""}. На полке пусто: ${drugNames([...new Set(m)])} — в заявку на завтра.`
+  :`— Как это — нет?.. — ${n.name} долго смотрит на пустую полку за вашей спиной и уходит ни с чем. Талон одобрен, а выдать нечего: закажите ${drugNames([...new Set(m)])} на завтра.`,"",0,3600)}
 function onNext(){if(R.phase!=="between")return;A.click();const key=R.nextKey;
  if(S.day===1&&S.desk>0&&!OLD){msg("Сначала уберите деньги со стола: перетащите их в кассу (ящик слева) или в рюкзак.","bad");return}
  if(S.dirty){addRad(5);S.pending.push({t:"Лоток не обработан антисептиком",v:-30});msg("Лоток не протёрт: вы и следующий клиент получили дозу (+5%).","bad")}
@@ -1562,7 +1575,7 @@ function onField(f,e){const c=R.c;if(!c||R.tool)return; // with a tool in hand t
  const pair=[R.sel,f].sort().join("+");R.sel=null;
  if(pair==="pName+tName"){const ok=c.def.nameOk!==false;document.querySelectorAll("#pName,#tName").forEach(x=>x.classList.add(ok?"ok":"bad"));
   setCheck("name",ok?"ok":"bad",ok?"ФИО совпадает с паспортом.":`ФИО НЕ совпадает! В паспорте: ${c.def.full}. В талоне: ${c.def.short}.`)}
- else if(pair==="quote+tDrug"){$("tDrug").classList.add("ok");setCheck("drug","ok","Препарат в талоне совпадает со словами клиента.")}
+ else if(pair==="quote+tDrug"){$("tDrug").classList.add("ok");setCheck("drug","ok","Препарат в талоне совпадает со словами клиента."+(OLD?"":stockNote(c)))}
  else{R.sel=f;msg("Эти данные между собой не сверяются.");refresh()}}
 function onDoctor(d){const c=R.c;if(!c)return;const n=c.def;A.click();
  if(d.n!==n.doctor){msg(`В талоне другой врач: ${n.doctor}.`,"bad");return}
@@ -1590,7 +1603,8 @@ function doStamp(t){const c=R.c;if(!c||c.done)return;const ck=c.checks;
   if(c.key==="anna"&&c.dose==null){R.tool=null;msg("Сначала дозиметрический контроль.","bad");refresh();return}}
  c.stamp=t;R.tool=null;A.stamp();$("imprint").className=t;
  if(t==="ok"){const pr=problems(c).filter(x=>x!=="выдача без замера фона");
-  if(pr.length)msg(`Оттиск поставлен, но талон с нарушениями: ${pr.join("; ")}. Выдача будет зафиксирована как нарушение.`,"bad");else if(ck.pay==="bad")msg(`Оттиск «ВЫДАНО» поставлен. Платить клиенту нечем: выдадите — касса недосчитается ${dueOf(c.def)} ТР.`,"bad");else msg("Оттиск «ВЫДАНО» поставлен.","good");refresh()}
+  if(pr.length)msg(`Оттиск поставлен, но талон с нарушениями: ${pr.join("; ")}. Выдача будет зафиксирована как нарушение.`,"bad");else if(ck.pay==="bad")msg(`Оттиск «ВЫДАНО» поставлен. Платить клиенту нечем: выдадите — касса недосчитается ${dueOf(c.def)} ТР.`,"bad");else msg("Оттиск «ВЫДАНО» поставлен.","good");
+  if(!OLD&&c.need.some(k=>S.stock[k]<1))msg(`Оттиск «ВЫДАНО» поставлен, но на полке нет: ${drugNames([...new Set(c.need.filter(k=>S.stock[k]<1))])}. Выдайте, что есть, и нажмите «НЕТ В НАЛИЧИИ» — клиент уйдёт без штрафа для вас.`,"bad");refresh()}
  else{msg("Оттиск «ОТКАЗАНО». Бланк возвращён в лоток.");refresh();later(1100,refusal)}}
 function refusal(){const c=R.c;if(!c||c.done)return;const n=c.def,W=n.name.toUpperCase();closeM("insp");R.hand=null;A.bang();later(250,()=>A.bang());
  if(n.offer){say(W,n.offer.line,n.pitch);
@@ -2199,6 +2213,7 @@ function wire(){
  $("tClose").addEventListener("click",()=>{A.click();closeM("term");refresh()});$("tEnd").addEventListener("click",endShift);
  $("dMenu").addEventListener("click",()=>{A.click();toMenu()});
  $("newsClose").addEventListener("click",closeNews);$("slClose").addEventListener("click",()=>{A.click();$("slots").classList.remove("on")});
+ $("bNoSt").addEventListener("click",noStock);
  $("endAgain").addEventListener("click",()=>{if(!S||R.phase!=="ending")return;A.click();NAR.run(endingParts(endingKind()))});
  $("endSkip").addEventListener("click",()=>{if(!S||R.phase!=="ending")return;A.click();NAR.all()});
  $("endMenu").addEventListener("click",()=>{A.click();NAR.stop();toMenu()});

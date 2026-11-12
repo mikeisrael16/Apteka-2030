@@ -95,7 +95,7 @@ with sync_playwright() as p:
     ck(pg.evaluate("__G.OLD")==False,'новый режим денег (не совместимость)')
     # ---- A. Day 1 tutorial: payment check + money on the desk
     pg.click('#s_phone'); tap_until("__G.R.phase==='lever'"); swipe(200); tap_until("__G.R.phase==='client'",30)
-    s=S(); ck(s['tp']==200 and s['kdoc']==200 and s['pers']==0 and s['desk']==0,'старт: касса 200, личных 0')
+    s=S(); ck(s['tp']==200 and s['kdoc']==200 and s['pers']==100 and s['desk']==0,'старт: касса 200, личных 100'); pg.evaluate('__G.S.pers=0')
     docs(); doc=pg.evaluate("__G.R.c.def.doctor")
     pg.click('#pName'); pg.click('#tName'); pg.click('#tDrug'); pg.click('#quote'); pg.click('#tRef'); pg.click(f'#ref .row[data-n="{doc}"]'); pg.click('#tLamp'); pg.click('#seal')
     ck('Оплата' in pg.inner_text('#ihint') and '150 ТР' in pg.inner_text('#tPay'),'обучение: подсказка про оплату, в талоне «К оплате 150 ТР»'); shot('01_pay_hint')
@@ -152,7 +152,7 @@ with sync_playwright() as p:
     pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:11,tp:300,kdoc:300,pers:520,olya:60,flags:{{cashTut:1,food:'promise',np11:1}}}});"+FULL+";__G.startCheckpoint(__G.NEWST[11]+1)"); nxt(); ck(R('phase')=='voron' and '520 ТР' in pg.inner_text('#mkBody'),'день 11: Ворон (обещаны 500 ТР) — рынок открывается'); pg.click('#mkLeave'); tap_until(f"__G.S.cp==={pg.evaluate('__G.NEWST[11]')+2}",30)
     nxt(); journal_drag(); tap_until(f"__G.R.phase==='auditm'||__G.S.cp==={pg.evaluate('__G.NEWST[11]')+3}",40); 
     if R('phase')=='auditm': pg.click('#auTruth')
-    tap_until(f"__G.S.cp==={pg.evaluate('__G.NEWST[11]')+3}",40); p0=S()['pers']; close_shift(); ck('хватает' in pg.inner_text('#tbody'),'терминал: 500 ТР личных для Оли есть'); pg.click('#tEnd'); until(f"__G.S.cp==={pg.evaluate('__G.NEWST[11]')+4}"); s=S(); ck(s['flags']['family11']=='fed' and s['pers']==p0-500 and s['tp']==300,'продукты семье оплачены из личных, касса не тронута')
+    tap_until(f"__G.S.cp==={pg.evaluate('__G.NEWST[11]')+3}",40); p0=S()['pers']; close_shift(); ck('хватает' in pg.inner_text('#tbody'),'терминал: 500 ТР личных для Оли есть'); pg.click('#tEnd'); until(f"__G.S.cp==={pg.evaluate('__G.NEWST[11]')+4}"); s=S(); ck(s['flags']['family11']=='fed' and s['pers']==p0-570 and s['tp']==300,'продукты семье (500) и ежедневные 70 оплачены из личных, касса не тронута')
     # ---- F. newspaper
     pg.evaluate(f"Object.assign(__G.S,{BASE},{{flags:{{cashTut:1,anna:'quarantine',klavdia:'helped',gleb:'talon',audit:'clean'}}}});__G.startDay(3)"); tap_until("__G.R.phase==='lever'",30); swipe(200); until("__G.R.phase==='paper'"); w(500); shot('15_paper_tray')
     ck(pg.evaluate("document.getElementById('s_tray').classList.contains('npaper')") and S()['cp']==0,'день 3: газета в лотке окна')
@@ -180,5 +180,19 @@ with sync_playwright() as p:
         hit=pg.evaluate(f"document.elementFromPoint({k['x']+k['width']*.3},{k['y']+k['height']*.4}).id")
         ck(k['x']>=0 and c['x']+c['width']<=vw and hit=='kassa',f'касса и деньги на месте {vw}x{vh} (hit={hit})')
     shot('19_day10')
+    # ---- J. family budget, radiation, weather
+    pg.set_viewport_size({'width':390,'height':844})
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:3,tp:300,kdoc:300,pers:80,olya:60,flags:{{cashTut:1}}}});"+FULL+";__G.startCheckpoint(7)"); close_shift(); ck('Семье на вечер: еда 30 + дрова 20' in pg.inner_text('#tbody') and 'хватает' in pg.inner_text('#tbody'),'терминал: семейный бюджет на вечер'); shot('20_budget')
+    pg.click('#tEnd'); until("__G.S.cp===8"); s=S(); ck(s['pers']==30 and s['tp']==300 and s['olya']==60,'еда 30 + дрова 20 списаны из личных')
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:3,tp:300,kdoc:300,pers:35,olya:60,flags:{{cashTut:1}}}});"+FULL+";__G.startCheckpoint(7)"); close_shift(); pg.click('#tEnd'); until("__G.S.cp===8"); s=S(); ck(s['pers']==5 and s['olya']==56 and s['flags']['hungry']==1 and 'не хватило на дрова' in pg.inner_text('#doneBox'),'денег хватило только на еду: Оля −4')
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:10,tp:300,kdoc:300,pers:0,olya:60,flags:{{cashTut:1}}}});"+FULL+";__G.startCheckpoint(7)"); close_shift(); pg.click('#tEnd'); until("__G.S.cp===8"); s=S(); ck(s['pers']==0 and s['olya']==52 and pg.evaluate("__G.homeCost().food")==50,'личных нет: семья без еды и дров, Оля −8; в дефицит еда дороже')
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{rad:55,flags:{{cashTut:1}},bag:{{}}}});__G.startDay(4)"); tap_until("__G.R.phase==='lever'",30); s=S(); ck(s['rad']==80 and 'ЛУЧЕВАЯ БОЛЕЗНЬ' in pg.inner_text('#radbar') and pg.evaluate("document.getElementById('scene').classList.contains('sick')"),'доза 55% не снята → утром лучевая болезнь 80%'); shot('21_sick')
+    pg.evaluate("__G.S.bag={antiradinM:1,antiradin:1}"); pg.click('#bag'); shot('22_drink'); pg.click('#invBody [data-drink="antiradinM"]'); ck(S()['rad']==30 and not S()['bag']['antiradinM'],'«Антирадин-М» выпит: 80 → 30%'); pg.click('#invBody [data-drink="antiradin"]'); ck(S()['rad']==0,'«Антирадин»: −30%'); pg.click('#invClose')
+    ck('ЛУЧЕВАЯ' not in pg.inner_text('#radbar') and not pg.evaluate("document.getElementById('scene').classList.contains('sick')"),'болезнь снята')
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{rad:45,flags:{{cashTut:1}}}});__G.startDay(4)"); tap_until("__G.R.phase==='lever'",30); ck(S()['rad']==45,'ниже 50% — без последствий')
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{rad:85,flags:{{cashTut:1}}}});__G.startDay(5)"); until("__G.R.phase==='done'"); ck(S()['rad']==100 and 'ПОГИБЛИ' in pg.inner_text('#dTitle') and not pg.is_visible('#dNext'),'80%+ не снято → 100%, смерть'); shot('23_death'); pg.click('#dMenu')
+    pg.click('#mLoad'); pg.click('#slotList button[data-s="10:1"]'); until("__G.S&&__G.S.day===10"); ck(pg.locator('#snow').count()==1 and not pg.evaluate("document.getElementById('scene').classList.contains('calm')"),'снег за окном, день 10 — буря')
+    pg.evaluate("(()=>{const r=Math.random;Math.random=()=>0.01;__G.weatherTick();Math.random=r})()"); w(900); ck(pg.evaluate("document.getElementById('scene').classList.contains('gust')") and pg.evaluate("document.getElementById('scene').classList.contains('brown')"),'порыв ветра и перебой света'); shot('24_brownout'); w(3500)
+    ck(not pg.evaluate("document.getElementById('scene').classList.contains('brown')"),'свет вернулся')
     ck(not errs,f'no JS errors: {errs[:4]}')
     print('OK',n_ok,'FAIL',len(fails)); b.close()

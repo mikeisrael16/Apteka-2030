@@ -76,6 +76,21 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
 @keyframes flick{0%,100%{opacity:1}47%{opacity:1}48%{opacity:.3}50%{opacity:1}73%{opacity:.6}74%{opacity:1}}
 #vig{position:absolute;inset:0;box-shadow:inset 0 0 6em 1em #000c;pointer-events:none;z-index:4}
 #win{position:absolute;overflow:hidden;touch-action:none}
+#snow{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+#snow i,#snow b{position:absolute;left:-60%;top:-60%;width:220%;height:220%;background-repeat:repeat;will-change:transform}
+#snow i{background-image:radial-gradient(circle,#fffd 0 1.1px,#0000 1.6px),radial-gradient(circle,#fffb 0 .9px,#0000 1.4px);background-size:37px 41px,53px 47px;background-position:0 0,19px 23px;animation:snowA 5.5s linear infinite;opacity:.75}
+#snow b{background-image:radial-gradient(circle,#fff9 0 1.7px,#0000 2.4px),linear-gradient(100deg,#0000 46%,#ffffff14 50%,#0000 54%);background-size:71px 83px,190px 130px;animation:snowB 3.1s linear infinite;opacity:.55}
+@keyframes snowA{from{transform:translate(0,0)}to{transform:translate(-74px,82px)}}
+@keyframes snowB{from{transform:translate(0,0)}to{transform:translate(-190px,83px)}}
+#scene.gust #snow i{animation-duration:1.9s;opacity:1}#scene.gust #snow b{animation-duration:1.1s;opacity:.9}
+#scene.gust #client{animation:sway 1.4s ease-in-out}
+@keyframes sway{0%,100%{margin-left:0}40%{margin-left:-.25em}70%{margin-left:.12em}}
+#scene.calm #snow b{display:none}#scene.calm #snow i{animation-duration:11s;opacity:.4}
+#scene.brown>img.bg,#scene.brown #win{animation:brown 1.5s steps(1,end)}
+@keyframes brown{0%{filter:brightness(1)}8%{filter:brightness(.35)}14%{filter:brightness(.9)}22%{filter:brightness(.25)}46%{filter:brightness(.3)}52%{filter:brightness(.8)}58%{filter:brightness(.4)}70%{filter:brightness(1.08)}100%{filter:brightness(1)}}
+#radbar.warn span{color:#ff8d7a;animation:glowb 1.1s ease-in-out infinite}
+#scene.sick:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:8;background:radial-gradient(ellipse at center,#0000 45%,#3a0a0a99 100%);animation:sickp 2.6s ease-in-out infinite}
+@keyframes sickp{0%,100%{opacity:.5}50%{opacity:1}}
 #client{position:absolute;left:50%;top:9%;height:158%;transform:translateX(-50%) translateX(140%);transition:transform 1s ease-out,opacity .5s;filter:brightness(.82) saturate(.9);opacity:0}
 #client.in{transform:translateX(-50%);opacity:1;animation:bob 3.2s ease-in-out infinite}
 @keyframes bob{50%{margin-top:.5%}}
@@ -416,6 +431,7 @@ body{font-weight:700}
       <img class="bg" src="%%scene.jpg%%" alt="">
       <div id="flick"></div>
       <div id="win">
+        <div id="snow"><i></i><b></b></div>
         <img id="client" alt="">
         <div id="frost"></div>
         <div id="shut"></div>
@@ -1033,7 +1049,7 @@ let S=null;            // persisted state
 let snap=null;         // JSON of S at last checkpoint (what gets saved)
 let runTok=0;
 const R={phase:"menu",lev:0,closed:false,c:null,hand:null,tool:null,sel:null,probe:false,probeAcc:0,wait:null,typing:null,modal:null,orders:{},nextKey:null,pocket:null,onCall:false,callKey:null,mk:null};
-function newState(){return fillStock({v:1,lay:3,day:1,cp:0,tp:200,kdoc:200,pers:0,desk:0,dayStart:200,cash:0,rad:0,journal:0,dirty:false,mistakes:0,warnings:0,lies:0,susp:0,olya:60,flags:{},log:[],pending:[],issues:[],items:{},bag:{},led:[],viol:[],doc:Object.assign({},INIT_STOCK),stock:Object.assign({},INIT_STOCK)})}
+function newState(){return fillStock({v:1,lay:3,day:1,cp:0,tp:200,kdoc:200,pers:100,desk:0,dayStart:200,cash:0,rad:0,journal:0,dirty:false,mistakes:0,warnings:0,lies:0,susp:0,olya:60,flags:{},log:[],pending:[],issues:[],items:{},bag:{},led:[],viol:[],doc:Object.assign({},INIT_STOCK),stock:Object.assign({},INIT_STOCK)})}
 /* ================= LEDGER: every unit of medicine moves through move() =================
    p = physical change on the shelf, d = change in what the documents say should be there.
    A shortage is never written by hand: it is the gap between documents and the shelf. */
@@ -1101,7 +1117,7 @@ function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.to
 function openM(id){$(id).classList.add("on");R.modal=id}
 function closeM(id){$(id).classList.remove("on");if(R.modal===id)R.modal=null}
 function hud(){if(!S)return;$("hDay").textContent="ДЕНЬ "+String(S.day).padStart(2,"0");$("hTime").textContent=DAYS[S.day].times[S.cp]||"19:00";$("hTP").textContent=S.tp.toLocaleString("ru-RU").replace(/\s/g," ")+" ТР";{const bn=$("bagN");if(bn)bn.textContent=OLD?"":S.pers+" ТР"}
- const r=Math.min(100,S.rad);$("radbar").firstElementChild.style.width=r+"%";$("radbar").lastElementChild.textContent="ОБЛУЧЕНИЕ "+r+"%"+(S.warnings?` · ПРЕДУПРЕЖДЕНИЕ ${S.warnings}/4`:"")}
+ const r=Math.min(100,S.rad);$("radbar").firstElementChild.style.width=r+"%";$("radbar").classList.toggle("warn",r>=50&&!OLD);$("scene").classList.toggle("sick",r>=80&&!OLD);$("radbar").lastElementChild.textContent=(r>=80&&!OLD?"☢ ЛУЧЕВАЯ БОЛЕЗНЬ ":r>=50&&!OLD?"☢ ПРИМИТЕ АНТИРАДИН · ":"")+"ОБЛУЧЕНИЕ "+r+"%"+(S.warnings?` · ПРЕДУПРЕЖДЕНИЕ ${S.warnings}/4`:"")}
 let toastT=0;
 function msg(text,kind){const m=$("imsg");m.textContent=text;m.className=kind||"";
  const t=$("toast");t.firstElementChild.textContent=text;t.className=(R.modal==="insp"||R.modal==="auditM"?"":"on ")+(kind||"");clearTimeout(toastT);toastT=setTimeout(()=>{t.className=""},2800);
@@ -1225,7 +1241,7 @@ function startCheckpoint(n,opts){
  if(st==="end")flushEnd();
  snap=JSON.stringify(S);if(!(opts&&opts.nosave))store.set(K_AUTO,snap);
  const open=!(st==="intro"||st==="morning"||st==="done");const sh=$("shut");sh.classList.remove("slam");sh.classList.toggle("open",open);leverSet(open?4:0);$("scene").classList.toggle("dark",st==="intro");
- A.genOn(true);show("game");refresh();
+ A.genOn(true);show("game");weatherOn();$("scene").classList.toggle("calm",!(STORM[S.day]>0));refresh();
  if(st==="intro")intro();else if(st==="morning")morning();
  else if(st.startsWith("c:"))arrive(st.slice(2));
  else if(st.startsWith("n:")){R.phase="between";R.nextKey=st.slice(2);say("","Окно свободно. Очередь за бронестеклом ждёт.");refresh()}
@@ -1256,8 +1272,17 @@ function goFull(){try{const d=document.documentElement;const f=d.requestFullscre
 /* ================= FLOW ================= */
 function intro(){R.phase="wait";say("","Темно. За окном воет ветер, гудит прогревающийся дизель-генератор...");
  later(1600,()=>{$("scene").classList.remove("dark");A.lamp();later(900,()=>{R.phase="ring";A.ringStart();say("","Резко и дребезжаще звонит старый проводной телефон.");refresh()})})}
+function radDeath(){A.tense(false);R.phase="done";S.fired=1;$("dTitle").textContent="ВЫ ПОГИБЛИ";
+ $("doneBox").innerHTML=`<div class="rp-h">ЛУЧЕВАЯ БОЛЕЗНЬ · ${DATES[S.day]}</div><div class="rp-next">Облучение 100%. Утром провизора Пункта №4 нашли на полу за бронестеклом. Два дня он знал, что нужно принять «Антирадин», — и берёг его для других. Или для ревизии.<br><br>Загрузите сохранение и примите препарат вовремя: рюкзак → «ВЫПИТЬ».</div>`;
+ $("dNext").style.display="none";openM("done");refresh()}
 async function morning(){R.phase="talk";refresh();
+ let radNote=null;
+ if(!OLD&&!S.flags["radm"+S.day]){S.flags["radm"+S.day]=1;
+  if(S.rad>=80){S.rad=100;hud();return radDeath()}
+  if(S.rad>=50){S.rad=80;radNote="Ночью вас рвало кровью, утром на подушке остались волосы. Вчерашнюю дозу вы не сняли — теперь это лучевая болезнь: 80%. Примите «Антирадин» сегодня же. Ещё одна такая ночь — и смену откроет другой провизор."}}
  const lines=[["",`День ${S.day}. За ночь намело по самые решётки. ${S.day===11?"Поставки нет: после налёта склад Комендатуры пуст. Работаете на том, что сберегли.":S.day===12?"21 марта. Впервые за зиму над Сектором тихо: ни сирен, ни стрельбы. Заявок вчера не принимали — на полках то, что осталось.":"Склад пополнен по вашей вчерашней заявке."}`]];
+ if(radNote)lines.push(["",radNote]);
+ if(!OLD&&S.flags.hungry&&S.flags.hungryTold!==S.flags.hungry){S.flags.hungryTold=S.flags.hungry;lines.push(["","Дома вчера легли спать голодными или в холоде. Оля ничего не сказала — и это хуже всего."])}
  if(S.flags.anna==="saved")lines.push(["","Под дверью — клочок бумаги: «Должник. Свяжусь. — К.»"]);
  if(S.day===2&&S.flags.anna==="quarantine")lines.push(["","В утренней сводке: «Спецбригада изолировала заражённую. Ребёнок передан в приёмник Комендатуры»."]);
  if(S.day===3){
@@ -1619,14 +1644,16 @@ function dealDone(key){const n=CL[key];
   return clientLeave("Артём суёт вам в лоток довоенную радиолампу и убегает к брату. (Облучение +15%, на складе дыра в 1 шприц)",n.name.toUpperCase(),n.pitch,3400)}}
 
 /* ---- inventory: «Наши вещи» (overlay; never touches the dialog or the day) ---- */
+const RADCURE={antiradin:30,antiradinM:50};
 function openInv(){if(!S)return;A.click();drawInv();$("inv").classList.add("on")}
 function drawInv(){const b=$("invBody");let h=`<div class="invh">Отношения с Олей: <b>${S.olya}/100</b> · облучение ${S.rad}%</div>`,any=0;
+ if(!OLD&&S.rad>=50)h+=`<div class="invh" style="color:#ff9b8a">☢ Облучение ${S.rad}%. Нужен «Антирадин» (−30%) или «Антирадин-М» (−50%): возьмите в шкафу, перетащите в рюкзак и выпейте. Не снять дозу до утра — ${S.rad>=80?"смерть":"лучевая болезнь"}.</div>`;
  if(!OLD){any=1;h+=`<div class="invr"><div class="ic"><img src="%%money.webp%%" alt=""></div><div class="tx"><b>Личные деньги: ${S.pers} ТР</b>Ваши собственные: премии, проданные вещи и всё, что прошло мимо кассы.<br><i>Применение:</i> семья, Ворон, взятки, штрафы. Можно доложить в кассу аптеки.<br><button class="btn" data-cash="1" ${S.pers>0?"":"disabled"}>ВЫЛОЖИТЬ 100 ТР НА СТОЛ</button></div></div>`}
- for(const k in S.bag){const n=S.bag[k];if(n<1)continue;any=1;h+=`<div class="invr"><div class="ic"><img src="${IMG.med[k]}" alt=""></div><div class="tx"><b>${MEDS[k].n} ×${n}</b>${MEDS[k].fake?"Пустышка Ворона, убранная с глаз.":"Лежит в рюкзаке мимо учёта."}<br><i>Применение:</i> ${MEDS[k].fake?"вернуть на полку, когда понадобится.":"унести домой, продать Ворону (с 7-го дня) или вернуть на полку до ревизии."}<br><button class="btn" data-ret="${k}">ВЕРНУТЬ НА ПОЛКУ</button></div></div>`}
+ for(const k in S.bag){const n=S.bag[k];if(n<1)continue;any=1;h+=`<div class="invr"><div class="ic"><img src="${IMG.med[k]}" alt=""></div><div class="tx"><b>${MEDS[k].n} ×${n}</b>${MEDS[k].fake?"Пустышка Ворона, убранная с глаз.":"Лежит в рюкзаке мимо учёта."}<br><i>Применение:</i> ${MEDS[k].fake?"вернуть на полку, когда понадобится.":"унести домой, продать Ворону (с 7-го дня) или вернуть на полку до ревизии."}<br>${RADCURE[k]&&!OLD?`<button class="btn green" data-drink="${k}">ВЫПИТЬ · ОБЛУЧЕНИЕ −${RADCURE[k]}%</button> `:""}<button class="btn" data-ret="${k}">ВЕРНУТЬ НА ПОЛКУ</button></div></div>`}
  for(const k in ITEMS){const n=S.items[k]||0;if(n<1)continue;any=1;const it=ITEMS[k],act=ITEM_ACT[k];
   h+=`<div class="invr"><div class="ic">${it.img?`<img src="${it.img}" alt="">`:it.e}</div><div class="tx"><b>${it.n} ×${n}</b>${it.desc}<br><i>Откуда:</i> ${it.src}<br><i>Применение:</i> ${it.use}${act?`<br><button class="btn" data-use="${k}">${act[0]}</button>`:""}</div></div>`}
  if(!any)h+=`<div class="invh">Пока ничего нет. Посетители иногда расплачиваются вещами.</div>`;
- b.innerHTML=h;b.querySelectorAll("[data-cash]").forEach(x=>x.addEventListener("click",()=>{takeCash("p");drawInv()}));b.querySelectorAll("[data-ret]").forEach(x=>x.addEventListener("click",()=>{const k=x.dataset.ret;if(!(S.bag[k]>0))return;S.bag[k]--;move(k,1,"ret","из рюкзака");A.pick();msg(`«${MEDS[k].n}» снова на полке.`,"good");drawInv();refresh()}));
+ b.innerHTML=h;b.querySelectorAll("[data-drink]").forEach(x=>x.addEventListener("click",()=>{const k=x.dataset.drink;if(!(S.bag[k]>0))return;if(S.rad<=0){msg("Облучения нет — препарат лучше приберечь.");return}S.bag[k]--;S.rad=Math.max(0,S.rad-RADCURE[k]);A.ok();msg(`«${MEDS[k].n}» принят. Облучение: ${S.rad}%.`+(S.rad>=50?" Этого мало — нужна ещё доза.":""),S.rad>=50?"bad":"good");drawInv();refresh()}));b.querySelectorAll("[data-cash]").forEach(x=>x.addEventListener("click",()=>{takeCash("p");drawInv()}));b.querySelectorAll("[data-ret]").forEach(x=>x.addEventListener("click",()=>{const k=x.dataset.ret;if(!(S.bag[k]>0))return;S.bag[k]--;move(k,1,"ret","из рюкзака");A.pick();msg(`«${MEDS[k].n}» снова на полке.`,"good");drawInv();refresh()}));
  b.querySelectorAll("[data-use]").forEach(x=>x.addEventListener("click",()=>{const k=x.dataset.use;if(!useItem(k))return;A.ok();const t=ITEM_ACT[k][1]();msg(t,"good");drawInv();refresh()}))}
 
 /* ---- black market: Ворон (day 2) and Семён (day 3) ---- */
@@ -1685,7 +1712,7 @@ function drawMarket(){const p=blankPrice(),b=$("mkBody"),sem=S.day>=3;
  h+=btn("mkAR",IMG.ic.blank,`ПУСТОЙ БЛАНК · 2 «АНТИРАДИНА» (у вас ${S.stock.antiradin}) — будет недостача`,IMG.ic.ar,S.stock.antiradin<2);
  if(S.day>=7){h+=`<div class="mki">Пустышек на полках: <b>${fakeCount()}</b> (больше двух — Громов вскроет упаковку). Одна пустышка прикрывает одну недостачу той же формы.</div>`;
   FAKES.forEach(k=>{h+=btn("mkF_"+k,IMG.med[k],`ПУСТЫШКА «${MEDS[k].n.toUpperCase()}» — ${FORM[MEDS[k].f]} · <b>50 ТР</b> (на полке ${S.stock[k]})`,IMG.ic.tp,PM()<50)});
-  if(S.day>=8&&S.day<=10)h+=btn("mkDad",IMG.med.antiradin,`«АНТИРАДИН» В РЮКЗАК · <b>${DAD_PRICE} ТР</b> (в рюкзаке ${S.bag.antiradin||0})`,IMG.ic.tp,PM()<DAD_PRICE);
+  if(S.day>=7&&S.day<=10)h+=btn("mkDad",IMG.med.antiradin,`«АНТИРАДИН» В РЮКЗАК · <b>${DAD_PRICE} ТР</b> (в рюкзаке ${S.bag.antiradin||0})`,IMG.ic.tp,PM()<DAD_PRICE);
   for(const k in S.bag)if(S.bag[k]>0&&MEDS[k]&&!MEDS[k].fake)h+=btn("mkB_"+k,IMG.med[k],`ПРОДАТЬ ИЗ РЮКЗАКА: «${MEDS[k].n.toUpperCase()}» ×${S.bag[k]} · <b>+${bagPrice(k)} ТР</b>`,IMG.ic.tp)}
  if(sem&&S.day!==11)h+=btn("mkAB",IMG.med.antibiotic,`«АНТИБИОТИКИ» НА ПОЛКУ · <b>${AB_PRICE} ТР</b>`,IMG.ic.tp,PM()<AB_PRICE);
  if(S.day>=5)h+=btn("mkStamp",IMG.ic.blank,`ШТАМП ПРОПИСКИ · <b>150 ТР</b> (у вас ${S.items.pstamp||0})`,IMG.ic.tp,PM()<150);
@@ -1865,6 +1892,9 @@ function drawTerm(){document.querySelectorAll("#tabs button").forEach(b=>b.class
   {const su=shortUnits(),ov=openViol().length;if(su||ov)h+=`<div class="neg">Недостач: ${su} шт. · открытых нарушений: ${ov} — до ближайшей ревизии</div>`}
   if(S.day===8&&S.flags.dad==="promise"){const has=S.bag.antiradin>0||S.bag.antiradinM>0;h+=`<div class="${has?"":"neg"}">Обещано маме: «Антирадин» или «Антирадин-М» в рюкзаке к сдаче смены — ${has?"ЕСТЬ":"НЕТ"}</div>`}
   if(S.day===11&&S.flags.food==="promise")h+=`<div class="${PM()>=500?"":"neg"}">Обещано Оле: 500 ТР на продукты — ${PM()>=500?"хватает, спишутся при сдаче смены":"НЕ ХВАТАЕТ "+(500-PM())+" ТР"}</div>`;
+  if(!OLD){const c=homeCost(),need=c.food+c.heat+(S.day===11&&S.flags.food==="promise"?500:0),ok=S.pers>=need;
+   h+=`<div class="${ok?"":"neg"}">Семье на вечер: еда ${c.food} + дрова ${c.heat} ТР из личных — ${ok?"хватает":S.pers>=c.food?"хватит только на еду":"НЕ ХВАТАЕТ (отношения с Олей упадут)"}</div>`;
+   if(S.rad>=50)h+=`<div class="neg">ОБЛУЧЕНИЕ ${S.rad}%: примите «Антирадин» до конца смены (рюкзак → ВЫПИТЬ), иначе к утру — ${S.rad>=80?"СМЕРТЬ":"лучевая болезнь (80%)"}.</div>`}
   h+=`<div style="margin-top:.6em">&gt; ${S.day===12?"Снабжение восстановлено: конвои везут всё сами, заявки больше не нужны. Сдавайте смену.":noOrders()?"Поставки прекращены: заявки на склад не принимаются.":`Откройте вкладку ЗАКАЗЫ, чтобы закупить медикаменты на День ${S.day+1}.`}</div>`;b.innerHTML=h}
  else if(tab==="stk"){let h=`<div>&gt; ДВИЖЕНИЕ ПРЕПАРАТОВ ЗА ВСЮ СЛУЖБУ</div>`;
   for(const k in MEDS){if(MEDS[k].fake||(MEDS[k].nw&&S.day<7))continue;const L=S.led.filter(x=>x.drug===k),sum=ops=>L.filter(x=>ops.includes(x.op)).reduce((a,x)=>a+x.q,0),sh=S.doc[k]-S.stock[k];
@@ -1878,12 +1908,19 @@ function drawTerm(){document.querySelectorAll("#tabs button").forEach(b=>b.class
    if(q<0)return;if(d>0&&S.warnings>=3&&q>2){msg("Доступ к складу ограничен: не больше 2 упаковок на позицию.","bad");return}if(d>0&&ordTotal()+MEDS[k].p>S.tp){msg(OLD?"Не хватает талонов.":"В кассе не хватает денег на эту заявку.","bad");return}R.orders[k]=q;A.key();const sc=b.scrollTop;drawTerm();b.scrollTop=sc}))}
  {const cz=$("tChizh"),need=S.day===6&&S.flags.chizhov==="later"&&!S.flags.sonSaved;cz.style.display=need?"":"none";if(need){cz.textContent="КОНВЕРТ ЧИЖОВУ · 500 ТР";cz.disabled=(OLD?S.tp-ordTotal():S.pers)<500}}
  const t=ordTotal();$("tsum").textContent=OLD?`Заказ: ${t} ТР · останется: ${S.tp-t} ТР`:`Заказ из кассы: ${t} ТР · в кассе останется: ${S.tp+S.desk-t} ТР`}
+/* every evening the family needs food and fuel: paid from Pavel's own money, never from the cash box */
+const homeCost=()=>({food:S.day>=10?50:S.day>=7?40:30,heat:20});
+function homeBudget(){if(OLD||S.flags["home"+S.day])return;S.flags["home"+S.day]=1;const c=homeCost(),miss=[];
+ if(S.pers>=c.food)logTP("Семье: еда на день",-c.food);else miss.push("еду");
+ if(S.pers>=c.heat)logTP("Семье: дрова и керосин",-c.heat);else miss.push("дрова");
+ if(miss.length){S.flags.hungry=(S.flags.hungry||0)+miss.length;olya(-4*miss.length);S.log.push({t:"Дома сегодня не хватило на "+miss.join(" и "),v:0,w:"p"})}}
 function endShift(){if(R.phase!=="endshift"||!R.closed)return;const t=ordTotal();sweepDesk("Деньги со стола убраны в кассу на ночь");
  if(S.day===6&&S.flags.son==="promise"&&!S.flags.sonDone){S.flags.sonDone=1;if(S.flags.sonSaved)olya(40);else{S.olya=0;S.flags.son="betrayed"}}
  if(S.dirty){S.dirty=false;addRad(5);logTP("Лоток не обработан антисептиком",-50)}
  if(S.day===8&&!S.flags.dadDone){S.flags.dadDone=1;const k=S.bag.antiradin>0?"antiradin":S.bag.antiradinM>0?"antiradinM":null;
   if(S.flags.dad==="promise"&&k){S.bag[k]--;S.flags.dad="saved";S.flags.dadMed=k}else S.flags.dad=S.flags.dad==="promise"?"broken":"dead"}
  if(S.day===11&&!S.flags.foodDone){S.flags.foodDone=1;if(S.flags.food==="promise"&&(OLD?S.tp-t:S.pers)>=500){logTP("Продуктовый набор для семьи (Оля)",-500);S.flags.family11="fed";olya(30)}else{S.flags.family11="ill";if(S.flags.food==="promise")olya(-20)}}
+ homeBudget();
  if(t>0){for(const k in R.orders)if(R.orders[k])move(k,R.orders[k],"in","заявка");logK(`Закупка медикаментов на День ${S.day+1}`,-t)}
  S.orders=R.orders;A.ok();nextStage()}
 function reportHTML(){const op=shortUnits(),ov=openViol().length,given=S.log.filter(l=>l.t.startsWith("Выдача:")).length;
@@ -1901,6 +1938,17 @@ function showDone(){R.phase="done";clearTimeout(toastT);$("toast").className="";
  if(!more)h+=`<div class="rp-next">Продолжение следует: День ${S.day+1} — в разработке. Ваши решения сохранены.</div>`;
  $("dTitle").textContent=`ДЕНЬ ${S.day} ЗАВЕРШЁН`;$("doneBox").innerHTML=h;$("dNext").style.display=more?"":"none";$("dNext").textContent=S.day===12?"УТРО 22 МАРТА · ФИНАЛ":`НАЧАТЬ ДЕНЬ ${S.day+1}`;openM("done");refresh()}
 
+/* ================= WEATHER: gusts behind the bars, brown-outs when the storm hits the power line ================= */
+const STORM={3:2,7:2,10:3,11:2,2:1,5:1,8:1,9:1,6:1,4:1,1:1,12:0,13:0};
+let wxT=null;
+function weatherTick(){const sc=$("scene");if(!S||!$("game").classList.contains("on")||R.phase==="menu"||R.phase==="ending")return;
+ const lvl=STORM[S.day]||0;sc.classList.toggle("calm",lvl===0);if(!lvl||R.modal)return;
+ if(Math.random()<.16+.1*lvl&&!sc.classList.contains("gust")){sc.classList.add("gust");if(A.ctx){A.noise(2.6,.05+.03*lvl,"bandpass",420,0,1.2,900);A.noise(1.8,.03,"highpass",2400,.5)}
+  setTimeout(()=>sc.classList.remove("gust"),2600+600*lvl);
+  if(Math.random()<.14+.13*lvl&&!sc.classList.contains("dark")){setTimeout(()=>{if(!S||R.modal)return;sc.classList.add("brown");if(A.ctx){A.genOn(false);A.tone(96,.5,"sawtooth",.05,0,38);A.tone(60,.12,"square",.05,.55);setTimeout(()=>{if(S&&R.phase!=="menu")A.genOn(true)},1300)}
+   if(!S.flags.brownTold){S.flags.brownTold=1;msg("Порыв ветра рвёт провода: свет мигает. В бурю линия едва держится.")}
+   setTimeout(()=>sc.classList.remove("brown"),1550)},700)}}}
+function weatherOn(){if(!wxT)wxT=setInterval(weatherTick,4000)}
 /* ================= NEWSPAPER: every second morning, built from the player's own decisions ================= */
 const PAPER_DAYS=[3,5,7,9,11];
 function afterOpen(){if(!OLD&&PAPER_DAYS.includes(S.day)&&stage()==="morning"&&!S.flags["np"+S.day]){R.phase="paper";A.paper();say("","Мальчишка-разносчик просовывает в лоток свежий номер «Вестника Сектора-86».");refresh();return}nextStage()}
@@ -2117,7 +2165,7 @@ function wire(){
 function newGame(){A.init();goFull();S=newState();startCheckpoint(0)}
 
 A.load();buildScene();wire();fit();menuRefresh();
-window.__G={endingKind,newsFor,presetState,cashShort,OLD,NEWST,get AU(){return AU},endingParts,NAR,get S(){return S},R,A,startCheckpoint,startDay,CL,readSave,K_AUTO,K_MAN,DAYS,MEDS,move,shortages,addItem};
+window.__G={weatherTick,homeCost,endingKind,newsFor,presetState,cashShort,OLD,NEWST,get AU(){return AU},endingParts,NAR,get S(){return S},R,A,startCheckpoint,startDay,CL,readSave,K_AUTO,K_MAN,DAYS,MEDS,move,shortages,addItem};
 </script>
 </body>
 </html>

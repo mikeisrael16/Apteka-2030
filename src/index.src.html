@@ -98,6 +98,22 @@ img{display:block;-webkit-user-drag:none;pointer-events:none}
 @keyframes ring{0%,100%{transform:rotate(-2.2deg) translate(-.6%,0)}50%{transform:rotate(2.2deg) translate(.6%,-.8%)}}
 #deskItem{position:absolute;z-index:4;display:none;background:center/contain no-repeat;touch-action:none;cursor:grab;filter:drop-shadow(0 .4em .3em #000a)}
 #deskItem.on{display:block}
+#kassa{position:absolute;z-index:3;background:none;border:0;padding:0;border-radius:.6em}
+#cashd{position:absolute;z-index:6;display:none;touch-action:none;cursor:grab;filter:drop-shadow(0 .35em .3em #000b);animation:cashp 1.3s ease-in-out infinite}
+#cashd.on{display:block}#cashd.drag{animation:none;z-index:30}#cashd img{width:100%;display:block;pointer-events:none}
+#cashd b{position:absolute;left:50%;bottom:-.45em;transform:translateX(-50%);font-family:"Handjet","Pix",monospace;font-weight:700;font-size:1.9em;line-height:1;color:#ffd24a;background:#000d;padding:.05em .35em;border-radius:.25em;white-space:nowrap;pointer-events:none}
+@keyframes cashp{0%,100%{filter:drop-shadow(0 .35em .3em #000b)}50%{filter:drop-shadow(0 0 .5em #ffd24acc)}}
+#bagN{position:absolute;left:50%;bottom:-1em;transform:translateX(-50%);font-family:"Handjet","Pix",monospace;font-weight:700;font-size:1.2em;line-height:1;color:#ffd24a;background:#000c;padding:.05em .3em;border-radius:.25em;white-space:nowrap;pointer-events:none}
+#bagN:empty{display:none}
+#s_tray.npaper:before{content:"";position:absolute;left:14%;right:14%;top:22%;bottom:14%;background:url(%%paper.webp%%) center/contain no-repeat;filter:drop-shadow(0 .2em .3em #000a)}
+#checks{flex-wrap:wrap}#checks span{flex:1 0 30%}
+#news{background:#070a0bf2}#newsP{width:100%;max-height:78%;overflow-y:auto;background:#cdc5ae;background-image:radial-gradient(#0000000d 1px,#0000 1px);background-size:5px 5px;color:#1d1a15;padding:.9em 1em 1.1em;border:.15em solid #57503f;box-shadow:0 .5em 1.4em #000,inset 0 0 3em #5c4e2e44;font-family:"Fira","Trebuchet MS",sans-serif;font-size:1.22em;line-height:1.35}
+#npHead{font-family:"Handjet","Pix",monospace;font-weight:700;font-size:2.7em;line-height:.95;text-align:center;letter-spacing:.04em;border-bottom:.09em double #1d1a15;padding-bottom:.12em}
+#npSub{display:flex;justify-content:space-between;font-size:.82em;border-bottom:.06em solid #1d1a15;padding:.2em 0;margin-bottom:.5em;text-transform:uppercase}
+#npBody h3{font-family:"Handjet","Pix",monospace;font-weight:700;font-size:1.75em;line-height:1;margin:.1em 0 .25em;text-transform:uppercase}
+#npBody h5{font-family:"Handjet","Pix",monospace;font-weight:700;font-size:1.25em;line-height:1.05;margin:.6em 0 .12em;text-transform:uppercase;border-top:.05em solid #1d1a1588;padding-top:.35em}
+#npBody p{margin:0 0 .3em;color:#1d1a15;text-align:left;font-size:1em;line-height:1.35}#npBody .box{border:.12em solid #1d1a15;padding:.35em .5em;margin-top:.7em;font-size:.95em}#npBody .box b{font-family:"Handjet","Pix",monospace;font-size:1.25em;letter-spacing:.04em}
+#slots{background:#070a0bf5;z-index:50}#slotList{width:100%;display:flex;flex-direction:column;gap:.15em;max-height:74%;font-size:.86em;overflow-y:auto}#slotList .slh{font-family:"Handjet","Pix",monospace;font-size:1.5em;color:#e2b040;text-align:center;margin-top:.5em}
 #box{position:absolute;z-index:3;display:none;flex-direction:column;justify-content:space-between;align-items:center;background:linear-gradient(#8f6e45,#5b4326);border:.3em solid #2a1c0f;box-shadow:inset 0 0 0 .2em #b08d5c,inset 0 2.2em 0 #6f5433,0 .6em .7em #000b;color:#1b1107;font-family:"Handjet",monospace;font-weight:700;text-align:center;padding:.2em}#box.on{display:flex}#box b{font-size:1.2em;letter-spacing:.04em}#box span{font-size:1.25em}
 #deskItem.drag{z-index:60;filter:drop-shadow(0 1em .6em #000c) brightness(1.1);animation:none}
 @keyframes pulse{50%{opacity:.4}}
@@ -376,6 +392,7 @@ body{font-weight:700}
     <div id="endBtns"><button class="btn" id="endAgain">🔊 ЗАНОВО</button><button class="btn" id="endSkip">ВЕСЬ ТЕКСТ</button><button class="btn green" id="endMenu">В ГЛАВНОЕ МЕНЮ</button></div>
   </div>
   <div id="menu" class="screen on">
+    <div class="modal center" id="slots"><h2>ЗАГРУЗИТЬ</h2><div id="slotList"></div><button class="btn" id="slClose">НАЗАД</button></div>
     <div id="menuArt"><img src="%%title_top.jpg%%" alt="">
       <button class="mbtn primary" id="mNew" style="top:73.05%">НОВАЯ ИГРА</button>
       <button class="mbtn" id="mCont" style="top:81.35%">ПРОДОЛЖИТЬ<small></small></button>
@@ -407,10 +424,12 @@ body{font-weight:700}
       <img id="ringImg" src="%%phone.webp%%" alt="">
       <img id="offImg" src="%%offhook.jpg%%" alt="">
       <div id="lever"></div>
-      <button id="bag" aria-label="Рюкзак"><img src="%%bag.webp%%" alt=""></button>
+      <button id="bag" aria-label="Рюкзак"><img src="%%bag.webp%%" alt=""><span id="bagN"></span></button>
       <button id="bQuar" aria-label="Карантин"><img src="%%quar.webp%%" alt="КАРАНТИН"></button>
       <div id="box"><b>СНАБЖЕНИЕ · РЕЗЕРВ СТАВКИ</b><span id="boxN"></span></div>
       <div id="deskItem"></div>
+      <button id="kassa" aria-label="Касса"></button>
+      <div id="cashd"><img src="%%money.webp%%" alt=""><b id="cashN"></b></div>
       <div id="gauge"><div class="sc"><img src="%%scale.webp%%" alt=""><i class="ptr"></i></div><b>0 мкР/ч</b></div>
       <div id="vig"></div>
     </div>
@@ -441,12 +460,13 @@ body{font-weight:700}
           Больной: <span class="fld" data-f="tName" id="tName"></span><br>
           Назначение: <span class="fld" data-f="tDrug" id="tDrug"></span><br>
           Врач: <span class="fld" data-f="tDoc" id="tDoc"></span><br>
+          К оплате: <span class="fld" data-f="tPay" id="tPay"></span><br>
           <span id="tExtraW"><span class="fld" data-f="tExtra" id="tExtra"></span><br></span>
           <div id="seal">ВОЕНКОМАТ<br>★<br>СЕКТОР-86</div>
           <div id="imprint"></div>
         </div>
       </div>
-      <div id="checks"><span data-c="name">ФИО —</span><span data-c="drug">ПРЕПАРАТ —</span><span data-c="doctor">ВРАЧ —</span><span data-c="seal">ПЕЧАТЬ —</span><span data-c="reg">ПЕРЕПИСЬ —</span></div>
+      <div id="checks"><span data-c="name">ФИО —</span><span data-c="drug">ПРЕПАРАТ —</span><span data-c="doctor">ВРАЧ —</span><span data-c="seal">ПЕЧАТЬ —</span><span data-c="reg">ПЕРЕПИСЬ —</span><span data-c="pay">ОПЛАТА —</span></div>
       <div id="imsg"></div>
       <div id="tools">
         <button class="tool" id="tLamp"><img src="%%lamp.webp%%" alt=""><span>ЛАМПА</span></button>
@@ -502,6 +522,10 @@ body{font-weight:700}
     </div>
 
     <!-- letter from Оля -->
+    <div class="modal center" id="news" style="z-index:31">
+      <div id="newsP"><div id="npHead">ВЕСТНИК СЕКТОРА-86</div><div id="npSub"><span id="npNo"></span><span id="npDate"></span></div><div id="npBody"></div></div>
+      <button class="btn" id="newsClose">ОТЛОЖИТЬ ГАЗЕТУ</button>
+    </div>
     <div class="modal center" id="letter" style="z-index:30">
       <div class="paper ltr"><h4 id="lhead">ПИСЬМО ОТ ОЛИ</h4><div id="ltxt"></div></div>
       <button class="btn" id="lClose">СЛОЖИТЬ ПИСЬМО</button>
@@ -827,8 +851,35 @@ function regProblem(d){if(d.special||!d.full)return"";if(d.noPass)return"пас�
  if(r.born!==d.born)q.push(`год рождения: в паспорте ${d.born}, в переписи ${r.born}`);
  if(r.addr!==d.addr)q.push(`прописка: в паспорте «${d.addr}»${ADDR_NOTE[d.addr]?" ("+ADDR_NOTE[d.addr]+")":""}, в переписи «${r.addr}»`);return q.join("; ")}
 const isFake=n=>!!(n.fake||(S.day>=5&&regProblem(n)));
-const KLAB=k=>k==="short"?"SHORT":k==="seen"?"SEEN":k==="fake"?"FAKE_PASSPORT":"BAD";
+const KLAB=k=>k==="cash"?"CASH":k==="short"?"SHORT":k==="seen"?"SEEN":k==="fake"?"FAKE_PASSPORT":"BAD";
 const whitePrice=()=>S.flags.anna==="saved"?250:350;
+const OLD=!!window.__COMPAT;
+Object.assign(CL.serafim,{noMoney:true,noMoneyMsg:"Денег у старика нет — предлагает серебряный крест."});
+Object.assign(CL.varvara,{noMoney:true,noMoneyMsg:"Денег у травницы нет — предлагает корзину трав."});
+Object.assign(CL.alena,{noMoney:true,noMoneyMsg:"У девочки ни талона за душой — только штабная сводка."});
+Object.assign(CL.larisa,{noMoney:true,noMoneyMsg:"Денег нет — предлагает золотой медальон."});
+Object.assign(CL.annav,{noMoney:true,noMoneyMsg:"У приюта денег нет — только игрушки для вашей дочери."});
+/* clean papers, empty pockets: nothing to check but one's own conscience */
+CL.vera2={img:"vera",h:CL.vera.h,pitch:CL.vera.pitch,name:"Вера Лебедева",full:"Лебедева Вера Олеговна",short:"Лебедева В.О.",born:"2005",addr:"общежитие консервного завода",no:"№ 05-0417",drugs:["antibiotic"],drug:"antibiotic",doctor:"Петрова Н.К.",seal:true,rad:20,pay:0,noMoney:true,
+ noMoneyMsg:"Вера выворачивает пустые карманы: на заводе второй месяц не платят.",
+ line:"Здравствуйте... Это снова я, Вера Лебедева, с консервного. Теперь слёг братишка, Митя: жар третий день, хрипит. Талон настоящий, сегодняшний — я в поликлинике шесть часов отстояла. Только... на заводе второй месяц не платят, а последнее ушло на дрова. Мне нечем заплатить. Совсем. Дайте «Антибиотики» в долг — я отдам, честное слово.",
+ quote:"Дайте «Антибиотики» в долг",
+ giveLine:"Вера прижимает упаковку к груди. — Я отдам. Как только заплатят — сразу отдам... — Лоток остаётся пустым.",
+ refuseLine:"Я понимаю... Бесплатно сейчас никто никому. — Вера убирает талон и уходит, не поднимая глаз."};
+CL.zahar2={img:"zahar",h:1,pitch:125,name:"Захар «Могильщик»",full:"Лютый Захар Васильевич",short:"Лютый З.В.",born:"1979",addr:"Барак спецработ №2",no:"№ 09-0808",drugs:["painkiller","bandage"],doctor:"Петрова Н.К.",seal:true,rad:35,pay:0,noMoney:true,
+ noMoneyMsg:"Захар показывает пачку расписок: бригаде третью неделю платят спиртом и бумажками.",
+ line:"Аптекарь, снова я, Лютый. Напарника моего, Кольку, мёрзлым пластом в траншее придавило — ногу раздробило. Фельдшер талон выписал на «Обезболивающее» и бинты, всё чин по чину. А платить нечем: похоронной бригаде третью неделю вместо денег выдают спирт да расписки. Выручи — отдам, как рассчитают.",
+ quote:"Талон на «Обезболивающее» и бинты, а платить нечем",
+ giveLine:"Захар сгребает упаковки огромной ладонью. — Не забуду, аптекарь. Могильщики долгов не прощают — и своих не забывают. — В лотке пусто.",
+ refuseLine:"Ясно. За деньги, значит, жизнь, а без денег — ко мне в траншею. — Захар уходит, не оборачиваясь."};
+CL.nina2={img:"nina",h:.9,pitch:330,name:"Нина Павловна",full:"Кузнецова Нина Павловна",short:"Кузнецова Н.П.",born:"1972",addr:"ул. Швейная, д. 5",no:"№ 11-0955",drugs:["gem"],drug:"gem",doctor:"Петрова Н.К.",seal:true,rad:20,pay:0,noMoney:true,
+ noMoneyMsg:"У швеи пустой кошелёк: цех закрыли, расчёта не дали.",
+ line:"Павел, это Нина Павловна, швея... Без ампул я за машинкой падаю. Врач выписал новый талон на «Гемоглобин-С» — настоящий, сегодняшний, проверьте. Только цех после налёта закрыли и не заплатили нам ни талона. Я видела, какие господа сегодня к вам ходят и сколько суют в лоток... Мне сунуть нечего. Совсем.",
+ quote:"Талон на «Гемоглобин-С» — а заплатить мне нечем",
+ giveLine:"Нина Павловна берёт ампулы обеими руками, как хлеб. — Господа платят, а вы — даёте. Я это запомню, Павел. — В лотке пусто.",
+ refuseLine:"Да... Сегодня ампула стоит триста, я понимаю. — Нина Павловна тихо уходит, держась за стену."};
+function addStage(d,key,label,time){const D=DAYS[d],i=D.stages.findIndex(x=>x==="n:voron"||x==="n:gromov"||x==="end");D.stages.splice(i,0,"n:"+key);D.times.splice(i,0,time);D.labels.splice(i,0,label);return i}
+const NEWST={};if(!OLD){NEWST[5]=addStage(5,"vera2","Вера Лебедева","17:00");NEWST[9]=addStage(9,"zahar2","Захар «Могильщик»","17:10");NEWST[11]=addStage(11,"nina2","Нина Павловна","16:40")}
 const LAST_DAY=13;
 const ITEMS={
  blank:{n:"Пустой бланк",img:"%%ic_blank.png%%",src:"Ворон",desc:"Чистый талон с печатью живого врача.",use:"На ревизии: фиктивная выдача — скрывает одну недостачу конкретного препарата. Печать, дозиметрию и то, что видел патруль, не скрывает."},
@@ -877,7 +928,9 @@ function normalize(s){if(!s.lay){if(s.day===3&&s.cp>=6)s.cp++;s.lay=2}
  if(!s.doc){s.doc=Object.assign({},s.stock);s.led=[];s.viol=[];
   (s.issues||[]).forEach((i,n)=>{if(i.fixed)return;if(i.k==="short"&&i.drug)s.doc[i.drug]=(s.doc[i.drug]||0)+1;else s.viol.push({id:"m"+n,k:i.k==="seen"?"seen":"bad",t:i.t,why:"",day:s.day||1,status:"open"})});
   s.issues=[];if(s.olya==null)s.olya=(s.flags&&s.flags.familyStrain)?35:60;if(s.susp==null)s.susp=0}s.day=s.day||1;s.bag=s.bag||{};s.issues=s.issues||[];s.items=s.items||{};s.warnings=s.warnings||0;s.lies=s.lies||0;s.flags=s.flags||{};
- if(s.dayStart==null)s.dayStart=200;if(!DAYS[s.day]||s.cp>=DAYS[s.day].stages.length)return null;return fillStock(s)}
+ if(s.dayStart==null)s.dayStart=200;if(s.pers==null){s.pers=0;s.desk=0;s.kdoc=s.tp}
+ if((s.lay||0)<3){if(NEWST[s.day]!=null&&s.cp>=NEWST[s.day])s.cp++;s.lay=3}
+ if(!DAYS[s.day]||s.cp>=DAYS[s.day].stages.length)return null;return fillStock(s)}
 function readSave(k){try{const s=JSON.parse(store.get(k));if(s&&s.v===1&&typeof s.cp==="number"&&s.stock)return normalize(s)}catch(e){}return null}
 
 /* ================= AUDIO ================= */
@@ -912,6 +965,16 @@ const A={ctx:null,set:{music:true,sfx:true},ringT:null,musT:null,
   }catch(e){this.ctx=null}
  },
  applySet(){if(!this.ctx)return;const t=this.ctx.currentTime;this.mus.gain.setTargetAtTime(this.set.music?.55:0,t,.1);this.sfx.gain.setTargetAtTime(this.set.sfx?1:0,t,.05)},
+ /* audit: the usual tune is ducked, a heartbeat with a low drone and a falling motif takes over */
+ tense(v){v=!!v;if(!this.ctx||v===!!this.tT)return;const c=this.ctx;
+  if(!v){clearInterval(this.tT);this.tT=null;this.mus.gain.setTargetAtTime(this.set.music?.55:0,c.currentTime,.5);return}
+  if(!this.tbus){this.tbus=c.createGain();this.tbus.gain.value=.9;this.tbus.connect(this.master)}
+  let n=0;const B=this.tbus,beat=()=>{if(!this.ctx||!this.set.music)return;
+   this.tone(55,1.0,"sawtooth",.07,0,51,B);this.tone(41.2,1.0,"triangle",.16,0,0,B);
+   this.tone(120,.13,"sine",.30,0,48,B);this.tone(105,.13,"sine",.22,.2,45,B);
+   if(n%2===1)this.tone([311.1,293.7,277.2,261.6][(n>>1)%4],.55,"square",.03,.45,0,B);
+   if(n%4===3){this.tone(622.3,.07,"square",.025,.68,0,B);this.tone(587.3,.07,"square",.025,.78,0,B)}n++};
+  this.mus.gain.setTargetAtTime(0,c.currentTime,.3);beat();this.tT=setInterval(beat,900)},
  genOn(v){if(this.ctx)this.gen.gain.setTargetAtTime(v?.05:0,this.ctx.currentTime,.6)},
  tone(f,dur,type,vol,when,to,bus){const c=this.ctx;if(!c)return;const t=c.currentTime+(when||0);const o=c.createOscillator(),g=c.createGain();o.type=type||"sine";
   o.frequency.setValueAtTime(f,t);if(to)o.frequency.exponentialRampToValueAtTime(to,t+dur);
@@ -970,7 +1033,7 @@ let S=null;            // persisted state
 let snap=null;         // JSON of S at last checkpoint (what gets saved)
 let runTok=0;
 const R={phase:"menu",lev:0,closed:false,c:null,hand:null,tool:null,sel:null,probe:false,probeAcc:0,wait:null,typing:null,modal:null,orders:{},nextKey:null,pocket:null,onCall:false,callKey:null,mk:null};
-function newState(){return fillStock({v:1,lay:2,day:1,cp:0,tp:200,dayStart:200,cash:0,rad:0,journal:0,dirty:false,mistakes:0,warnings:0,lies:0,susp:0,olya:60,flags:{},log:[],pending:[],issues:[],items:{},bag:{},led:[],viol:[],doc:Object.assign({},INIT_STOCK),stock:Object.assign({},INIT_STOCK)})}
+function newState(){return fillStock({v:1,lay:3,day:1,cp:0,tp:200,kdoc:200,pers:0,desk:0,dayStart:200,cash:0,rad:0,journal:0,dirty:false,mistakes:0,warnings:0,lies:0,susp:0,olya:60,flags:{},log:[],pending:[],issues:[],items:{},bag:{},led:[],viol:[],doc:Object.assign({},INIT_STOCK),stock:Object.assign({},INIT_STOCK)})}
 /* ================= LEDGER: every unit of medicine moves through move() =================
    p = physical change on the shelf, d = change in what the documents say should be there.
    A shortage is never written by hand: it is the gap between documents and the shelf. */
@@ -990,7 +1053,28 @@ function addItem(k,n){S.items[k]=(S.items[k]||0)+(n||1)}
 function useItem(k){if(!(S.items[k]>0))return false;S.items[k]--;return true}
 function olya(d){S.olya=Math.max(0,Math.min(100,(S.olya==null?60:S.olya)+d))}
 function later(ms,fn){const tok=runTok;setTimeout(()=>{if(tok===runTok)fn()},ms)}
-function logTP(t,v){S.log.push({t,v});S.tp+=v;hud()}
+/* MONEY. S.tp = cash box of the pharmacy (state money, shown in the HUD); S.kdoc = what the journal says must be in the box;
+   S.pers = Pavel's own money (backpack); S.desk = banknotes lying on the desk, waiting to be put somewhere.
+   OLD = legacy single-wallet mode, used only by the old regression tests. */
+const PM=()=>OLD?S.tp:S.pers;
+function logTP(t,v){S.log.push({t,v,w:"p"});if(OLD){S.tp+=v;S.kdoc+=v}else S.pers+=v;hud()}
+function logK(t,v){S.log.push({t,v,w:"k"});S.tp+=v;S.kdoc+=v;hud()}
+function deskPay(t,v,due){due=due||0;if(OLD){S.log.push({t,v});S.tp+=v;S.kdoc+=v;hud();return}
+ S.kdoc+=due;S.log.push({t,v,w:"d"});S.desk+=v;
+ if(S.day===1&&!S.flags.cashTut){S.flags.cashTut=1;later(900,()=>msg("Клиент заплатил — деньги лежат на столе. Перетащите их в КАССУ (железный ящик слева). Можно и в рюкзак — но Громов сверяет кассу с журналом."))}
+ hud()}
+const dueOf=n=>n.noMoney?(n.due||drugsOf(n).reduce((a,k)=>a+MEDS[k].p,0)):(n.pay||0);
+const cashShort=()=>OLD||!S?0:Math.max(0,S.kdoc-S.tp);
+const moneyOK=()=>!!S&&!R.modal&&!(R.c&&!R.c.done&&/^gromov/.test(R.c.key))&&!["menu","done","ending","audit","auditm","paper"].includes(R.phase);
+function sweepDesk(t){if(OLD||!S.desk)return;const v=S.desk;S.desk=0;S.tp+=v;S.log.push({t,v,w:"k",mv:1})}
+function deskTo(where){if(!S||!S.desk)return;const v=S.desk;S.desk=0;A.coin();
+ if(where==="k"){S.tp+=v;S.log.push({t:"Внесено в кассу со стола",v,w:"k",mv:1});const cs=cashShort();msg(`${v} ТР — в кассе.`+(cs?` По журналу не хватает ещё ${cs} ТР.`:" Касса сходится с журналом."),"good")}
+ else{S.pers+=v;S.log.push({t:"Убрано со стола в рюкзак",v,w:"p",mv:1});const cs=cashShort();msg(`${v} ТР — в рюкзаке, это теперь ваши.`+(cs?` В кассе по журналу не хватает ${cs} ТР.`:""),cs?"bad":"good")}
+ refresh()}
+function takeCash(from){if(!S||OLD)return;if(from==="k"&&!moneyOK()){msg("Сейчас не до кассы.");return}
+ const v=Math.min(100,from==="k"?S.tp:S.pers);if(v<=0){msg(from==="k"?"Касса пуста.":"Личных денег нет.","bad");return}
+ if(from==="k")S.tp-=v;else S.pers-=v;S.desk+=v;A.pick();S.log.push({t:from==="k"?"Взято из кассы на стол":"Выложено из рюкзака на стол",v:-v,w:from==="k"?"k":"p",mv:1});
+ msg(from==="k"?`Из кассы взято ${v} ТР — они на столе. Перетащите в рюкзак (в долг у казны) или обратно в ящик.`:`${v} ТР из рюкзака — на столе. Перетащите в кассу (ящик слева).`);refresh()}
 const stage=()=>DAYS[S.day].stages[S.cp];
 const addRad=v=>{if(S.flags.lining&&v>=10)v-=5;S.rad=Math.min(100,S.rad+v)};
 const sanOrder=d=>S&&S.day>=4&&d.rad>=50&&d.rad<=150&&!d.san;
@@ -1016,7 +1100,7 @@ function layoutPanel(){const sc=$("scene"),p=$("panel");if(!sc.offsetHeight)retu
 function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id===id));if(id==="game")requestAnimationFrame(layoutPanel)}
 function openM(id){$(id).classList.add("on");R.modal=id}
 function closeM(id){$(id).classList.remove("on");if(R.modal===id)R.modal=null}
-function hud(){if(!S)return;$("hDay").textContent="ДЕНЬ "+String(S.day).padStart(2,"0");$("hTime").textContent=DAYS[S.day].times[S.cp]||"19:00";$("hTP").textContent=S.tp.toLocaleString("ru-RU").replace(/\s/g," ")+" ТР";
+function hud(){if(!S)return;$("hDay").textContent="ДЕНЬ "+String(S.day).padStart(2,"0");$("hTime").textContent=DAYS[S.day].times[S.cp]||"19:00";$("hTP").textContent=S.tp.toLocaleString("ru-RU").replace(/\s/g," ")+" ТР";{const bn=$("bagN");if(bn)bn.textContent=OLD?"":S.pers+" ТР"}
  const r=Math.min(100,S.rad);$("radbar").firstElementChild.style.width=r+"%";$("radbar").lastElementChild.textContent="ОБЛУЧЕНИЕ "+r+"%"+(S.warnings?` · ПРЕДУПРЕЖДЕНИЕ ${S.warnings}/4`:"")}
 let toastT=0;
 function msg(text,kind){const m=$("imsg");m.textContent=text;m.className=kind||"";
@@ -1038,7 +1122,7 @@ const px=x=>(x/1438*100)+"%",py=y=>((y-250)/2000*100)+"%";
 function rect(el,x0,y0,x1,y1){el.style.left=px(x0);el.style.top=py(y0);el.style.width=px(x1-x0);el.style.height=((y1-y0)/2000*100)+"%"}
 const SPOTS={phone:[340,1310,740,1690],monitor:[900,1190,1420,1640],doc:[515,1790,900,2105],stampd:[895,1790,1030,1930],dosi:[1010,1880,1250,2130],journal:[1245,1870,1438,2140],
  book:[0,1840,480,2140],lampd:[755,1460,885,1690],shelfR:[1110,460,1438,1180],shelfL:[0,480,225,1480],tray:[552,962,848,1175]};
-function buildScene(){const sc=$("scene");rect($("win"),370,448,1008,1175);rect($("lever"),203,470,333,1025);rect($("deskItem"),130,1600,430,1850);rect($("bQuar"),18,2035,248,2215);rect($("offImg"),280,1190,960,1800);
+function buildScene(){const sc=$("scene");rect($("win"),370,448,1008,1175);rect($("lever"),203,470,333,1025);rect($("deskItem"),130,1600,430,1850);rect($("kassa"),23,1419,521,1764);rect($("cashd"),470,1632,705,1800);rect($("bQuar"),18,2035,248,2215);rect($("offImg"),280,1190,960,1800);
  const ri=$("ringImg");ri.style.left=px(262);ri.style.top=py(1232);ri.style.width=px(545);
  for(const k in SPOTS){const d=document.createElement("div");d.className="spot";d.id="s_"+k;rect(d,...SPOTS[k]);sc.insertBefore(d,$("gauge"));d.addEventListener("click",()=>onSpot(k))}
  const g=$("shelf").querySelector(".grid");for(const k in MEDS){const b=document.createElement("button");b.className="item";b.dataset.m=k;b.innerHTML=`<i></i><img src="${IMG.med[k]}" alt=""><span>${MEDS[k].n}</span>`;b.addEventListener("click",()=>takeMed(k));g.appendChild(b)}
@@ -1056,7 +1140,8 @@ function hintData(){
  switch(R.phase){
   case"ring":return{t:"Нажмите на трубку телефона, чтобы ответить.",h:["s_phone"]};
   case"lever":return{t:"Рычаг слева от окна: проведите по нему пальцем ВНИЗ (к «ОТКР»), чтобы поднять бронеставни.",h:["lever"]};
-  case"between":return S.dirty?wipe():{t:"Когда будете готовы — нажмите «СЛЕДУЮЩИЙ».",h:["bNext"]};
+  case"paper":return{t:"Свежая газета в лотке окна — нажмите, чтобы прочитать новости Сектора.",h:["s_tray"]};
+  case"between":return S.desk>0&&S.day<=2&&!OLD?{t:"Деньги клиента лежат на столе. Перетащите их в КАССУ — железный ящик слева (по закону) — или в рюкзак (себе, мимо кассы). Капитан Громов сверяет кассу с журналом.",h:["cashd","kassa"]}:S.dirty?wipe():{t:"Когда будете готовы — нажмите «СЛЕДУЮЩИЙ».",h:["bNext"]};
   case"audit":return{t:"Ревизия! Перетащите «Журнал учёта» со стола в окно выдачи.",h:["s_journal"]};
   case"letter":return{t:"Нажмите на письмо в лотке окна, чтобы прочитать.",h:["s_tray"]};
   case"delivery":return{t:"Приёмка товара: перетаскивайте упаковки из коробки на шкаф с медикаментами — справа от окна.",h:["deskItem","s_shelfR"]};
@@ -1066,18 +1151,19 @@ function hintData(){
   case"client":break;
   default:return null}
  if(!c||(c.def.special&&!c.offer))return null;
- const n=c.def,med=c.def.special?"":MEDS[drugsOf(n)[0]].n,ck=c.checks,all=ck.name&&ck.drug&&ck.doctor&&ck.seal;
+ const n=c.def,med=c.def.special?"":MEDS[drugsOf(n)[0]].n,ck=c.checks,all=ck.name&&ck.drug&&ck.doctor&&ck.seal&&(OLD||ck.pay);
  if(c.offer){
   if(c.offer.need.includes(R.hand))return shelf?null:{t:`Сделка: перетащите «${MEDS[R.hand].n}» со стола в окошко.`,h:["deskItem"]};
   return shelf?{t:`Возьмите ${drugNames(c.offer.need)}.`,h:[]}:{t:`Сделка: возьмите в шкафу ${drugNames(c.offer.need)} — без талона и штампа.`,h:["s_shelfR"]}}
  if(!c.tut)return S.day===1?{t:"ЭКЗАМЕН. Подсказки отключены. Действуйте сами: дозиметр, документы, лампа, решение.",exam:true,h:[]}:null;
  if(!c.docs)return{t:c.key==="petr"?`Запомните имя клиента (${n.name}) и препарат (${med}). Нажмите на лоток окна, чтобы забрать документы на стол.`:"Заберите документы из лотка окна.",h:["s_tray"]};
  if(!all){
-  if(!insp)return{t:"Документы на столе. Нажмите на них, чтобы начать проверку (4 точки сверки).",h:["s_doc"]};
-  if(!ck.name)return{t:"1/4 · ФИО: нажмите на имя в паспорте, затем на имя в талоне.",h:["pName","tName"]};
-  if(!ck.drug)return{t:"2/4 · Препарат: нажмите на «Назначение» в талоне, затем на слова клиента сверху.",h:["tDrug","quote"]};
-  if(!ck.doctor)return $("ref").classList.contains("on")?{t:`3/4 · Найдите в списке врача из талона: ${n.doctor}.`,h:[]}:{t:"3/4 · Врач: откройте «Справочник врачей» и найдите врача из талона.",h:["tRef"]};
-  return{t:"4/4 · Печать: перетащите Лампу на печать (или нажмите лампу, затем печать). Синий — подлинник, красный — фальшивка.",h:["tLamp","seal"]}}
+  if(!insp)return{t:`Документы на столе. Нажмите на них, чтобы начать проверку (${OLD?4:5} точек сверки).`,h:["s_doc"]};
+  if(!ck.name)return{t:"ФИО: нажмите на имя в паспорте, затем на имя в талоне.",h:["pName","tName"]};
+  if(!ck.drug)return{t:"Препарат: нажмите на «Назначение» в талоне, затем на слова клиента сверху.",h:["tDrug","quote"]};
+  if(!ck.doctor)return $("ref").classList.contains("on")?{t:`Найдите в списке врача из талона: ${n.doctor}.`,h:[]}:{t:"Врач: откройте «Справочник врачей» и найдите врача из талона.",h:["tRef"]};
+  if(!ck.seal)return{t:"Печать: перетащите Лампу на печать (или нажмите лампу, затем печать). Синий — подлинник, красный — фальшивка.",h:["tLamp","seal"]};
+  return{t:"Оплата: нажмите на строку «К оплате» в талоне — клиент покажет деньги. Нет денег — решать вам: отказать или выдать в убыток кассе.",h:["tPay"]}}
  if(c.key==="anna"&&c.dose==null){
   if(insp)return{t:"Бумаги в порядке. Вернитесь к окну — пора измерить фон.",h:["iClose"]};
   if(R.probe)return{t:"Проведите пальцем (щупом) вдоль окна выдачи — влево-вправо.",h:[]};
@@ -1107,13 +1193,14 @@ function refresh(){
  $("bNext").classList.toggle("on",R.phase==="between");
  {const bx=R.phase==="delivery"&&R.box;$("box").classList.toggle("on",!!bx);if(bx)$("boxN").textContent="осталось видов: "+R.box.length}
  $("choice").classList.toggle("on",R.phase==="bribe");
+ $("cashd").classList.toggle("on",S.desk>0);$("cashN").textContent=S.desk+" ТР";
  const di=$("deskItem");di.classList.toggle("on",!!R.hand);if(R.hand)di.style.backgroundImage=`url(${IMG.med[R.hand]})`;
  $("ringImg").classList.toggle("on",R.phase==="ring"&&!R.onCall);
  $("btns").style.display=(talking||R.phase==="bribe"||!(R.phase==="between"||R.phase==="pocket"))?"none":"flex";
- const tr=$("s_tray");tr.classList.toggle("dirty",S.dirty);tr.classList.toggle("letter",R.phase==="letter");tr.classList.toggle("docs",!!c&&!c.def.special&&!c.docs&&R.phase==="client");
+ const tr=$("s_tray");tr.classList.toggle("dirty",S.dirty);tr.classList.toggle("letter",R.phase==="letter");tr.classList.toggle("npaper",R.phase==="paper");tr.classList.toggle("docs",!!c&&!c.def.special&&!c.docs&&R.phase==="client");
  $("s_doc").classList.toggle("has",!!c&&c.docs&&!c.done);
  const g=$("gauge");g.classList.toggle("on",R.probe||(!!c&&c.dose!=null&&!c.done));
- if(c&&!c.def.special){for(const k of["name","drug","doctor","seal","reg"]){const e=document.querySelector(`#checks [data-c=${k}]`);const lab={name:"ФИО",drug:"ПРЕПАРАТ",doctor:"ВРАЧ",seal:"ПЕЧАТЬ",reg:"ПЕРЕПИСЬ"}[k];e.className=c.checks[k]||"";e.textContent=lab+" "+(c.checks[k]==="ok"?"✓":c.checks[k]==="bad"?"✗":"—")}}
+ if(c&&!c.def.special){for(const k of["name","drug","doctor","seal","reg","pay"]){const e=document.querySelector(`#checks [data-c=${k}]`);const lab={name:"ФИО",drug:"ПРЕПАРАТ",doctor:"ВРАЧ",seal:"ПЕЧАТЬ",reg:"ПЕРЕПИСЬ",pay:"ОПЛАТА"}[k];e.className=c.checks[k]||"";e.textContent=lab+" "+(c.checks[k]==="ok"?"✓":c.checks[k]==="bad"?"✗":"—")}}
  $("tLamp").classList.toggle("sel",R.tool==="lamp");$("tOk").classList.toggle("sel",R.tool==="ok");$("tNo2").classList.toggle("sel",R.tool==="no");
  $("talon").classList.toggle("uv",R.tool==="lamp");
  document.querySelectorAll(".fld").forEach(f=>f.classList.toggle("sel",R.sel===f.dataset.f));
@@ -1121,14 +1208,14 @@ function refresh(){
 }
 
 /* ================= SAVE / LOAD / CHECKPOINTS ================= */
-function resetRuntime(){A.ringStop();stopTyping();clearTimeout(toastT);$("toast").className="";
+function resetRuntime(){A.ringStop();A.tense(false);stopTyping();clearTimeout(toastT);$("toast").className="";
  R.c=null;R.hand=null;R.tool=null;R.sel=null;R.probe=false;R.probeAcc=0;R.wait=null;R.orders={};R.phase="wait";R.closed=false;R.nextKey=null;R.pocket=null;R.onCall=false;R.callKey=null;R.mk=null;R.box=null;
  ["insp","shelf","term","done","pause","market","letter","auditM","inv"].forEach(closeM);$("ref").classList.remove("on");$("cen").classList.remove("on");R.modal=null;
  $("dlg").classList.remove("wait");$("win").classList.remove("probing");$("choice").innerHTML="";
  const cl=$("client");cl.classList.remove("in");
  $("who").textContent="";$("txt").textContent="";$("imsg").textContent=""}
 function flushEnd(){ // end-of-shift bookkeeping, done before the end checkpoint is saved
- S.pending.forEach(p=>{S.log.push(p);S.tp+=p.v});S.pending=[];
+ S.pending.forEach(p=>{p.w="p";S.log.push(p);if(OLD)S.tp+=p.v;else S.pers+=p.v});S.pending=[];
  if(S.day===2&&S.flags.gleb!=="stim"&&!S.flags.wood2){S.flags.wood2=1;logTP("Двойная норма дров: ТЭЦ не удержала давление",-100)}
  if(S.day===4&&S.flags.egor!=="helped"&&!S.flags.food4){S.flags.food4=1;logTP("Еда подорожала: Петрович не вышел на лёд",-60)}
  if(S.day===8&&S.flags.nikita!=="helped"&&!S.flags.diesel8){S.flags.diesel8=1;logTP("Дизельная станция встала: генератор и свечи за свой счёт",-150)}}
@@ -1162,7 +1249,7 @@ function loadFrom(k){const s=readSave(k);if(!s)return false;S=s;startCheckpoint(
 function saveLabel(s){return s?`День ${s.day} · ${DAYS[s.day].labels[s.cp]} · ${s.tp} ТР`:"нет сохранения"}
 function toMenu(){NAR.stop();runTok++;resetRuntime();R.phase="menu";A.genOn(false);S=null;snap=null;show("menu");menuRefresh()}
 function menuRefresh(){const a=readSave(K_AUTO),m=readSave(K_MAN);$("mCont").disabled=!a;$("mCont").querySelector("small").textContent=saveLabel(a);
- $("mLoad").disabled=!m;$("mLoad").querySelector("small").textContent=saveLabel(m);$("mSound").textContent=(A.set.music||A.set.sfx)?"♪ ВКЛ":"♪ ВЫКЛ"}
+ $("mLoad").disabled=OLD&&!m;$("mLoad").querySelector("small").textContent=OLD||m?saveLabel(m):"тестовые дни 7 · 10 · 12";$("mSound").textContent=(A.set.music||A.set.sfx)?"♪ ВКЛ":"♪ ВЫКЛ"}
 function goFull(){try{const d=document.documentElement;const f=d.requestFullscreen||d.webkitRequestFullscreen;if(f&&!document.fullscreenElement){const p=f.call(d);if(p&&p.catch)p.catch(()=>{})}}catch(e){}
  try{if(screen.orientation&&screen.orientation.lock){const p=screen.orientation.lock("portrait");if(p&&p.catch)p.catch(()=>{})}}catch(e){}}
 
@@ -1224,13 +1311,14 @@ async function onPhone(){
 }
 function leverSet(f){R.lev=f;$("lever").style.backgroundPositionX=(f*25)+"%"}
 function leverOpen(){ // swipe down to ОТКР
- if(R.phase==="lever"){R.phase="wait";leverSet(4);A.lever();A.shutter();$("shut").classList.add("open");refresh();later(2000,nextStage);return}
+ if(R.phase==="lever"){R.phase="wait";leverSet(4);A.lever();A.shutter();$("shut").classList.add("open");refresh();later(2000,afterOpen);return}
  if(R.phase==="endshift"&&R.closed){R.closed=false;leverSet(4);A.lever();A.shutter();$("shut").classList.add("open");refresh();return}
  leverSet(0);A.lever();msg(R.phase==="ring"||R.phase==="talk"?"Сначала ответьте на звонок.":"Сейчас открывать незачем.")}
 function leverClose(){ // swipe up to ЗАКР
  if(R.phase==="endshift"){R.closed=true;leverSet(0);A.lever();A.shutter();$("shut").classList.remove("open");msg("Бронеставни опущены. Ночью никто не залезет.","good");refresh();return}
  leverSet(4);A.lever();msg("Смена ещё идёт — закрывать окно нельзя.")}
 function onNext(){if(R.phase!=="between")return;A.click();const key=R.nextKey;
+ if(S.day===1&&S.desk>0&&!OLD){msg("Сначала уберите деньги со стола: перетащите их в кассу (ящик слева) или в рюкзак.","bad");return}
  if(S.dirty){addRad(5);S.pending.push({t:"Лоток не обработан антисептиком",v:-30});msg("Лоток не протёрт: вы и следующий клиент получили дозу (+5%).","bad")}
  const tok=runTok,go=()=>{if(tok===runTok)arrive(key)};
  if(key==="anna"){R.phase="ring";A.ringStart();say("","Раздаётся телефонный зуммер.");refresh();return}
@@ -1247,7 +1335,7 @@ function arrive(key){R.phase="wait";refresh();const d=CL[key],cl=$("client"),hh=
 function fillDocs(n,key){$("quote").innerHTML=`<b>${n.name}:</b> — ${n.quote}.`;$("pPhoto").src=IMG.f[n.photo||n.img||key]||"";$("pName").textContent=n.full;$("pBorn").textContent=n.born;document.querySelectorAll("#pBorn,#pAddr").forEach(x=>x.classList.remove("bad"));$("pAddr").textContent=n.addr;
  $("tNo").textContent=n.no;$("tName").textContent=n.short;const dl=drugsOf(n);$("tDrug").textContent=drugLabel(dl)+(n.alt?` (или ${MEDS[n.alt].n})`:"");
  $("pass").classList.toggle("none",!!n.noPass);$("pass").querySelector("h4").textContent=n.noPass?"ПАСПОРТ НЕ ПРЕДЪЯВЛЕН":"ПАСПОРТ ЖИТЕЛЯ СЕКТОРА-86";$("tDoc").textContent=n.doctor;
- $("tExtraW").style.display=n.extra?"":"none";$("tExtra").textContent=n.extra||"";$("iHead").textContent="РАБОЧИЙ СТОЛ · "+DATES[S.day];
+ {const due=dueOf(n);$("tPay").textContent=due?due+" ТР":"бесплатно (служебный)"}$("tExtraW").style.display=n.extra?"":"none";$("tExtra").textContent=n.extra||"";$("iHead").textContent="РАБОЧИЙ СТОЛ · "+DATES[S.day];
  $("seal").className="";$("imprint").className="";document.querySelectorAll(".fld").forEach(f=>f.classList.remove("ok","bad"))}
 function clientLeave(text,who,pitch,after){const c=R.c;if(!c||c.done)return;c.done=true;const n=c.def;R.phase="wait";R.probe=false;$("win").classList.remove("probing");
  closeM("insp");closeM("shelf");closeM("market");$("ref").classList.remove("on");$("cen").classList.remove("on");R.tool=null;R.sel=null;R.hand=null;R.onCall=false;
@@ -1281,6 +1369,7 @@ function openLetter(){if(R.phase!=="letter")return;A.paper();const d7=S.day===7,
  if(d7&&!S.flags.let7){S.flags.let7=1;S.olya=sv?100:0}S.flags.letterRead=1;openM("letter");refresh()}
 function onTray(){const c=R.c; // TAP on the tray
  if(R.phase==="letter")return openLetter();
+ if(R.phase==="paper")return openNews();
  if(R.probe){probeAdd($("win").offsetWidth*.45);return}
  if(R.phase==="audit"){msg("Громову нужен «Журнал учёта» — перетащите его со стола в окно.");return}
  if(R.phase==="client"&&c&&!c.done&&!c.def.special&&!c.docs){c.docs=true;A.paper();msg("Документы на столе: паспорт и талон.");refresh();return}
@@ -1313,7 +1402,9 @@ function trayDrop(){const c=R.c; // item dragged from the desk into the window
  if(sub)msg(`Пустышка ушла вместо «${MEDS[t].n}». Настоящая упаковка на полке — лишняя по документам.`);
  c.given=true;A.coin();
  if(pr.length){addViol(isFake(n)?"fake":"bad",isFake(n)?`Выдача по недействительному паспорту — ${n.name}`:`Выдача по неправильному талону — ${n.name}`,pr.join("; "));msg(`Зафиксировано нарушение: ${pr.join("; ")}.`,"bad")}
- if(n.pay)logTP(`Выдача: ${drugLabel(drugsOf(n))} (${n.short.split(/[,(]/)[0].trim()})`,n.pay);
+ {const lb=`Выдача: ${drugLabel(drugsOf(n))} (${n.short.split(/[,(]/)[0].trim()})`,due=dueOf(n);
+  if(n.noMoney){if(!OLD){S.kdoc+=due;S.log.push({t:lb+" — БЕЗ ОПЛАТЫ",v:0,w:"k"});msg(`Выдано без оплаты. Касса недосчитается ${due} ТР — доложите свои или объясняйтесь с Громовым.`,"bad")}}
+  else if(n.pay)deskPay(lb,n.pay,n.pay)}
  onGiven()}
 function onGiven(){const c=R.c,n=c.def,W=n.name.toUpperCase();
  if(c.fakes)S.flags[c.key+"Fake"]=c.fakes.join(",");
@@ -1346,7 +1437,7 @@ function onGiven(){const c=R.c,n=c.def,W=n.name.toUpperCase();
    say(W,"Спасибо, брат. Слушай... у меня с буровой канистра чистейшего керосина припрятана. Дай сверху «Стимулятор» без талона — пацанам в ночную смену мёрзнуть. Двести талонов — и керосин твой!",n.pitch);
    return setChoices([{l:"ТОЛЬКО ПО ТАЛОНУ",c:"g",k:"no",f:()=>{S.flags.ruslan="talon";clientLeave("Понял, брат. Закон так закон. Без обид.",W,n.pitch)}},
     {l:S.stock.stim>0?"«СТИМУЛЯТОР» МИМО КАССЫ · +200 И КЕРОСИН":"«СТИМУЛЯТОРА» НЕТ НА СКЛАДЕ",c:"y",k:"yes",dis:S.stock.stim<1,f:()=>startOffer("stim",()=>{
-     logTP("«Стимулятор» мимо кассы (Мамедов)",200);addItem("kerosene");S.flags.ruslan="stim";clientLeave("Вот это по-братски! Держи канистру — дома будет тепло.",W,n.pitch)})}]);
+     deskPay("«Стимулятор» мимо кассы (Мамедов)",200);addItem("kerosene");S.flags.ruslan="stim";clientLeave("Вот это по-братски! Держи канистру — дома будет тепло.",W,n.pitch)})}]);
   case"ignat":{S.flags.ignat="helped";const lamp=S.items.radiolamp>0,parts=S.items.parts>0,price=lamp&&parts?350:150;
    if(!lamp&&!parts)return clientLeave("Спасибо, Павел. Жаль, радиодеталей у тебя нет — купил бы.",W,n.pitch);
    say(W,lamp&&parts?"О! Радиолампа и радиодетали — то, что нужно для генератора частот. Беру всё за 350 наличными. По рукам?":`Вижу, у тебя есть ${lamp?"радиолампа":"радиодетали"}. Одной части мало, но 150 дам. По рукам?`,n.pitch);
@@ -1357,7 +1448,7 @@ function onGiven(){const c=R.c,n=c.def,W=n.name.toUpperCase();
    say(W,"Спасибо. А теперь по-человечески: дай ещё «Стимулятор». В талоне его нет, знаю. Плачу 250 сверху, наличными. Без него я сутки на ногах не простою — и квартал ночью замёрзнет.",n.pitch);
    return setChoices([{l:"ТОЛЬКО ПО ТАЛОНУ",c:"g",k:"no",f:()=>{S.flags.gleb="talon";clientLeave("Эх... По закону так по закону. Только не жалуйся потом, что батареи холодные.",W,n.pitch)}},
     {l:S.stock.stim>0?"ОТДАТЬ «СТИМУЛЯТОР» · +250":"«СТИМУЛЯТОРА» НЕТ НА СКЛАДЕ",c:"y",k:"yes",dis:S.stock.stim<1,f:()=>startOffer("stim",()=>{
-     logTP("«Стимулятор» мимо кассы (Руднев)",250);S.flags.gleb="stim";
+     deskPay("«Стимулятор» мимо кассы (Руднев)",250);S.flags.gleb="stim";
      clientLeave("Вот это по-нашему. Батареи сегодня будут горячими — слово Руднева.",W,n.pitch)})}])}}
 function startOffer(drug,done,op){const c=R.c,need=Array.isArray(drug)?drug.slice():[drug];c.offer={need,done,op};R.phase="client";msg(`Возьмите в шкафу ${drugNames(need)} и передайте в окно.`);refresh()}
 function onJournal(){const c=R.c;
@@ -1394,6 +1485,8 @@ function onField(f,e){const c=R.c;if(!c||R.tool)return; // with a tool in hand t
  e.stopPropagation();A.click();
  if(f==="tDoc"){R.sel=null;msg("Врача сверяют по «Справочнику врачей» — откройте его внизу.");refresh();return}
  if(f==="tExtra"){R.sel=null;const fl=c.def.flaw;$("tExtra").classList.add(fl?"bad":"ok");c.flawSeen=!!fl;msg(fl?c.def.flawMsg:"Отметка в порядке.",fl?"bad":"good");return}
+ if(f==="tPay"){R.sel=null;const nm=!!c.def.noMoney,due=dueOf(c.def);$("tPay").classList.add(nm?"bad":"ok");A.coin();
+  setCheck("pay",nm?"bad":"ok",nm?`${c.def.noMoneyMsg||"Платить клиенту нечем."} К оплате ${due} ТР: выдадите — касса недосчитается.`:due?`К оплате ${due} ТР — деньги у клиента при себе.`:"По этому талону оплата не взимается.");return}
  if(!R.sel||R.sel===f){R.sel=R.sel===f?null:f;refresh();return}
  const pair=[R.sel,f].sort().join("+");R.sel=null;
  if(pair==="pName+tName"){const ok=c.def.nameOk!==false;document.querySelectorAll("#pName,#tName").forEach(x=>x.classList.add(ok?"ok":"bad"));
@@ -1418,7 +1511,7 @@ function revealSeal(){const c=R.c,n=c.def;A.lamp();$("seal").className=n.seal?"b
  setCheck("seal",n.seal?"ok":"bad",n.seal?"Печать светится СИНИМ — бланк подлинный.":"Печать вспыхнула КРАСНЫМ — подделка!")}
 function doStamp(t){const c=R.c;if(!c||c.done)return;const ck=c.checks;
  if(c.stamp){msg("На талоне уже стоит оттиск.");R.tool=null;refresh();return}
- if(t==="ok"&&!(ck.name&&ck.drug&&ck.doctor&&ck.seal&&(S.day<5||ck.reg))){R.tool=null;const miss=[!ck.name&&"ФИО",!ck.drug&&"препарат",!ck.doctor&&"врач",!ck.seal&&"печать",S.day>=5&&!ck.reg&&"перепись (паспорт)"].filter(Boolean);
+ if(t==="ok"&&!(ck.name&&ck.drug&&ck.doctor&&ck.seal&&(S.day<5||ck.reg)&&(OLD||ck.pay))){R.tool=null;const miss=[!ck.name&&"ФИО",!ck.drug&&"препарат",!ck.doctor&&"врач",!ck.seal&&"печать",S.day>=5&&!ck.reg&&"перепись (паспорт)",!OLD&&!ck.pay&&"оплата (строка «К оплате» в талоне)"].filter(Boolean);
   msg(`Штамп «ВЫДАНО» — только после всех проверок. Не проверено: ${miss.join(", ")}.`,"bad");refresh();return}
  if(c.tut){
   if(t==="no"){R.tool=null;msg("Документы подлинные — отказ необоснован.","bad");refresh();return}
@@ -1426,7 +1519,7 @@ function doStamp(t){const c=R.c;if(!c||c.done)return;const ck=c.checks;
   if(c.key==="anna"&&c.dose==null){R.tool=null;msg("Сначала дозиметрический контроль.","bad");refresh();return}}
  c.stamp=t;R.tool=null;A.stamp();$("imprint").className=t;
  if(t==="ok"){const pr=problems(c).filter(x=>x!=="выдача без замера фона");
-  if(pr.length)msg(`Оттиск поставлен, но талон с нарушениями: ${pr.join("; ")}. Выдача будет зафиксирована как нарушение.`,"bad");else msg("Оттиск «ВЫДАНО» поставлен.","good");refresh()}
+  if(pr.length)msg(`Оттиск поставлен, но талон с нарушениями: ${pr.join("; ")}. Выдача будет зафиксирована как нарушение.`,"bad");else if(ck.pay==="bad")msg(`Оттиск «ВЫДАНО» поставлен. Платить клиенту нечем: выдадите — касса недосчитается ${dueOf(c.def)} ТР.`,"bad");else msg("Оттиск «ВЫДАНО» поставлен.","good");refresh()}
  else{msg("Оттиск «ОТКАЗАНО». Бланк возвращён в лоток.");refresh();later(1100,refusal)}}
 function refusal(){const c=R.c;if(!c||c.done)return;const n=c.def,W=n.name.toUpperCase();closeM("insp");R.hand=null;A.bang();later(250,()=>A.bang());
  if(n.offer){say(W,n.offer.line,n.pitch);
@@ -1434,12 +1527,12 @@ function refusal(){const c=R.c;if(!c||c.done)return;const n=c.def,W=n.name.toUpp
   return setChoices([{l:n.offer.no,c:"g",k:"no",f:()=>{S.flags[c.key]="refused";clientLeave(n.offer.noLine,"",0,3000)}},
    {l:miss?`«${MEDS[miss].n.toUpperCase()}» НЕТ НА СКЛАДЕ`:n.offer.yes,c:"y",k:"yes",dis:!!miss,f:yes}])}
  if(c.key==="chizhov"&&!c.chz){c.chz=1;return chizhovOffer(refusal)}
- if(valid(n)&&!n.noFine&&!c.need.some(k=>S.stock[k]<1)){S.pending.push({t:`Необоснованный отказ по подлинному талону (${n.name})`,v:-80});S.flags[c.key]="refused";return clientLeave(n.wrongRefuse||"Да чтоб тебя... Жалобу в Комендатуру напишу!",W,n.pitch)}
+ if(valid(n)&&!n.noFine&&!n.noMoney&&!c.need.some(k=>S.stock[k]<1)){S.pending.push({t:`Необоснованный отказ по подлинному талону (${n.name})`,v:-80});S.flags[c.key]="refused";return clientLeave(n.wrongRefuse||"Да чтоб тебя... Жалобу в Комендатуру напишу!",W,n.pitch)}
  S.flags[c.key]="refused";clientLeave(n.refuseLine||"Клиент молча забирает бланк и уходит.","",0,3000)}
 function chizhovOffer(after){const W="АРКАДИЙ ЧИЖОВ",P=CL.chizhov.pitch;
  if(S.flags.son!=="promise"||S.flags.sonSaved||S.flags.chizhov)return after();
  say(W,"Так что насчёт парнишки, провизор? Пятьсот в конверте — и карточка Данила уходит в архив «убывших по тифу».",P);
- setChoices([{l:S.tp>=500?"ОТДАТЬ 500 ТР СЕЙЧАС":"500 ТР СЕЙЧАС НЕТ",c:"y",k:"pay",dis:S.tp<500,f:()=>{logTP("Конверт Чижову (военкомат)",-500);S.flags.sonSaved="chizhov";S.flags.chizhov="paid";A.coin();say(W,"Разумно. Считай, парень переболел тифом. К ночи будет дома.",P);later(2600,after)}},
+ setChoices([{l:PM()>=500?"ОТДАТЬ 500 ТР СЕЙЧАС":"500 ТР СЕЙЧАС НЕТ",c:"y",k:"pay",dis:PM()<500,f:()=>{logTP("Конверт Чижову (военкомат)",-500);S.flags.sonSaved="chizhov";S.flags.chizhov="paid";A.coin();say(W,"Разумно. Считай, парень переболел тифом. К ночи будет дома.",P);later(2600,after)}},
   {l:"СОБЕРУ ДО КОНЦА СМЕНЫ",k:"later",f:()=>{S.flags.chizhov="later";say(W,"До закрытия. Конверт оставишь через терминал при сдаче смены — заберу. Не успеешь — эшелон ждать не станет.",P);later(2800,after)}},
   {l:"ОТКАЗАТЬСЯ",c:"g",k:"no",f:()=>{S.flags.chizhov="refused";say(W,"Моё дело предложить, провизор. Значит, послужит Отечеству.",P);later(2600,after)}}],true)}
 async function shternArrive(){R.phase="talk";refresh();const W="БОРИС ШТЕРН",P=CL.shtern.pitch;
@@ -1447,14 +1540,14 @@ async function shternArrive(){R.phase="talk";refresh();const W="БОРИС ШТ�
   [W,"У меня нет талона от комендатуры — сами понимаете, старикам их не дают. Но я готов щедро заплатить: «Антибиотики» и «Антирадин» — 300 ТР прямо в руки. Только никому ни слова.",P]]);
  if(!ok)return;const can=S.stock.antibiotic>0&&S.stock.antiradin>0;
  setChoices([{l:"ОТКАЗАТЬ: БЕЗ ТАЛОНА НЕЛЬЗЯ",c:"g",k:"no",f:()=>{S.flags.shtern="refused";clientLeave("Понимаю, молодой человек. Закон есть закон... — Штерн, опираясь на трость, уходит в метель.",W,P,3000)}},
-  {l:can?"ПРОДАТЬ БЕЗ ТАЛОНА · +300 ТР":"НЕТ НА СКЛАДЕ",c:"y",k:"yes",dis:!can,f:()=>startOffer(["antibiotic","antiradin"],()=>{logTP("Продано Штерну без талона",300);S.flags.shtern="sold";clientLeave("Благодарю. Вы спасли старика. Мы с вами друг друга не видели.",W,P,3000)})}])}
+  {l:can?"ПРОДАТЬ БЕЗ ТАЛОНА · +300 ТР":"НЕТ НА СКЛАДЕ",c:"y",k:"yes",dis:!can,f:()=>startOffer(["antibiotic","antiradin"],()=>{deskPay("Продано Штерну без талона",300);S.flags.shtern="sold";clientLeave("Благодарю. Вы спасли старика. Мы с вами друг друга не видели.",W,P,3000)})}])}
 /* day 9/11: no talon at all — cash on the tray; fakes of the right form pass at the window */
 async function cashArrive(){R.phase="talk";refresh();const c=R.c,n=c.def,W=n.name.toUpperCase(),P=n.pitch;
  const ok=await talk(n.lines.map(t=>[W,t,P]));if(!ok)return;
  const lack=n.wants.find(k=>S.stock[k]<1&&!(S.stock["fake"+MEDS[k].f]>0));
  setChoices([{l:"ОТКАЗАТЬ: БЕЗ ТАЛОНА НЕЛЬЗЯ",c:"g",k:"no",f:()=>{S.flags[c.key]="refused";clientLeave(n.noLine,"",0,3000)}},
   {l:lack?`«${MEDS[lack].n.toUpperCase()}» НЕТ НА СКЛАДЕ`:`ПРОДАТЬ БЕЗ ТАЛОНА · +${n.cash} ТР`,c:"y",k:"yes",dis:!!lack,f:()=>startOffer(n.wants,()=>{
-   logTP(`Продано без талона (${n.name})`,n.cash);S.flags[c.key]="sold";if(c.fakes)S.flags[c.key+"Fake"]=c.fakes.join(",");clientLeave(n.yesLine,"",0,3000)})}])}
+   deskPay(`Продано без талона (${n.name})`,n.cash);S.flags[c.key]="sold";if(c.fakes)S.flags[c.key+"Fake"]=c.fakes.join(",");clientLeave(n.yesLine,"",0,3000)})}])}
 /* day 7: «Приёмка товара» — every pack goes from the box to the cabinet by hand */
 const BOX=["antiradinM","strept","oftalmo","gem","immunal","ointment"],BOXQ=3;
 function startDelivery(){R.phase="delivery";R.box=BOX.slice();R.hand=R.box[0];say("","Коробка снабжения вскрыта. Перенесите всё в шкаф: тяните упаковку со стола на шкаф с медикаментами.");refresh()}
@@ -1514,13 +1607,13 @@ const CALLS={
       [OLYA,"Какая зарплата, Паша?! Твоих грошей от комендатуры даже на буханку хлеба по нынешним ценам не хватает! Значит, твои чистые бумажки перед Громовым тебе дороже голодной жены и ребёнка?! Делай как знаешь..."]]);
      if(!ok||tok!==runTok)return;S.flags.food="refused";olya(-30);finishCall("Оля бросила трубку.")}}],true)}}};
 function dealDone(key){const n=CL[key];
- if(n.offer&&n.offer.cash){logTP(n.offer.log,n.offer.cash);if(n.offer.rad)addRad(n.offer.rad);S.flags[key]="bribed";if(R.c.fakes)S.flags[key+"Fake"]=R.c.fakes.join(",");
+ if(n.offer&&n.offer.cash){deskPay(n.offer.log,n.offer.cash);if(n.offer.rad)addRad(n.offer.rad);S.flags[key]="bribed";if(R.c.fakes)S.flags[key+"Fake"]=R.c.fakes.join(",");
   addViol("fake",`Выдача по недействительному паспорту — ${n.name}`,regProblem(n)+(n.rad>150?"; красная зона":""));return clientLeave(n.offer.doneLine,n.name.toUpperCase(),n.pitch,3400)}
- if(key==="kirill"){logTP("Взятка Ветрова, мимо кассы",300);addRad(15);S.flags.kirill="bribed";addViol("fake","Выдача по недействительному паспорту — Кирилл Ветров",regProblem(n)+"; красная зона");
+ if(key==="kirill"){deskPay("Взятка Ветрова, мимо кассы",300);addRad(15);S.flags.kirill="bribed";addViol("fake","Выдача по недействительному паспорту — Кирилл Ветров",regProblem(n)+"; красная зона");
   return clientLeave("Кирилл сгребает лекарства под плащ и отсчитывает триста. — Вот и ладно, командир. (Облучение +15%)",n.name.toUpperCase(),n.pitch,3400)}
  if(key==="vadim"){S.flags.vadim="helped";addItem("knife");addItem("copper");
   return clientLeave("Вадим прячет бинты за пазуху и суёт в лоток самодельный нож и моток медного кабеля. — Ты меня не видел, хозяин.",n.name.toUpperCase(),n.pitch,3400)}
- if(key==="viktor"){logTP("Взятка Захарова, мимо кассы",300);S.flags.viktor="bribe";
+ if(key==="viktor"){deskPay("Взятка Захарова, мимо кассы",300);S.flags.viktor="bribe";
   return clientLeave("На стол падает пачка неучтённых талонов. Виктор забирает «Антибиотики» и растворяется в метели. В журнале — недостача.","",0,3400)}
  if(key==="artem"){S.flags.artem="helped";addItem("radiolamp");addRad(15);
   return clientLeave("Артём суёт вам в лоток довоенную радиолампу и убегает к брату. (Облучение +15%, на складе дыра в 1 шприц)",n.name.toUpperCase(),n.pitch,3400)}}
@@ -1528,11 +1621,12 @@ function dealDone(key){const n=CL[key];
 /* ---- inventory: «Наши вещи» (overlay; never touches the dialog or the day) ---- */
 function openInv(){if(!S)return;A.click();drawInv();$("inv").classList.add("on")}
 function drawInv(){const b=$("invBody");let h=`<div class="invh">Отношения с Олей: <b>${S.olya}/100</b> · облучение ${S.rad}%</div>`,any=0;
+ if(!OLD){any=1;h+=`<div class="invr"><div class="ic"><img src="%%money.webp%%" alt=""></div><div class="tx"><b>Личные деньги: ${S.pers} ТР</b>Ваши собственные: премии, проданные вещи и всё, что прошло мимо кассы.<br><i>Применение:</i> семья, Ворон, взятки, штрафы. Можно доложить в кассу аптеки.<br><button class="btn" data-cash="1" ${S.pers>0?"":"disabled"}>ВЫЛОЖИТЬ 100 ТР НА СТОЛ</button></div></div>`}
  for(const k in S.bag){const n=S.bag[k];if(n<1)continue;any=1;h+=`<div class="invr"><div class="ic"><img src="${IMG.med[k]}" alt=""></div><div class="tx"><b>${MEDS[k].n} ×${n}</b>${MEDS[k].fake?"Пустышка Ворона, убранная с глаз.":"Лежит в рюкзаке мимо учёта."}<br><i>Применение:</i> ${MEDS[k].fake?"вернуть на полку, когда понадобится.":"унести домой, продать Ворону (с 7-го дня) или вернуть на полку до ревизии."}<br><button class="btn" data-ret="${k}">ВЕРНУТЬ НА ПОЛКУ</button></div></div>`}
  for(const k in ITEMS){const n=S.items[k]||0;if(n<1)continue;any=1;const it=ITEMS[k],act=ITEM_ACT[k];
   h+=`<div class="invr"><div class="ic">${it.img?`<img src="${it.img}" alt="">`:it.e}</div><div class="tx"><b>${it.n} ×${n}</b>${it.desc}<br><i>Откуда:</i> ${it.src}<br><i>Применение:</i> ${it.use}${act?`<br><button class="btn" data-use="${k}">${act[0]}</button>`:""}</div></div>`}
  if(!any)h+=`<div class="invh">Пока ничего нет. Посетители иногда расплачиваются вещами.</div>`;
- b.innerHTML=h;b.querySelectorAll("[data-ret]").forEach(x=>x.addEventListener("click",()=>{const k=x.dataset.ret;if(!(S.bag[k]>0))return;S.bag[k]--;move(k,1,"ret","из рюкзака");A.pick();msg(`«${MEDS[k].n}» снова на полке.`,"good");drawInv();refresh()}));
+ b.innerHTML=h;b.querySelectorAll("[data-cash]").forEach(x=>x.addEventListener("click",()=>{takeCash("p");drawInv()}));b.querySelectorAll("[data-ret]").forEach(x=>x.addEventListener("click",()=>{const k=x.dataset.ret;if(!(S.bag[k]>0))return;S.bag[k]--;move(k,1,"ret","из рюкзака");A.pick();msg(`«${MEDS[k].n}» снова на полке.`,"good");drawInv();refresh()}));
  b.querySelectorAll("[data-use]").forEach(x=>x.addEventListener("click",()=>{const k=x.dataset.use;if(!useItem(k))return;A.ok();const t=ITEM_ACT[k][1]();msg(t,"good");drawInv();refresh()}))}
 
 /* ---- black market: Ворон (day 2) and Семён (day 3) ---- */
@@ -1560,7 +1654,7 @@ async function voronArrive(){R.phase="talk";refresh();const P=CL.voron.pitch,an=
   [VORON,"Зато завтра к твоему окошку побегут богатенькие крысы со всего Сектора и будут совать бешеные деньги за любую таблетку без талонов. Закупай у меня сегодня пустышки, пока не поздно!",P]];
  else if(S.day===11){lines=[[VORON,"Как и говорил, аптекарь: настоящих лекарств у меня сегодня нет — ни ампулы. Зато пустышки и бланки на месте, и хабар возьму.",P],
   [VORON,"Громов после налёта злой как пёс. Пересчитает каждую коробку. Готовься.",P]];
-  if(S.flags.food==="promise")lines.push([VORON,S.tp>=500?"Слышал, дома у тебя голодно. Пятьсот на руках есть — смотри, не отдай их Громову.":"Слышал, дома у тебя голодно. До пятисот не хватает? Неси всё, что есть ценного, — куплю.",P])}
+  if(S.flags.food==="promise")lines.push([VORON,PM()>=500?"Слышал, дома у тебя голодно. Пятьсот на руках есть — смотри, не отдай их Громову.":"Слышал, дома у тебя голодно. До пятисот не хватает? Неси всё, что есть ценного, — куплю.",P])}
  else{lines=[[VORON,"Громов уже на подходе, провизор. Последний шанс подготовиться.",P]];
   if(S.flags.son==="promise"&&!S.flags.sonSaved)lines.push([VORON,`Слышал про твоего Данила. Чижов дерёт пятьсот? У меня дешевле: «белый билет» — справка о полной негодности, с печатью главврача гарнизона. ${whitePrice()} ТР. Не хватает — продай мне хабар.`,P])}
  const ok=await talk(lines);if(!ok)return;openMarket("voron")}
@@ -1587,30 +1681,30 @@ function drawMarket(){const p=blankPrice(),b=$("mkBody"),sem=S.day>=3;
  const btn=(id,ic,txt,ic2,dis)=>`<button class="btn mkb" id="${id}" ${dis?"disabled":""}>${ic?`<img src="${ic}" alt="">`:""}<span>${txt}</span>${ic2?`<img src="${ic2}" alt="">`:""}</button>`;
  let h=`<div class="mkq">«Пустой бланк с печатью живого врача. На ревизии впишешь фиктивную выдачу — и одна недостача получит объяснение. Печать, дозиметр и то, что видел патруль, бланком не прикроешь».</div>`;
  h+=findingsHTML()+`<div class="mki">Пустых бланков у вас: <b>${S.items.blank||0}</b></div>`;
- h+=btn("mkTP",IMG.ic.blank,`ПУСТОЙ БЛАНК · <b>${p} ТР</b>`,IMG.ic.tp,S.tp<p);
+ h+=btn("mkTP",IMG.ic.blank,`ПУСТОЙ БЛАНК · <b>${p} ТР</b>`,IMG.ic.tp,PM()<p);
  h+=btn("mkAR",IMG.ic.blank,`ПУСТОЙ БЛАНК · 2 «АНТИРАДИНА» (у вас ${S.stock.antiradin}) — будет недостача`,IMG.ic.ar,S.stock.antiradin<2);
  if(S.day>=7){h+=`<div class="mki">Пустышек на полках: <b>${fakeCount()}</b> (больше двух — Громов вскроет упаковку). Одна пустышка прикрывает одну недостачу той же формы.</div>`;
-  FAKES.forEach(k=>{h+=btn("mkF_"+k,IMG.med[k],`ПУСТЫШКА «${MEDS[k].n.toUpperCase()}» — ${FORM[MEDS[k].f]} · <b>50 ТР</b> (на полке ${S.stock[k]})`,IMG.ic.tp,S.tp<50)});
-  if(S.day>=8&&S.day<=10)h+=btn("mkDad",IMG.med.antiradin,`«АНТИРАДИН» В РЮКЗАК · <b>${DAD_PRICE} ТР</b> (в рюкзаке ${S.bag.antiradin||0})`,IMG.ic.tp,S.tp<DAD_PRICE);
+  FAKES.forEach(k=>{h+=btn("mkF_"+k,IMG.med[k],`ПУСТЫШКА «${MEDS[k].n.toUpperCase()}» — ${FORM[MEDS[k].f]} · <b>50 ТР</b> (на полке ${S.stock[k]})`,IMG.ic.tp,PM()<50)});
+  if(S.day>=8&&S.day<=10)h+=btn("mkDad",IMG.med.antiradin,`«АНТИРАДИН» В РЮКЗАК · <b>${DAD_PRICE} ТР</b> (в рюкзаке ${S.bag.antiradin||0})`,IMG.ic.tp,PM()<DAD_PRICE);
   for(const k in S.bag)if(S.bag[k]>0&&MEDS[k]&&!MEDS[k].fake)h+=btn("mkB_"+k,IMG.med[k],`ПРОДАТЬ ИЗ РЮКЗАКА: «${MEDS[k].n.toUpperCase()}» ×${S.bag[k]} · <b>+${bagPrice(k)} ТР</b>`,IMG.ic.tp)}
- if(sem&&S.day!==11)h+=btn("mkAB",IMG.med.antibiotic,`«АНТИБИОТИКИ» НА ПОЛКУ · <b>${AB_PRICE} ТР</b>`,IMG.ic.tp,S.tp<AB_PRICE);
- if(S.day>=5)h+=btn("mkStamp",IMG.ic.blank,`ШТАМП ПРОПИСКИ · <b>150 ТР</b> (у вас ${S.items.pstamp||0})`,IMG.ic.tp,S.tp<150);
- if(S.day===6&&S.flags.son==="promise"&&!S.flags.sonSaved)h+=btn("mkWhite",IMG.ic.blank,`«БЕЛЫЙ БИЛЕТ» ДЛЯ ДАНИЛА · <b>${whitePrice()} ТР</b>`,IMG.ic.tp,S.tp<whitePrice());
+ if(sem&&S.day!==11)h+=btn("mkAB",IMG.med.antibiotic,`«АНТИБИОТИКИ» НА ПОЛКУ · <b>${AB_PRICE} ТР</b>`,IMG.ic.tp,PM()<AB_PRICE);
+ if(S.day>=5)h+=btn("mkStamp",IMG.ic.blank,`ШТАМП ПРОПИСКИ · <b>150 ТР</b> (у вас ${S.items.pstamp||0})`,IMG.ic.tp,PM()<150);
+ if(S.day===6&&S.flags.son==="promise"&&!S.flags.sonSaved)h+=btn("mkWhite",IMG.ic.blank,`«БЕЛЫЙ БИЛЕТ» ДЛЯ ДАНИЛА · <b>${whitePrice()} ТР</b>`,IMG.ic.tp,PM()<whitePrice());
  for(const k in SELL)if(S.items[k]>0)h+=btn("mkS_"+k,ITEMS[k].img||"",`ПРОДАТЬ: ${ITEMS[k].n.toUpperCase()} · <b>+${SELL[k]} ТР</b>`,IMG.ic.tp);
  b.innerHTML=h;
  const bind=(id,f)=>{const x=$(id);if(x)x.addEventListener("click",()=>{if(x.disabled)return;f();drawMarket();refresh()})};
  bind("mkTP",()=>buyBlank("tp"));bind("mkAR",()=>buyBlank("ar"));bind("mkAB",buyAntibiotic);
- bind("mkStamp",()=>{if(S.tp<150)return;logTP("Штамп прописки (Ворон)",-150);addItem("pstamp");A.paper();msg("Штамп прописки — в рюкзаке. Пригодится на ревизии.","good")});
- bind("mkWhite",()=>{const w=whitePrice();if(S.tp<w)return;logTP("«Белый билет» для Данила (Ворон)",-w);S.flags.sonSaved="voron";A.paper();A.stamp();msg("Справка о негодности у вас. Ночью передадите в комендатуру — Данила отпустят.","good")});
+ bind("mkStamp",()=>{if(PM()<150)return;logTP("Штамп прописки (Ворон)",-150);addItem("pstamp");A.paper();msg("Штамп прописки — в рюкзаке. Пригодится на ревизии.","good")});
+ bind("mkWhite",()=>{const w=whitePrice();if(PM()<w)return;logTP("«Белый билет» для Данила (Ворон)",-w);S.flags.sonSaved="voron";A.paper();A.stamp();msg("Справка о негодности у вас. Ночью передадите в комендатуру — Данила отпустят.","good")});
  for(const k in SELL)bind("mkS_"+k,()=>sellItem(k));
- FAKES.forEach(k=>bind("mkF_"+k,()=>{if(S.tp<50)return;logTP(`Пустышка «${MEDS[k].n}» (Ворон)`,-50);move(k,1,"contra","Ворон");A.pick();msg(`«${MEDS[k].n}» стоит на полке. Громов считает коробки, а не содержимое.`,"good")}));
- bind("mkDad",()=>{if(S.tp<DAD_PRICE)return;logTP("«Антирадин» у Ворона — в рюкзак",-DAD_PRICE);S.bag.antiradin=(S.bag.antiradin||0)+1;A.pick();msg("Настоящий «Антирадин» лежит в рюкзаке. Склад не тронут.","good")});
+ FAKES.forEach(k=>bind("mkF_"+k,()=>{if(PM()<50)return;logTP(`Пустышка «${MEDS[k].n}» (Ворон)`,-50);move(k,1,"contra","Ворон");A.pick();msg(`«${MEDS[k].n}» стоит на полке. Громов считает коробки, а не содержимое.`,"good")}));
+ bind("mkDad",()=>{if(PM()<DAD_PRICE)return;logTP("«Антирадин» у Ворона — в рюкзак",-DAD_PRICE);S.bag.antiradin=(S.bag.antiradin||0)+1;A.pick();msg("Настоящий «Антирадин» лежит в рюкзаке. Склад не тронут.","good")});
  for(const k in S.bag)bind("mkB_"+k,()=>{if(!(S.bag[k]>0))return;S.bag[k]--;A.coin();logTP(`Продано Ворону из рюкзака: ${MEDS[k].n}`,bagPrice(k));msg(`«${MEDS[k].n}»: +${bagPrice(k)} ТР.`,"good")})}
 function sellItem(k){if(!useItem(k))return;S.flags[k+"Sold"]=1;A.coin();logTP(`Продано Ворону: ${ITEMS[k].n}`,SELL[k]);msg(`${ITEMS[k].n}: +${SELL[k]} ТР.`,"good")}
 function buyBlank(by){
- if(by==="tp"){const p=blankPrice();if(S.tp<p)return;logTP("Пустой бланк (Ворон)",-p)}else{if(S.stock.antiradin<2)return;move("antiradin",2,"transfer","Ворон, оплата бланка")}
+ if(by==="tp"){const p=blankPrice();if(PM()<p)return;logTP("Пустой бланк (Ворон)",-p)}else{if(S.stock.antiradin<2)return;move("antiradin",2,"transfer","Ворон, оплата бланка")}
  addItem("blank");A.paper();msg("Пустой бланк — в «Наших вещах». Использовать его можно на ревизии, если найдут недостачу.","good")}
-function buyAntibiotic(){if(S.tp<AB_PRICE)return;const had=(S.doc.antibiotic-S.stock.antibiotic)>0;logTP("«Антибиотики» у Ворона",-AB_PRICE);move("antibiotic",1,"contra","Ворон");A.coin();
+function buyAntibiotic(){if(PM()<AB_PRICE)return;const had=(S.doc.antibiotic-S.stock.antibiotic)>0;logTP("«Антибиотики» у Ворона",-AB_PRICE);move("antibiotic",1,"contra","Ворон");A.coin();
  msg(had?"Пачка встала на полку — недостача «Антибиотиков» по складу закрыта, документы сходятся.":"Пачка «Антибиотиков» встала на полку.","good")}
 function leaveMarket(){if(R.phase!=="voron")return;A.click();closeM("market");
  if(R.mk==="voron")clientLeave("Бывай, провизор. И помни — ты меня не видел.",VORON,CL.voron.pitch,2400);
@@ -1674,7 +1768,7 @@ function pocketDrop(){const pk=R.pocket;if(R.phase!=="pocket"||!pk)return;
  move(pk.drug,1,"theft",pk.drug==="antibiotic"?"домой, для Алины":"для Марии Аркадьевны");R.hand=null;A.pick();const f=pk.done;R.pocket=null;f()}
 
 /* ---- Капитан Громов: audit ---- */
-async function gromovArrive(){R.phase="talk";refresh();
+async function gromovArrive(){R.phase="talk";A.tense(true);refresh();
  const ok=await talk([[GROMOV,"Капитан патруля Громов! Плановая ревизия Аптечного Пункта №4. Подать сюда Журнал учёта — сверяю остатки на складе с принятыми талонами!",CL.gromov.pitch]]);
  if(!ok)return;R.phase="audit";say(GROMOV,"Журнал! Живо!",CL.gromov.pitch);refresh()}
 /* Audit: Gromov finds SHORT units (documents vs shelf) and open BAD/SEEN violations.
@@ -1683,9 +1777,10 @@ async function gromovArrive(){R.phase="talk";refresh();
 const AU={sel:null,bribes:0,lies:0,warned:0,line:"",hidden:[]};
 const bribePrice=()=>({2:100,4:150,6:150}[S.day]||200)+(S.warnings>=2?50:0)+AU.bribes*50;
 function auditFindings(){const r=[];shortages().forEach(x=>r.push({key:"s:"+x.drug,k:"short",drug:x.drug,n:x.n,t:`Недостача «${MEDS[x.drug].n}» — ${x.n} шт.`}));
- openViol().forEach(v=>r.push({key:"v:"+v.id,k:v.k,v,t:v.t,why:v.why}));return r}
+ openViol().forEach(v=>r.push({key:"v:"+v.id,k:v.k,v,t:v.t,why:v.why}));
+ {const cs=cashShort();if(cs>0)r.push({key:"cash",k:"cash",amt:cs,t:`Недостача кассы — ${cs} ТР`,why:"в ящике меньше денег, чем должно быть по Журналу учёта"})}return r}
 function warn(){if(S.warnings<4){S.warnings++;AU.warned++}}
-async function doAudit(){if(R.phase!=="audit")return;R.phase="talk";A.paper();refresh();const G=CL.gromov.pitch;
+async function doAudit(){if(R.phase!=="audit")return;R.phase="talk";A.paper();sweepDesk("Деньги со стола пересчитаны вместе с кассой");refresh();const G=CL.gromov.pitch;
  Object.assign(AU,{sel:null,bribes:0,lies:0,warned:0,line:"",hidden:[],bust:0});
  const pre=[];
  if(S.day===2&&S.flags.loyal)pre.push([GROMOV,"Слышал, ты сегодня сдал заражённого спецбригаде. Это зачтётся.",G]);
@@ -1698,7 +1793,7 @@ async function doAudit(){if(R.phase!=="audit")return;R.phase="talk";A.paper();re
   pre.push([GROMOV,"Что-то многовато у тебя коробок без заводских этикеток... (Вскрывает упаковку.) Мел?! Крашеная вода?! Муляжи изымаю, штраф — 200 ТР. А теперь посчитаем, чего у тебя не хватает на самом деле.",G])}
  if(S.day>=4&&S.flags.vadim==="helped"&&!S.flags.vadimSeen){S.flags.vadimSeen=1;addViol("seen","Патруль видел у окна беглого с лагерным номером","сделка с Вадимом Зубовым");
   pre.push([GROMOV,"И ещё. Патрульные видели у твоего окна оборванца с лагерным номером. Беглого. О чём шептались, провизор?",G])}
- if(!auditFindings().length){const ok=await talk([...pre,[GROMOV,"Так... По складу и талонам всё сходится до единой ампулы. Отличная служба, провизор.",G]]);if(!ok)return;return finishAudit()}
+ if(!auditFindings().length){const ok=await talk([...pre,[GROMOV,"Так... По складу, талонам и кассе всё сходится до единой ампулы и до последнего талона. Отличная служба, провизор.",G]]);if(!ok)return;return finishAudit()}
  const ok=await talk([...pre,[GROMOV,"Стоп. А это что за бардак?! По складу не хватает казённых препаратов, а в Журнале цифры не бьются! Как это понимать, провизор?!",G]]);if(!ok)return;
  AU.line="Выкладывай, провизор. Каждое расхождение — отдельно.";openAuditM()}
 function openAuditM(){clearTimeout(toastT);$("toast").className="";$("toast").firstElementChild.textContent="";R.phase="auditm";openM("auditM");drawAudit();refresh()}
@@ -1715,28 +1810,28 @@ function drawAudit(){const f=auditFindings(),b=$("auBody");if(AU.sel&&!f.find(x=
  if(S.items.order>0)q+=btn("auOrder","СЕКРЕТНЫЙ ПРИКАЗ: СНЯТЬ ЭТУ ПРЕТЕНЗИЮ",!f.length||!sel);
  q+=btn("auBlank",`ВПИСАТЬ ПУСТОЙ БЛАНК (у вас ${S.items.blank||0})`,!f.length||!isShort||!(S.items.blank>0));
  if(S.items.container>0)q+=btn("auCont","СВИНЦОВЫЙ КОНТЕЙНЕР: СПРЯТАТЬ НЕДОСТАЧУ",!f.length||!isShort);
- q+=btn("auBribe",`ДАТЬ ВЗЯТКУ ЗА ЭТО · ${bp} ТР`,!f.length||S.tp<bp,"y");
+ q+=btn("auBribe",`ДАТЬ ВЗЯТКУ ЗА ЭТО · ${bp} ТР`,!f.length||PM()<bp,"y");
  q+=btn("auLie","СОВРАТЬ ПРО ЭТО",!f.length);
  q+=f.length?btn("auTruth","ПРИЗНАТЬ ОСТАЛЬНОЕ (ПРЕДУПРЕЖДЕНИЕ)",false,"green"):btn("auDone","ЗАКРЫТЬ РЕВИЗИЮ",false,"green");
  $("auBtns").innerHTML=q;
  const on=(id,fn)=>{const x=$(id);if(x)x.addEventListener("click",()=>{if(x.disabled)return;A.click();fn(sel);if(R.modal==="auditM")drawAudit();refresh()})};
  on("auStamp",auStamp);on("auOrder",x=>{if(!x||!useItem("order"))return;hideFinding(x,"секретный приказ","снято по секретному приказу Комендатуры");A.paper();AU.line="(Читает бумагу и бледнеет.) Откуда у тебя... Кхм. Этот пункт вычёркиваю. И я этой бумаги не видел."});on("auBlank",auBlank);on("auCont",auCont);on("auBribe",auBribe);on("auLie",auLie);on("auTruth",auTruth);on("auDone",()=>finishAudit())}
-function hideFinding(x,how,label){if(x.k==="short")move(x.drug,1,"hide",how);else{x.v.status="hidden";x.v.how=how}AU.hidden.push(`${x.k==="short"?`«${MEDS[x.drug].n}» ×1`:x.t} — ${label}`)}
+function hideFinding(x,how,label){if(x.k==="short")move(x.drug,1,"hide",how);else if(x.k==="cash")S.kdoc-=x.amt;else{x.v.status="hidden";x.v.how=how}AU.hidden.push(`${x.k==="short"?`«${MEDS[x.drug].n}» ×1`:x.t} — ${label}`)}
 function auBlank(x){if(!x||x.k!=="short"||!useItem("blank"))return;move(x.drug,1,"fict","пустой бланк");AU.hidden.push(`«${MEDS[x.drug].n}» ×1 — фиктивная выдача по бланку`);A.paper();A.stamp();
  AU.line="Так... выдача по талону... подпись есть, печать есть. Ладно, эта позиция сходится."}
 function auCont(x){if(!x||x.k!=="short"||!useItem("container"))return;hideFinding(x,"свинцовый контейнер","спрятано в контейнере");AU.line="Хм. На полке пусто, а в подполе я не смотрел... Ладно, дальше."}
 function auBribe(x){if(!x)return;const p=bribePrice();
  if(AU.bribes>=2||S.susp>=3){warn();addViol("bad","Попытка подкупа офицера","Громов отказался",'recorded');AU.line="Ты меня купить решил?! Хватит совать мне деньги! Это пойдёт в рапорт.";return}
- if(S.tp<p)return;logTP("«На согрев патрулю» (капитан Громов)",-p);AU.bribes++;S.susp++;hideFinding(x,"взятка","Громов закрыл глаза");
+ if(PM()<p)return;logTP("«На согрев патрулю» (капитан Громов)",-p);AU.bribes++;S.susp++;hideFinding(x,"взятка","Громов закрыл глаза");
  AU.line=AU.bribes>1?"(Прячет деньги.) Что-то ты часто платишь, провизор... Я запомню.":"(Прячет купюры в карман бушлата.) Кхм... на это я закрою глаза. Одно — не больше."}
 function auLie(x){if(!x)return;
- const exposed=x.k==="seen"||S.warnings>=2||(x.k==="short"?S.lies>0:(S.lies>0||S.day>=4));S.lies++;AU.lies++;
+ const exposed=x.k==="seen"||S.warnings>=2||(x.k==="short"||x.k==="cash"?S.lies>0:(S.lies>0||S.day>=4));S.lies++;AU.lies++;
  if(exposed){warn();addViol("lie",`Ложь офицеру на ревизии: ${x.k==="short"?"недостача «"+MEDS[x.drug].n+"»":x.t}`,"","recorded");
   AU.line=x.k==="seen"?"Патруль своими глазами видел, а ты мне сказки рассказываешь?! Предупреждение!":"Опять сказки?! Ты меня за идиота держишь, провизор? Это пойдёт в рапорт — и предупреждение тебе!";return}
- hideFinding(x,"ложь",x.k==="short"?"«ящик треснул на морозе» — Громов поверил":"Громов поверил на слово");
- AU.line=x.k==="short"?"Ящик треснул на морозе, говоришь? Хм... Ладно, спишем. Но в следующий раз эта сказка не пройдёт.":"Ладно, поверю. Пока."}
+ hideFinding(x,"ложь",x.k==="short"?"«ящик треснул на морозе» — Громов поверил":x.k==="cash"?"«сдачу выдал мелочью, обсчитался» — Громов поверил":"Громов поверил на слово");
+ AU.line=x.k==="cash"?"Обсчитался, говоришь? Хм... Арифметику подтяни, провизор. Спишу. Один раз.":x.k==="short"?"Ящик треснул на морозе, говоришь? Хм... Ладно, спишем. Но в следующий раз эта сказка не пройдёт.":"Ладно, поверю. Пока."}
 function auStamp(x){if(!x||x.k!=="fake"||!useItem("pstamp"))return;hideFinding(x,"штамп прописки","паспорт «исправлен» штампом прописки");A.stamp();AU.line="Прописка... штамп паспортного стола есть, запись сходится. Ладно."}
-function auTruth(){const f=auditFindings();f.forEach(x=>{if(x.k==="short"){if(MEDS[x.drug].nw)logTP(`Штраф: недостача спецрезерва «${MEDS[x.drug].n}»`,-50*x.n);move(x.drug,x.n,"adjust","акт ревизии")}else{x.v.status="recorded";if(x.k==="fake")logTP("Штраф: выдача по недействительному паспорту",-200)}});warn();
+function auTruth(){const f=auditFindings();f.forEach(x=>{if(x.k==="short"){if(MEDS[x.drug].nw)logTP(`Штраф: недостача спецрезерва «${MEDS[x.drug].n}»`,-50*x.n);move(x.drug,x.n,"adjust","акт ревизии")}else if(x.k==="cash"){S.tp+=x.amt;logTP("Начёт: недостача кассы возмещена из личных",-x.amt)}else{x.v.status="recorded";if(x.k==="fake")logTP("Штраф: выдача по недействительному паспорту",-200)}});warn();
  AU.line="Хоть не врёшь — ценю. Но всё это идёт в рапорт.";finishAudit()}
 async function finishAudit(){closeM("auditM");R.phase="talk";refresh();const G=CL.gromov.pitch,lines=[];
  const clean=!AU.bribes&&!AU.lies&&!AU.warned&&!AU.bust&&!auditFindings().length,prem=S.day>=8?150:S.day>=4?100:50;
@@ -1748,7 +1843,7 @@ async function finishAudit(){closeM("auditM");R.phase="talk";refresh();const G=C
  const ok=lines.length?await talk(lines):true;if(!ok)return;
  if(S.warnings>=4)return fired();
  clientLeave("Смена окончена. — Громов козыряет и уходит в метель.","",0,2000)}
-function fired(){R.phase="done";S.fired=1;$("dTitle").textContent="ВЫ УВОЛЕНЫ";
+function fired(){A.tense(false);R.phase="done";S.fired=1;$("dTitle").textContent="ВЫ УВОЛЕНЫ";
  $("doneBox").innerHTML=`<div class="rp-h">ПРИКАЗ КОМЕНДАТУРЫ</div><div class="rp-next">Четыре предупреждения патруля. Провизор Пункта №4 отстранён от должности.<br><br>Загрузите сохранение, чтобы пройти ревизию иначе.</div>`;
  $("dNext").style.display="none";openM("done");refresh()}
 
@@ -1756,18 +1851,20 @@ function fired(){R.phase="done";S.fired=1;$("dTitle").textContent="ВЫ УВОЛ
 let tab="rep";
 function openTerm(){A.key();tab="rep";openM("term");drawTerm();refresh()}
 const noOrders=()=>S.day>=10&&S.day<=12;
+const wtag=l=>OLD||!l.w?"":l.w==="p"?" · личные":l.w==="d"?" · на стол":" · касса";
 function ordTotal(){let t=0;for(const k in R.orders)t+=R.orders[k]*MEDS[k].p;return t}
 function drawTerm(){document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===tab));const b=$("tbody");
  if(tab==="rep"){let h=`<div>&gt; СВОДКА СМЕНЫ · ДЕНЬ ${S.day} · ПУНКТ №4</div><div class="ln"><span>Остаток на начало</span><span>${S.dayStart}</span></div>`;
-  S.log.forEach(l=>{h+=`<div class="ln ${l.v<0?"neg":""}"><span>${l.t}</span><span>${l.v>0?"+":""}${l.v}</span></div>`});
-  h+=`<div class="sum">ИТОГО: ${S.tp} ТР</div><div>Бланков в журнале: ${S.journal}</div><div>Облучение провизора: ${S.rad}%</div>`;
+  S.log.filter(l=>!l.mv).forEach(l=>{h+=`<div class="ln ${l.v<0?"neg":""}"><span>${l.t}${wtag(l)}</span><span>${l.v>0?"+":""}${l.v}</span></div>`});
+  h+=OLD?`<div class="sum">ИТОГО: ${S.tp} ТР</div>`:`<div class="sum">В КАССЕ: ${S.tp+S.desk} ТР</div><div class="${cashShort()>S.desk?"neg":""}">По журналу в кассе должно быть: ${S.kdoc} ТР${cashShort()>S.desk?` · НЕДОСТАЧА ${cashShort()-S.desk} ТР`:""}</div><div>Личные деньги (рюкзак): ${S.pers} ТР</div>`;
+  h+=`<div>Бланков в журнале: ${S.journal}</div><div>Облучение провизора: ${S.rad}%</div>`;
   if(S.warnings)h+=`<div class="neg">Предупреждение от патруля: ${S.warnings}/4</div>`;
   const it=Object.keys(ITEMS).filter(k=>S.items[k]>0).map(k=>ITEMS[k].n+(S.items[k]>1?" ×"+S.items[k]:""));if(it.length)h+=`<div>Личные вещи: ${it.join(", ")}</div>`;
   if(S.cash)h+=`<div class="neg">Неучтённая наличность: ${S.cash}</div>`;
   if(S.dirty)h+=`<div class="neg">ВНИМАНИЕ: лоток не обработан антисептиком!</div>`;
   {const su=shortUnits(),ov=openViol().length;if(su||ov)h+=`<div class="neg">Недостач: ${su} шт. · открытых нарушений: ${ov} — до ближайшей ревизии</div>`}
   if(S.day===8&&S.flags.dad==="promise"){const has=S.bag.antiradin>0||S.bag.antiradinM>0;h+=`<div class="${has?"":"neg"}">Обещано маме: «Антирадин» или «Антирадин-М» в рюкзаке к сдаче смены — ${has?"ЕСТЬ":"НЕТ"}</div>`}
-  if(S.day===11&&S.flags.food==="promise")h+=`<div class="${S.tp>=500?"":"neg"}">Обещано Оле: 500 ТР на продукты — ${S.tp>=500?"хватает, спишутся при сдаче смены":"НЕ ХВАТАЕТ "+(500-S.tp)+" ТР"}</div>`;
+  if(S.day===11&&S.flags.food==="promise")h+=`<div class="${PM()>=500?"":"neg"}">Обещано Оле: 500 ТР на продукты — ${PM()>=500?"хватает, спишутся при сдаче смены":"НЕ ХВАТАЕТ "+(500-PM())+" ТР"}</div>`;
   h+=`<div style="margin-top:.6em">&gt; ${S.day===12?"Снабжение восстановлено: конвои везут всё сами, заявки больше не нужны. Сдавайте смену.":noOrders()?"Поставки прекращены: заявки на склад не принимаются.":`Откройте вкладку ЗАКАЗЫ, чтобы закупить медикаменты на День ${S.day+1}.`}</div>`;b.innerHTML=h}
  else if(tab==="stk"){let h=`<div>&gt; ДВИЖЕНИЕ ПРЕПАРАТОВ ЗА ВСЮ СЛУЖБУ</div>`;
   for(const k in MEDS){if(MEDS[k].fake||(MEDS[k].nw&&S.day<7))continue;const L=S.led.filter(x=>x.drug===k),sum=ops=>L.filter(x=>ops.includes(x.op)).reduce((a,x)=>a+x.q,0),sh=S.doc[k]-S.stock[k];
@@ -1778,21 +1875,21 @@ function drawTerm(){document.querySelectorAll("#tabs button").forEach(b=>b.class
  else{let h=`<div>&gt; ЗАЯВКА НА СКЛАД КОМЕНДАТУРЫ · ДЕНЬ ${S.day+1}${S.warnings>=3?" · ДОСТУП ОГРАНИЧЕН: ≤2 уп. на позицию":""}</div>`;
   for(const k in MEDS){if(MEDS[k].fake||(MEDS[k].nw&&S.day<7))continue;h+=`<div class="ord"><img src="${IMG.med[k]}" alt=""><div class="n">${MEDS[k].n}<small>склад: ${S.stock[k]} · ${MEDS[k].p} ТР</small></div><button data-o="${k}" data-d="-1">−</button><b>${R.orders[k]||0}</b><button data-o="${k}" data-d="1">+</button></div>`}
   b.innerHTML=h;b.querySelectorAll("button[data-o]").forEach(x=>x.addEventListener("click",()=>{const k=x.dataset.o,d=+x.dataset.d,q=(R.orders[k]||0)+d;
-   if(q<0)return;if(d>0&&S.warnings>=3&&q>2){msg("Доступ к складу ограничен: не больше 2 упаковок на позицию.","bad");return}if(d>0&&ordTotal()+MEDS[k].p>S.tp){msg("Не хватает талонов.","bad");return}R.orders[k]=q;A.key();const sc=b.scrollTop;drawTerm();b.scrollTop=sc}))}
- {const cz=$("tChizh"),need=S.day===6&&S.flags.chizhov==="later"&&!S.flags.sonSaved;cz.style.display=need?"":"none";if(need){cz.textContent="КОНВЕРТ ЧИЖОВУ · 500 ТР";cz.disabled=S.tp-ordTotal()<500}}
- const t=ordTotal();$("tsum").textContent=`Заказ: ${t} ТР · останется: ${S.tp-t} ТР`}
-function endShift(){if(R.phase!=="endshift"||!R.closed)return;const t=ordTotal();
+   if(q<0)return;if(d>0&&S.warnings>=3&&q>2){msg("Доступ к складу ограничен: не больше 2 упаковок на позицию.","bad");return}if(d>0&&ordTotal()+MEDS[k].p>S.tp){msg(OLD?"Не хватает талонов.":"В кассе не хватает денег на эту заявку.","bad");return}R.orders[k]=q;A.key();const sc=b.scrollTop;drawTerm();b.scrollTop=sc}))}
+ {const cz=$("tChizh"),need=S.day===6&&S.flags.chizhov==="later"&&!S.flags.sonSaved;cz.style.display=need?"":"none";if(need){cz.textContent="КОНВЕРТ ЧИЖОВУ · 500 ТР";cz.disabled=(OLD?S.tp-ordTotal():S.pers)<500}}
+ const t=ordTotal();$("tsum").textContent=OLD?`Заказ: ${t} ТР · останется: ${S.tp-t} ТР`:`Заказ из кассы: ${t} ТР · в кассе останется: ${S.tp+S.desk-t} ТР`}
+function endShift(){if(R.phase!=="endshift"||!R.closed)return;const t=ordTotal();sweepDesk("Деньги со стола убраны в кассу на ночь");
  if(S.day===6&&S.flags.son==="promise"&&!S.flags.sonDone){S.flags.sonDone=1;if(S.flags.sonSaved)olya(40);else{S.olya=0;S.flags.son="betrayed"}}
  if(S.dirty){S.dirty=false;addRad(5);logTP("Лоток не обработан антисептиком",-50)}
  if(S.day===8&&!S.flags.dadDone){S.flags.dadDone=1;const k=S.bag.antiradin>0?"antiradin":S.bag.antiradinM>0?"antiradinM":null;
   if(S.flags.dad==="promise"&&k){S.bag[k]--;S.flags.dad="saved";S.flags.dadMed=k}else S.flags.dad=S.flags.dad==="promise"?"broken":"dead"}
- if(S.day===11&&!S.flags.foodDone){S.flags.foodDone=1;if(S.flags.food==="promise"&&S.tp-t>=500){logTP("Продуктовый набор для семьи (Оля)",-500);S.flags.family11="fed";olya(30)}else{S.flags.family11="ill";if(S.flags.food==="promise")olya(-20)}}
- if(t>0){for(const k in R.orders)if(R.orders[k])move(k,R.orders[k],"in","заявка");logTP(`Закупка медикаментов на День ${S.day+1}`,-t)}
+ if(S.day===11&&!S.flags.foodDone){S.flags.foodDone=1;if(S.flags.food==="promise"&&(OLD?S.tp-t:S.pers)>=500){logTP("Продуктовый набор для семьи (Оля)",-500);S.flags.family11="fed";olya(30)}else{S.flags.family11="ill";if(S.flags.food==="promise")olya(-20)}}
+ if(t>0){for(const k in R.orders)if(R.orders[k])move(k,R.orders[k],"in","заявка");logK(`Закупка медикаментов на День ${S.day+1}`,-t)}
  S.orders=R.orders;A.ok();nextStage()}
 function reportHTML(){const op=shortUnits(),ov=openViol().length,given=S.log.filter(l=>l.t.startsWith("Выдача:")).length;
  let h=`<div class="rp-h">ОТЧЁТ ЗА СМЕНУ · ДЕНЬ ${S.day} · ${DATES[S.day]}</div><div class="rp-l"><span>Остаток на начало смены</span><b>${S.dayStart} ТР</b></div>`;
- S.log.forEach(l=>{h+=`<div class="rp-l ${l.v<0?"neg":"pos"}"><span>${l.t}</span><b>${l.v>0?"+":""}${l.v}</b></div>`});
- h+=`<div class="rp-l rp-sum"><span>ИТОГО НА СЧЁТЕ</span><b>${S.tp} ТР</b></div>`;
+ S.log.filter(l=>!l.mv).forEach(l=>{h+=`<div class="rp-l ${l.v<0?"neg":"pos"}"><span>${l.t}${wtag(l)}</span><b>${l.v>0?"+":""}${l.v}</b></div>`});
+ h+=OLD?`<div class="rp-l rp-sum"><span>ИТОГО НА СЧЁТЕ</span><b>${S.tp} ТР</b></div>`:`<div class="rp-l rp-sum"><span>В КАССЕ АПТЕКИ</span><b>${S.tp} ТР</b></div><div class="rp-l ${cashShort()?"neg":""}"><span>Касса по журналу</span><b>${S.kdoc} ТР${cashShort()?" · недостача "+cashShort():""}</b></div><div class="rp-l rp-sum"><span>ЛИЧНЫЕ ДЕНЬГИ (РЮКЗАК)</span><b>${S.pers} ТР</b></div>`;
  h+=`<div class="rp-l"><span>Выдано по талонам</span><b>${given}</b></div><div class="rp-l"><span>Бланков в журнале</span><b>${S.journal}</b></div>`;
  h+=`<div class="rp-l ${op?"neg":""}"><span>Недостач по складу (SHORT)</span><b>${op} шт.</b></div><div class="rp-l ${ov?"neg":""}"><span>Открытых нарушений</span><b>${ov}</b></div><div class="rp-l"><span>Отношения с Олей</span><b>${S.olya}/100</b></div>${S.day>=6&&S.flags.son?`<div class="rp-l ${S.flags.sonSaved?"pos":"neg"}"><span>Данил</span><b>${S.flags.sonSaved?"вернётся домой":S.flags.son==="betrayed"?"увезён — обещание не сдержано":"отправлен под Тюмень"}</b></div>`:""}${S.day>=8&&S.flags.dad?`<div class="rp-l ${S.flags.dad==="saved"?"pos":"neg"}"><span>Отец</span><b>${S.flags.dad==="saved"?(S.day===8?"лекарство передано родителям":"выздоравливает"):S.day===8?"лекарство не передано":"умер 18 марта"}</b></div>`:""}${S.day===11?`<div class="rp-l ${S.flags.family11==="fed"?"pos":"neg"}"><span>Семья</span><b>${S.flags.family11==="fed"?"500 ТР переданы на продукты":"денег на продукты нет"}</b></div>`:""}<div class="rp-l ${S.rad>=50?"neg":""}"><span>Облучение провизора</span><b>${S.rad}%</b></div>`;
  if(S.warnings)h+=`<div class="rp-l neg"><span>Предупреждения патруля</span><b>${S.warnings}/4</b></div>`;
@@ -1803,6 +1900,76 @@ function showDone(){R.phase="done";clearTimeout(toastT);$("toast").className="";
  const more=S.day<LAST_DAY;let h=reportHTML();
  if(!more)h+=`<div class="rp-next">Продолжение следует: День ${S.day+1} — в разработке. Ваши решения сохранены.</div>`;
  $("dTitle").textContent=`ДЕНЬ ${S.day} ЗАВЕРШЁН`;$("doneBox").innerHTML=h;$("dNext").style.display=more?"":"none";$("dNext").textContent=S.day===12?"УТРО 22 МАРТА · ФИНАЛ":`НАЧАТЬ ДЕНЬ ${S.day+1}`;openM("done");refresh()}
+
+/* ================= NEWSPAPER: every second morning, built from the player's own decisions ================= */
+const PAPER_DAYS=[3,5,7,9,11];
+function afterOpen(){if(!OLD&&PAPER_DAYS.includes(S.day)&&stage()==="morning"&&!S.flags["np"+S.day]){R.phase="paper";A.paper();say("","Мальчишка-разносчик просовывает в лоток свежий номер «Вестника Сектора-86».");refresh();return}nextStage()}
+function newsFor(d){const f=S.flags,it=[],is=(k,v)=>f[k]===v,fk=k=>!!f[k+"Fake"];let lead,box;
+ const apt=()=>{if(f.audit==="clean")it.push(["Ревизия в Пункте №4","Патруль капитана Громова проверил Аптечный пункт №4. Склад, журнал и касса сошлись, провизор отмечен премией."]);
+  else if(f.audit==="warned")it.push(["Ревизия в Пункте №4",`Патруль выявил в Аптечном пункте №4 расхождения. Провизору вынесено предупреждение (всего: ${S.warnings} из 4).`]);
+  else if(f.audit)it.push(["Ревизия в Пункте №4","Аптечный пункт №4 прошёл проверку. Подробностей патруль не сообщает."])};
+ if(d===3){lead=["Минус сорок один: нормы на дрова урезаны","Комендатура вдвое сократила выдачу топлива. Жителей просят не покидать жильё без нужды и сообщать о соседях, не выходящих на связь."];
+  it.push(is("anna","saved")?["Чудо на Омской","А. Котова, которую фельдшеры считали безнадёжной, идёт на поправку. Где она достала «Антирадин» при фоне 185 мкР/ч, редакции неизвестно."]
+   :is("anna","quarantine")?["Заражённая изолирована","Спецбригада вывезла с Омской А. Котову с фоном 185 мкР/ч. Комендатура благодарит бдительного провизора Пункта №4."]
+   :["Смерть на Омской","А. Котова скончалась от лучевой болезни, не получив препарата. Муж покойной ищет виновных."]);
+  it.push(is("klavdia","helped")?["Письмо в редакцию","Пенсионерка К. Морозова благодарит аптеку на окраине: «Не оставили старуху, хоть врач мой и помер»."]
+   :["Умерла в очереди за правдой","Пенсионерка К. Морозова найдена мёртвой в своей квартире. Успокоительное ей не отпустили: врач, выписавший талон, числится умершим."]);
+  it.push(is("gleb","stim")?["ТЭЦ-2 выстояла ночь","Дежурный инженер Г. Руднев сутки не отходил от котлов. Давление удержали, квартал с теплом."]
+   :["Авария на ТЭЦ-2","Ночью упало давление в котлах: дежурная смена не выдержала вторых суток без сна. Три квартала остались без тепла."]);
+  it.push(f.viktor?["Фальшивые талоны","В городе ходят талоны с поддельной печатью Военкомата. По слухам, кое-где их принимают — за отдельную плату."]
+   :["Фальшивые талоны","В ходу талоны с поддельной печатью. В Пункте №4 подделку распознали под ультрафиолетом — берите пример."]);apt();
+  box=["РАЗЫСКИВАЕТСЯ","Беглый из лагеря спецработ ЗУБОВ В. Лагерный номер на руке, документов нет. Опасен. За поимку — премия Комендатуры."]}
+ if(d===5){lead=["В Секторе вводится паспортный режим","С 14 марта лекарства отпускаются только жителям, внесённым в «Перепись населения 2030». Провизорам выданы книги учёта. Выдача по чужому или исправленному паспорту — штраф 200 ТР."];
+  it.push(is("vera","helped")?["Консервный завод","Работница В. Лебедева вернулась в цех: в её семье больной пошёл на поправку."]:["Консервный завод","В общежитии завода ещё одна смерть от пневмонии. Антибиотиков семья не дождалась."]);
+  it.push(is("maria","helped")?["Госпиталь","Хирург М. А. получила «Антирадин» сверх исчерпанной квоты. Этой ночью в госпитале никто не умер."]:["Госпиталь","Квота на «Антирадин» исчерпана. Двоих облучённых из ночной смены спасти не удалось."]);
+  it.push(is("egor","helped")?["Артель «Обь» вышла на лёд","На рынке снова свежая рыба, цены на еду опустились."]:["Рыбаки не вышли на лёд","Старшина артели «Обь» слёг. Рыбы на рынке нет, еда подорожала."]);
+  it.push(is("annav","helped")?["Приют №32","Дети получили антибиотики. Воспитательница А. В. Крылова: «Все четырнадцать живы»."]:["Приют №32","Групповой талон приюта не приняли: в бумаге не указано число детей. Двое воспитанников в тяжёлом состоянии."]);
+  if(is("vadim","helped"))it.push(["Беглый всё ещё на свободе","Зубова В. видели у Аптечного пункта №4. Патруль задаёт вопросы."]);else if(f.vadim)it.push(["Беглый Зубов","Провизор Пункта №4 не стал иметь дела с беглым. Патруль идёт по следу."]);apt();
+  box=["РАЗЫСКИВАЕТСЯ","Мародёр, живущий по краденым паспортам. Адрес в документе затёрт, фон высокий. Сверяйте прописку с Переписью!"]}
+ if(d===7){lead=["Эшелон ушёл под Тюмень","214 призывников отправлены на внешний рубеж. В Сектор тем временем прорвался спецэшелон из резерва ставки: аптеки получают пять новых препаратов."];
+  it.push(f.sonSaved?["Военкомат","Комиссия отмечает «необычно много» освобождений по здоровью в последний день призыва. Проверка назначена на апрель."]:["Военкомат","Призыв закрыт без недобора. Письма с рубежа идут три недели."]);
+  it.push(is("zhanna","helped")?["Бронепоезд ушёл по расписанию","Сварщики депо за ночь залатали бронеплиты."]:["Бронепоезд задержан","Бригада сварщиков слегла, отправление сорвано на сутки."]);
+  it.push(is("kirill","bribed")?["Ограбление на Речной","Преступник с краденым паспортом снова ушёл. По сведениям патруля, лекарства он получил в одной из аптек."]
+   :is("kirill","quarantine")?["Мародёр задержан","Человека с краденым паспортом и фоном 168 мкР/ч взяли у окна Аптечного пункта №4."]:["Мародёр скрылся","Человеку с краденым паспортом отказали в аптеке. Где он теперь — неизвестно."]);
+  it.push(is("ruslan","stim")?["Буровая","Ночная смена отработала без происшествий."]:["Буровая","Ночная смена сорвана: люди валятся с ног."]);
+  if(is("shtern","sold"))it.push(["Слухи","Говорят, лекарства в Секторе теперь можно купить и без талона — были бы деньги."]);apt();
+  box=["ПРИКАЗ КОМЕНДАТУРЫ","Спецрезерв (Антирадин-М, Стрептоцид, Офтальмо-К, Гемоглобин-С, Иммунал-Т) — под личную ответственность провизоров. За каждую пропавшую ампулу — двойной спрос."]}
+ if(d===9){lead=["Спецрезерв дошёл до аптек","Новые препараты отпускаются по талонам. Комендатура предупреждает: на чёрном рынке появились муляжи — мел, крашеная вода и технический вазелин."];
+  it.push(is("vanya","helped")?["Связь восстановлена","Рота связи дотянула провод через Рыжий лес. Блокпосты снова на линии."]:is("vanya","quarantine")?["Связист в изоляторе","Рядовой с фоном 165 мкР/ч изолирован. Линию к блокпостам тянут заново."]:["Блокпосты без связи","Линию через Рыжий лес не дотянули: связист слёг."]);
+  it.push(is("nikita","helped")&&!fk("nikita")?["Дизельная работает","Аварию на насосе ликвидировали, район со светом."]:["Авария на дизельной","Моторист не разглядел приборы. Район сутки сидел без света."]);
+  if(fk("varvara"))it.push(["Отравление на окраине","Травницу В. Седову увезли в реанимацию: «неизвестный порошок» вместо лекарства."]);
+  else it.push(is("varvara","helped")?["Окраина","Травница Седова снова принимает больных."]:["Окраина","Травница Седова слегла. Лечить Лесной тупик некому."]);
+  it.push(is("zahar","helped")?["Периметр","Похоронная бригада закончила траншею в срок."]:["Периметр","Похоронная бригада не справляется: людей с отмороженными руками некем заменить."]);
+  if(fk("alena"))it.push(["Почта","Курьер между блокпостами слегла с воспалением лёгких. Письма не носят."]);apt();
+  box=["РАЗЫСКИВАЕТСЯ","Мужчина около 30 лет, шрам через левую щёку. Кличка «Шрам». Пользуется чужими паспортами. Вооружён."]}
+ if(d===11){lead=["Налёт на Центральный медсклад","Ночью неизвестные срезали замки автогеном и вывезли резервы. Комендатура называет это «временными трудностями». Поставки в аптеки прекращены."];
+  it.push(fk("petr2")?["ТЭЦ: ликвидатор в коме","П. С. Ильина вынесли из машинного зала без сознания. Препараты «не подействовали»."]:is("petr2","helped")?["ТЭЦ","Машинный зал откачивают. Ликвидатор Ильин на ногах."]:["ТЭЦ","Ликвидатор Ильин госпитализирован: без препарата он не выдержал смены."]);
+  it.push(is("elvira","helped")&&!fk("elvira")?["Вода безопасна","Станция очистки промыла фильтры. Отравлений нет."]:["Отрава из кранов","Фильтры станции очистки не промыли вовремя. Воду пить нельзя, чистая — только привозная."]);
+  it.push(is("rodion","quarantine")?["Налётчик задержан","Участника нападения на склад взяли у окна Аптечного пункта №4. Провизору объявлена благодарность."]
+   :is("rodion","bribed")||is("rodion","helped")?["Налётчики получили лекарства","По данным патруля, бандит по кличке «Шрам» отоварился в одной из аптек по чужому паспорту. Идёт проверка."]:["«Шрам» ушёл","Налётчик с чужим паспортом ушёл из аптеки ни с чем и скрылся."]);
+  it.push(is("larisa","helped")?["ДК «Октябрь»","Детская читальня снова открыта."]:["ДК «Октябрь»","Пункт обогрева закрыт: заведующая слегла с ангиной."]);
+  if(is("zahar2","helped"))it.push(["Доброе слово","Землекопы периметра просят напечатать: «Спасибо аптекарю, что поверил в долг»."]);
+  if(Object.keys(f).some(k=>/Fake$/.test(k)&&f[k]))it.push(["Муляжи вместо лекарств","В госпитале растёт число больных, которым «не помогло». Комендатура ищет, кто отпускает мел и воду."]);apt();
+  box=["ОТ РЕДАКЦИИ","Те, у кого есть деньги, скупают лекарства мимо талонов. Те, у кого их нет, стоят в очереди. Решать, кому достанется последняя ампула, сегодня будет провизор."]}
+ return{lead,it,box}}
+function openNews(){const d=S.day,n=newsFor(d);$("npNo").textContent="№ "+(60+d);$("npDate").textContent=DATES[d]+" · цена 2 ТР";
+ $("npBody").innerHTML=`<h3>${n.lead[0]}</h3><p>${n.lead[1]}</p>`+n.it.map(x=>`<h5>${x[0]}</h5><p>${x[1]}</p>`).join("")+(n.box?`<div class="box"><b>${n.box[0]}</b><br>${n.box[1]}</div>`:"");
+ $("newsP").scrollTop=0;A.paper();openM("news");refresh()}
+function closeNews(){if(R.phase!=="paper")return;A.click();closeM("news");S.flags["np"+S.day]=1;nextStage()}
+/* ================= TEST SAVES: jump straight to days 7 / 10 / 12 on either road ================= */
+function presetState(day,good){const s=newState();Object.assign(s,{day,cp:0,tp:700,kdoc:700,dayStart:700,pers:good?300:150,olya:good?85:20,warnings:good?0:1,items:{blank:1}});
+ for(const k in MEDS){const m=MEDS[k],v=m.fake?0:m.nw?(day>7?4:0):5;s.stock[k]=v;s.doc[k]=v}
+ const f=s.flags={test:1,anna:"saved",klavdia:"helped",gleb:good?"stim":"talon",family:good?"steal":"doctor",son:good?"promise":"sent",sonDone:1,cashTut:1};
+ if(good)f.sonSaved="voron";
+ if(day>=10){f.let7=1;f.dad=good?"saved":"dead";f.dadDone=1;f.dadTold=1;if(good)s.items.dirk=1}
+ if(day>=12){f.family11=good?"fed":"ill";f.food=good?"promise":"refused";f.foodDone=1}
+ return s}
+function openSlots(){const m=readSave(K_MAN);let h=`<button class="btn green" data-s="man" ${m?"":"disabled"}>МОЁ СОХРАНЕНИЕ<br><small>${saveLabel(m)}</small></button><div class="slh">ТЕСТОВЫЕ СОХРАНЕНИЯ</div>`;
+ [[7,1],[7,0],[10,1],[10,0],[12,1],[12,0]].forEach(([d,g])=>{h+=`<button class="btn" data-s="${d}:${g}">ДЕНЬ ${d} · ${g?"СЕМЬЯ ЦЕЛА":"СЕМЬЯ ТЕРЯЕТСЯ"}<br><small>${g?"дорога к хорошей концовке":"дорога к плохой концовке"}</small></button>`});
+ $("slotList").innerHTML=h;$("slotList").querySelectorAll("button").forEach(x=>x.addEventListener("click",()=>{if(x.disabled)return;A.click();goFull();$("slots").classList.remove("on");
+  if(x.dataset.s==="man"){loadFrom(K_MAN);return}const [d,g]=x.dataset.s.split(":");S=presetState(+d,g==="1");startCheckpoint(0,{nosave:true})}));
+ $("slots").classList.add("on")}
+{const dm0=drawMarket;drawMarket=function(){dm0();if(!OLD)$("mkBody").insertAdjacentHTML("afterbegin",`<div class="mki">Ваши личные деньги (рюкзак): <b>${S.pers} ТР</b>. Касса аптеки здесь не в счёт.</div>`)}}
 
 /* ================= DAY 13: ENDINGS ================= */
 function endingKind(){const f=S.flags,fk=Object.keys(f).filter(k=>/Fake$/.test(k)&&f[k]).length,son=!!f.sonSaved,fed=f.family11==="fed",dad=f.dad==="saved";
@@ -1869,7 +2036,7 @@ function wire(){
  $("mNew").addEventListener("click",()=>{A.init();A.click();if(readSave(K_AUTO))openM("confirm");else newGame()});
  $("cfYes").addEventListener("click",()=>{closeM("confirm");newGame()});$("cfNo").addEventListener("click",()=>{A.click();closeM("confirm")});
  $("mCont").addEventListener("click",()=>{A.init();A.click();goFull();loadFrom(K_AUTO)});
- $("mLoad").addEventListener("click",()=>{A.init();A.click();goFull();loadFrom(K_MAN)});
+ $("mLoad").addEventListener("click",()=>{A.init();A.click();if(OLD){goFull();loadFrom(K_MAN);return}openSlots()});
  $("mSound").addEventListener("click",()=>{A.init();const on=!(A.set.music||A.set.sfx);A.set.music=A.set.sfx=on;A.save();A.applySet();menuRefresh()});
  // panel
  $("dlg").addEventListener("click",dlgTap);$("bNext").addEventListener("click",onNext);$("bQuar").addEventListener("click",onQuar);
@@ -1886,7 +2053,16 @@ function wire(){
  $("mkLeave").addEventListener("click",leaveMarket);
  $("tCen").addEventListener("click",()=>{A.paper();R.tool=null;R.sel=null;$("cen").classList.add("on");refresh()});
  $("cenClose").addEventListener("click",()=>{A.paper();$("cen").classList.remove("on");refresh()});$("cenNone").addEventListener("click",()=>onCensus(null));
- $("tChizh").addEventListener("click",()=>{if(S.tp-ordTotal()<500)return;logTP("Конверт Чижову (военкомат)",-500);S.flags.sonSaved="chizhov";A.coin();msg("Конверт оставлен. Данила вычеркнут из списков.","good");drawTerm()});
+ $("tChizh").addEventListener("click",()=>{if((OLD?S.tp-ordTotal():S.pers)<500)return;logTP("Конверт Чижову (военкомат)",-500);S.flags.sonSaved="chizhov";A.coin();msg("Конверт оставлен. Данила вычеркнут из списков.","good");drawTerm()});
+ {const cd=$("cashd");let cx=null,cy=0,cm=false;
+  cd.addEventListener("pointerdown",e=>{if(!S||!S.desk)return;cx=e.clientX;cy=e.clientY;cm=false;cd.classList.add("drag");try{cd.setPointerCapture(e.pointerId)}catch(x){}});
+  cd.addEventListener("pointermove",e=>{if(cx==null)return;if(Math.hypot(e.clientX-cx,e.clientY-cy)>8)cm=true;cd.style.transform=`translate(${e.clientX-cx}px,${e.clientY-cy}px) scale(.85)`});
+  const ce=e=>{if(cx==null)return;cx=null;cd.classList.remove("drag");cd.style.transform="";
+   if(!moneyOK()){msg("Сейчас не до денег.");return}
+   if(cm&&inside($("kassa"),e.clientX,e.clientY))deskTo("k");else if(cm&&inside($("bag"),e.clientX,e.clientY))deskTo("p");
+   else msg(`На столе ${S.desk} ТР. Перетащите их: в кассу (ящик слева) — казне, в рюкзак — себе.`)};
+  cd.addEventListener("pointerup",ce);cd.addEventListener("pointercancel",ce)}
+ $("kassa").addEventListener("click",()=>{if(!S)return;A.init();if(R.hand){msg("Касса — для денег. Лекарства — в окно, на шкаф или в рюкзак.");return}takeCash("k")});
  $("bag").addEventListener("click",openInv);$("invClose").addEventListener("click",()=>{A.click();$("inv").classList.remove("on");refresh()});
  $("lClose").addEventListener("click",()=>{if(R.phase!=="letter")return;A.paper();closeM("letter");R.phase="wait";refresh();later(500,nextStage)});
  // probe
@@ -1923,6 +2099,7 @@ function wire(){
  document.querySelectorAll("#tabs button").forEach(b=>b.addEventListener("click",()=>{tab=b.dataset.t;A.key();drawTerm()}));
  $("tClose").addEventListener("click",()=>{A.click();closeM("term");refresh()});$("tEnd").addEventListener("click",endShift);
  $("dMenu").addEventListener("click",()=>{A.click();toMenu()});
+ $("newsClose").addEventListener("click",closeNews);$("slClose").addEventListener("click",()=>{A.click();$("slots").classList.remove("on")});
  $("endAgain").addEventListener("click",()=>{if(!S||R.phase!=="ending")return;A.click();NAR.run(endingParts(endingKind()))});
  $("endSkip").addEventListener("click",()=>{if(!S||R.phase!=="ending")return;A.click();NAR.all()});
  $("endMenu").addEventListener("click",()=>{A.click();NAR.stop();toMenu()});
@@ -1940,7 +2117,7 @@ function wire(){
 function newGame(){A.init();goFull();S=newState();startCheckpoint(0)}
 
 A.load();buildScene();wire();fit();menuRefresh();
-window.__G={endingKind,endingParts,NAR,get S(){return S},R,A,startCheckpoint,startDay,CL,readSave,K_AUTO,K_MAN,DAYS,MEDS,move,shortages,addItem};
+window.__G={endingKind,newsFor,presetState,cashShort,OLD,NEWST,get AU(){return AU},endingParts,NAR,get S(){return S},R,A,startCheckpoint,startDay,CL,readSave,K_AUTO,K_MAN,DAYS,MEDS,move,shortages,addItem};
 </script>
 </body>
 </html>

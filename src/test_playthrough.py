@@ -9,7 +9,7 @@ def ck(cond,name):
 with sync_playwright() as p:
     b=p.chromium.launch(channel='chrome',args=['--no-sandbox','--autoplay-policy=no-user-gesture-required'])
     ctx=b.new_context(viewport={'width':390,'height':844},device_scale_factor=1,has_touch=True)
-    pg=ctx.new_page()
+    pg=ctx.new_page(); pg.add_init_script("window.__COMPAT=1")
     errs=[]; pg.on('pageerror',lambda e:errs.append(str(e))); pg.on('console',lambda m: m.type=='error' and errs.append(m.text))
     S=lambda: pg.evaluate("JSON.parse(JSON.stringify(__G.S))")
     R=lambda k: pg.evaluate(f"__G.R.{k}")
@@ -316,7 +316,7 @@ with sync_playwright() as p:
     nxt(); pg.click(NO); cp_is(6); nxt(); ck(pg.locator('#mkAB').count()==0 and pg.locator('#mkDad').count()==0 and pg.locator('#mkF_fakeL').count()==1,'Ворон д11: настоящих лекарств нет'); pg.click('#mkLeave'); cp_is(7)
     nxt(); journal_drag(); tap_until("__G.R.phase==='auditm'"); n=pg.locator('.aurow').count(); ck(n>=2,'ревизия №5 нашла недостачи'); pg.click('#auTruth'); cp_is(8); ck(S()['warnings']==2,'второе предупреждение')
     pg.evaluate("__G.S.tp=640"); close_shift(); ck('Обещано Оле' in pg.inner_text('#tbody') and 'хватает' in pg.inner_text('#tbody'),'терминал: 500 ТР для Оли'); pg.click('#tEnd'); until("__G.S.cp===9"); s=S(); t=pg.inner_text('#doneBox')
-    ck(s['tp']==140 and s['flags']['family11']=='fed' and 'переданы' in t and 'День 12' in t and not pg.is_visible('#dNext'),'день 11: семья накормлена, −500; конец контента'); pg.screenshot(path=W+'t9_done11.png')
+    ck(s['tp']==140 and s['flags']['family11']=='fed' and 'переданы' in t and pg.is_visible('#dNext'),'день 11: семья накормлена, −500'); pg.screenshot(path=W+'t9_done11.png')
     # ---- variants
     pg.evaluate("Object.assign(__G.S,{day:7,flags:{son:'sent'},olya:40});__G.startCheckpoint(1)"); pg.click('#s_tray'); ck('теплушки' in pg.inner_text('#ltxt') and 'ДАНИЛА' in pg.inner_text('#lhead') and S()['olya']==0,'день 7: письмо Данила, Оля 0'); pg.click('#lClose')
     pg.evaluate("Object.assign(__G.S,{day:11,flags:{},olya:10});__G.startCheckpoint(3)"); ck(S()['cp']==4,'день 11: при разрушенных отношениях Оля не звонит')

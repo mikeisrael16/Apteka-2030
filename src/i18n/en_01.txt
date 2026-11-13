@@ -1,0 +1,120 @@
+235|Help me out: "Antiseptic" and "Sedative"
+236|Well I never... The papers are in order! I'll complain at the radio hub.
+237|Zhanna Volkova
+238|Smirnova Zhanna Andreyevna
+239|Volkova Zh.A.
+240|armoured train depot, car 3
+241|Hi, pharmacist. Zhanna Volkova, welding crew. We were patching armour plates on the locomotive in a blizzard, my mask got torn off — caught a welder's flash, and the scale burned my hands. The pain's hellish. The shift foreman wrote my permit, but my passport still has my maiden name... Take a look, don't ruin me. I'll give a hundred and fifty on top.
+242|"Painkiller" and bandages, permit from the shift foreman
+243|Zhanna clenches her burned fists. — Over one surname... Fine, pharmacist. — She walks off, staggering with pain.
+244|Boris Shtern
+245|Arkady Chizhov
+246|Chizhov Arkady Lvovich
+247|Chizhov A.L.
+248|Lenina St, bldg 5, apt 12
+249|Good health to you, Pavel. Chizhov, Arkady Lvovich, first department of the Military Office. My head's splitting from the conscript lists — give me a "Stimulant" to stay sharp and a "Sedative" for the night...
+250| Oh, by the way. I saw your boy Danil at the distribution point this morning. Nice lad — a shame if he's lost in the first attack near Tyumen. The train leaves tomorrow at dawn. The price of the question — 500 RC in an envelope.
+251| Oh, by the way. I saw your Danil at the distribution point this morning. Holding up well. The train leaves at dawn.
+252|Give me a "Stimulant" and a "Sedative"
+253|I'll remember this, pharmacist. The Military Office remembers everything.
+254|Yegor Petrovich
+255|Ledyankin Yegor Petrovich
+256|Ledyankin Ye.P.
+257|"Ob" fishing cooperative
+258|No. AR-0133
+259|Issued by: "Ob" fishing cooperative
+260|Hello, son... I'm Petrovich, from the Ob. The ice is heavy this year and the fish went deep — we sit for days in the frost mending nets. My hands won't obey, fingers like wood, the pain's unbearable. Give me a painkiller to ease the joints. Here's the cooperative's permit — they're in good standing with the Commandant, the seal is real, look...
+261|Give me a painkiller to ease the joints
+262|Ah, son... There's a three-day line at the sanitation post. And the ice won't wait. — Petrovich leans on his ice pick and slowly walks away.
+263|Vadim Zubov
+264|— not presented —
+265|Zubov V. (certificate)
+266|transit point No.7
+267|Transit point No.7 closed in 2028.
+268|No documents. A certificate stamped by a long-closed transit point is invalid.
+269|Listen, boss... Quiet, don't make noise. I need bandages... and something so the infection doesn't get into my blood. Caught my arm on rusty wire crossing the perimeter — it's swelling, burning. Don't ask for documents — I don't have any.
+270|I need bandages and antiseptic. No documents
+271|You press the button. A minute later the patrol twists Vadim down right at the window. — Bastard... — The Commandant's Office announces thanks and a bonus for catching the fugitive.
+272|Don't send me away, boss! I'm not empty-handed. Look: a piece of copper cable and a home-made knife, from a leaf spring — a good one. Give me bandages and antiseptic, I'm rotting here...
+273|ANTISEPTIC + BANDAGE FOR KNIFE AND COPPER
+274|Vadim spits angrily and vanishes into the blizzard. A man that desperate might rob somebody...
+275|Anna Vasilyevna
+276|Krylova Anna Vasilyevna
+277|Orphanage No.32 (group)
+278|orphanage No.32, former kindergarten
+279|No. GR-0032
+280|Number of children: ______
+281|The group permit doesn't state the number of children — formally the form is invalid. Gromov will notice.
+282|Hello, Pavel. I'm Anna Vasilyevna from Orphanage Thirty-Two. The little ones are so weak: scurvy is starting, and Vanya and Sonya cough so badly I fear it's pneumonia. The Commandant wrote us a permit for antibiotics, but said there's a shortage at the warehouse. Could you look, maybe something is left? I brought you toys — the children made them themselves... maybe your Alina will like them?
+283|The Commandant wrote us a permit for antibiotics
+284|Anna Vasilyevna stares at the form for a long time. — A mistake in one box... — She presses a rag hare to her chest and leaves. The orphanage will be coughing until morning.
+285|Timokha "Nail"
+286|Gvozdev Timofei Andreyevich
+287|Gvozdev T.A.
+288|industrial zone, sewers
+289|digger crew
+290|Issued by: foreman of the free diggers
+291|A paper from free diggers has no legal force with the Commandant's Office.
+292|Oh, boss, you're alive! Look, I need a couple cc of "Stim", or "Antiradin" at worst. Me and the guys crawled into the sewers under the chemical plant — loads of loot down there, but it's so hot it makes your teeth ache, and something crawls around in the dark. If I don't come back with a boost — they'll bury us down there. Here's a permit from the foreman, quick, time's burning!
+293|I need some "Stim", or "Antiradin" at worst
+294|What the, boss?! What are you doing?! — The grille drops. The squad leads Timokha away. The Commandant's Office pays a bonus: +100 RC.
+295|Get lost, boss, you and your seals! — Timokha kicks the grille and clatters off into the industrial zone with his pack. No more cheap spare parts now.
+296|Zakhar "Gravedigger"
+297|Lyuty Zakhar Vasilyevich
+298|Lyuty Z.V.
+299|Special works barracks No.2
+300|Hey, pharmacist. Zakhar Lyuty, perimeter burial crew. The ground's frozen three metres deep, we hack trenches with crowbars and shovels. My palms are torn bloody, the frost gets into the wounds. Give me the new powder — "Streptocide", and some ointment for my hands. The papers are in order, take a look.
+301|Give me the new powder — "Streptocide", and ointment for my hands
+302|That's more like it. Something to hold a shovel with. — Zakhar puts 150 RC in the tray and heads for the perimeter.
+303|Saving the state's goods, eh? Well, well. You, pharmacist, I'll bury without waiting in line. — Zakhar leaves, cursing.
+304|Grandpa Serafim
+305|Tikhonov Serafim Kuzmich
+306|Tikhonov S.K.
+307|19▒▒ (soot)
+308|Zavodskaya St, barracks 6
+309|Peace to your house, son... I'm Serafim. After the flash over the plant, the white fog ate my eyes, I can't see God's light at all, I feel my way with a stick. Good people said they brought you foreign drops, "Oftalmo-K", and an "Immunal-T" tincture. Help an old man not go completely blind... Only my passport got burned in a fire, you can't read the year of birth.
+310|They brought you "Oftalmo-K" drops and an "Immunal-T" tincture
+311|Christ save you, son... — Serafim gropes and lays an old silver cross in the tray. — Take it. It won't shine for me any more, but you might need it.
+312|Well... All is God's will. — The old man taps his staff and walks off into the dark.
+313|Nina Pavlovna
+314|Kuznetsova Nina Pavlovna
+315|Kuznetsova N.P.
+316|Shveinaya St, bldg 5
+317|Valid until: 14.03.2030
+318|Permit EXPIRED 2 days ago (today is 16.03.2030). By Commandant's law — refusal.
+319|Hello, Pavel. I'm Kuznetsova, Nina Pavlovna, I sew pea coats and dressings for the garrison. I sit at the machine for days in the half-dark, anaemia has worn me out, I faint, my fingers are pricked raw. Please issue the new "Hemoglobin-S" in ampoules... I won't stay in your debt — I'll line your work coat with lead cloth against the radiation!
+320|Issue the new "Hemoglobin-S" and a "Painkiller"
+321|Thank you, Pavel! Give me your coat — five minutes... — Nina Pavlovna deftly sews in a lead-cloth lining. (Reinforced lining: you take 5% less radiation from clients.)
+322|Two days... I sewed their greatcoats, I didn't sleep... — Nina Pavlovna leaves in tears.
+323|Vanya "Signalman"
+324|Pvt. Sokolov I.A.
+325|No. MU-0164
+326|Grounds: military ID (locked in HQ)
+327|No passport, military ID not presented, the private is not in the census. Identity not confirmed.
+328|Comrade pharmacist, help me! Private Ivan Sokolov, conscript, signals company! We were laying phone wire through the Red Forest to the checkpoints — got hit by a fallout burst. Ordinary antiradin doesn't work any more, my nose is pouring blood! The medic prescribed the new "Antiradin-M", but I have no passport — our military IDs are locked up at HQ! Help me and I'll give you something valuable from the signals store!
+329|The medic prescribed me the new "Antiradin-M"
+330|Thank you, comrade pharmacist! I'll never forget it! — Vanya puts a heavy military battery in the tray. (Radiation +15%)
+331|Comrade pharmacist, what for?! — The grille drops. The squad takes the signalman to the isolation ward. The Commandant's Office pays a bonus: +100 RC. The "Antiradin-M" stays on the shelf.
+332|Yes, sir... understood. — Vanya wipes the blood from under his nose with his sleeve and leaves with nothing.
+333|Nikita "Grease"
+334|Gordeyev Nikita Ilyich
+335|Gordeyev N.I.
+336|▒▒▒▒▒▒▒▒, bldg ▒ (soaked in fuel oil)
+337|Hey, boss! I'm Nikita, motor man at the Sector's main diesel station. Our fuel pump blew — the whole garage is full of toxic black smoke, diesel in my eyes! If the generator stops today — the whole district will be without light by evening! Give me "Antitoxin" and "Oftalmo-K" drops! Only look: when I crawled out from under the engine I soaked my passport in fuel oil, the registration's smeared...
+338|Give me "Antitoxin" and "Oftalmo-K" drops
+339|Thanks a lot, boss! I'm off — the diesel won't wait. — Nikita leaves 150 RC in the tray.
+340|Because of an oil stain?! Well, boss... Sit by an oil lamp tonight then. — Nikita leaves, pressing his palm to his eyes.
+341|Varvara Semyonovna
+342|Sedova Varvara Semyonovna
+343|Sedova V.S.
+344|outskirts, Lesnoy cul-de-sac, bldg 2
+345|Hello, my falcon. I'm Granny Varya, from the outskirts. I healed people with herbs, and now I've fallen ill myself — the cough tears my chest, I won't last without the state "Streptocide" powder. An old medic wrote my permit... And in return I'll give you a whole basket of healing herbs and taiga roots!
+346|I won't last without "Streptocide", and give me a "Sedative"
+347|God give you health, my falcon. — Granny Varya puts a wicker basket of herbs and roots in the tray.
+348|The medic's dead, then? I didn't know, my falcon... — Coughing, Granny Varya carries her basket back to the outskirts.
+349|Taras "Grouse"
+350|Glukharyov Taras Yefimovich
+351|Glukharyov T.Ye.
+352|remote hunting lodge (outside the city)
+353|No. BP2-0118
+354|Hello, boss. They call me Taras, a trapper from the far lodges. A rogue bear, an irradiated mutant, came onto my trap line. I put it down, but it caught me with its claws and it's hot like a reactor. Give me medicine for radiation, "Hemoglobin-S" and bandages. My permit's clean, from the army doctor at the checkpoint, only I'm not in the city Census — I live in the forest. I'll pay extra in money and bear bile!

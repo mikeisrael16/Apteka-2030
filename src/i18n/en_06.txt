@@ -1,0 +1,124 @@
+975|The client has nothing to pay with.
+976|To pay {0} RC — the client has the money.
+977|No payment is charged on this permit.
+978|The name matches the passport.
+979|The name does NOT match! Passport: {0}. Permit: {1}.
+980|The drug on the permit matches the client's words.
+981|These details are not compared with each other.
+982|The permit names a different doctor: {0}.
+983|{0}: {1}, licence active. The doctor is in the register.
+984|licence revoked!
+985|No passport presented — nothing to check against the census.
+986|The passport has a different name: {0}.
+987|This person is in the census — look more carefully.
+988|The passport does NOT match the census — {0}.
+989|Census: name, year of birth and registration match.
+990|Lamp in hand — tap the seal.
+991|Stamp in hand — tap the permit.
+992|The lamp is aimed at the permit's seal.
+993|The stamp goes on the permit.
+994|The seal glows BLUE — the form is genuine.
+995|The seal flared RED — a forgery!
+996|The permit is already stamped.
+997|drug
+998|doctor
+999|seal
+1000|census (passport)
+1001|payment (the "To pay" line on the permit)
+1002|The "ISSUED" stamp — only after all checks. Not checked: {0}.
+1003|The documents are genuine — refusal is unjustified.
+1004|First complete all 4 checks.
+1005|First the dosimetry check.
+1006|Stamped, but the permit has violations: {0}. The issue will be recorded as a violation.
+1007|"ISSUED" stamped. The client has nothing to pay with: issue it — and the cash box will be {0} RC short.
+1008|"ISSUED" stamped.
+1009|"ISSUED" stamped, but not on the shelf: {0}. Issue what you have and press "OUT OF STOCK" — the client leaves with no penalty for you.
+1010|"DENIED" stamped. The form is returned to the tray.
+1011|NO "{0}" IN STOCK
+1012|Unjustified refusal of a genuine permit ({0})
+1013|Damn you... I'll write a complaint to the Commandant's Office!
+1014|The client silently takes the form and leaves.
+1015|ARKADY CHIZHOV
+1016|So what about the lad, pharmacist? Five hundred in an envelope — and Danil's card goes to the archive of "departed with typhus".
+1017|HAND OVER 500 RC NOW
+1018|I DON'T HAVE 500 RC NOW
+1019|Envelope for Chizhov (Military Office)
+1020|Sensible. Consider the boy had typhus. He'll be home by night.
+1021|I'LL GET IT BY THE END OF THE SHIFT
+1022|By closing time. Leave the envelope through the terminal when you close the shift — I'll pick it up. Too late — and the train won't wait.
+1023|REFUSE
+1024|My job was to offer, pharmacist. So he'll serve the Fatherland.
+1025|BORIS SHTERN
+1026|Ahem... Good day, young man. Shtern, Boris Moiseyevich. The damned damp basement has finished off my lungs, and the radiation at the old bank is off the scale.
+1027|I have no permit from the Commandant — you understand, they don't give them to old men. But I'm ready to pay generously: "Antibiotics" and "Antiradin" — 300 RC straight into your hands. Only not a word to anyone.
+1028|REFUSE: NOT WITHOUT A PERMIT
+1029|I understand, young man. The law is the law... — Leaning on his cane, Shtern walks off into the blizzard.
+1030|SELL WITHOUT A PERMIT · +300 RC
+1031|OUT OF STOCK
+1032|Sold to Shtern without a permit
+1033|Thank you. You saved an old man. We never saw each other.
+1034|SELL WITHOUT A PERMIT · +{0} RC
+1035|Sold without a permit ({0})
+1036|The supply box is open. Move everything into the cabinet: drag each pack from the desk onto the medicine cabinet.
+1037|Korshunov's special delivery
+1038|"{0}" ×{1} — on the shelf, entered in the books.
+1039|The box is empty. The special reserve is accepted — now you answer for every ampoule.
+1040|Instead of the usual stern inspection, Gromov walks in with a calm, almost solemn step. He wears a new, clean greatcoat and carries a bulky sealed case.
+1041|Hello, Pavel. I have great news for you. The blockade of Sector-86 is officially broken! Last night our armoured group completely cleared the Megion highway and linked up with the vanguard from Tyumen.
+1042|The raiders of the central warehouse were tracked down and eliminated, and most of the stolen medicine was recovered. The Commandant's Office is restoring supply. Right now the first full convoy is unloading at your pharmacy.
+1043|Here's a new order form — you can order any medicine in any quantity! Enough for the liquidators, the orphanages and ordinary residents. The hard times are behind us, Pasha. We held out.
+1044|Take in the goods and work in peace, today I won't even hold an inspection — no time for that, the Sector is celebrating!
+1045|written off: no longer needed
+1046|written off by the Commandant's Office after the blockade broke
+1047|supply convoy, 21 March
+1048|The convoy is unloaded: +10 packs of each drug. Shortages written off, no inspection today.
+1049|Soldiers carry in crates stamped "TYUMEN — TO SECTOR-86". The shelves are packed full. Gromov salutes and leaves — no inspection.
+1050|The moment the shutters rise — a call from home.
+1051|Pasha, my love, good morning! Thank you so much... You know, yesterday I filled our pantry with grain, stew and even powdered milk for Alina. Yesterday the whole family ate our fill of hot porridge for the first time in a long while.
+1052|Our daughter woke up cheerful, rosy cheeks, playing! It's warm at home, and at last there's peace in my heart. You're our saviour, Pasha. We're waiting for you this evening. Take care on your shift!
+1053|In the receiver — a hoarse, heavy cough. Olya speaks with difficulty, haltingly.
+1054|Pasha... I can barely get up. Since the night my temperature's near forty, my whole chest is on fire, it hurts to breathe... It must be the damp and that these last days I ate nothing at all, I gave everything to Alina. My strength is gone.
+1055|Our daughter sits beside me crying, trying to bring me a ladle of water, and I can't even lift my hand... Pasha, how can this be? What will happen to us? If I'm gone, look after her...
+1056|Dial tone. For the first time in many days you feel like smiling.
+1057|The receiver drops onto the cradle. Your hands are shaking.
+1058|On the desk — a sealed box with a supply stamp. The phone rings.
+1059|Pharmacy Point No.4, pharmacist Pavel? Listen carefully. Last night a special train from the HQ reserve broke through into the Sector.
+1060|We've allocated 5 new kinds of scarce drugs to your pharmacy: "Antiradin-M", "Streptocide", "Oftalmo-K", "Hemoglobin-S" and "Immunal-T". The box is already on your desk.
+1061|Your task is to receive the delivery personally, move all packs onto the shelves in the cabinet and guard the stock like the apple of your eye! Gromov will ask double for every missing ampoule from the new reserve. Get to work!
+1062|Short beeps. The box waits on the desk.
+1063|The moment the shutters rise — a sharp call from the Commandant's Office.
+1064|Pharmacist! Listen to the emergency bulletin. A regime of severe medicine shortage has been declared in the town.
+1065|Supplies have stopped completely: tomorrow it will be IMPOSSIBLE to order or receive new medicine from the warehouse! Stretch what's left in the cabinets, check every letter in the documents and don't you dare squander the state stock!
+1066|The reasons are none of your business — follow orders!
+1067|Dial tone. No warehouse orders will be accepted tonight: tomorrow you work with what's left on the shelves and in the backpack.
+1068|The moment the shutters rise — an alarming phone call.
+1069|Pasha! Son, dear, we're in trouble! Yesterday Dad went to the old garages for firewood and fell into a flooded radioactive sewer... He swallowed contaminated water, barely crawled home!
+1070|He's been vomiting all night, his skin is covered in blotches, he's choking — acute radiation sickness! Son, save your father, he's fading before my eyes! Bring medicine for radiation tonight — "Antiradin" or the new "Antiradin-M", I beg you!
+1071|Pasha, can you hear me?..
+1072|"MUM, HOLD ON! I'LL GET IT AND BRING IT TONIGHT"
+1073|Mum, hold on! I'll get the radiation medicine and bring it tonight!
+1074|Thank you, son... We're waiting. Just make it in time.
+1075|The promise is made. By the end of the shift there must be a real pack of "Antiradin" or "Antiradin-M" in the backpack: from your own shelf, from someone else's permit or from Voron.
+1076|"MUM, I'M SORRY. THERE'S NO MEDICINE, INSPECTION TONIGHT"
+1077|Mum, I'm sorry, our stock is empty, and Gromov's inspection is tonight — there's no way I can get the drug...
+1078|How can it be, Pasha... You work in a pharmacy, your cabinets are full... Won't you help your own father? Lord, what do we do now...
+1079|Dial tone. The stock is intact.
+1080|The moment the shutters rise — a call from your parents' home.
+1081|Pasha, dear, good morning! Your pills worked a miracle — by morning Dad was much better! The vomiting stopped, the fever went down, for the first time in two days he slept soundly, and now he's woken up and even had some hot broth.
+1082|You saved your father's life, son! He sends you huge thanks and his old officer's dirk as a keepsake — a courier will bring it today. We're so proud of you!
+1083|Pasha... Dad is gone. He died this morning in terrible agony. All night he choked on blood, gasped for air, and kept calling for you before the end, asking why you didn't come...
+1084|How will you live with this now, son? Your shelves were full of medicine... Don't come to us any more, I don't have a son any more.
+1085|The courier left a bundle in the tray: your father's officer's dirk. It's in the backpack.
+1086|Dial tone. The pharmacy is very quiet.
+1087|The window empties. Behind you the field telephone rings.
+1088|Pasha... Pasha, sorry to distract you in the middle of a shift, but I can't keep quiet any longer. There's nothing to eat at home at all — this morning I gave Alina the last spoon of flour in water, and since yesterday I've only had hot water...
+1089|At the speculators' shop they've put out a sack of grain, tins and vitamins, but they want 500 RC for a food package! Pasha, we need that money urgently, by tonight, or we'll simply collapse from hunger!
+1090|I know rich people come to you for medicine now... Please, get 500 RC by the end of the day!
+1091|Pasha?..
+1092|"I'LL THINK OF SOMETHING! I'LL GET 500 RC BY TONIGHT"
+1093|I'll think of something, love! I'll get 500 RC by tonight!
+1094|Thank you, Pasha... Alina and I will wait. I believe you.
+1095|The promise is made. When you close the shift you must have at least 500 RC — it will go on food for the family.
+1096|"I'M PAID FOR HONEST WORK. I WON'T STEAL"
+1097|Olya, I'm paid a wage for honest work, the money will come later! I won't steal!
+1098|What wage, Pasha?! Your pennies from the Commandant's Office don't even buy a loaf of bread at today's prices! So your clean papers for Gromov matter more to you than your hungry wife and child?! Do as you like...

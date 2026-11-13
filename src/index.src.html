@@ -403,6 +403,7 @@ body{font-weight:700}
 #bag{position:absolute;z-index:5;padding:0;background:none;border:0;border-radius:1.4em}#bag.hl{box-shadow:0 0 1.2em .2em #ffd27a99,inset 0 0 1.5em #ffd27a55}#bag:active{transform:scale(.94)}#bag img{display:none}
 #tools .tool span{font-size:1.05em}
 #rotate{position:fixed;inset:0;z-index:100;background:#050708;display:none;align-items:center;justify-content:center;text-align:center;font-size:18px;padding:20px;color:#e2b040}
+#langSw{position:absolute;right:4%;bottom:75%;z-index:6;display:flex;flex-direction:column;gap:.3em}#langSw button{display:flex;flex-direction:column;align-items:center;gap:.1em;border:.5em solid transparent;border-image:url(%%pl_sq.png%%) 40 fill / .5em stretch;background:none;padding:.15em .25em;font-family:"Pix",monospace;font-weight:700;font-size:1.25em;color:#b9b39a;cursor:pointer;filter:brightness(.75) grayscale(.4)}#langSw button svg{width:2.1em;height:1.4em;display:block;box-shadow:0 0 0 .08em #0008}#langSw button.on{filter:none;color:#ffd27a;text-shadow:0 0 .4em #ffb84a}#langSw button.on svg{box-shadow:0 0 .5em .1em #ffc65acc}#langSw button:active{transform:translateY(.08em)}html[lang=en] #shut:after{content:"☢ POINT No.4"}html[lang=en] #win.probing:after{content:"◀ sweep with the probe ▶"}html[lang=en] #s_doc.has:after{content:"PASSPORT"}
 </style>
 </head>
 <body>
@@ -424,7 +425,7 @@ body{font-weight:700}
       <button class="mbtn" id="mCont">ПРОДОЛЖИТЬ<small></small></button>
       <button class="mbtn" id="mLoad">ЗАГРУЗИТЬ<small></small></button>
       <button class="mbtn" id="mSound">🔇 ВЫКЛЮЧИТЬ ЗВУК</button>
-    </div><img src="%%title_bot.jpg%%" alt=""></div>
+    </div><img src="%%title_bot.jpg%%" alt=""><div id="langSw"><button data-l="ru" aria-label="Russian"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect y="6.67" width="30" height="6.67" fill="#1c3f94"/><rect y="13.33" width="30" height="6.67" fill="#d52b1e"/></svg><b>RU</b></button><button data-l="en" aria-label="English"><svg viewBox="0 0 60 40"><clipPath id="ukc"><rect width="60" height="40"/></clipPath><g clip-path="url(#ukc)"><rect width="60" height="40" fill="#012169"/><path d="M0,0 60,40M60,0 0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 60,40M60,0 0,40" stroke="#c8102e" stroke-width="3"/><path d="M30,0V40M0,20H60" stroke="#fff" stroke-width="12"/><path d="M30,0V40M0,20H60" stroke="#c8102e" stroke-width="7"/></g></svg><b>EN</b></button></div></div>
     <div id="mPad"></div>
   </div>
 
@@ -594,9 +595,9 @@ const IMG={
    vera:"%%vera.webp%%",maria:"%%maria.webp%%",fedor:"%%fedor.webp%%",semyon:"%%semyon.webp%%",
    egor:"%%egor.webp%%",vadim:"%%vadim.webp%%",annav:"%%annav.webp%%",timokha:"%%timokha.webp%%",
    zoya:"%%zoya.webp%%",ruslan:"%%ruslan.webp%%",kirill:"%%kirill.webp%%",margo:"%%margo.webp%%",ignat:"%%ignat.webp%%",zhanna:"%%zhanna.webp%%",shtern:"%%shtern.webp%%",chizhov:"%%chizhov.webp%%",
-   zahar:"%%zahar.webp%%",serafim:"%%serafim.webp%%",nina:"%%nina.webp%%",vanya:"%%vanya.webp%%",nikita:"%%nikita.webp%%",varvara:"%%varvara.webp%%",taras:"%%taras.webp%%",alena:"%%alena.webp%%",matvey:"%%matvey.webp%%",larisa:"%%larisa.webp%%",rodion:"%%rodion.webp%%",stanislav:"%%stanislav.webp%%",barinov:"%%barinov.webp%%",elvira:"%%elvira.webp%%",kravtsov:"%%kravtsov.webp%%",tamara:"%%tamara.webp%%",anna12:"%%anna12.webp%%",petr3:"%%petr3.webp%%",elvira2:"%%elvira2.webp%%",refugee:"%%refugee.webp%%"},
+   zahar:"%%zahar.webp%%",serafim:"%%serafim.webp%%",nina:"%%nina.webp%%",vanya:"%%vanya.webp%%",nikita:"%%nikita.webp%%",varvara:"%%varvara.webp%%",taras:"%%taras.webp%%",alena:"%%alena.webp%%",matvey:"%%matvey.webp%%",larisa:"%%larisa.webp%%",rodion:"%%rodion.webp%%",stanislav:"%%stanislav.webp%%",barinov:"%%barinov.webp%%",elvira:"%%elvira.webp%%",kravtsov:"%%kravtsov.webp%%",tamara:"%%tamara.webp%%",gennady:"%%gennady.webp%%",mamontov:"%%mamontov.webp%%",anzhela:"%%anzhela.webp%%",anna12:"%%anna12.webp%%",petr3:"%%petr3.webp%%",elvira2:"%%elvira2.webp%%",refugee:"%%refugee.webp%%"},
  f:{petr:"%%f0.webp%%",anna:"%%f1.webp%%",viktor:"%%f2.webp%%",klavdia:"%%f3.webp%%",gleb:"%%f4.webp%%",artem:"%%f5.webp%%",vera:"%%f_vera.webp%%",maria:"%%f_maria.webp%%",fedor:"%%f_fedor.webp%%",egor:"%%f_egor.webp%%",vadim:"%%f_vadim.webp%%",annav:"%%f_annav.webp%%",timokha:"%%f_timokha.webp%%",zoya:"%%f_zoya.webp%%",ruslan:"%%f_ruslan.webp%%",kirill:"%%f_kirill.webp%%",margo:"%%f_margo.webp%%",ignat:"%%f_ignat.webp%%",zhanna:"%%f_zhanna.webp%%",chizhov:"%%f_chizhov.webp%%",
-   zahar:"%%f_zahar.webp%%",serafim:"%%f_serafim.webp%%",nina:"%%f_nina.webp%%",nikita:"%%f_nikita.webp%%",varvara:"%%f_varvara.webp%%",taras:"%%f_taras.webp%%",alena:"%%f_alena.webp%%",matvey:"%%f_matvey.webp%%",larisa:"%%f_larisa.webp%%",rodion:"%%f_rodion.webp%%",stanislav:"%%f_stanislav.webp%%",barinov:"%%f_barinov.webp%%",elvira:"%%f_elvira.webp%%",kravtsov:"%%f_kravtsov.webp%%",tamara:"%%f_tamara.webp%%",anna12:"%%f_anna12.webp%%",petr3:"%%f_petr3.webp%%",elvira2:"%%f_elvira2.webp%%",refugee:"%%f_refugee.webp%%"},
+   zahar:"%%f_zahar.webp%%",serafim:"%%f_serafim.webp%%",nina:"%%f_nina.webp%%",nikita:"%%f_nikita.webp%%",varvara:"%%f_varvara.webp%%",taras:"%%f_taras.webp%%",alena:"%%f_alena.webp%%",matvey:"%%f_matvey.webp%%",larisa:"%%f_larisa.webp%%",rodion:"%%f_rodion.webp%%",stanislav:"%%f_stanislav.webp%%",barinov:"%%f_barinov.webp%%",elvira:"%%f_elvira.webp%%",kravtsov:"%%f_kravtsov.webp%%",tamara:"%%f_tamara.webp%%",gennady:"%%f_gennady.webp%%",mamontov:"%%f_mamontov.webp%%",anzhela:"%%f_anzhela.webp%%",kozlov:"%%f_kozlov.webp%%",anna12:"%%f_anna12.webp%%",petr3:"%%f_petr3.webp%%",elvira2:"%%f_elvira2.webp%%",refugee:"%%f_refugee.webp%%"},
  p:{voron:"%%p_voron.webp%%",semyon:"%%p_semyon.webp%%"},
  ic:{blank:"%%ic_blank.png%%",tp:"%%ic_tp.png%%",ar:"%%ic_ar.png%%",ring:"%%ic_ring.png%%"},
  med:{antiradin:"%%m_antiradin.webp%%",antibiotic:"%%m_antibiotic.webp%%",painkiller:"%%m_painkiller.webp%%",ai2:"%%m_ai2.webp%%",iodide:"%%m_iodide.webp%%",
@@ -777,7 +778,7 @@ const CL={
   quote:"Умоляю, дайте «Стрептоцид» и «Иммунал-Т»",
   giveLine:"Благодарю вас, молодой человек... — Лариса Витальевна снимает с шеи золотой медальон и кладёт в лоток. — Дети в читальне скажут вам спасибо.",
   refuseLine:"Понимаю... Печать. — Лариса Витальевна прячет медальон и беззвучно, одними губами, прощается."},
- gennady:{special:"cash",img:"kirill",h:1,name:"Геннадий «Хмурый»",rad:30,pitch:115,wants:["stim","oftalmo"],cash:250,
+ gennady:{special:"cash",h:1,name:"Геннадий «Хмурый»",rad:30,pitch:115,wants:["stim","oftalmo"],cash:250,
   lines:["Слушай сюда, аптекарь. Сержант Ковалёв, вышка №7. Вторые сутки без смены в пургу через прожектор на колючку пялюсь — глаза режет, с ног валюсь.","Талона нет — некогда мне по госпиталям бегать. Плачу 250 ТР наличными прямо сейчас за «Стимулятор» и глазные капли «Офтальмо-К». Ну как, по рукам?"],
   noLine:"Конвоир сплёвывает в снег. — Ну и сиди со своими бумажками. — И уходит к вышке.",yesLine:"Сержант сгребает упаковки и бросает в лоток 250 ТР. — Меня тут не было."},
  /* ---- day 10 ---- */
@@ -792,7 +793,7 @@ const CL={
   quote:"Выдайте «Антитоксин» и «Йодид»",
   giveLine:"Спасибо, Павел! Фильтры промоем к ночи. — Эльвира оставляет 150 ТР и бежит к станции.",
   refuseLine:"Документы же чистые... Тогда завтра кипятите воду. Хотя это не поможет. — Эльвира уходит."},
- rodion:{h:1.02,name:"Родион «Шрам»",full:"Козлов Игорь Петрович",short:"Козлов И.П.",born:"1952",addr:"ул. Речная, д. 17, кв. 4",no:"№ 10-0903",photo:"egor",drugs:["stim","strept"],doctor:"Смирнов А.В.",seal:true,fake:true,rad:155,pay:0,pitch:100,quarPay:150,radGive:15,
+ rodion:{h:1.02,name:"Родион «Шрам»",full:"Козлов Игорь Петрович",short:"Козлов И.П.",born:"1952",addr:"ул. Речная, д. 17, кв. 4",no:"№ 10-0903",photo:"kozlov",drugs:["stim","strept"],doctor:"Смирнов А.В.",seal:true,fake:true,rad:155,pay:0,pitch:100,quarPay:150,radGive:15,
   regBad:"паспорт ЧУЖОЙ: по переписи Козлову И.П. 78 лет (1952 г.р.), на фото — старик, а у окна стоит мужчина лет тридцати",
   line:"Вечер в хату, фармацевт. Мне нужно пацанов на ноги поставить после ночной работёнки — дай «Стимулятор» и «Стрептоцид». Паспорт у меня на имя Козлова Игоря, можешь даже в свою книжку глянуть — всё сойдётся, ха-ха! Только гляди внимательно на рожу, если смелый...",
   quote:"Дай «Стимулятор» и «Стрептоцид»",
@@ -813,10 +814,10 @@ const CL={
  stanislav:{special:"cash",h:1,name:"Станислав, хозяин ломбарда",rad:35,pitch:140,wants:["antiradinM","stim"],cash:300,
   lines:["Здорово, командир. Слышал, в городе голяк по медицине, а мне завтра караван через заражённую зону вести. Не будем тратить время на бумажки — у меня талон липовый, сам знаю.","Давай по-деловому: ты мне даёшь «Антирадин-М» и «Стимулятор», а я тебе отстёгиваю 300 ТР сверху! Деньги не пахнут, особенно когда жрать в Секторе нечего."],
   noLine:"Как знаешь, командир. Честные нынче первыми с голоду пухнут. — Станислав поправляет тёмные очки и уходит.",yesLine:"Станислав отсчитывает 300 ТР из толстой пачки. — С тобой можно иметь дело, командир."},
- mamontov:{special:"cash",img:"shtern",h:.95,name:"Илья Мамонтов",rad:25,pitch:135,wants:["oftalmo","immunal"],cash:350,
+ mamontov:{special:"cash",h:.95,name:"Илья Мамонтов",rad:25,pitch:135,wants:["oftalmo","immunal"],cash:350,
   lines:["Провизор, выручай! Мамонтов моя фамилия, я топливом в Секторе заправляю. В поликлинике сказали — бланков нет и не будет из-за ночного грабежа склада! А у меня глаза от паров бензина воспалились и иммунитет ни к чёрту.","Плачу 350 ТР чистыми за «Офтальмо-К» и «Иммунал-Т» без всяких талонов! Поможешь — не забуду!"],
   noLine:"Эх, провизор... Не забуду и этого. — Мамонтов, щурясь, уходит.",yesLine:"Вот это разговор! — Мамонтов кладёт в лоток 350 ТР. — Понадобится солярка — найдёшь меня на базе."},
- anzhela:{special:"cash",img:"tamara",h:.93,name:"Анжела Эдуардовна",rad:15,pitch:370,wants:["sedative","strept","ointment"],cash:400,
+ anzhela:{special:"cash",h:.93,name:"Анжела Эдуардовна",rad:15,pitch:370,wants:["sedative","strept","ointment"],cash:400,
   lines:["Молодой человек, только давайте без вашей казённой бюрократии! Мне срочно нужно собрать домашнюю аптечку, пока в этом проклятом городе всё окончательно не расхватали!","Талона у меня, разумеется, нет. Зато есть 400 ТР наличными за три препарата: «Успокоительное», «Стрептоцид» и мазь! Выручите женщину — и ваша семья сегодня вечером ни в чём нуждаться не будет!"],
   noLine:"Хам! — Анжела Эдуардовна захлопывает сумочку и уходит, стуча каблуками.",yesLine:"Анжела Эдуардовна сметает упаковки в сумочку и оставляет 400 ТР. — Мы с вами друг друга поняли."},
  /* ---- day 12: the blockade is broken ---- */
@@ -1085,8 +1086,9 @@ const fakeCount=()=>FAKES.reduce((a,k)=>a+(S.stock[k]||0),0);
 const shortUnits=()=>shortages().reduce((a,x)=>a+x.n,0);
 function addViol(k,t,why,status){const v={id:"v"+S.day+"_"+S.viol.length,k,t,why:why||"",day:S.day,status:status||"open"};S.viol.push(v);return v}
 const openViol=()=>S.viol.filter(v=>v.status==="open");
-function addItem(k,n){S.items[k]=(S.items[k]||0)+(n||1);
- if(k==="toys"&&!OLD&&!S.flags.toysJoy){S.flags.toysJoy=1;olya(20);later(1800,()=>msg("Игрушки для Алины: семейное счастье +20.","good"))}}
+/* presents for Alina go straight home: +20 family happiness, nothing to keep or sell */
+function addItem(k,n){if(!OLD&&(k==="toys"||k==="doll")){if(!S.flags["gift_"+k]){S.flags["gift_"+k]=1;olya(20);later(1800,()=>msg(k==="toys"?"Игрушки отнесены Алине. Семейное счастье +20.":"Кукла отнесена Алине. Семейное счастье +20.","good"))}return}
+ S.items[k]=(S.items[k]||0)+(n||1)}
 function useItem(k){if(!(S.items[k]>0))return false;S.items[k]--;return true}
 function olya(d){S.olya=Math.max(0,Math.min(100,(S.olya==null?60:S.olya)+d))}
 function later(ms,fn){const tok=runTok;setTimeout(()=>{if(tok===runTok)fn()},ms)}
@@ -1755,7 +1757,7 @@ async function semyonArrive(){R.phase="talk";refresh();const P=CL.semyon.pitch,c
   {l:can?"СДЕЛКА: «ОБЕЗБОЛ» + «АНТИБИОТИКИ»":"НЕЧЕГО ОТДАТЬ — НЕТ НА СКЛАДЕ",c:"y",k:"yes",dis:!can,f:()=>startOffer(["painkiller","antibiotic"],()=>{
    S.flags.semyon="deal";addItem("ammo");addItem("spirit");addItem("container");
    clientLeave("Приятно иметь дело. Держи: патроны, спирт и свинцовый контейнер. Бывай, провизор.",SEMYON,P,3000)})}])}
-const blankPrice=()=>S.day>=7||(R.mk==="voron"&&S.flags.anna==="saved")?150:200;
+const blankPrice=()=>OLD?(S.day>=7||(R.mk==="voron"&&S.flags.anna==="saved")?150:200):50;
 const bagPrice=k=>Math.round(MEDS[k].p*(MEDS[k].nw?1.5:1)),DAD_PRICE=200;
 const AB_PRICE=250;
 function openMarket(who){clearTimeout(toastT);$("toast").className="";R.mk=who;R.phase="voron";$("mkName").textContent=who==="voron"?"ЧЁРНЫЙ РЫНОК · ВОРОН":"БАРЫГА · СЕМЁН «РВАНЫЙ»";$("mkImg").src=IMG.p[who];openM("market");drawMarket();refresh()}
@@ -1956,8 +1958,8 @@ function drawTerm(){document.querySelectorAll("#tabs button").forEach(b=>b.class
   {const su=shortUnits(),ov=openViol().length;if(su||ov)h+=`<div class="neg">Недостач: ${su} шт. · открытых нарушений: ${ov} — до ближайшей ревизии</div>`}
   if(S.day===8&&S.flags.dad==="promise"){const has=S.bag.antiradin>0||S.bag.antiradinM>0;h+=`<div class="${has?"":"neg"}">Обещано маме: «Антирадин» или «Антирадин-М» в рюкзаке к сдаче смены — ${has?"ЕСТЬ":"НЕТ"}</div>`}
   if(S.day===11&&S.flags.food==="promise")h+=`<div class="${PM()>=500?"":"neg"}">Обещано Оле: 500 ТР на продукты — ${PM()>=500?"хватает, спишутся при сдаче смены":"НЕ ХВАТАЕТ "+(500-PM())+" ТР"}</div>`;
-  if(!OLD){const c=homeCost(),need=c.food+c.heat+(S.day===11&&S.flags.food==="promise"?500:0),ok=S.pers>=need;
-   h+=`<div class="${ok?"":"neg"}">Семье на вечер: еда ${c.food} + дрова ${c.heat} ТР из личных — ${ok?"хватает":S.pers>=c.food?"хватит только на еду":"НЕ ХВАТАЕТ (отношения с Олей упадут)"}</div>`;
+  if(!OLD){const c=homeCost(),need=c.food+c.heat+(S.day===11&&S.flags.food==="promise"?500:0),ok=S.pers+SALARY>=need;
+   h+=`<div class="${ok?"":"neg"}">Семье на вечер: еда ${c.food} + дрова ${c.heat} ТР из личных (жалованье +${SALARY} придёт при сдаче смены) — ${ok?"хватает":S.pers+SALARY>=c.food?"хватит только на еду":"НЕ ХВАТАЕТ (отношения с Олей упадут)"}</div>`;
    if(S.pers<0)h+=`<div class="neg">ДОЛГ ${-S.pers} ТР: ${(S.flags.debt||0)>=2?"ПОСЛЕДНИЙ ДЕНЬ — не выйдете в плюс до утра, семья погибнет":"выйдите в плюс за два дня, иначе семья не выживет"}.</div>`;
    if(S.rad>=50)h+=`<div class="neg">ОБЛУЧЕНИЕ ${S.rad}%: примите «Антирадин» до конца смены (рюкзак → ВЫПИТЬ), иначе к утру — ${S.rad>=80?"СМЕРТЬ":"лучевая болезнь (80%)"}.</div>`}
   h+=`<div style="margin-top:.6em">&gt; ${S.day===12?"Снабжение восстановлено: конвои везут всё сами, заявки больше не нужны. Сдавайте смену.":noOrders()?"Поставки прекращены: заявки на склад не принимаются.":`Откройте вкладку ЗАКАЗЫ, чтобы закупить медикаменты на День ${S.day+1}.`}</div>`;b.innerHTML=h}
@@ -1974,8 +1976,10 @@ function drawTerm(){document.querySelectorAll("#tabs button").forEach(b=>b.class
  {const cz=$("tChizh"),need=S.day===6&&S.flags.chizhov==="later"&&!S.flags.sonSaved;cz.style.display=need?"":"none";if(need){cz.textContent="КОНВЕРТ ЧИЖОВУ · 500 ТР";cz.disabled=(OLD?S.tp-ordTotal():S.pers)<500}}
  const t=ordTotal();$("tsum").textContent=OLD?`Заказ: ${t} ТР · останется: ${S.tp-t} ТР`:`Заказ из кассы: ${t} ТР · в кассе останется: ${S.tp+S.desk-t} ТР`}
 /* every evening the family needs food and fuel: paid from Pavel's own money, never from the cash box */
+const SALARY=60;
 const homeCost=()=>({food:S.day>=10?50:S.day>=7?40:30,heat:20});
 function homeBudget(){if(OLD||S.flags["home"+S.day])return;S.flags["home"+S.day]=1;const c=homeCost(),miss=[];
+ logTP("Жалованье провизора",SALARY);
  if(S.pers>=c.food)logTP("Семье: еда на день",-c.food);else miss.push("еду");
  if(S.pers>=c.heat)logTP("Семье: дрова и керосин",-c.heat);else miss.push("дрова");
  if(miss.length){S.flags.hungry=(S.flags.hungry||0)+miss.length;olya(-4*miss.length);S.log.push({t:"Дома сегодня не хватило на "+miss.join(" и "),v:0,w:"p"})}}
@@ -2106,7 +2110,7 @@ const NAR={tok:0,t:null,i:0,parts:[],
  stop(){this.tok++;clearTimeout(this.t);if(this.au){try{this.au.pause()}catch(e){}A.duck(false)}try{window.speechSynthesis&&speechSynthesis.cancel()}catch(e){}},
  voice(){try{const vs=speechSynthesis.getVoices(),ru=vs.filter(v=>/^ru/i.test(v.lang));return{any:vs.length>0,v:ru.find(v=>/dmitr|pavel|maxim|yuri|male|муж/i.test(v.name))||ru[0]||null}}catch(e){return{any:false,v:null}}},
  speak(text,done){const tok=this.tok,fin=()=>{if(tok===this.tok)this.t=setTimeout(()=>{if(tok===this.tok)done()},500)},timed=()=>{this.t=setTimeout(()=>{if(tok===this.tok)done()},1200+text.length*62)};
-  if(!A.set.sfx||!window.speechSynthesis||!window.SpeechSynthesisUtterance)return timed();
+  if(LANG==="en"||!A.set.sfx||!window.speechSynthesis||!window.SpeechSynthesisUtterance)return timed();
   const vc=this.voice();if(vc.any&&!vc.v)return timed(); // есть голоса, но русского нет — не читаем чужим акцентом
   const ch=text.match(/[^.!?…]+[.!?…]+[»"]?\s*/g)||[text];let i=0;
   const next=()=>{if(tok!==this.tok)return;if(i>=ch.length)return fin();let d=false;const u=new SpeechSynthesisUtterance(ch[i++].replace(/Сектора-86/g,"Сектора восемьдесят шесть"));
@@ -2122,7 +2126,7 @@ const NAR={tok:0,t:null,i:0,parts:[],
   a.onended=()=>{if(tok!==this.tok)return;A.duck(false);show(parts.length)};
   show(0);cur=0;A.duck(true);
   const p=a.play();if(p&&p.catch)p.catch(()=>{if(tok!==this.tok)return;A.duck(false);this.tok++;this.run(parts,true)})},
- run(parts,noRec){if(!noRec&&!OLD&&A.set.sfx&&VO[S&&endingKind().good?"good":"bad"])return this.rec(parts,VO[endingKind().good?"good":"bad"]);this.stop();this.parts=parts;this.i=0;const tok=this.tok,ps=[...$("endText").children];ps.forEach(p=>p.className=p.classList.contains("fin")?"fin":"");
+ run(parts,noRec){if(!noRec&&LANG!=="en"&&!OLD&&A.set.sfx&&VO[S&&endingKind().good?"good":"bad"])return this.rec(parts,VO[endingKind().good?"good":"bad"]);this.stop();this.parts=parts;this.i=0;const tok=this.tok,ps=[...$("endText").children];ps.forEach(p=>p.className=p.classList.contains("fin")?"fin":"");
   const step=()=>{if(tok!==this.tok)return;const i=this.i;ps.forEach((p,j)=>{if(j<parts.length)p.className=j<i?"on":j===i?"on cur":""});
    if(i>=parts.length){ps[parts.length].className="fin on cur";S.flags.endSeen=1;return}
    ps[i].scrollIntoView({block:"nearest",behavior:"smooth"});this.speak(parts[i],()=>{this.i++;step()})};
@@ -2238,7 +2242,7 @@ function wire(){
 function newGame(){A.init();goFull();S=newState();startCheckpoint(0)}
 
 A.load();buildScene();wire();fit();menuRefresh();
-window.__G={weatherTick,homeCost,endingKind,newsFor,presetState,cashShort,OLD,NEWST,get AU(){return AU},endingParts,NAR,get S(){return S},R,A,startCheckpoint,startDay,CL,readSave,K_AUTO,K_MAN,DAYS,MEDS,move,shortages,addItem};
+window.__G={IMG,homeBudget,SALARY,blankPrice,weatherTick,homeCost,endingKind,newsFor,presetState,cashShort,OLD,NEWST,get AU(){return AU},endingParts,NAR,get S(){return S},R,A,startCheckpoint,startDay,CL,readSave,K_AUTO,K_MAN,DAYS,MEDS,move,shortages,addItem};
 </script>
 </body>
 </html>

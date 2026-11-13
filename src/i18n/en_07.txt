@@ -1,0 +1,109 @@
+1099|Olya hung up.
+1100|; red zone
+1101|Vetrov's bribe, off the books
+1102|Issued on an invalid passport — Kirill Vetrov
+1103|Kirill scoops the medicine under his coat and counts out three hundred. — That's that, chief. (Radiation +15%)
+1104|Vadim hides the bandages in his coat and pushes a home-made knife and a coil of copper cable into the tray. — You never saw me, boss.
+1105|Zakharov's bribe, off the books
+1106|A wad of unrecorded coupons drops onto the desk. Viktor takes the "Antibiotics" and vanishes into the blizzard. The ledger shows a shortage.
+1107|Artyom pushes a pre-war radio tube into your tray and runs to his brother. (Radiation +15%, the stock is one syringe short)
+1108|<div class="invh">Relationship with Olya: <b>{0}/100</b> · radiation {1}%</div>
+1109|<div class="invh" style="color:#ff9b8a">☢ Radiation {0}%. You need "Antiradin" (−30%) or "Antiradin-M" (−50%): take it from the cabinet, drag it into the backpack and drink it. Don't bring the dose down by morning — {1}.</div>
+1110|death
+1111|radiation sickness
+1112|<div class="invr"><div class="ic"><img src="%%money.webp%%" alt=""></div><div class="tx"><b>Personal money: {0} RC</b>Your own: bonuses, things you sold and everything that went past the cash box.<br><i>Use:</i> family, Voron, bribes, fines. You can top up the pharmacy cash box.<br>{1}<button class="btn" data-cash="1" {2}>TAKE MONEY FROM THE BACKPACK</button></div></div>
+1113|<span style="color:#ff8d7a">DEBT. Two days in the red — and the family won't survive: earn money urgently.</span><br>
+1114|<div class="invr"><div class="ic"><img src="{0}" alt=""></div><div class="tx"><b>{1} ×{2}</b>{3}<br><i>Use:</i> {4}<br>{5}<button class="btn" data-ret="{6}">RETURN TO THE SHELF</button></div></div>
+1115|One of Voron's dummies, kept out of sight.
+1116|In the backpack, off the books.
+1117|put it back on the shelf when needed.
+1118|take it home, sell to Voron (from day 7) or return to the shelf before the inspection.
+1119|<button class="btn green" data-drink="{0}">DRINK · RADIATION −{1}%</button>
+1120|<div class="invr"><div class="ic">{0}</div><div class="tx"><b>{1} ×{2}</b>{3}<br><i>From:</i> {4}<br><i>Use:</i> {5}{6}</div></div>
+1121|<div class="invh">Nothing yet. Visitors sometimes pay with things.</div>
+1122|No radiation — better save the drug.
+1123|"{0}" taken. Radiation: {1}%.
+1124| That's not enough — you need another dose.
+1125|from the backpack
+1126|"{0}" is back on the shelf.
+1127|(Looks around.) Quiet, pharmacist. They call me Voron.
+1128|I heard it on the military frequency — a senior patrolman is heading your way with a surprise inspection of the Ledger and the stock.
+1129|If you've got a shortage or fake permits in your folder — you're finished. But we can make a deal.
+1130|One more thing. The Kotovs asked me to thank you for Anna. Friends get a discount.
+1131|(Knocks in a signal rhythm.) Me again, pharmacist. Saw Semyon leaving your place. Don't get mixed up with him — he snitches to the patrol too.
+1132|Here's the main thing: Gromov will raid you with an inspection tomorrow evening. If the ledger has holes — get ready today. I've got blank forms — and "Antibiotics" for the shelf, so the shortage doesn't surface.
+1133|For friends, as always — a discount.
+1134|And this — from the Kotovs, for Anna. A blank form. Free.
+1135|(Signal knock.) The passport regime, heard about it? Gromov comes tomorrow — and he'll shake out two days of passports.
+1136|Issued to someone on a fake ID — take a registration stamp: apply it at the inspection and the record will check out. I'll take loot too — maps, kerosene, scrap.
+1137|I hear Korshunov sent you a special delivery today, pharmacist? Told you to guard it? Heh-heh... I've got a little business for you.
+1138|Look what my craftsmen cooked up in the basement: three kinds of dummies! "Solution (L)" — tinted water instead of any liquid ampoules and drops. "Chalk (T)" — pressed chalk in a blister instead of any tablets and powders. And "Vaseline (O)" — industrial grease in a rusty tin instead of any ointment.
+1139|They cost pennies — 50 RC apiece! You can put them on the shelf in place of stolen medicine so the count matches for Gromov, or you can push them on clients instead of expensive drugs, and sell the real ones to me for big money! Take them while they last!
+1140|Just don't get greedy: more than two dummies on the shelves — and Gromov will start opening boxes. Keep the extras in the backpack.
+1141|Gromov's on his way, pharmacist. He'll count Korshunov's special reserve to the last ampoule. I'm buying loot, dummies and blank forms — same as yesterday.
+1142|I heard about your old man. Don't take it from your shelf — I've got "Antiradin", the real thing. Two hundred coupons, straight into your backpack.
+1143|Good evening, pharmacist. Dirks, medallions, dosimeters — I buy it all, honest prices. Dummies and blank forms in stock.
+1144|And stock up while you can. I have a feeling soon you won't find a real pill in this town for love or money.
+1145|So, pharmacist, did Korshunov call you this morning? Spun you a yarn about "temporary difficulties and shortages"? Ha! I'll tell you in secret what really happened.
+1146|Last night someone pulled off a daring raid on the Commandant's Central Medical Warehouse and cleaned out all the reserves! Tied up the guards, cut the locks with a torch — clean job!
+1147|So don't expect official deliveries tomorrow for love nor money — even on my black market there will be NO real medicine for sale tomorrow, it all went out past the perimeter by caravan!
+1148|But tomorrow the rich rats from all over the Sector will come running to your window and shove crazy money at you for any pill without a permit. Buy dummies from me today, before it's too late!
+1149|As I said, pharmacist: I've no real medicine today — not an ampoule. But the dummies and blank forms are here, and I'll take loot.
+1150|After the raid Gromov's as mad as a dog. He'll count every box. Get ready.
+1151|I hear it's hungry at your home. You've got five hundred in hand — mind you don't give it to Gromov.
+1152|I hear it's hungry at your home. Short of five hundred? Bring anything valuable you have — I'll buy it.
+1153|Gromov's on his way, pharmacist. Last chance to get ready.
+1154|I heard about your Danil. Chizhov charges five hundred? Mine's cheaper: a "white ticket" — a certificate of total unfitness, with the garrison chief physician's seal. {0} RC. Short of money — sell me some loot.
+1155|(Glances around furtively.) The blizzard will end by morning... Know the password? Doesn't matter. I'm Semyon. Ragged.
+1156|My people need "Painkiller" and "Antibiotics". Without permits, you understand.
+1157|In exchange — cartridges, spirit, and this: a lead container for a stash. Hide your surplus in it — no Gromov will ever find it.
+1158|REFUSE
+1159|You shouldn't have, pharmacist. Small town, and your flat's in plain sight... — Semyon raises his collar and leaves.
+1160|DEAL: "PAINKILLER" + "ANTIBIOTICS"
+1161|NOTHING TO GIVE — OUT OF STOCK
+1162|Pleasure doing business. Here: cartridges, spirit and a lead container. So long, pharmacist.
+1163|DEALER · SEMYON "RAGGED"
+1164|<div class="mkh ok">The ledger and the stock match.</div>
+1165|<div class="mkh">What the inspection will see:</div>
+1166|<div class="mki">• SHORT — "{0}" missing: {1} pcs.</div>
+1167|<div class="mkq">"A blank form with a living doctor's seal. At the inspection you write in a fictitious issue — and one shortage gets an explanation. A blank won't cover the seal, the dosimeter or what the patrol saw."</div>
+1168|<div class="mki">Blank forms you have: <b>{0}</b></div>
+1169|BLANK FORM · <b>{0} RC</b>
+1170|BLANK FORM · 2 "ANTIRADIN" (you have {0}) — there'll be a shortage
+1171|<div class="mki">Dummies on the shelves: <b>{0}</b> (more than two — Gromov will open a pack). One dummy covers one shortage of the same form.</div>
+1172|DUMMY "{0}" — {1} · <b>50 RC</b> (on shelf {2})
+1173|"ANTIRADIN" INTO THE BACKPACK · <b>{0} RC</b> (in backpack {1})
+1174|SELL FROM THE BACKPACK: "{0}" ×{1} · <b>+{2} RC</b>
+1175|"ANTIBIOTICS" ONTO THE SHELF · <b>{0} RC</b>
+1176|REGISTRATION STAMP · <b>150 RC</b> (you have {0})
+1177|"WHITE TICKET" FOR DANIL · <b>{0} RC</b>
+1178|SELL: {0} · <b>+{1} RC</b>
+1179|Registration stamp (Voron)
+1180|The registration stamp is in the backpack. Useful at the inspection.
+1181|"White ticket" for Danil (Voron)
+1182|You have the unfitness certificate. Tonight you'll pass it to the Commandant's Office — Danil will be released.
+1183|Dummy "{0}" (Voron)
+1184|"{0}" is on the shelf. Gromov counts boxes, not what's inside.
+1185|"Antiradin" from Voron — into the backpack
+1186|A real "Antiradin" is in the backpack. The stock is untouched.
+1187|Sold to Voron from the backpack: {0}
+1188|"{0}": +{1} RC.
+1189|Sold to Voron: {0}
+1190|{0}: +{1} RC.
+1191|Blank form (Voron)
+1192|Voron, payment for the blank form
+1193|The blank form is in "Our Things". You can use it at the inspection if they find a shortage.
+1194|"Antibiotics" from Voron
+1195|The pack went onto the shelf — the "Antibiotics" stock shortage is closed, the documents match.
+1196|A pack of "Antibiotics" went onto the shelf.
+1197|So long, pharmacist. And remember — you never saw me.
+1198|Semyon raises his collar. — We'll meet again, pharmacist. — It sounds like a threat.
+1199|So long, pharmacist. If anything — find me at the flea market by the river port.
+1200|HQ DUTY OFFICER
+1201|Pharmacy Point No.4, pharmacist Pavel? Here are your orders. A network of underground print shops has been uncovered in Sector-86 — looters and defectors are mass-producing fake passports to rob the state medicine warehouses.
+1202|From today — a strict passport regime! The "Population Census" has been delivered to you. You must check every visitor's name, year of birth and registration — against the permit and the census.
+1203|Issue medicine on a fake passport — and Gromov will skin you alive at the inspection and write you a fine. Over and out.
+1204|The document check now has a "CENSUS" book: find the person by the name in the passport — the year of birth and registration will be checked against the passport. Without this check the "ISSUED" stamp can't be used.
+1205|Pasha! Pasha, disaster! A military patrol just broke down the door... They grabbed our Danil!
+1206|They said — an emergency draft to clear the perimeter, they're rounding up all the sixteen-year-olds! They didn't even let him pack — took him to the Military Office, to the distribution point!
+1207|Pasha, he's only sixteen, he's never held a rifle — they're sending them to Tyumen to be slaughtered! Do something, I beg you, get our son out!

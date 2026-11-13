@@ -1,0 +1,164 @@
+666| The ledger is still {0} RC short.
+667| The cash box matches the ledger.
+668|Moved from the desk to the backpack
+669|{0} RC — in the backpack, it's yours now.
+670| The cash box is {0} RC short of the ledger.
+671|cash box
+672|backpack
+673|desk
+674|No time for money now.
+675|The cash box is empty.
+676|Debt in the backpack: {0} RC.
+677|No personal money.
+678|The desk is empty.
+679|PHARMACY CASH BOX
+680|PERSONAL MONEY
+681|MONEY ON THE DESK
+682|In the cash box: <b>{0} RC</b> · the ledger says {1}{2}<br>In the backpack: <b>{3} RC</b> · on the desk: <b>{4} RC</b><br>How much to {5}?
+683| <span class="neg">({0} short)</span>
+684|clear from the desk
+685|take
+686| RC
+687|PUT ON THE DESK
+688|STRAIGHT TO THE BACKPACK
+689|PUT INTO THE CASH BOX
+690|INTO THE CASH BOX
+691|INTO THE BACKPACK
+692|<button class="btn {0}" data-to="{1}" {2}>{3} · {4} RC</button>
+693|Money: {0} → {1}
+694|{0} RC: {1} → {2}.
+695|No time for the cash box now.
+696|Taken from the cash box to the desk
+697|Laid out from the backpack onto the desk
+698|{0} RC taken from the cash box — it's on the desk. Drag it into the backpack (a loan from the state) or back into the box.
+699|{0} RC from the backpack — on the desk. Drag it into the cash box (the box on the left).
+700|name doesn't match the passport
+701|passport —
+702|doctor {0} has no valid licence
+703|the seal is forged
+704|the permit has expired
+705|the hospital quota is exhausted
+706|no checkpoint signature
+707|number of children not stated
+708|no doctor's personal seal
+709|no documents
+710|a paper with no legal force
+711|yellow zone without a sanitation certificate
+712|issued without measuring radiation
+713| and
+714|DAY
+715|DEBT
+716|☢ RADIATION SICKNESS
+717|☢ TAKE ANTIRADIN ·
+718|RADIATION
+719| · WARNING {0}/4
+720|{0}<small>born {1} · {2}</small>
+721|licence active
+722|LICENCE REVOKED
+723|Disinfection: drag the "Antiseptic" tube from the desk onto the window tray.
+724|After a contaminated client the tray glows yellow. This isn't an issue — just disinfection: take "Antiseptic" from the cabinet.
+725|Tap the phone receiver to answer.
+726|The lever left of the window: swipe it DOWN (towards "OPEN") to raise the armoured shutters.
+727|A fresh newspaper in the window tray — tap to read the Sector's news.
+728|The client's money is on the desk. Drag it into the CASH BOX — the iron box on the left (by law) — or into the backpack hanging by the window (for yourself, off the books). Tap the bundle to split it. Gromov checks the cash box against the ledger.
+729|When you're ready — tap "NEXT".
+730|Inspection! Drag the "Ledger" from the desk into the dispensing window.
+731|Tap the letter in the window tray to read it.
+732|Receiving goods: drag the packs from the box onto the medicine cabinet — right of the window.
+733|Drag "{0}" from the desk into the backpack left of the window.
+734|Take "{0}".
+735|Take "{0}" from the cabinet — it will appear on the desk.
+736|Shift over. Close the window for the night so nobody climbs in: swipe the lever UP (towards "CLOSED").
+737|The window is closed. Tap the monitor: report, ordering for Day {0} and "END SHIFT".
+738|Deal: drag "{0}" from the desk into the window.
+739|Take {0}.
+740|Deal: take {0} from the cabinet — no permit, no stamp.
+741|EXAM. Hints are off. Act on your own: dosimeter, documents, lamp, decision.
+742|Remember the client's name ({0}) and drug ({1}). Tap the window tray to bring the documents to the desk.
+743|Take the documents from the window tray.
+744|The documents are on the desk. Tap them to start checking ({0} checkpoints).
+745|Name: tap the name in the passport, then the name on the permit.
+746|Drug: tap "Prescribed" on the permit, then the client's words above.
+747|Find the doctor from the permit in the list: {0}.
+748|Doctor: open the "Doctors' Register" and find the doctor from the permit.
+749|Seal: drag the Lamp onto the seal (or tap the lamp, then the seal). Blue — genuine, red — forged.
+750|Payment: tap the "To pay" line on the permit — the client will show the money. No money — your call: refuse, or issue at the cash box's loss.
+751|The papers are in order. Back to the window — time to measure radiation.
+752|Sweep your finger (the probe) along the dispensing window — left and right.
+753|New mechanic: tap the Dosimeter. Zones: green <50 — normal; yellow 50–150 — wipe the tray with antiseptic; red >150 — QUARANTINE.
+754|By conscience: the green "ISSUED" stamp on the permit (your radiation +15%). By law: close the desk and press QUARANTINE.
+755|185 µR/h — RED ZONE. Law and conscience part ways. By law: the QUARANTINE button (+100 RC). By conscience: the "ISSUED" stamp and a secret issue (radiation +15%).
+756|The documents are fully in order! Take the green "ISSUED" stamp and stamp the permit.
+757|Process the issue: tap the documents on the desk.
+758|The stamp is on. Back to the window ("TO WINDOW" button).
+759|Take "{0}" from the shelf.
+760|Open the medicine cabinet and take "{0}".
+761|File the stamped permit: tap the "Ledger" on the right of the desk.
+762|"{0}" is on the desk on the left. Drag it with your finger into the dispensing window.
+763|kinds left:
+764|NAME
+765|DRUG
+766|DOCTOR
+767|SEAL
+768|PAYMENT
+769|Double firewood ration: Power Plant 2 lost pressure
+770|Food got dearer: Petrovich didn't go out on the ice
+771|The diesel station stopped: generator and candles at your own cost
+772|The window is free. The line behind the armoured glass is waiting.
+773|The moment the shutters rise — the field telephone rattles on the desk.
+774|The moment the shutters rise — the phone is ringing off the hook.
+775|A courier drops an official note folded into a triangle into the tray.
+776|In the window tray — a sheet folded in four. Olya's handwriting.
+777|PHARM-CONTROL
+778|The last visitor has left. The monitor lights up: time to close the shift.
+779|Day {0} · {1} · {2} RC
+780|no save
+781|test days 7 · 10 · 12
+782|🔊 UNMUTE SOUND
+783|Darkness. The wind howls outside, the warming diesel generator hums...
+784|The old wired telephone rings, sharp and rattling.
+785|YOU DIED
+786|<div class="rp-h">RADIATION SICKNESS · {0}</div><div class="rp-next">Radiation 100%. In the morning the pharmacist of Point No.4 was found on the floor behind the armoured glass. For two days he knew he had to take "Antiradin" — and saved it for others. Or for the inspection.<br><br>Load a save and take the drug in time: backpack → "DRINK".</div>
+787|THE FAMILY DIDN'T SURVIVE THE WINTER
+788|<div class="rp-h">HUNGER AND COLD · {0}</div><div class="rp-next">For the third day there was not a crumb of bread or a log of wood in the house: everything you brought went to debts. Olya fell ill first — she had been giving her share to Alina. Then your daughter's fever rose. In the morning the neighbours called the sanitary squad: the whole family was taken to the infectious barracks, from which no one returns in winter.<br><br>You were removed from your post. The Commandant's Office has no use for a pharmacist who couldn't feed his own.<br><br>Load a save. Personal money can't stay in the red for more than two days.</div>
+789|You owe {0} RC. There's nothing at home to buy food or firewood with. You have two days to get out of the red — or the family won't survive.
+790|The debt of {0} RC is unpaid. Olya can't get up any more, Alina is coughing. Today is the last day: by evening your personal money must be back in the black.
+791|At night you vomited blood, in the morning there was hair on the pillow. You didn't bring yesterday's dose down — now it's radiation sickness: 80%. Take "Antiradin" today. One more night like that — and another pharmacist will open the shift.
+792|Day {0}. Overnight the snow drifted right up to the bars. {1}
+793|No delivery: after the raid the Commandant's warehouse is empty. You work with what you saved.
+794|21 March. For the first time this winter the Sector is quiet: no sirens, no shooting. No orders were taken yesterday — the shelves hold what's left.
+795|The stock has been refilled per your order yesterday.
+796|Last night the family went to bed hungry or cold. Olya said nothing — and that's the worst of it.
+797|Under the door — a scrap of paper: "In your debt. I'll be in touch. — K."
+798|In the morning report: "The squad isolated an infected woman. Her child was handed over to the Commandant's shelter."
+799|burst from the cold
+800|The pipes froze overnight: a bottle of "Antiseptic" burst on the shelf. Written off as spoiled.
+801|Morning report: an elderly refugee, Morozova, was found on the Commandant's doorstep. Heart failure.
+802|The radiators are warm: Power Plant 2 held out overnight.
+803|It's freezing in the pharmacy: Power Plant 2 stopped overnight, the pipes froze.
+804|Someone scratched on the pharmacy door with a nail: "Quick remembers."
+805|Remember: you have a patrol warning ({0}/4).
+806|At the door — two tins of factory stew wrapped in newspaper. Vera kept her word.
+807|Last night someone tried to pick the lock of your flat. Semyon keeps his word.
+808|They say Fyodor "the Beast" came back from the marshes alive and asked about you.
+809|On the desk — a fresh Commandant's order: "Do not serve visitors at 50–150 µR/h without a sanitation post certificate. Refusal — without penalty."
+810|Tonight — Captain Gromov's inspection.
+811|Nobody died at Orphanage No.32 last night. Anna Vasilyevna sends her regards.
+812|The diggers came back from the sewers alive — Timokha says hello.
+813|Captain Gromov's inspection — tomorrow evening.
+814|Tonight — Captain Gromov's third inspection: stock, permits and passports for two days of the regime.
+815|The armoured train left at dawn on schedule: the welders patched the plates in time.
+816|On the desk — a sealed cardboard box with a supply stamp. Gromov's inspection — tomorrow evening.
+817|Contact with the checkpoints was restored overnight. They say Private Sokolov got the wire through.
+818|Someone left a lit icon lamp at the door. Grandpa Serafim is praying for you.
+819|Tonight — Captain Gromov's fourth inspection: Korshunov's special reserve, permits and passports for two days.
+820|Accident at the diesel station: the motor man went blind at the panel (your "dummy")
+821|The diesel station stopped overnight: motor man Gordeyev couldn't read the gauges — the drops didn't help. 150 RC deducted from you for a generator.
+822|Morning report: the herbalist Sedova from the outskirts was taken to intensive care. "Poisoning by an unknown powder."
+823|No mail between the checkpoints today: the courier Belkina is down with pneumonia.
+824|A bunch of squirrel tails hangs on the door handle. Taras "Grouse" made it back to his lodge.
+825|Power plant morning report: liquidator Ilyin P.S. was carried out of the engine hall unconscious. Coma. The drugs "didn't work."
+826|Word from the power plant shift: Ilyin is on his feet, they're pumping out the engine hall.
+827|Scratched on the window bars with a bayonet: "WATER IN THE DROPS? I'LL DROP BY. — Kovalyov".
+828|Bought clean water: poison runs from the taps
+829|Murky water smelling of chlorine and rot runs from taps all over the Sector. Clean water must be bought now: −100 RC.

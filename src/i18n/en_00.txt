@@ -1,0 +1,235 @@
+0|0 RC
+1|0 µR/h
+2|Your autosave will be overwritten. Start over?
+3|Patient:
+4|MAIN MENU
+5|SECTOR-86 HERALD
+6|FULL TEXT
+7|MILITARY OFFICE
+8|DOCTOR —
+9|ALL
+10|ISSUED
+11|EXIT TO MENU
+12|Doctor:
+13|Born:
+14|DAY 01
+15|DAY 1 COMPLETE
+16|END SHIFT
+17|LOAD
+18|ORDERS
+19|CLOSE
+20|SOUNDS: ON
+21|TO WINDOW ✕
+22|To pay:
+23|QUARANTINE
+24|CASH BOX
+25|SECTOR-86 COMMANDANT'S OFFICE
+26|Quarantine
+27|Cash box
+28|LAMP
+29|PERSONAL BAG · drag here
+30|MUSIC: ON
+31|BACK
+32|START DAY 2
+33|START OVER
+34|OUR THINGS
+35|OUT OF STOCK · LET GO
+36|NEW GAME
+37|Prescribed:
+38|RADIATION 0%
+39|PAYMENT —
+40|DENIED
+41|PUT THE PAPER ASIDE
+42|CANCEL
+43|REPORT
+44|PASSPORT
+45|SECTOR-86 RESIDENT PASSPORT
+46|PAUSE
+47|CENSUS
+48|POPULATION CENSUS 2030
+49|CENSUS —
+50|SEAL —
+51|LETTER FROM OLYA
+52|DRUG —
+53|CONTINUE
+54|Pause
+55|Turn your phone upright ↻
+56|Registered at:
+57|DESK
+58|DISMISS
+59|INSPECTION · CAPTAIN GROMOV
+60|Backpack
+61|SECTOR-86
+62|STOCK
+63|NEXT ▶
+64|FOLD THE LETTER
+65|SUPPLY · HQ RESERVE
+66|SAVE GAME
+67|REGISTER
+68|DOCTORS' REGISTER
+69|Sector-86 · Commandant's Office · records
+70|Sector-86 · licences and revocations
+71|DISPENSING PERMIT
+72|PHARM-CONTROL v2.5
+73|NAME —
+74|Name:
+75|BLACK MARKET · VORON
+76|MEDICINE CABINET
+77|THIS PERSON IS NOT ON THE LIST
+78|◀ sweep with the probe ▶
+79|☢ POINT No.4
+80|🔇 MUTE SOUND
+81|🔊 REPLAY
+82|Antiradin
+83|Antibiotics
+84|Painkiller
+85|AI-2 First-Aid Kit
+86|Potassium Iodide
+87|Stimulant
+88|Antiseptic
+89|Sterile Bandage
+90|Sedative
+91|Antitoxin
+92|Antiradin-M
+93|Streptocide
+94|Oftalmo-K
+95|Hemoglobin-S
+96|Immunal-T
+97|Ointment (burns, frostbite)
+98|Solution (L)
+99|Chalk (T)
+100|Vaseline (O)
+101|liquid
+102|tablets/powder
+103|ointment
+104|Gromov I.I.
+105|Sector-86 Hospital
+106|Kazantsev P.R.
+107|KILLED when the hospital collapsed 2 weeks ago. All forms he issued are void
+108|Laptev O.D.
+109|Clinic No.2
+110|Orlov V.G.
+111|Garrison Chief Physician
+112|Petrova N.K.
+113|Commandant's Medical Post
+114|Vetrova M.A.
+115|Commandant's Hospital, head of ward
+116|Smirnov A.V.
+117|Clinic No.1
+118|Pyotr Ilyin
+119|Ilyin Pyotr Sergeyevich
+120|Ilyin P.S.
+121|2nd Microdistrict, bldg 14
+122|Ahem... Hello, son. I'm Pyotr Ilyin, from the second microdistrict. Doctor Smirnov prescribed me "Antiradin" — my head is splitting after a shift at the boiler house. Here's my permit and my pass.
+123|Doctor Smirnov prescribed me "Antiradin"
+124|Anna Kotova
+125|Kotova Anna Dmitrievna
+126|Kotova A.D.
+127|Omskaya St, bldg 22
+128|My name is Anna Kotova... Please, hurry! My husband dragged me out of the rubble by the old power plant. They prescribed me "Potassium Iodide", here's the permit from Doctor Gromov... I beg you, don't call the patrol, my little child is home alone!
+129|They prescribed me "Potassium Iodide", here's the permit from Doctor Gromov
+130|No! Please! My child!.. — The steel grille slams down. The squad's siren drowns out the scream. The Commandant's Office pays a bonus: +100 RC.
+131|Viktor Zakharov
+132|Zakharov Viktor Nikolayevich
+133|Zakharov V.N.
+134|10th Microdistrict, bldg 3
+135|Hey. Viktor Zakharov. Caught some rebar clearing a warehouse, the arm's rotting. Doctor Smirnov prescribed "Antibiotics". Make it quick, my shift's ending.
+136|Doctor Smirnov prescribed "Antibiotics"
+137|Damn, sharp-eyed, aren't you! Fine, listen: give me the "Antibiotics" without the paper and I'll pay double on top — 300 coupons straight into your pocket! Your own family's freezing at home too, eh?
+138|SEND AWAY
+139|TAKE 300 RC
+140|Watch yourself, pharmacist. Small town... — Viktor spits and walks off.
+141|Klavdia Morozova
+142|Morozova Klavdia Stepanovna
+143|Morozova K.S.
+144|barracks by the old pier
+145|Son, dear... I'm Morozova, Klavdia Stepanovna. Last night the snow buried our barracks by the old pier, the roof caved in. My old man was crushed to death... My heart's pounding, my hands shake, I can't breathe. Give me the "Sedative", here's the permit, the medic wrote it last month...
+146|Give me the "Sedative", here's the permit
+147|How can it be, son... — Klavdia Stepanovna weeps, clutching the bars, and slowly walks off into the blizzard.
+148|Gleb Rudnev
+149|Rudnev Gleb Borisovich
+150|Rudnev G.B.
+151|Power Plant 2 dormitory
+152|Hey, pharmacist. Gleb Rudnev, shift chief at Power Plant 2. A pipe full of chemicals burst on boiler three, my boys breathed the muck, they're dropping. If we don't weld the valve by tonight the pressure drops and your whole block freezes to hell. I need "Antitoxin" for the poisoning and an army "Stimulant" to stay on my feet for a day.
+153|I need "Antitoxin" for the poisoning and an army "Stimulant"
+154|Have you all lost your minds?! The form is clean! Then freeze, the whole block of you!
+155|Artyom Belov
+156|Belov Artyom Igorevich
+157|Sidorov K.M., age 64
+158|not stated
+159|Mister, please don't call the soldiers! I'm Artyom... Me and the guys climbed over the wire into the old cannery looking for tinned meat. A looters' tripwire went off... My big brother got shrapnel through the leg, he's bleeding in a basement, screaming so loud the patrol will hear! Here's a permit for a "Painkiller", I traded it off a neighbour!
+160|Here's a permit for a "Painkiller", I traded it off a neighbour
+161|Mister, no!! — The steel grille slams down. A squad in gas masks leads the boy away. The Commandant's Office pays a bonus: +100 RC.
+162|Mister, please! Look — a pre-war radio tube, not a scratch! You won't find one at the market. Take it, just give me the "Painkiller" — my brother will bleed out!
+163|"PAINKILLER" FOR THE RADIO TUBE
+164|Artyom sniffs, hides the tube in his coat and runs off into the blizzard.
+165|Voron
+166|Captain Gromov
+167|Vera Lebedeva
+168|Lebedeva Vera Olegovna
+169|Lebedeva V.O. (for her mother)
+170|cannery dormitory
+171|Valid until: 09.03.2030
+172|Permit EXPIRED 3 days ago (today is 12.03.2030). By Commandant's law — automatic refusal.
+173|Hello... Vera Lebedeva, from the cannery. Mum is very ill, coughing for three weeks, burning up. Here's her prescription for "Antibiotics". I couldn't leave my shift for three days — we stand fourteen hours... the form is slightly out of date. Please.
+174|Here's her prescription for "Antibiotics"
+175|Vera silently takes back the form. — They'll fine me for missing work, and Mum... Fine. — She leaves without looking back.
+176|Maria Arkadyevna
+177|Vetrova Maria Arkadyevna
+178|Commandant's Hospital
+179|Commandant's medical post
+180|No. GK-0412
+181|Hospital quota for March: 20 of 20
+182|The hospital's state-permit limit is EXHAUSTED — issuing above quota is forbidden.
+183|Good day, pharmacist. Vetrova, Maria Arkadyevna, Commandant's Hospital. Since the collapse at the power plant and the fallout they keep bringing the wounded — there's nowhere to put them. I need "Antiradin". The papers are in order, but we used up our state-permit limit last week. Issue it on my word of honour and future statements. I'll account for it, I swear.
+184|I need "Antiradin". Issue it on my word of honour
+185|I understand. Paper is paper... — Maria Arkadyevna nods wearily and leaves. Tonight someone in the hospital won't get their medicine.
+186|Fyodor "the Beast"
+187|Zverev Fyodor Ilyich
+188|Zverev F.I.
+189|outpost beyond Checkpoint 4
+190|No. BP4-0077
+191|Checkpoint chief's signature: ________
+192|The checkpoint chief's signature is missing — the form is invalid.
+193|...Zverev. Fyodor. From the outpost. Ran into a wild dog den in the marshes — they mauled me, it's festering, I've got a fever. "Antitoxin" and bandages. They gave me the paper at the checkpoint — in a hurry, the devils. Be quick, I don't like your little windows.
+194|"Antitoxin" and bandages
+195|Fyodor spits into the snow. — Right. I won't come again. — He throws his pack over his shoulder and heads for the marshes.
+196|Semyon "Ragged"
+197|Zoya Ignatyevna
+198|Karpova Zoya Ignatyevna
+199|Karpova Z.I.
+200|Mira St, barracks 14
+201|Hello, Pavel... I'm Zoya Ignatyevna, I taught geography at School No.3 before the disaster, and now I sort frozen index cards in the Commandant's archive. Last night a blast wave came from the industrial zone — it knocked out the last pane in our barracks. My heart seized, my hands shake, the letters swim... Help me with a "Sedative", here's my passport and permit.
+202|Help me with a "Sedative", here's my passport and permit
+203|Zoya Ignatyevna turns pale. — So you noticed... They'll throw me out of the archive for my age. — She hides the passport and leaves.
+204|Ruslan Mamedov
+205|Mamedov Ruslan Timurovich
+206|Mamedov R.T.
+207|Workers' settlement, block 4
+208|Sanitation post certificate: decontamination passed
+209|Salaam, brother! I'm Ruslan, third drilling crew. We were opening an old mothballed well past frozen Samotlor to pump diesel for the Sector's generators. The pipe burst — I got doused with icy chemical condensate, my skin's blistering. Give me "Antitoxin" and a dressing — all by the book, check the papers!
+210|Give me "Antitoxin" and a dressing
+211|Hey, brother, what's this? The papers are clean! I'll complain!
+212|Kirill Vetrov
+213|Vetrov Kirill Olegovich
+214|Vetrov K.O.
+215|Naberezhnaya St, bldg 8
+216|Hey, chief. I'm Kirill Vetrov, we moved over from the old sawmill, they put me on the lists yesterday. A log crushed my shoulder clearing rubble, and I caught a nasty cold. Give me "Painkiller" and "Antibiotics", quick — there's a line freezing out there!
+217|Give me "Painkiller" and "Antibiotics", quick
+218|Hey! What's this, chief?! — The grille drops. The patrol shakes someone else's passport out from under his coat. The Commandant's Office pays a vigilance bonus: +150 RC.
+219|Sharp-eyed... Fine, chief, let's be nice about it: three hundred coupons on top — and you saw nothing. A passport's a passport.
+220|ISSUE FOR A BRIBE · +300 RC
+221|Kirill curses filthily and vanishes into the blizzard.
+222|Margarita Soboleva
+223|Soboleva Margarita Lvovna
+224|Soboleva M.L.
+225|Rail junction, train No.12 (transit)
+226|No. SP-0077
+227|Good afternoon, colleague. Margarita Soboleva, medic on the special train "Siberia". An hour ago we took on evacuees from near Surgut — a radioactive cloud passed there, people glow in the dark. Our carriage stock is gone. I beg you, issue "Antiradin" and "Iodide" — people are dying in my isolation car!
+228|Issue "Antiradin" and "Iodide"
+229|Margarita looks at you for a long time. — Regulations... I understand. — She walks back to the train. Nobody in the isolation car will live till morning.
+230|Ignat Savelyevich
+231|Savelyev Ignat Savelyevich
+232|Savelyev I.S.
+233|radio hub, workshop 2
+234|Good morning, Pavel. Ignat Savelyev, precision mechanic. All week I've been fixing scopes and radios for the checkpoints by the light of an oil lamp — my eyes are inflamed, watering, my hands shake. Help me out: "Antiseptic" and "Sedative". By the way, I heard you collect old radio parts and tubes? If you find any — I'll buy them for cash, I badly need them for a frequency generator!

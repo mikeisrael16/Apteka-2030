@@ -9,7 +9,7 @@ def ck(cond,name):
 with sync_playwright() as p:
     b=p.chromium.launch(channel='chrome',args=['--no-sandbox','--autoplay-policy=no-user-gesture-required'])
     ctx=b.new_context(viewport={'width':390,'height':844},device_scale_factor=1,has_touch=True)
-    pg=ctx.new_page(); pg.add_init_script("window.__COMPAT=1")
+    pg=ctx.new_page(); pg.add_init_script("window.__COMPAT=1;window.__LANG='ru'")
     errs=[]; pg.on('pageerror',lambda e:errs.append(str(e))); pg.on('console',lambda m: m.type=='error' and errs.append(m.text))
     S=lambda: pg.evaluate("JSON.parse(JSON.stringify(__G.S))")
     R=lambda k: pg.evaluate(f"__G.R.{k}")

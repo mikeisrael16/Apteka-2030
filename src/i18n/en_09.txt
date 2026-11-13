@@ -1,0 +1,161 @@
+1362|enough
+1363|enough for food only
+1364|NOT ENOUGH (relationship with Olya will drop)
+1365|<div class="neg">DEBT {0} RC: {1}.</div>
+1366|LAST DAY — if you're not in the black by morning, the family dies
+1367|get into the black within two days, or the family won't survive
+1368|<div class="neg">RADIATION {0}%: take "Antiradin" before the end of the shift (backpack → DRINK), or by morning — {1}.</div>
+1369|DEATH
+1370|radiation sickness (80%)
+1371|Supply restored: convoys bring everything, no orders needed any more. Close the shift.
+1372|Supplies stopped: warehouse orders are not accepted.
+1373|Open the ORDERS tab to buy medicine for Day {0}.
+1374|<div>&gt; DRUG MOVEMENTS FOR THE WHOLE SERVICE</div>
+1375|<div class="stk {0}"><b>{1}</b><span>start {2} · received {3} · by permit {4} · unlawful {5} · handed over {6} · stolen {7} · per reports {8} · on shelf {9} (on paper {10}){11}</span></div>
+1376| · SHORT {0}
+1377|<div class="stk"><b>Dummies on the shelves</b><span>{0} — they cover shortages of the same form; more than two and Gromov will open them</span></div>
+1378|<div>&gt; COMMANDANT'S WAREHOUSE ORDER · DAY {0}</div><div class="{1}" style="margin-top:.6em">{2}</div>
+1379|THE BLOCKADE IS BROKEN. Supply comes by convoy without orders — nothing needs ordering.
+1380|SEVERE SHORTAGE REGIME. Supplies stopped — orders are not accepted.
+1381|<div>&gt; COMMANDANT'S WAREHOUSE ORDER · DAY {0}{1}</div>
+1382| · ACCESS RESTRICTED: ≤2 packs per item
+1383|<div class="ord"><img src="{0}" alt=""><div class="n">{1}<small>stock: {2} · {3} RC</small></div><button data-o="{4}" data-d="-1">−</button><b>{5}</b><button data-o="{6}" data-d="1">+</button></div>
+1384|Stock access restricted: no more than 2 packs per item.
+1385|Not enough coupons.
+1386|The cash box doesn't have enough money for this order.
+1387|ENVELOPE FOR CHIZHOV · 500 RC
+1388|Order: {0} RC · remaining: {1} RC
+1389|Order from the cash box: {0} RC · left in the cash box: {1} RC
+1390|Pharmacist's wage
+1391|Family: food for the day
+1392|food
+1393|Family: firewood and kerosene
+1394|firewood
+1395|Today the household was short of
+1396|Money from the desk put into the cash box for the night
+1397|Food package for the family (Olya)
+1398|order
+1399|Medicine purchase for Day {0}
+1400|Issued:
+1401|<div class="rp-h">SHIFT REPORT · DAY {0} · {1}</div><div class="rp-l"><span>Balance at start of shift</span><b>{2} RC</b></div>
+1402|<div class="rp-l rp-sum"><span>TOTAL IN ACCOUNT</span><b>{0} RC</b></div>
+1403|<div class="rp-l rp-sum"><span>PHARMACY CASH BOX</span><b>{0} RC</b></div><div class="rp-l {1}"><span>Cash box per ledger</span><b>{2} RC{3}</b></div><div class="rp-l rp-sum"><span>PERSONAL MONEY (BACKPACK)</span><b>{4} RC</b></div>
+1404| · short
+1405|<div class="rp-l"><span>Issued by permit</span><b>{0}</b></div><div class="rp-l"><span>Forms in the ledger</span><b>{1}</b></div>
+1406|<div class="rp-l {0}"><span>Stock shortages (SHORT)</span><b>{1} pcs</b></div><div class="rp-l {2}"><span>Open violations</span><b>{3}</b></div><div class="rp-l"><span>Relationship with Olya</span><b>{4}/100</b></div>{5}{6}{7}<div class="rp-l {8}"><span>Pharmacist's radiation</span><b>{9}%</b></div>
+1407|<div class="rp-l {0}"><span>Danil</span><b>{1}</b></div>
+1408|will come home
+1409|taken away — the promise wasn't kept
+1410|sent to Tyumen
+1411|<div class="rp-l {0}"><span>Father</span><b>{1}</b></div>
+1412|medicine delivered to your parents
+1413|recovering
+1414|medicine not delivered
+1415|died on 18 March
+1416|<div class="rp-l {0}"><span>Family</span><b>{1}</b></div>
+1417|500 RC handed over for food
+1418|no money for food
+1419|<div class="rp-l neg"><span>Patrol warnings</span><b>{0}/4</b></div>
+1420|<div class="rp-l"><span>Personal belongings</span><b>{0}</b></div>
+1421|<div class="rp-next">To be continued: Day {0} is in development. Your decisions are saved.</div>
+1422|DAY {0} COMPLETE
+1423|MORNING OF 22 MARCH · FINALE
+1424|START DAY {0}
+1425|A gust of wind tears at the wires: the lights flicker. In a storm the line barely holds.
+1426|A newspaper boy pushes a fresh issue of the "Sector-86 Herald" into the tray.
+1427|Inspection at Point No.4
+1428|Captain Gromov's patrol inspected Pharmacy Point No.4. Stock, ledger and cash box matched, the pharmacist was awarded a bonus.
+1429|The patrol found discrepancies at Pharmacy Point No.4. The pharmacist received a warning (total: {0} of 4).
+1430|Pharmacy Point No.4 passed its inspection. The patrol gives no details.
+1431|Minus forty-one: firewood rations cut
+1432|The Commandant's Office has halved fuel rations. Residents are asked not to leave their homes without need and to report neighbours who stop answering.
+1433|Miracle on Omskaya Street
+1434|A. Kotova, whom the medics considered hopeless, is recovering. Where she got "Antiradin" at 185 µR/h, the editors do not know.
+1435|Infected woman isolated
+1436|The squad took A. Kotova, reading 185 µR/h, away from Omskaya Street. The Commandant's Office thanks the vigilant pharmacist of Point No.4.
+1437|Death on Omskaya Street
+1438|A. Kotova died of radiation sickness without receiving the drug. Her husband is looking for those to blame.
+1439|Letter to the editor
+1440|Pensioner K. Morozova thanks the pharmacy on the outskirts: "They didn't abandon an old woman, even though my doctor is dead."
+1441|Died waiting for justice
+1442|Pensioner K. Morozova was found dead in her flat. She was refused a sedative: the doctor who wrote her permit is listed as deceased.
+1443|Power Plant 2 held through the night
+1444|Duty engineer G. Rudnev did not leave the boilers for a day. Pressure held, the block has heat.
+1445|Accident at Power Plant 2
+1446|At night the boiler pressure dropped: the duty shift couldn't take a second day without sleep. Three blocks were left without heat.
+1447|Fake permits
+1448|Permits with a forged Military Office seal are circulating in town. Rumour has it that in some places they're accepted — for a fee.
+1449|Permits with a forged seal are in circulation. At Point No.4 the forgery was spotted under ultraviolet — follow their example.
+1450|WANTED
+1451|ZUBOV V., escaped from the special works camp. Camp number on his arm, no documents. Dangerous. Commandant's bonus for capture.
+1452|Passport regime introduced in the Sector
+1453|From 14 March medicine is issued only to residents listed in the "Population Census 2030". Pharmacists have been given record books. Issuing on someone else's or an altered passport — a 200 RC fine.
+1454|Cannery
+1455|Worker V. Lebedeva is back in the shop: the sick member of her family is recovering.
+1456|Another pneumonia death in the factory dormitory. The family never got the antibiotics.
+1457|Hospital
+1458|Surgeon M. A. received "Antiradin" above the exhausted quota. Nobody died in the hospital last night.
+1459|The "Antiradin" quota is exhausted. Two irradiated men from the night shift could not be saved.
+1460|The "Ob" cooperative is out on the ice
+1461|Fresh fish is back at the market, food prices have fallen.
+1462|The fishermen didn't go out on the ice
+1463|The head of the "Ob" cooperative is ill. No fish at the market, food got dearer.
+1464|Orphanage No.32
+1465|The children got antibiotics. Teacher A. V. Krylova: "All fourteen are alive."
+1466|The orphanage's group permit was rejected: the paper doesn't state the number of children. Two children are in serious condition.
+1467|The fugitive is still at large
+1468|Zubov V. was seen at Pharmacy Point No.4. The patrol is asking questions.
+1469|The fugitive Zubov
+1470|The pharmacist of Point No.4 refused to deal with the fugitive. The patrol is on his trail.
+1471|A looter living on stolen passports. The address in the document is rubbed out, high radiation. Check the registration against the Census!
+1472|The train has left for Tyumen
+1473|214 conscripts were sent to the outer frontier. Meanwhile a special train from the HQ reserve broke through into the Sector: pharmacies are getting five new drugs.
+1474|Military Office
+1475|The commission notes "unusually many" medical exemptions on the last day of the draft. An inquiry is scheduled for April.
+1476|The draft closed with no shortfall. Letters from the frontier take three weeks.
+1477|The armoured train left on schedule
+1478|The depot welders patched the armour plates overnight.
+1479|Armoured train delayed
+1480|The welding crew fell ill, departure was set back a day.
+1481|Robbery on Rechnaya Street
+1482|The criminal with a stolen passport got away again. According to the patrol, he got medicine at one of the pharmacies.
+1483|Looter detained
+1484|A man with a stolen passport and a reading of 168 µR/h was taken at the window of Pharmacy Point No.4.
+1485|Looter gets away
+1486|A man with a stolen passport was refused at a pharmacy. His whereabouts are unknown.
+1487|Drilling rig
+1488|The night shift worked without incident.
+1489|The night shift failed: people are dropping with exhaustion.
+1490|Rumours
+1491|They say you can now buy medicine in the Sector without a permit — if you have money.
+1492|COMMANDANT'S ORDER
+1493|The special reserve (Antiradin-M, Streptocide, Oftalmo-K, Hemoglobin-S, Immunal-T) is the personal responsibility of pharmacists. Double accountability for every missing ampoule.
+1494|The special reserve has reached the pharmacies
+1495|The new drugs are issued by permit. The Commandant's Office warns: fakes have appeared on the black market — chalk, tinted water and industrial vaseline.
+1496|Contact restored
+1497|The signals company got the wire through the Red Forest. The checkpoints are back on the line.
+1498|Signalman in isolation
+1499|A private reading 165 µR/h has been isolated. The line to the checkpoints is being laid again.
+1500|Checkpoints cut off
+1501|The line through the Red Forest wasn't finished: the signalman fell ill.
+1502|Diesel station running
+1503|The pump failure was fixed, the district has power.
+1504|Accident at the diesel station
+1505|The motor man couldn't read the gauges. The district sat without power for a day.
+1506|Poisoning on the outskirts
+1507|Herbalist V. Sedova was taken to intensive care: an "unknown powder" instead of medicine.
+1508|Outskirts
+1509|Herbalist Sedova is seeing patients again.
+1510|Herbalist Sedova is ill. There's nobody to treat Lesnoy cul-de-sac.
+1511|Perimeter
+1512|The burial crew finished the trench on time.
+1513|The burial crew can't cope: there's nobody to replace the men with frostbitten hands.
+1514|Post
+1515|The courier between the checkpoints is down with pneumonia. No letters are being delivered.
+1516|A man of about 30, a scar across his left cheek. Nickname "Scar". Uses other people's passports. Armed.
+1517|Raid on the Central Medical Warehouse
+1518|At night unknown persons cut the locks with a torch and took the reserves. The Commandant's Office calls it "temporary difficulties". Deliveries to pharmacies have stopped.
+1519|Power plant: liquidator in a coma
+1520|P. S. Ilyin was carried out of the engine hall unconscious. The drugs "didn't work."
+1521|Power plant
+1522|The engine hall is being pumped out. Liquidator Ilyin is on his feet.

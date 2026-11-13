@@ -1,0 +1,154 @@
+1208|Pasha, say something!
+1209|"I'LL SORT IT OUT, OLYA. I'LL GET HIM OUT BY TONIGHT"
+1210|I'll sort it out, Olya, don't worry! I'll get him out by tonight!
+1211|Pasha... I believe you. I'll wait till tonight. Just get him out.
+1212|The promise is made. Before the end of the shift you must find a way: the man from the Military Office or Voron.
+1213|"HE'S GROWN UP. HE MUST DEFEND THE SURVIVORS"
+1214|Olya, he's a grown man already. These are the times — he must defend the survivors.
+1215|What are you saying, Pasha?! Grown up?! He's sixteen! You're sending our boy to the meat grinder with your own hands to curry favour with your soldiers?! I hate you! Damn you and your pharmacy!
+1216|Olya hung up. The pharmacy is very quiet.
+1217|The window empties. Behind you — the insistent, rattling ring of the field telephone.
+1218|Hello! Hello, Pasha, is that you?! Lord, I finally got through... It's Olya. Pasha, something's wrong with Alina!
+1219|She's burning up, I measured — her temperature's near forty! She's delirious, barely conscious. The neighbour, a medic, looked in — said it may be a serious inflammation.
+1220|She needs "Antibiotics" urgently, or she won't last till morning! You can't get them anywhere in the Sector... I beg you, do something!
+1221|Pasha, can you hear me?! What do I do?!
+1222|Olya, hold on. I'll take "Antibiotics" from the stock and bring them tonight. Not a word to anyone.
+1223|Pasha... thank you. Just be careful, do you hear? We're waiting for you.
+1224|A pack of "Antibiotics" is hidden in the bag. Home tonight. Now the stock has a shortage.
+1225|"I'LL TAKE ANTIBIOTICS FROM THE STOCK"
+1226|NO "ANTIBIOTICS" ON THE SHELF
+1227|"I'LL CALL MARIA ARKADYEVNA, THE DOCTOR"
+1228|Olya, I'll call Maria Arkadyevna now — she's a doctor at the hospital. I'll ask her to come by tonight and look at Alina.
+1229|Just hurry, Pasha! I'm waiting.
+1230|You hang up and dial the hospital...
+1231|"TAKE HER TO A DOCTOR, BY THE RULES"
+1232|CALL OLYA BACK: "TAKE HER TO A DOCTOR"
+1233|Maria Arkadyevna, hello! Please, hear me out. My daughter Alina is very ill — temperature near forty, delirious. Could you examine her after your shift? I'm afraid she needs antibiotics, and I... you understand.
+1234|ORDERLY
+1235|Maria Arkadyevna is in quarantine — after that squad call they won't let her out of the isolation box. Don't call here again.
+1236|Short beeps. It's up to you now.
+1237|Lord, Pavel... Poor girl. Of course I'll help! You helped our hospital so much when we had nothing to give the wounded.
+1238|I'll finish my rounds and run straight to your flat to see Alina. Hold on — I'll do everything I can.
+1239|Maria Arkadyevna will come to your home after her shift. The stock is intact.
+1240|Pavel... You're asking me for help? And when my patients in the hospital were choking and delirious, you refused me because of a piece of paper! My whole shift is full of patients, I have no time to run around on private calls...
+1241|But... I'm a doctor after all, and I can't leave a child without help. Let's do this: bring me what I asked for the hospital — "Antiradin". Secretly, from the stock. Hand it over tonight — and I'll examine your daughter.
+1242|TAKE "ANTIRADIN" FROM THE STOCK FOR HER
+1243|NO "ANTIRADIN" ON THE SHELF
+1244|The "Antiradin" is hidden in the bag — for Maria Arkadyevna tonight. The stock has a shortage.
+1245|REFUSE HER CONDITION
+1246|You hang up. It's up to you now.
+1247|Olya, I can't just take medicine from the stock — I'm not allowed to issue anything without a permit, I'd be caught stealing at the first inspection. Dress Alina and take her to the clinic, to the duty doctor at the Commandant's Office, let them examine her like everyone else.
+1248|Take a child with a temperature of forty through the frost into a common line?! People sit there for hours in cold corridors! Are your papers dearer to you than your own daughter, Pasha?! I understand you now... I'll manage myself!
+1249|Olya hung up. The stock is intact, but your heart is heavy.
+1250|Take "{0}" from the cabinet and drag it into the backpack left of the window.
+1251|No time for the backpack now.
+1252|into the backpack
+1253|The dummy "{0}" went into the backpack — it's no longer on the shelf.
+1254|"{0}" is in the backpack. On paper the shelf still checks out.
+1255|"{0}" is hidden in the backpack. The stock is now short.
+1256|Only "{0}" goes into the backpack now.
+1257|home, for Alina
+1258|for Maria Arkadyevna
+1259|Patrol Captain Gromov! Scheduled inspection of Pharmacy Point No.4. Hand over the Ledger — I'm checking the stock against the accepted permits!
+1260|The ledger! Now!
+1261|"{0}" short — {1} pcs.
+1262|Cash box short — {0} RC
+1263|there is less money in the box than the Ledger says there should be
+1264|Money on the desk counted together with the cash box
+1265|I hear you handed an infected person to the squad today. That counts.
+1266|I hear you helped the patrol today. That counts.
+1267|Today I'm checking not only the stock and permits, but passports too — for both days of the regime.
+1268|Separately I'll count Major Korshunov's special reserve — all five new items.
+1269|After the raid on the Central warehouse this is a special inspection. Every box in the cabinet — in hand and counted.
+1270|You already have two warnings. A tightened inspection: I'll count every ampoule twice.
+1271|opened by Gromov
+1272|Fine: dummies on the pharmacy shelves
+1273|Quite a lot of boxes without factory labels here... (Opens a pack.) Chalk?! Tinted water?! I'm confiscating the fakes, fine — 200 RC. And now let's count what you're really missing.
+1274|The patrol saw a fugitive with a camp number at the window
+1275|a deal with Vadim Zubov
+1276|And another thing. Patrolmen saw a ragamuffin with a camp number at your window. A fugitive. What were you whispering about, pharmacist?
+1277|So... Stock, permits and cash box all match to the last ampoule and the last coupon. Excellent service, pharmacist.
+1278|Stop. And what's this mess?! The state drugs are short in stock, and the numbers in the Ledger don't add up! What's the meaning of this, pharmacist?!
+1279|Out with it, pharmacist. Every discrepancy — separately.
+1280|<div class="mkh">Found during the inspection: {0}</div>
+1281|<div class="mkh ok">No open violations left.</div>
+1282|REGISTRATION STAMP (you have {0})
+1283|SECRET ORDER: DROP THIS FINDING
+1284|{0} (you have {1})
+1285|REWRITE THE PERMIT ON A CLEAN FORM
+1286|WRITE IN A BLANK FORM
+1287|LEAD CONTAINER: HIDE THE SHORTAGE
+1288|BRIBE FOR THIS · {0} RC
+1289|LIE ABOUT THIS
+1290|ADMIT THE REST (WARNING)
+1291|CLOSE THE INSPECTION
+1292|secret order
+1293|dropped by secret order of the Commandant's Office
+1294|(Reads the paper and turns pale.) Where did you get... Ahem. I'm striking this item out. And I never saw this paper.
+1295|blank form
+1296|the permit rewritten on a clean form
+1297|So... a permit like any permit: date, signature, seal. No questions about this issue.
+1298|"{0}" ×1 — fictitious issue on a blank form
+1299|So... issued by permit... signature's there, seal's there. Fine, this item checks out.
+1300|lead container
+1301|hidden in the container
+1302|Hm. The shelf is empty, but I didn't look under the floor... Fine, next.
+1303|Attempt to bribe an officer
+1304|Gromov refused
+1305|Trying to buy me?! Stop shoving money at me! This goes in the report.
+1306|"To warm the patrol" (Captain Gromov)
+1307|bribe
+1308|Gromov turned a blind eye
+1309|(Pockets the money.) You pay rather often, pharmacist... I'll remember.
+1310|(Tucks the notes into his coat pocket.) Ahem... I'll turn a blind eye to this. One — no more.
+1311|Lying to an officer at the inspection: {0}
+1312|shortage of "
+1313|The patrol saw it with their own eyes, and you're telling me fairy tales?! Warning!
+1314|Fairy tales again?! You take me for an idiot, pharmacist? This goes in the report — and a warning for you!
+1315|lie
+1316|"the box cracked in the frost" — Gromov believed it
+1317|"I gave change in small coins, miscounted" — Gromov believed it
+1318|Gromov took your word for it
+1319|Miscounted, you say? Hm... Brush up your arithmetic, pharmacist. I'll write it off. Once.
+1320|The box cracked in the frost, you say? Hm... Fine, we'll write it off. But next time that tale won't wash.
+1321|Fine, I'll believe you. For now.
+1322|registration stamp
+1323|passport "corrected" with a registration stamp
+1324|Registration... the passport office stamp is there, the record matches. Fine.
+1325|Fine: special reserve shortage "{0}"
+1326|inspection report
+1327|Surcharge: cash box shortage repaid from personal money
+1328|Fine: issued on an invalid passport
+1329|Fine: minor violation (flawed permit)
+1330|At least you don't lie — I appreciate that. But it all goes in the report.
+1331|A trifle. But order is order: fifty coupons for each such paper. No warning — the first time.
+1332|Here's a bonus from the Commandant's Office for exemplary order.
+1333|Commandant's bonus for exemplary order
+1334|It checks out. But with two warnings you won't see a bonus.
+1335|This is a verbal warning, pharmacist. The first.
+1336|Second warning. I'm taking away your bonus, the next inspection will be tightened. But I'm giving you a chance.
+1337|Third warning! Once more — and you're out. I'm restricting your stock access: orders — no more than two packs per item.
+1338|That's it, pharmacist. The fourth. The order for your dismissal is signed.
+1339|Shift over. — Gromov salutes and walks off into the blizzard.
+1340|YOU'RE FIRED
+1341|<div class="rp-h">COMMANDANT'S ORDER</div><div class="rp-next">Four patrol warnings. The pharmacist of Point No.4 is removed from his post.<br><br>Load a save to get through the inspection differently.</div>
+1342| · personal
+1343| · to the desk
+1344| · cash box
+1345|<div>&gt; SHIFT SUMMARY · DAY {0} · POINT No.4</div><div class="ln"><span>Opening balance</span><span>{1}</span></div>
+1346|<div class="sum">TOTAL: {0} RC</div>
+1347|<div class="sum">IN THE CASH BOX: {0} RC</div><div class="{1}">The ledger says the cash box should hold: {2} RC{3}</div><div>Personal money (backpack): {4} RC</div>
+1348| · SHORT {0} RC
+1349|<div>Forms in the ledger: {0}</div><div>Pharmacist's radiation: {1}%</div>
+1350|<div class="neg">Patrol warning: {0}/4</div>
+1351|<div>Personal belongings: {0}</div>
+1352|<div class="neg">Unrecorded cash: {0}</div>
+1353|<div class="neg">WARNING: the tray isn't treated with antiseptic!</div>
+1354|<div class="neg">Shortages: {0} pcs · open violations: {1} — until the next inspection</div>
+1355|<div class="{0}">Promised to Mum: "Antiradin" or "Antiradin-M" in the backpack by the end of the shift — {1}</div>
+1356|YES
+1357|NO
+1358|<div class="{0}">Promised to Olya: 500 RC for food — {1}</div>
+1359|enough, it will be deducted when you close the shift
+1360|SHORT BY
+1361|<div class="{0}">For the family tonight: food {1} + firewood {2} RC from personal money (wage +{3} comes when you close the shift) — {4}</div>

@@ -1,0 +1,103 @@
+355|Give me medicine for radiation, "Hemoglobin-S" and bandages
+356|Good, boss. — Taras counts out 250 RC and puts a vial of bear bile in the tray. — A rare thing. Farewell.
+357|City folk... You value paper over people. — Taras throws his traps over his shoulder and heads for the forest.
+358|Alyona
+359|Belkina Alyona Igorevna
+360|Belkina A.I.
+361|Checkpoint No.2, post office
+362|Uncle Pasha, hello... I'm Alyona, a courier between the checkpoints. All day I carry letters in the icy wind, my feet are frostbitten and my throat hurts. I need "Immunal-T" and ointment... Only Mum changed the year of birth in my passport — added two years so they'd give me work and a ration. Please don't give me away to Gromov! I'll show you the secret HQ report I'm carrying today!
+363|I need "Immunal-T" and ointment
+364|Thank you, Uncle Pasha! Here, look... — Alyona leaves a copy of the "Secret Order of the Commandant's Office" in the tray. — Only I never showed you anything!
+365|Alyona sniffs, hides the passport in her mailbag and limps off into the blizzard.
+366|Power plant dormitory, room 12
+367|Hello, Pavel... Remember me? Pyotr Ilyin, I got "Antiradin" from you on your very first day at work. You helped me then, I held out a week on the old supply. But they've thrown us into the flooded engine hall again — the ordinary drug doesn't hold any more, my blood's gone thin. Write me the new "Antiradin-M" and "Hemoglobin-S" for old times' sake. Only look — the Commandant's Office changed my registration, they cleared our barracks, but haven't put it in the Census yet...
+368|Write me the new "Antiradin-M" and "Hemoglobin-S"
+369|Thank you, son. You've helped me twice now. Here — my DP-5 dose meter, I've no use for it there any more. (150 RC and the dosimeter in the tray.)
+370|So that's how it is, Pavel... And I thought we were human beings. — Pyotr Ilyin bitterly takes his passport and leaves.
+371|Matvei "Smith"
+372|Gromov Matvei Ilyich
+373|Gromov M.I.
+374|repair depot, dormitory 1
+375|Hello, pharmacist. I'm Matvei, a hammerman from the repair depot. We forge springs for armoured cars in an open forge — the tongs slipped, a red-hot bar burned my forearm to the bone. Give me ointment and a painkiller so I can finish the shift. Passport and permit are clean, check them.
+376|Give me ointment and a painkiller so I can finish the shift
+377|Thank you, pharmacist. I'll finish the shift. — Matvei leaves 150 RC and heads to the depot.
+378|What's this, pharmacist? The papers are clean! I'll tell the Captain just that — we share a surname.
+379|Larisa Vitalyevna
+380|Orlova Larisa Vitalyevna
+381|Orlova L.V.
+382|Oktyabr House of Culture, staff room
+383|Doctor's personal seal: ________
+384|The permit lacks the doctor's personal seal — the form is invalid.
+385|Good afternoon, young man... Larisa Vitalyevna Orlova. We run a warming point and a children's reading room at the Oktyabr House of Culture. The roof leaks, an icy draught — I've lost my voice completely, a purulent tonsillitis is choking me. I beg you, give me "Streptocide" and "Immunal-T"... My permit is genuine, but the doctor forgot to put his personal seal in the rush. Take this gold medallion in exchange!
+386|I beg you, give me "Streptocide" and "Immunal-T"
+387|Thank you, young man... — Larisa Vitalyevna takes the gold medallion from her neck and lays it in the tray. — The children in the reading room will thank you.
+388|I understand... The seal. — Larisa Vitalyevna hides the medallion and says goodbye silently, with her lips only.
+389|Gennady "Grim"
+390|Listen here, pharmacist. Sergeant Kovalyov, tower No.7. Second day without relief, staring at the wire through a searchlight in the blizzard — my eyes sting, I'm dropping off my feet.
+391|No permit — no time for me to run around hospitals. I'll pay 250 RC cash right now for a "Stimulant" and "Oftalmo-K" eye drops. Well, deal?
+392|The guard spits into the snow. — Sit with your papers then. — And walks back to the tower.
+393|The sergeant scoops up the packs and throws 250 RC into the tray. — I was never here.
+394|Sergeant Major Kravtsov
+395|Kravtsov Boris Andreyevich
+396|Kravtsov B.A.
+397|barracks of the 2nd supply perimeter
+398|Valid: 18.03.2030 only
+399|YESTERDAY'S permit — expired 1 day ago (today is 19.03.2030).
+400|(A man in a coat slashed by shrapnel holds his bloody shoulder and looks around.) Quiet, pharmacist, no noise... I'm Kravtsov, from the second supply perimeter. Last night there was hell — they came with fire and iron, slaughtered us like kittens... Dress the wound and give me "Antiseptic" and a "Painkiller". Only my permit has yesterday's date — our clerk is in the next world today, there's nobody to write a new one. Help me out — I'll give you something from captured kit.
+401|Dress the wound and give me "Antiseptic" and a "Painkiller"
+402|I owe you, pharmacist. — Kravtsov puts 100 RC and an army vest with an armour plate in the tray. — And remember: you heard nothing from me about last night.
+403|The sergeant major nods silently and leaves, clutching the wound. Dark drops are left on the snow.
+404|Elvira Nailevna
+405|Safina Elvira Nailevna
+406|Safina E.N.
+407|water treatment station, dormitory
+408|Hello, Pavel! Elvira Safina, central water treatment station. Groundwater from the old waste burial site got into the settling tanks — the chlorinator burst, we breathed the fumes! If we don't flush the filters today, tomorrow poison will run from the taps all over the Sector! Issue "Antitoxin" and "Iodide", the documents are fully in order!
+409|Issue "Antitoxin" and "Iodide"
+410|Thank you, Pavel! We'll flush the filters by nightfall. — Elvira leaves 150 RC and runs to the station.
+411|But the documents are clean... Then boil your water tomorrow. Though it won't help. — Elvira leaves.
+412|Rodion "Scar"
+413|Kozlov Igor Petrovich
+414|Kozlov I.P.
+415|Rechnaya St, bldg 17, apt 4
+416|SOMEONE ELSE'S passport: per the census Kozlov I.P. is 78 (born 1952), the photo shows an old man, but the man at the window is about thirty
+417|Evening, pharmacist. I need to get the lads back on their feet after a night job — give me a "Stimulant" and "Streptocide". My passport's in the name of Igor Kozlov, you can even check your little book — it'll all match, ha-ha! Just look closely at the mug, if you dare...
+418|Give me a "Stimulant" and "Streptocide"
+419|Good boy, pharmacist. Quick on the uptake. — Rodion scoops up the packs and leaves without paying. (Radiation +15%)
+420|Why, you pharmacy rat!.. — The grille drops. The patrol ties up the raider with the stolen passport. The Commandant's Office pays a bonus for catching a dangerous bandit: +150 RC.
+421|"Scar's" bribe, off the books
+422|Sharp-eyed... Fine, pharmacist, no fuss. Two hundred and fifty coupons in your hand — and you saw old grandpa Kozlov. Well?
+423|ISSUE FOR A BRIBE · +250 RC
+424|Rodion runs a finger along his scar. — I'll remember your little window, pharmacist. — And vanishes into the blizzard.
+425|Rodion counts out two hundred and fifty and hides the packs in his coat. — You're a sensible man. (Radiation +15%)
+426|Tamara Glebovna
+427|Ryabova Tamara Glebovna
+428|Ryabova T.G.
+429|Special quarter, bldg 4, apt 2
+430|Young man, serve me immediately! I'm the wife of the 4th Battalion's political officer! Because of these night sirens and shooting at the warehouses I have a migraine and a nervous breakdown! Here's my permit and passport, and don't you dare dig into them!
+431|"Sedative" and "Immunal-T", immediately
+432|Tamara Glebovna sips from the bottle at once. — Oh... it's easing already! That's what real medicine is. — She leaves 150 RC and walks away perfectly well.
+433|At last. — Tamara Glebovna tosses 150 RC into the tray and leaves without a goodbye.
+434|What?! My husband is the battalion's political officer! You'll regret this, young man!
+435|Innokenty Barinov
+436|(A well-fed man in an expensive coat with a fur collar wrinkles his nose at the window.) Listen to me, pharmacist. Since your central warehouse was cleaned out, the special store for the bosses is bare! And my bronchitis is starting and my blood pressure jumps.
+437|I have no permits — I'm not standing in lines with the rabble. Lay out a pack of "Antibiotics" and "Hemoglobin-S" right now, and I'll put 300 RC cash in the tray! Well?
+438|Barinov purses his lips. — A pity. I'll remember who in this town doesn't understand nice manners.
+439|Barinov takes the packs with two fingers and drops 300 RC into the tray. — Should have done that straight away.
+440|Stanislav, pawnshop owner
+441|Hello, chief. I hear the town's run dry of medicine, and tomorrow I'm leading a caravan through the contaminated zone. Let's not waste time on paperwork — my permit's fake, I know it.
+442|Let's do business: you give me "Antiradin-M" and a "Stimulant", and I slip you 300 RC on top! Money doesn't smell, especially when there's nothing to eat in the Sector.
+443|As you like, chief. The honest ones swell from hunger first these days. — Stanislav adjusts his dark glasses and leaves.
+444|Stanislav counts out 300 RC from a thick wad. — You're someone I can do business with, chief.
+445|Ilya Mamontov
+446|Pharmacist, help me out! Mamontov's the name, I run the fuel in the Sector. The clinic says there are no forms and won't be any because of the night warehouse robbery! And my eyes are inflamed from petrol fumes and my immune system's shot.
+447|I'll pay 350 RC clean for "Oftalmo-K" and "Immunal-T" without any permits! Help me — I won't forget it!
+448|Ah, pharmacist... I won't forget this either. — Mamontov leaves, squinting.
+449|Now that's talking! — Mamontov puts 350 RC in the tray. — If you need diesel, you'll find me at the depot.
+450|Angela Eduardovna
+451|Young man, please, none of your state bureaucracy! I urgently need to put together a home medicine chest before everything in this cursed town is snapped up!
+452|Naturally, I have no permit. But I have 400 RC cash for three drugs: "Sedative", "Streptocide" and ointment! Help a woman out — and your family won't want for anything tonight!
+453|Boor! — Angela Eduardovna snaps her handbag shut and leaves, heels clicking.
+454|Angela Eduardovna sweeps the packs into her handbag and leaves 400 RC. — We understand each other.
+455|No. GR-0047
+456|Number of children: 14 (stated)
+457|Pavel, hello! What happiness... Have you heard what's happening in the streets? People are smiling, army convoys are bringing bread and warm clothes! Today they finally delivered firewood to the orphanage, for the first time this winter the walls are warm. The little ones have come alive, but many still have bad colds after the frost. Please issue us "Antibiotics" and "Immunal-T" on our group permit. They say you have everything now?

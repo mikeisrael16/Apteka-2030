@@ -1,0 +1,62 @@
+1523|Liquidator Ilyin has been hospitalised: without the drug he couldn't last the shift.
+1524|Water is safe
+1525|The treatment plant flushed its filters. No poisonings.
+1526|Poison from the taps
+1527|The treatment plant's filters weren't flushed in time. Don't drink tap water — only delivered water is clean.
+1528|Raider detained
+1529|One of the warehouse raiders was taken at the window of Pharmacy Point No.4. The pharmacist has received an official commendation.
+1530|Raiders got their medicine
+1531|According to the patrol, a bandit nicknamed "Scar" stocked up at one of the pharmacies on someone else's passport. An inquiry is under way.
+1532|"Scar" got away
+1533|The raider with someone else's passport left the pharmacy empty-handed and disappeared.
+1534|"October" Culture House
+1535|The children's reading room is open again.
+1536|The warming point is closed: the manager is down with tonsillitis.
+1537|A kind word
+1538|The perimeter diggers ask us to print: "Thank you to the pharmacist who gave us credit."
+1539|Dummies instead of medicine
+1540|More and more hospital patients say the medicine "didn't help". The Commandant's Office is looking for whoever is handing out chalk and water.
+1541|EDITORIAL
+1542|Those with money buy medicine past the permits. Those without stand in line. Today it's the pharmacist who decides who gets the last ampoule.
+1543| · price 2 RC
+1544|<button class="btn green" data-s="man" {0}>MY SAVE<br><small>{1}</small></button><div class="slh">TEST SAVES</div>
+1545|<button class="btn" data-s="{0}:{1}">DAY {2} · {3}<br><small>{4}</small></button>
+1546|FAMILY SAFE
+1547|FAMILY FALLING APART
+1548|road to the good ending
+1549|road to the bad ending
+1550|<div class="mki">Your personal money (backpack): <b>{0} RC</b>. The pharmacy cash box doesn't count here.</div>
+1551|Pavel sits in the kitchen of his warm flat. The windows are no longer boarded up; behind them you can hear children's voices and the hum of a city coming back to life. On the table is a hot kettle and fresh bread from the aid train.
+1552|Olya sits beside him, gently resting her arm on Pavel's shoulders. From the next room comes the laughter of Danil, playing with little Alina — their son is home, safe, and no longer facing the front in Tyumen. In an armchair by the warm stove sits Pavel's father, recovered, talking quietly with his wife.
+1553|You made it, Pavel. In the darkest, coldest and most frightening days of the Sector-86 blockade, when the world around you was falling apart and people were ready to tear each other apart for a piece of bread and a sip of medicine, you managed the impossible.
+1554|You didn't just survive. You kept your family together. Your son Danil stayed home, your father pulled through thanks to your courage, and your wife and daughter never knew the horror of starvation.
+1555|But most importantly — you remained human. By helping orphanages, ordinary workers and exhausted liquidators, you gave them hope, and in the end that hope saved this city. Captain Gromov closed your file with honours, and now peaceful work awaits you in a new, recovering health system.
+1556|The family is fed, your loved ones are near, and on the streets of Nizhnevartovsk the ice of many years is finally melting. Your conscience is clear. You are home. And you are free.
+1557|Pavel sits all alone in a dim, frozen room. A candle stub is burning out on the table, next to a pile of worthless paper money and a greasy Ledger. The flat is filled with a dead, crushing silence.
+1558|The voices of loved ones are no longer heard in this house. Some were taken by illness, some by the front, some by hunger and cold. Every day of the blockade Pavel made a choice — and every time he put off those who were waiting for him at home.
+1559|The blockade of Sector-86 is lifted, but it no longer matters to you, Pavel. The city celebrates its rescue, but eternal darkness has settled in your home. Chasing official rules, out of fear of Gromov's inspections or trying to profit from other people's misery, you lost what mattered.
+1560|You didn't protect those who were dearest to you. And those you refused or cheated at the pharmacy window will never come to tell you how it ended for them.
+1561|The Commandant's Office may not have put you behind bars, but you locked yourself in the most terrible prison of all — loneliness and remorse. You survived. But the price of that survival was too high. You are left alone in a world that is coming back to life, yet is utterly foreign to you.
+1562|There is no one left here to help. And no one to forgive you.
+1563|of Sector eighty-six
+1564|"KEEPING HUMANITY"
+1565|"LOSING EVERYTHING"
+1566|<p class="fin">THE END<br>22 March 2030 · Sector-86<br>Mikhail Game Studio</p>
+1567|Military Office seal. Check it under the lamp.
+1568|The envelope has been left. Danil is crossed off the lists.
+1569|There are {0} RC on the desk. Drag them: into the cash box (drawer on the left) — for the treasury, into the backpack — for yourself. Or tap the stack to split it.
+1570|The cash box is for money. Medicine goes to the window, the shelf or the backpack.
+1571|Lever: swipe down to open, up to close.
+1572|Receiving: drag "{0}" from the box onto the medicine shelf.
+1573|Drag "{0}" with your finger into the issue window. To return it, drag it onto the shelf.
+1574|Returned to the shelf.
+1575|LEDGER
+1576|The Ledger must be handed over through the issue window.
+1577|MUSIC:
+1578|ON
+1579|OFF
+1580|SOUND:
+1581|Autosave:
+1582|Game saved:
+1583|. Loading will return you to the start of the current stage.
+1584|Could not save.

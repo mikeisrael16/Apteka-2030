@@ -1,0 +1,208 @@
+458|Issue us "Antibiotics" and "Immunal-T" on the group permit
+459|God keep you, Pavel! — Anna Vasilyevna leaves 150 RC and lays a home-made rag doll in the tray. — This is for your Alina, from our children. The orphanage children will be well.
+460|Pavel... Today? When your shelves are full? — Anna Vasilyevna presses the doll to her chest in confusion and leaves.
+461|(He comes in leaning heavily on a comrade's shoulder, but with a faint smile.) Pasha, hi... I'm alive, see? Last night a shift of engineers from the centre finally arrived at the power plant, they pulled us out of the emergency zone! They say the reactors are stable, now the town will have light and heat. But I picked up plenty of radiation, of course... Give me "Antiradin-M" on my permit, now I can finally get treated and rest.
+462|Give me "Antiradin-M" on my permit
+463|Pyotr Ilyin leaves 150 RC and warmly shakes your hand through the tray. — Thank you, Pasha. For everything. I'm off to a well-earned rest — I'll live.
+464|Pasha... This is my third time here. And the papers are clean now. — Pyotr Ilyin shakes his head and leaves, leaning on his comrade.
+465|Pavel, good afternoon! What joy — new reagents and filters arrived at our water intake! No more threat of poisoning, all the water in town is completely safe now. But our lads who were cleaning the old sewers still swallowed toxic fumes. I need "Antitoxin" on our work order to get them back on their feet.
+466|I need "Antitoxin" on our work order
+467|Elvira Nailevna leaves 150 RC. — Thank you, Pavel. For your work in the hardest days of the blockade.
+468|Strange, Pavel. What for, today of all days? — Elvira Nailevna takes the work order and leaves.
+469|Refugee from Megion
+470|Nazarov Oleg Timurovich
+471|Nazarov O.T.
+472|resettlement point No.3, barracks 5 (temp.)
+473|Hello, chief! We're from the camp by the road, the soldiers brought us into the Sector this morning. It was hell out on the highway, but it's quiet now. They feed us, settle us in warm barracks. Look, they gave me a referral for a dressing — I've got shrapnel scratches on my arms, they need cleaning and wrapping so no dirt gets in. Thank you, soldiers and doctors, for not abandoning us!
+474|They need cleaning and wrapping: "Bandages" and "Antiseptic"
+475|Thanks a lot, chief! — The refugee leaves 100 RC and walks off happy, wrapping his arm as he goes.
+476|Got it, chief... Seems the blockade isn't over for everyone yet. — The refugee hides the referral and leaves.
+477|The Major's call
+478|Client No.1
+479|Client No.2
+480|Client No.3 (exam)
+481|End of shift
+482|Day 1 complete
+483|Morning
+484|Gromov's inspection
+485|Day 2 complete
+486|Call from home
+487|Day 3 complete
+488|Letter from Olya
+489|Day 4 complete
+490|HQ order
+491|Zoya Karpova
+492|Day 5 complete
+493|Olya's call
+494|Day 6 complete
+495|Letter from home
+496|Korshunov's call
+497|Receiving goods
+498|Day 7 complete
+499|Mum's call
+500|Day 8 complete
+501|Day 9 complete
+502|Day 10 complete
+503|Stanislav
+504|Day 11 complete
+505|Day 12 complete
+506|Finale
+507|Neftyanikov St, bldg 40, basement
+508|Severnaya St, bldg 22
+509|Karpov Oleg Ignatyevich
+510|Mira St, barracks 9
+511|Mamedova Leila Timurovna
+512|Smirnov Andrei Viktorovich
+513|Clinic No.1, staff flat
+514|Sobolev Lev Markovich
+515|Lenina St, bldg 9, apt 3
+516|Shtern Boris Moiseyevich
+517|basement of the old bank
+518|Kuznetsov Pavel Ilyich
+519|Engineering block, bldg 3
+520|Belkina Irina Olegovna
+521|Barinov Innokenty Pavlovich
+522|Special quarter, bldg 1
+523|at this address — "building completely destroyed in the 2028 bombing"
+524|no passport presented — nothing to check against the census
+525|this person is not in the Sector-86 census (non-resident)
+526|year of birth: passport {0}, census {1}
+527|registration: passport "{0}"{1}, census "{2}"
+528|The old man has no money — he offers a silver cross.
+529|The herbalist has no money — she offers a basket of herbs.
+530|The girl hasn't a coupon to her name — only an HQ report.
+531|No money — she offers a gold medallion.
+532|The orphanage has no money — only toys for your daughter.
+533|Lebedeva V.O.
+534|Vera turns out her empty pockets: the factory hasn't paid for two months.
+535|Hello... It's me again, Vera Lebedeva, from the cannery. Now my little brother Mitya is down: fever for three days, wheezing. The permit is real, today's — I stood six hours at the clinic. Only... the factory hasn't paid for two months, and the last of it went on firewood. I have nothing to pay with. Nothing at all. Give me the "Antibiotics" on credit — I'll pay you back, I promise.
+536|Give me the "Antibiotics" on credit
+537|Vera presses the pack to her chest. — I'll pay you back. As soon as they pay me — I'll pay you back... — The tray stays empty.
+538|I understand... Nobody gives anything for free now. — Vera puts the permit away and leaves without raising her eyes.
+539|Zakhar shows a wad of IOUs: for three weeks the crew has been paid in spirit and paper.
+540|Pharmacist, it's me again, Lyuty. My partner Kolka got crushed by a frozen slab in the trench — his leg's shattered. The medic wrote a permit for a "Painkiller" and bandages, all proper. But I've nothing to pay with: for three weeks the burial crew gets spirit and IOUs instead of money. Help me out — I'll pay when they settle up.
+541|A permit for a "Painkiller" and bandages, and nothing to pay with
+542|Zakhar scoops up the packs with a huge palm. — I won't forget, pharmacist. Gravediggers don't forgive debts — and don't forget their own. — The tray is empty.
+543|I see. So life is for money, and without money — into my trench. — Zakhar leaves without looking back.
+544|The seamstress's purse is empty: the workshop closed and paid nothing.
+545|Pavel, it's Nina Pavlovna, the seamstress... Without the ampoules I collapse at the machine. The doctor wrote a new permit for "Hemoglobin-S" — real, today's, check it. Only the workshop closed after the raid and paid us not a coupon. I saw what kind of gentlemen came to you today and how much they shove into the tray... I've nothing to shove. Nothing at all.
+546|A permit for "Hemoglobin-S" — and nothing to pay with
+547|Nina Pavlovna takes the ampoules in both hands, like bread. — The gentlemen pay, and you — give. I'll remember that, Pavel. — The tray is empty.
+548|Yes... Today an ampoule costs three hundred, I understand. — Nina Pavlovna quietly leaves, holding on to the wall.
+549|Blank form
+550|A clean permit with a living doctor's seal.
+551|At the inspection: a fictitious issue — hides one shortage of a specific drug. Does not hide the seal, dosimetry or what the patrol saw.
+552|Lead container
+553|A heavy box for a hiding place under the floor.
+554|At the inspection: hide one shortage (SHORT). Single use.
+555|Gold ring
+556|An old ring with fine engraving.
+557|Sell to Voron for 200 RC.
+558|Wolf pelt
+559|A tanned pelt, warm and heavy.
+560|Sell to Voron for 150 RC.
+561|Radio tube
+562|A pre-war tube, intact.
+563|Sell to Voron for 120 RC. Later — repairing a radio set.
+564|Radio parts
+565|Wires, batteries, odds and ends from the sewers.
+566|Sell to Voron for 80 RC. Later — repairing a radio.
+567|Copper cable
+568|A coil of copper cable.
+569|Sell to Voron for 60 RC. Later — restoring power.
+570|Leaf-spring knife
+571|Home-made, but sharp.
+572|Sell to Voron for 50 RC. Later — dangerous encounters.
+573|Cartridges
+574|A handful of cartridges — the Sector's real currency.
+575|No use found yet: will come in handy in a dangerous encounter.
+576|Spirit
+577|A bottle of industrial spirit.
+578|Dilute into antiseptic: +1 "Antiseptic" on the shelf.
+579|Tinned meat
+580|Two tins of factory stew.
+581|Take home to the family: relationship with Olya +5.
+582|Fish oil and burbot
+583|A bottle of fish oil and a parcel of fresh fish.
+584|Drink the fish oil: radiation −5%.
+585|Utility map
+586|An old map of the town's underground utilities.
+587|Can of kerosene
+588|The purest kerosene from the drilling rig.
+589|Take home — warmth, relationship with Olya +5. Or sell to Voron for 120 RC.
+590|Army ration (MRE)
+591|A sealed individual field ration.
+592|Registration stamp
+593|A forged passport-office stamp.
+594|At the inspection: close one FAKE_PASSPORT violation.
+595|Toys
+596|A rag hare, a wooden horse, mittens.
+597|Give to Alina: relationship with Olya +10.
+598|Silver cross
+599|An old silver cross on a chain.
+600|Military battery
+601|A storage battery from the signals store.
+602|Basket of herbs
+603|Healing herbs and taiga roots.
+604|Sell to Voron for 180 RC.
+605|Bear bile
+606|A vial of bile from a rogue bear. A rarity.
+607|Sell to Voron for 300 RC.
+608|Secret order
+609|A copy of a secret order of the Commandant's Office from HQ mail.
+610|At the inspection: remove ONE of Gromov's findings for free. Single use.
+611|Father's officer's dirk
+612|Father
+613|An old officer's dirk. A keepsake.
+614|A relic. As a last resort — sell to Voron for 250 RC.
+615|DP-5 dose meter
+616|A liquidator's personal dose meter.
+617|Gold medallion
+618|An opera singer's gold medallion.
+619|Rag doll
+620|A home-made rag doll from the children of Orphanage No.32.
+621|A present for Alina.
+622|Army vest
+623|A captured load vest with an armour plate.
+624|DILUTE INTO ANTISEPTIC
+625|from spirit
+626|The spirit made a bottle of "Antiseptic" — it's on the shelf.
+627|TAKE TO THE FAMILY
+628|The stew is home. Olya smiled for the first time in a week.
+629|DRINK
+630|The fish oil warms you from inside. Radiation −5%.
+631|TAKE HOME
+632|For the first time in a week it's warm at home. Olya is grateful.
+633|The ration is home: stew, crackers, condensed milk. Alina is happy.
+634|GIVE TO ALINA
+635|Alina sleeps hugging the rag hare. Olya: "Thank you, Pasha."
+636|A present for Alina. Family happiness +20 — already counted when you received them.
+637|MAJOR KORSHUNOV
+638|CAPTAIN GROMOV
+639|VORON
+640|YOU
+641|OLYA (WIFE)
+642|MARIA ARKADYEVNA
+643|MUM
+644|SEMYON "RAGGED"
+645|Received by order
+646|Received off the books
+647|Issued by permit
+648|Unlawful issue
+649|Used per report (disinfection)
+650|Spoiled per report
+651|Handed over without a permit
+652|Theft from stock
+653|Fictitious issue on a blank form
+654|Hidden at the inspection
+655|Dummy issued instead of the drug
+656|Issued by permit (swapped for a dummy)
+657|Confiscated at the inspection
+658|Returned to the shelf
+659|Written off per inspection report
+660|The toys went home to Alina. Family happiness +20.
+661|The doll went home to Alina. Family happiness +20.
+662|Personal money is in the red: {0} RC. Earn some urgently! Two days in debt — and the family won't survive the winter.
+663|The client paid — the money is on the desk. Drag it into the CASH BOX (the iron box on the left). The backpack works too — but Gromov checks the cash box against the ledger.
+664|Put into the cash box from the desk
+665|{0} RC — in the cash box.

@@ -5,7 +5,7 @@ def ck(c,n):
     if c: ok+=1; print('ok:',n)
     else: fails.append(n); print('FAIL:',n)
 with sync_playwright() as p:
-    b=p.chromium.launch(channel='chrome',args=['--no-sandbox','--autoplay-policy=no-user-gesture-required']); pg=b.new_context(viewport={'width':390,'height':844}).new_page()
+    b=p.chromium.launch(channel='chrome',args=['--no-sandbox','--autoplay-policy=no-user-gesture-required']); pg=b.new_context(viewport={'width':390,'height':844}).new_page(); pg.add_init_script("window.__LANG='ru'")
     errs=[]; pg.on('pageerror',lambda e:errs.append(str(e)))
     pg.goto('file:///home/claude/game/index.html'); pg.wait_for_timeout(400)
     pg.click('#mLoad'); pg.click('#slotList button[data-s="12:1"]'); pg.wait_for_function("__G.S&&__G.S.day===12")

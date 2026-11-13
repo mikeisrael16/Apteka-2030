@@ -1,0 +1,145 @@
+830|In the report: "A participant in the night raid on the Central warehouse has been detained. Thanks to the pharmacist of Point No.4."
+831|Tonight — Captain Gromov's fifth inspection. After the warehouse raid he'll count every box.
+832|Patrol warnings: {0}/4.
+833|Time to open the point.
+834|The phone is silent.
+835|Listen up, pharmacist. Yesterday the previous pharmacist of Point No.4 was sent to a penal battalion for stealing state morphine. Now you're in his place.
+836|It's spring in Nizhnevartovsk, the snow is melting, and with the meltwater come radiation and disease. Little medicine, and the whole town wants it.
+837|Remember the order: check the documents, check the seal under the lamp, issue strictly by permit.
+838|Make a mistake or take pity on someone without a paper — and you'll follow your predecessor.
+839|Open the shutters, your shift has begun!
+840|Forgot to warn you! The wind brought radioactive ash from the old industrial zone. Check everyone with the dosimeter before you take their dirty papers.
+841|The device is on the right of the desk. If it reads over 150 — press the red Quarantine button under the desk and you'll get a bonus!
+842|Answer the call first.
+843|No reason to open now.
+844|The armoured shutters are down. Nobody will climb in at night.
+845|The shift is still on — you can't close the window.
+846| NOT ON THE SHELF: {0}.
+847| It's in the backpack — you can put it back on the shelf.
+848| There's a dummy of the same form.
+849| Nothing to issue — stamp "DENIED": refusing because of an empty stock is not fined.
+850|Partial issue ({0} of {1}): {2}
+851|— The rest isn't here? Fine... this at least. — {0} takes what there is{1}. The shelf is empty: {2} — add it to tomorrow's order.
+852|, and pays only for what was issued
+853|— What do you mean, none?.. — {0} stares at the empty shelf behind you for a long time and leaves with nothing. The permit is approved, but there's nothing to issue: order {1} for tomorrow.
+854|First clear the money from the desk: drag it into the cash box (the box on the left) or into the backpack.
+855|Tray not treated with antiseptic
+856|The tray wasn't wiped: you and the next client got a dose (+5%).
+857|The telephone buzzer sounds.
+858|TUTORIAL
+859|Hints are off. Serve the last client of the shift on your own, using all 4 steps.
+860|Someone taps on the bars in a signal rhythm: tap — tap-tap — tap. The shift is almost over...
+861|Snow crunches under army boots. A patrolman with a clipboard comes to the window.
+862|Someone approaches the barred window...
+863| (or {0})
+864|PASSPORT NOT PRESENTED
+865|free (official)
+866|DESK ·
+867|Doctors' Register: useful when checking documents.
+868|UV lamp for checking seals.
+869|First take the documents from the window tray.
+870|There are no documents on the desk.
+871|The medicine cabinet. Not now.
+872|First close the window with the lever — they'll climb in at night.
+873|PHARM-CONTROL: the report is available after the shift ends.
+874|Pasha, thank you! The antibiotics you brought at night worked. Alina is much better — that terrible fever broke, she fell asleep on her own and in the morning asked for a drink. The crisis is over, she's getting better. I was so frightened... Take care of yourself at work. I love you. — Olya
+875|Pasha, Maria Arkadyevna is simply an angel! She came yesterday evening and examined Alina thoroughly. It turned out it isn't a dangerous infection, just an illness from the cold, and no antibiotics are needed at all! She gave her a fever reducer from her own bag, and by morning the temperature was down. Alina is smiling already. Our daughter will be fine! — Olya
+876|Pasha, Maria Arkadyevna came yesterday evening and examined Alina. It turned out it's just an illness from the cold — no antibiotics needed. She gave a fever reducer, by morning the fever was down. Alina is smiling. Thank you — I don't know what it cost you. — Olya
+877|Pasha, my dear! Danil was released this morning at dawn! He came home frozen and hungry, but alive and unhurt! The Military Office gave him a paper discharging him for good. I cried so much from happiness... Thank you, you saved our boy! — Olya
+878|Mum, Dad and little sis, I love you very much! They've already loaded us into freight cars, I'm being sent to Tyumen, to the outer frontier. Dad, don't fight with Mum, okay? Look after her and Alina. If we don't see each other again — I just want to say thank you for everything. Peace!!! Your Danil
+879|You needn't worry about your stock, Pasha. Alina and I spent the whole day yesterday in an icy corridor at the doctor's in an insane line. When we finally got into the office, it turned out it was nothing serious, just a cold, she's much better today. But the way you treated us and left us alone at a moment like that — I'll remember it for a long time. I don't even know how to look at you now. — Olya
+880|NOTE FROM OLYA
+881|LETTER FROM DANIL
+882|Gromov needs the "Ledger" — drag it from the desk into the window.
+883|Documents on the desk: passport and permit.
+884|Drag "{0}" from the desk into the window with your finger.
+885|The tray is contaminated. You need "Antiseptic" from the cabinet.
+886|The tray is empty.
+887|Take the medicine from the cabinet — it will appear on the desk.
+888|The tray is empty. The documents are already on your desk.
+889|tray disinfection
+890|The tray is wiped with antiseptic. Clean.
+891|The tray is clean — no antiseptic needed.
+892|This isn't for the window — drag it into the backpack.
+893|There's nobody at the window to issue to.
+894|"{0}" doesn't look like anything in the order. The deal was for {1}.
+895|The deal was for {0}.
+896|Handed over. Still: {0}.
+897|The client already got the drug by permit.
+898|Issuing without the "ISSUED" stamp is forbidden.
+899|"{0}" doesn't look like anything on the permit. Needed: {1}.
+900|Wrong drug! Needed: {0}.
+901|First file the permit in the "Ledger".
+902|{0} Still on the permit: {1}.
+903|A dummy went out instead of "{0}" — the real pack stayed on the shelf, surplus on paper.
+904|Handed over.
+905|A dummy went out instead of "{0}". The real pack is on the shelf — surplus on paper.
+906|Remark: issued on a flawed permit — {0}
+907|Issued on an invalid passport — {0}
+908|Issued on a wrong permit — {0}
+909|Violation recorded: {0}.
+910|Issued: {0} ({1})
+911| — UNPAID
+912|Issued unpaid. The cash box will be {0} RC short — add your own or explain yourself to Gromov.
+913|Thank you, son... God give you health. (Coupons are left in the tray: +150 RC)
+914|Thank you... thank you! I won't forget this. My husband will find you — he knows how to say thanks. (Your radiation +15%)
+915|That's that, boss. So long.
+916|God keep you, son... — With a trembling hand Klavdia Stepanovna puts her last 50 RC and an old gold ring in the tray.
+917|Thank you, mister!! Here, take it — a pre-war radio tube! — Artyom vanishes into the blizzard. (Radiation +15%)
+918|Thank you... I won't forget this. — Vera puts a crumpled 30 RC in the tray and whispers: "I'll bring you something from the factory."
+919|Thank you, pharmacist. Today you saved several lives. I won't forget it — and I'll bring the statements, a doctor's word.
+920|Fyodor nods silently and puts a bundle in the tray: a tanned wolf pelt. — I owe you. If anything — look for me at the outpost.
+921|Thank you, son. I won't forget. — While you turn away, Petrovich leaves a bottle of fish oil and a parcel of fresh burbot in the tray.
+922|Lord, thank you, Pavel... — Anna Vasilyevna leaves a bundle in the tray: a rag hare, a wooden horse and warm mittens. — For your Alina.
+923|Whoa, boss, you're a real one! — Timokha dumps a handful of radio parts, a coil of wire and batteries into the tray. (Radiation +15%)
+924|Thank you, Pavel... Take this — an old map of the underground utilities, from the archive. I've no use for it, but you might.
+925|Thank you, colleague. Ten people will live till morning. Here — an army ration, take it to your family.
+926|You saved me, pharmacist. I'll change the surname, honest. (150 RC on top; radiation +10%)
+927|Thanks, brother. Listen... I've got a can of the purest kerosene stashed from the rig. Give me a "Stimulant" on top without a permit — the guys freeze on the night shift. Two hundred coupons — and the kerosene's yours!
+928|PERMIT ONLY
+929|Got it, brother. Law is law. No hard feelings.
+930|"STIMULANT" OFF THE BOOKS · +200 AND KEROSENE
+931|NO "STIMULANT" IN STOCK
+932|"Stimulant" off the books (Mamedov)
+933|Now that's brotherly! Take the can — it'll be warm at home.
+934|Thank you, Pavel. Pity you have no radio parts — I'd buy them.
+935|Oh! A radio tube and radio parts — just what the frequency generator needs. I'll take it all for 350 cash. Deal?
+936|I see you have {0}. One part isn't enough, but I'll give 150. Deal?
+937|a radio tube
+938|radio parts
+939|KEEP IT
+940|As you like. If you change your mind — I'm at the radio hub.
+941|SELL FOR {0} RC
+942|Radio parts sold to Savelyev
+943|Golden hands will do the job. Thank you, Pavel!
+944|Chizhov puts the medicine in a red folder and leaves without looking back.
+945|Thank you. And now, man to man: give me a "Stimulant" too. It's not on the permit, I know. I'll pay 250 on top, cash. Without it I won't stand a day on my feet — and the block will freeze tonight.
+946|Ah... Law is law, then. Only don't complain later that the radiators are cold.
+947|HAND OVER THE "STIMULANT" · +250
+948|"Stimulant" off the books (Rudnev)
+949|That's our way. The radiators will be hot tonight — Rudnev's word.
+950|Take {0} from the cabinet and pass it through the window.
+951|Permit filed. Forms in the ledger: {0}.
+952|The permit is already in the ledger. Forms: {0}.
+953|The Ledger. Forms this shift: {0}. Only a permit stamped "ISSUED" is filed.
+954|This drug is out of stock.
+955|"{0}" is on the desk on the left.
+956|DP-5V dosimeter. Not needed yet today.
+957|Nobody to check: the window is empty.
+958|Already measured: {0} µR/h.
+959| µR/h
+960|RED ZONE! Quarantine is required.
+961|Yellow zone: wipe the tray with antiseptic after the client.
+962|Green zone: normal.
+963|Radiation: {0} µR/h. {1}
+964|This isn't a patient — quarantine doesn't apply.
+965|QUARANTINE button: there's nobody at the window to isolate right now.
+966|First measure the radiation with the dosimeter.
+967|Bonus for catching the fugitive
+968|Commandant's quarantine bonus
+969|The steel grille drops. The squad takes the infected person. The Commandant's Office pays a bonus: +100 RC.
+970|False call of the squad
+971|The squad takes away a person with an acceptable reading. The Major is furious: −100 RC fine for a false call.
+972|The doctor is checked against the "Doctors' Register" — open it at the bottom.
+973|The mark is in order.
+974|{0} To pay {1} RC: issue it — and the cash box will be short.

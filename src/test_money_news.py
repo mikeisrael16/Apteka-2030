@@ -9,7 +9,7 @@ def ck(cond,name):
 with sync_playwright() as p:
     b=p.chromium.launch(channel='chrome',args=['--no-sandbox','--autoplay-policy=no-user-gesture-required'])
     ctx=b.new_context(viewport={'width':390,'height':844},device_scale_factor=1,has_touch=True)
-    pg=ctx.new_page()
+    pg=ctx.new_page(); pg.add_init_script("window.__LANG='ru'")
     errs=[]; pg.on('pageerror',lambda e:errs.append(str(e))); pg.on('console',lambda m: m.type=='error' and errs.append(m.text))
     S=lambda: pg.evaluate("JSON.parse(JSON.stringify(__G.S))")
     R=lambda k: pg.evaluate(f"__G.R.{k}")
@@ -152,7 +152,7 @@ with sync_playwright() as p:
     pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:11,tp:300,kdoc:300,pers:520,olya:60,flags:{{cashTut:1,food:'promise',np11:1}}}});"+FULL+";__G.startCheckpoint(__G.NEWST[11]+1)"); nxt(); ck(R('phase')=='voron' and '520 ТР' in pg.inner_text('#mkBody'),'день 11: Ворон (обещаны 500 ТР) — рынок открывается'); pg.click('#mkLeave'); tap_until(f"__G.S.cp==={pg.evaluate('__G.NEWST[11]')+2}",30)
     nxt(); journal_drag(); tap_until(f"__G.R.phase==='auditm'||__G.S.cp==={pg.evaluate('__G.NEWST[11]')+3}",40); 
     if R('phase')=='auditm': pg.click('#auTruth')
-    tap_until(f"__G.S.cp==={pg.evaluate('__G.NEWST[11]')+3}",40); p0=S()['pers']; close_shift(); ck('хватает' in pg.inner_text('#tbody'),'терминал: 500 ТР личных для Оли есть'); pg.click('#tEnd'); until(f"__G.S.cp==={pg.evaluate('__G.NEWST[11]')+4}"); s=S(); ck(s['flags']['family11']=='fed' and s['pers']==p0-570 and s['tp']==300,'продукты семье (500) и ежедневные 70 оплачены из личных, касса не тронута')
+    tap_until(f"__G.S.cp==={pg.evaluate('__G.NEWST[11]')+3}",40); p0=S()['pers']; close_shift(); ck('хватает' in pg.inner_text('#tbody'),'терминал: 500 ТР личных для Оли есть'); pg.click('#tEnd'); until(f"__G.S.cp==={pg.evaluate('__G.NEWST[11]')+4}"); s=S(); ck(s['flags']['family11']=='fed' and s['pers']==p0-570+60 and s['tp']==300,'продукты семье (500) и ежедневные 70 оплачены из личных (+60 жалованье), касса не тронута')
     # ---- F. newspaper
     pg.evaluate(f"Object.assign(__G.S,{BASE},{{flags:{{cashTut:1,anna:'quarantine',klavdia:'helped',gleb:'talon',audit:'clean'}}}});__G.startDay(3)"); tap_until("__G.R.phase==='lever'",30); swipe(200); until("__G.R.phase==='paper'"); w(500); shot('15_paper_tray')
     ck(pg.evaluate("document.getElementById('s_tray').classList.contains('npaper')") and S()['cp']==0,'день 3: газета в лотке окна')
@@ -183,9 +183,9 @@ with sync_playwright() as p:
     # ---- J. family budget, radiation, weather
     pg.set_viewport_size({'width':390,'height':844})
     pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:3,tp:300,kdoc:300,pers:80,olya:60,flags:{{cashTut:1}}}});"+FULL+";__G.startCheckpoint(7)"); close_shift(); ck('Семье на вечер: еда 30 + дрова 20' in pg.inner_text('#tbody') and 'хватает' in pg.inner_text('#tbody'),'терминал: семейный бюджет на вечер'); shot('20_budget')
-    pg.click('#tEnd'); until("__G.S.cp===8"); s=S(); ck(s['pers']==30 and s['tp']==300 and s['olya']==60,'еда 30 + дрова 20 списаны из личных')
-    pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:3,tp:300,kdoc:300,pers:35,olya:60,flags:{{cashTut:1}}}});"+FULL+";__G.startCheckpoint(7)"); close_shift(); pg.click('#tEnd'); until("__G.S.cp===8"); s=S(); ck(s['pers']==5 and s['olya']==56 and s['flags']['hungry']==1 and 'не хватило на дрова' in pg.inner_text('#doneBox'),'денег хватило только на еду: Оля −4')
-    pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:10,tp:300,kdoc:300,pers:0,olya:60,flags:{{cashTut:1}}}});"+FULL+";__G.startCheckpoint(7)"); close_shift(); pg.click('#tEnd'); until("__G.S.cp===8"); s=S(); ck(s['pers']==0 and s['olya']==52 and pg.evaluate("__G.homeCost().food")==50,'личных нет: семья без еды и дров, Оля −8; в дефицит еда дороже')
+    pg.click('#tEnd'); until("__G.S.cp===8"); s=S(); ck(s['pers']==90 and s['tp']==300 and s['olya']==60,'жалованье +60, еда 30 + дрова 20 списаны из личных')
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:3,tp:300,kdoc:300,pers:-25,olya:60,flags:{{cashTut:1}}}});"+FULL+";__G.startCheckpoint(7)"); close_shift(); pg.click('#tEnd'); until("__G.S.cp===8"); s=S(); ck(s['pers']==5 and s['olya']==56 and s['flags']['hungry']==1 and 'не хватило на дрова' in pg.inner_text('#doneBox'),'денег хватило только на еду: Оля −4')
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:10,tp:300,kdoc:300,pers:-60,olya:60,flags:{{cashTut:1}}}});"+FULL+";__G.startCheckpoint(7)"); close_shift(); pg.click('#tEnd'); until("__G.S.cp===8"); s=S(); ck(s['pers']==0 and s['olya']==52 and pg.evaluate("__G.homeCost().food")==50,'личных нет: семья без еды и дров, Оля −8; в дефицит еда дороже')
     pg.evaluate(f"Object.assign(__G.S,{BASE},{{rad:55,flags:{{cashTut:1}},bag:{{}}}});__G.startDay(4)"); tap_until("__G.R.phase==='lever'",30); s=S(); ck(s['rad']==80 and 'ЛУЧЕВАЯ БОЛЕЗНЬ' in pg.inner_text('#radbar') and pg.evaluate("document.getElementById('scene').classList.contains('sick')"),'доза 55% не снята → утром лучевая болезнь 80%'); shot('21_sick')
     pg.evaluate("__G.S.bag={antiradinM:1,antiradin:1}"); pg.click('#bag'); shot('22_drink'); pg.click('#invBody [data-drink="antiradinM"]'); ck(S()['rad']==30 and not S()['bag']['antiradinM'],'«Антирадин-М» выпит: 80 → 30%'); pg.click('#invBody [data-drink="antiradin"]'); ck(S()['rad']==0,'«Антирадин»: −30%'); pg.click('#invClose')
     ck('ЛУЧЕВАЯ' not in pg.inner_text('#radbar') and not pg.evaluate("document.getElementById('scene').classList.contains('sick')"),'болезнь снята')
@@ -213,7 +213,7 @@ with sync_playwright() as p:
     pg.evaluate(f"Object.assign(__G.S,{BASE},{{tp:300,kdoc:300,pers:200,viol:[{{id:'n1',k:'note',t:'Замечание: выдача по талону с изъяном — Вера',why:'талон просрочен',day:2,status:'open'}}]}});"+FULL); at_audit(2,5,"{}"); ck('NOTE' in pg.inner_text('#auBody'),'ревизия видит замечание'); shot('29_note_audit'); pg.click('#auTruth'); tap_until("__G.S.cp===6",30); s=S()
     ck(s['warnings']==0 and any(l['v']==-50 and 'мелкое' in l['t'] for l in s['log']) and not any('Премия' in l['t'] for l in s['log']),'замечание: штраф 50 ТР, без предупреждения, без премии')
     pg.evaluate(f"Object.assign(__G.S,{BASE},{{tp:300,kdoc:300,pers:200,viol:[{{id:'b1',k:'bad',t:'Выдача по неправильному талону',why:'врач без допуска',day:2,status:'open'}}]}});"+FULL); at_audit(2,5,"{}"); pg.click('#auTruth'); tap_until("__G.S.cp===6",30); ck(S()['warnings']==1,'основная проверка провалена → предупреждение (строже)')
-    pg.evaluate("__G.S.olya=50;__G.S.flags={};__G.S.items={};__G.addItem('toys')"); ck(S()['olya']==70 and S()['items']['toys']==1,'игрушки для Алины: +20 сразу при получении'); pg.click('#bag'); ck(pg.locator('#invBody img[src^="data:image/webp"]').count()>=2 and 'ПОДАРИТЬ' not in pg.inner_text('#invBody'),'иконка игрушек из нового набора'); 
+    pg.evaluate("__G.S.olya=50;__G.S.flags={};__G.S.items={};__G.addItem('toys')"); ck(S()['olya']==70 and not S()['items'].get('toys'),'игрушки для Алины: +20 сразу при получении'); pg.click('#bag'); ck('ПОДАРИТЬ' not in pg.inner_text('#invBody'),'игрушек нет в рюкзаке'); 
     pg.evaluate("for(const k of ['radiolamp','pelt','ammo','spirit','container','stew','fishoil','knife','copper','parts'])__G.addItem(k)"); pg.click('#invClose'); pg.click('#bag'); shot('30_icons'); pg.click('#invClose')
     for vw,vh in [(390,844),(360,640),(412,915)]:
         pg.set_viewport_size({'width':vw,'height':vh}); pg.goto(URL); w(500)
@@ -240,5 +240,21 @@ with sync_playwright() as p:
         pg.click('#auBlank')
     s=S(); ck(not s['items'].get('blank') and pg.locator('.aurow').count()==0 and all(v['status']=='hidden' for v in s['viol']) and not short(),'три бланка закрыли все три претензии')
     pg.click('#auDone'); tap_until("__G.S.cp===6",30); ck(S()['warnings']==0,'ревизия закрыта без предупреждения')
+    # ---- N. v2.7: blank 50 at Voron, toys vanish, pharmacist wage, own sprites
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:7,tp:300,kdoc:300,pers:60,items:{{}}}});"+FULL+";__G.startCheckpoint(8)"); nxt()
+    ck(pg.evaluate("__G.blankPrice()")==50 and '50' in pg.inner_text('#mkTP'),'Ворон: чистый бланк стоит 50'); pg.click('#mkTP'); s=S(); ck(s['items'].get('blank')==1 and s['pers']==10,'бланк куплен за 50 из личных'); shot('40_blank50'); pg.click('#mkLeave'); tap_until("__G.S.cp===9",30)
+    pg.evaluate("__G.S.olya=50;__G.S.flags={};__G.S.items={};__G.addItem('toys')"); s=S(); ck(s['olya']==70 and not s['items'].get('toys'),'игрушки: +20 Оле и сразу исчезают из рюкзака')
+    pg.evaluate("__G.addItem('toys')"); ck(S()['olya']==70,'повторно игрушки бонус не дают'); pg.evaluate("__G.addItem('doll')"); s=S(); ck(s['olya']==90 and not s['items'].get('doll'),'кукла: +20, в рюкзаке не остаётся')
+    pg.click('#bag'); ck('Игрушки' not in pg.inner_text('#invBody') and 'Кукла' not in pg.inner_text('#invBody'),'в рюкзаке нечего продать Ворону'); shot('41_bag_no_toys'); pg.click('#invClose')
+    pg.evaluate("__G.S.pers=0;__G.S.day=5;__G.S.flags={};__G.homeBudget()"); s=S(); ck(s['pers']==10 and any('Жалованье' in l['t'] and l['v']==60 for l in s['log']) and not s['flags'].get('hungry'),'жалованье 60 вечером: еда 30 и дрова 20 оплачены даже с нуля')
+    pg.evaluate("__G.S.pers=0;__G.S.day=11;__G.S.flags={};__G.homeBudget()"); s=S(); ck(s['pers']==-10 or (s['pers']==10 and s['flags'].get('hungry')==1),'день 11: жалованья не хватает на еду 50 + дрова 20 — нужен свой заработок')
+    tot=pg.evaluate("(()=>{let t=0;const d0=__G.S.day;for(let d=1;d<=12;d++){__G.S.day=d;const c=__G.homeCost();t+=__G.SALARY-c.food-c.heat}__G.S.day=d0;return t})()")
+    ck(tot>=0,f'баланс: жалованье за 12 дней покрывает быт честного провизора (запас {tot} ТР), штрафы — отдельно')
+    imgs=pg.evaluate("(()=>{const c=__G.IMG.c,f=__G.IMG.f;return ['gennady','mamontov','anzhela'].map(k=>[!!c[k],!!f[k],Object.keys(c).filter(o=>o!==k&&c[o]===c[k]).length,Object.keys(f).filter(o=>o!==k&&f[o]===f[k]).length])})()")
+    ck(all(a and b2 and x==0 and y==0 for a,b2,x,y in imgs),'Геннадий, Мамонтов, Анжела: собственные спрайты и фото '+str(imgs))
+    for d,k,nm in [(9,'n:gennady','42_gennady'),(11,'n:mamontov','43_mamontov'),(11,'n:anzhela','44_anzhela')]:
+        i=pg.evaluate(f"__G.DAYS[{d}].stages.indexOf('{k}')")
+        pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:{d},tp:300,kdoc:300,pers:100,flags:{{cashTut:1}}}});"+FULL+f";__G.startCheckpoint({i})")
+        nxt(); w(700); shot(nm); ck(R('phase') in ('client','bribe'),'клиент %s на экране'%k)
     ck(not errs,f'no JS errors: {errs[:4]}')
     print('OK',n_ok,'FAIL',len(fails)); b.close()

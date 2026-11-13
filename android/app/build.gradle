@@ -1,0 +1,22 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.mikhailgamestudio.apteka2030'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'com.mikhailgamestudio.apteka2030'
+        minSdk 24          // Android 7.0+
+        targetSdk 36       // Android 16
+        versionCode 27
+        versionName '2.7'
+    }
+    buildTypes {
+        release { minifyEnabled false }   // signed after the build with the studio key (kept out of the repo)
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    lint { abortOnError false; checkReleaseBuilds false }
+}

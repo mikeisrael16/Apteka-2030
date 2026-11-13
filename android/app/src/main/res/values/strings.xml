@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pharmacy 2030</string>
+    <string name="exit_q">Exit the game?</string>
+    <string name="exit_hint">Progress is saved automatically at the start of each stage.</string>
+    <string name="yes">Exit</string>
+    <string name="no">Stay</string>
+    <string name="wv_title">Update required</string>
+    <string name="wv_text">The game could not start: the system component “Android System WebView” (or Chrome) on this phone is outdated or disabled. Update it in Google Play and open the game again.</string>
+    <string name="wv_open">Open Google Play</string>
+    <string name="wv_close">Close</string>
+</resources>

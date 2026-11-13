@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Аптека 2030</string>
+    <string name="exit_q">Выйти из игры?</string>
+    <string name="exit_hint">Прогресс сохраняется автоматически в начале каждого этапа.</string>
+    <string name="yes">Выйти</string>
+    <string name="no">Остаться</string>
+    <string name="wv_title">Нужно обновление</string>
+    <string name="wv_text">Игра не смогла запуститься: системный компонент «Android System WebView» (или Chrome) на этом телефоне устарел или отключён. Обновите его в Google Play и откройте игру снова.</string>
+    <string name="wv_open">Открыть Google Play</string>
+    <string name="wv_close">Закрыть</string>
+</resources>

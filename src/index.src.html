@@ -1010,6 +1010,7 @@ const A={ctx:null,set:{music:true,sfx:true},ringT:null,musT:null,
    if(n%2===1)this.tone([311.1,293.7,277.2,261.6][(n>>1)%4],.55,"square",.03,.45,0,B);
    if(n%4===3){this.tone(622.3,.07,"square",.025,.68,0,B);this.tone(587.3,.07,"square",.025,.78,0,B)}n++};
   this.mus.gain.setTargetAtTime(0,c.currentTime,.3);beat();this.tT=setInterval(beat,900)},
+ duck(v){if(!this.ctx)return;this.mus.gain.setTargetAtTime(this.set.music?(v?.35:1.5):0,this.ctx.currentTime,.4)},
  genOn(v){if(this.ctx)this.gen.gain.setTargetAtTime(v?.05:0,this.ctx.currentTime,.6)},
  tone(f,dur,type,vol,when,to,bus){const c=this.ctx;if(!c)return;const t=c.currentTime+(when||0);const o=c.createOscillator(),g=c.createGain();o.type=type||"sine";
   o.frequency.setValueAtTime(f,t);if(to)o.frequency.exponentialRampToValueAtTime(to,t+dur);
@@ -2100,8 +2101,9 @@ function endingParts(e){
   "Комендатура, возможно, и не посадила тебя за решётку, но ты сам запер себя в самой страшной тюрьме — одиночестве и раскаянии. Ты выжил. Но цена этого выживания оказалась слишком высока. Ты остался один в оживающем, но абсолютно чужом для тебя мире.",
   "Здесь больше некому помочь. И некому тебя простить."]}
 /* narrator: the device's Russian voice, slow and low; without one the text is paced by a timer */
+const VO={good:"%%vo_good.mp3%%",bad:"%%vo_bad.mp3%%"};
 const NAR={tok:0,t:null,i:0,parts:[],
- stop(){this.tok++;clearTimeout(this.t);try{window.speechSynthesis&&speechSynthesis.cancel()}catch(e){}},
+ stop(){this.tok++;clearTimeout(this.t);if(this.au){try{this.au.pause()}catch(e){}A.duck(false)}try{window.speechSynthesis&&speechSynthesis.cancel()}catch(e){}},
  voice(){try{const vs=speechSynthesis.getVoices(),ru=vs.filter(v=>/^ru/i.test(v.lang));return{any:vs.length>0,v:ru.find(v=>/dmitr|pavel|maxim|yuri|male|муж/i.test(v.name))||ru[0]||null}}catch(e){return{any:false,v:null}}},
  speak(text,done){const tok=this.tok,fin=()=>{if(tok===this.tok)this.t=setTimeout(()=>{if(tok===this.tok)done()},500)},timed=()=>{this.t=setTimeout(()=>{if(tok===this.tok)done()},1200+text.length*62)};
   if(!A.set.sfx||!window.speechSynthesis||!window.SpeechSynthesisUtterance)return timed();
@@ -2110,7 +2112,17 @@ const NAR={tok:0,t:null,i:0,parts:[],
   const next=()=>{if(tok!==this.tok)return;if(i>=ch.length)return fin();let d=false;const u=new SpeechSynthesisUtterance(ch[i++].replace(/Сектора-86/g,"Сектора восемьдесят шесть"));
    u.lang="ru-RU";if(vc.v)u.voice=vc.v;u.rate=.84;u.pitch=.7;u.volume=1;const go=()=>{if(d)return;d=true;clearTimeout(w);next()},w=setTimeout(go,3000+u.text.length*130);u.onend=go;u.onerror=go;
    try{speechSynthesis.speak(u)}catch(e){go()}};next()},
- run(parts){this.stop();this.parts=parts;this.i=0;const tok=this.tok,ps=[...$("endText").children];ps.forEach(p=>p.className=p.classList.contains("fin")?"fin":"");
+ /* recorded voice: paragraphs light up as the narrator reaches them (by share of text read) */
+ au:null,
+ rec(parts,src){this.stop();const tok=this.tok,ps=[...$("endText").children];
+  const tot=parts.reduce((a,p)=>a+p.length,0),cut=[];let acc=0;parts.forEach(p=>{cut.push(acc/tot);acc+=p.length});
+  const show=i=>{ps.forEach((p,j)=>{if(j<parts.length)p.className=j<i?"on":j===i?"on cur":""});if(i>=parts.length){ps[parts.length].className="fin on cur";S.flags.endSeen=1}else ps[i].scrollIntoView({block:"nearest",behavior:"smooth"})};
+  const a=this.au||(this.au=new Audio());a.src=src;a.currentTime=0;a.volume=1;let cur=-1;
+  a.ontimeupdate=()=>{if(tok!==this.tok||!a.duration)return;const f=a.currentTime/a.duration;let i=0;while(i+1<cut.length&&f>=cut[i+1])i++;if(i!==cur){cur=i;show(i)}};
+  a.onended=()=>{if(tok!==this.tok)return;A.duck(false);show(parts.length)};
+  show(0);cur=0;A.duck(true);
+  const p=a.play();if(p&&p.catch)p.catch(()=>{if(tok!==this.tok)return;A.duck(false);this.tok++;this.run(parts,true)})},
+ run(parts,noRec){if(!noRec&&!OLD&&A.set.sfx&&VO[S&&endingKind().good?"good":"bad"])return this.rec(parts,VO[endingKind().good?"good":"bad"]);this.stop();this.parts=parts;this.i=0;const tok=this.tok,ps=[...$("endText").children];ps.forEach(p=>p.className=p.classList.contains("fin")?"fin":"");
   const step=()=>{if(tok!==this.tok)return;const i=this.i;ps.forEach((p,j)=>{if(j<parts.length)p.className=j<i?"on":j===i?"on cur":""});
    if(i>=parts.length){ps[parts.length].className="fin on cur";S.flags.endSeen=1;return}
    ps[i].scrollIntoView({block:"nearest",behavior:"smooth"});this.speak(parts[i],()=>{this.i++;step()})};

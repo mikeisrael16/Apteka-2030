@@ -987,9 +987,9 @@ const A={ctx:null,set:{music:true,sfx:true},ringT:null,musT:null,
    this.dly.connect(dl);dl.connect(fb);fb.connect(this.dly);dl.connect(this.mus);
    // wind
    const w=c.createBufferSource();w.buffer=b;w.loop=true;const bp=c.createBiquadFilter();bp.type="bandpass";bp.frequency.value=480;bp.Q.value=1.1;
-   const wg=c.createGain();wg.gain.value=.05;w.connect(bp);bp.connect(wg);wg.connect(this.sfx);
+   const wg=c.createGain();wg.gain.value=.02;w.connect(bp);bp.connect(wg);wg.connect(this.sfx);
    const l1=c.createOscillator();l1.frequency.value=.07;const l1g=c.createGain();l1g.gain.value=230;l1.connect(l1g);l1g.connect(bp.frequency);
-   const l2=c.createOscillator();l2.frequency.value=.13;const l2g=c.createGain();l2g.gain.value=.03;l2.connect(l2g);l2g.connect(wg.gain);
+   const l2=c.createOscillator();l2.frequency.value=.13;const l2g=c.createGain();l2g.gain.value=.012;l2.connect(l2g);l2g.connect(wg.gain);
    w.start();l1.start();l2.start();
    // generator hum
    this.gen=c.createGain();this.gen.gain.value=0;const lp=c.createBiquadFilter();lp.type="lowpass";lp.frequency.value=150;lp.connect(this.gen);this.gen.connect(this.sfx);
@@ -999,10 +999,10 @@ const A={ctx:null,set:{music:true,sfx:true},ringT:null,musT:null,
    this.musT=setInterval(()=>this.sched(),250);
   }catch(e){this.ctx=null}
  },
- applySet(){if(!this.ctx)return;const t=this.ctx.currentTime;this.mus.gain.setTargetAtTime(this.set.music?.55:0,t,.1);this.sfx.gain.setTargetAtTime(this.set.sfx?1:0,t,.05)},
+ applySet(){if(!this.ctx)return;const t=this.ctx.currentTime;this.mus.gain.setTargetAtTime(this.set.music?1.5:0,t,.1);this.sfx.gain.setTargetAtTime(this.set.sfx?1:0,t,.05)},
  /* audit: the usual tune is ducked, a heartbeat with a low drone and a falling motif takes over */
  tense(v){v=!!v;if(!this.ctx||v===!!this.tT)return;const c=this.ctx;
-  if(!v){clearInterval(this.tT);this.tT=null;this.mus.gain.setTargetAtTime(this.set.music?.55:0,c.currentTime,.5);return}
+  if(!v){clearInterval(this.tT);this.tT=null;this.mus.gain.setTargetAtTime(this.set.music?1.5:0,c.currentTime,.5);return}
   if(!this.tbus){this.tbus=c.createGain();this.tbus.gain.value=.9;this.tbus.connect(this.master)}
   let n=0;const B=this.tbus,beat=()=>{if(!this.ctx||!this.set.music)return;
    this.tone(55,1.0,"sawtooth",.07,0,51,B);this.tone(41.2,1.0,"triangle",.16,0,0,B);
@@ -1024,7 +1024,7 @@ const A={ctx:null,set:{music:true,sfx:true},ringT:null,musT:null,
  playBar(n,t){const c=this.ctx;const N=m=>440*Math.pow(2,(m-69)/12);
   const prog=[[38,[50,53,57]],[34,[50,53,58]],[31,[50,55,58]],[33,[49,52,57]]];const [bass,ch]=prog[n%4];
   ch.forEach((m,i)=>{[-7,7].forEach(det=>{const o=c.createOscillator();o.type="sawtooth";o.frequency.value=N(m);o.detune.value=det+i*2;
-    const f=c.createBiquadFilter();f.type="lowpass";f.frequency.setValueAtTime(260,t);f.frequency.linearRampToValueAtTime(620,t+4);f.frequency.linearRampToValueAtTime(260,t+9);
+    const f=c.createBiquadFilter();f.type="lowpass";f.frequency.setValueAtTime(420,t);f.frequency.linearRampToValueAtTime(1100,t+4);f.frequency.linearRampToValueAtTime(420,t+9);
     const g=c.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.045,t+2.5);g.gain.setValueAtTime(.045,t+6);g.gain.linearRampToValueAtTime(0,t+10);
     o.connect(f);f.connect(g);g.connect(this.mus);o.start(t);o.stop(t+10.2)})});
   const b=c.createOscillator();b.type="sine";b.frequency.value=N(bass);const bg=c.createGain();bg.gain.setValueAtTime(0,t);bg.gain.linearRampToValueAtTime(.2,t+1);bg.gain.linearRampToValueAtTime(0,t+8.5);
@@ -1895,7 +1895,7 @@ function drawAudit(){const f=auditFindings(),b=$("auBody");if(AU.sel&&!f.find(x=
  let q="";
  if(S.items.pstamp>0)q+=btn("auStamp",`ШТАМП ПРОПИСКИ (у вас ${S.items.pstamp})`,!f.length||!sel||sel.k!=="fake");
  if(S.items.order>0)q+=btn("auOrder","СЕКРЕТНЫЙ ПРИКАЗ: СНЯТЬ ЭТУ ПРЕТЕНЗИЮ",!f.length||!sel);
- q+=btn("auBlank",`ВПИСАТЬ ПУСТОЙ БЛАНК (у вас ${S.items.blank||0})`,!f.length||!isShort||!(S.items.blank>0));
+ q+=btn("auBlank",`${sel&&sel.k!=="short"?"ПЕРЕПИСАТЬ ТАЛОН НА ЧИСТЫЙ БЛАНК":"ВПИСАТЬ ПУСТОЙ БЛАНК"} (у вас ${S.items.blank||0})`,!f.length||!(sel&&BLANKK().includes(sel.k))||!(S.items.blank>0));
  if(S.items.container>0)q+=btn("auCont","СВИНЦОВЫЙ КОНТЕЙНЕР: СПРЯТАТЬ НЕДОСТАЧУ",!f.length||!isShort);
  q+=btn("auBribe",`ДАТЬ ВЗЯТКУ ЗА ЭТО · ${bp} ТР`,!f.length||PM()<bp,"y");
  q+=btn("auLie","СОВРАТЬ ПРО ЭТО",!f.length);
@@ -1904,7 +1904,10 @@ function drawAudit(){const f=auditFindings(),b=$("auBody");if(AU.sel&&!f.find(x=
  const on=(id,fn)=>{const x=$(id);if(x)x.addEventListener("click",()=>{if(x.disabled)return;A.click();fn(sel);if(R.modal==="auditM")drawAudit();refresh()})};
  on("auStamp",auStamp);on("auOrder",x=>{if(!x||!useItem("order"))return;hideFinding(x,"секретный приказ","снято по секретному приказу Комендатуры");A.paper();AU.line="(Читает бумагу и бледнеет.) Откуда у тебя... Кхм. Этот пункт вычёркиваю. И я этой бумаги не видел."});on("auBlank",auBlank);on("auCont",auCont);on("auBribe",auBribe);on("auLie",auLie);on("auTruth",auTruth);on("auDone",()=>finishAudit())}
 function hideFinding(x,how,label){if(x.k==="short")move(x.drug,1,"hide",how);else if(x.k==="cash")S.kdoc-=x.amt;else{x.v.status="hidden";x.v.how=how}AU.hidden.push(`${x.k==="short"?`«${MEDS[x.drug].n}» ×1`:x.t} — ${label}`)}
-function auBlank(x){if(!x||x.k!=="short"||!useItem("blank"))return;move(x.drug,1,"fict","пустой бланк");AU.hidden.push(`«${MEDS[x.drug].n}» ×1 — фиктивная выдача по бланку`);A.paper();A.stamp();
+const BLANKK=()=>OLD?["short"]:["short","bad","note"];
+function auBlank(x){if(!x||!BLANKK().includes(x.k)||!useItem("blank"))return;
+ if(x.k!=="short"){hideFinding(x,"пустой бланк","талон переписан на чистый бланк");A.paper();A.stamp();AU.line="Так... талон как талон: дата, подпись, печать. К этой выдаче вопросов нет.";return}
+ move(x.drug,1,"fict","пустой бланк");AU.hidden.push(`«${MEDS[x.drug].n}» ×1 — фиктивная выдача по бланку`);A.paper();A.stamp();
  AU.line="Так... выдача по талону... подпись есть, печать есть. Ладно, эта позиция сходится."}
 function auCont(x){if(!x||x.k!=="short"||!useItem("container"))return;hideFinding(x,"свинцовый контейнер","спрятано в контейнере");AU.line="Хм. На полке пусто, а в подполе я не смотрел... Ладно, дальше."}
 function auBribe(x){if(!x)return;const p=bribePrice();
@@ -2004,7 +2007,7 @@ const STORM={3:2,7:2,10:3,11:2,2:1,5:1,8:1,9:1,6:1,4:1,1:1,12:0,13:0};
 let wxT=null;
 function weatherTick(){const sc=$("scene");if(!S||!$("game").classList.contains("on")||R.phase==="menu"||R.phase==="ending")return;
  const lvl=STORM[S.day]||0;sc.classList.toggle("calm",lvl===0);if(!lvl||R.modal)return;
- if(Math.random()<.16+.1*lvl&&!sc.classList.contains("gust")){sc.classList.add("gust");if(A.ctx){A.noise(2.6,.05+.03*lvl,"bandpass",420,0,1.2,900);A.noise(1.8,.03,"highpass",2400,.5)}
+ if(Math.random()<.16+.1*lvl&&!sc.classList.contains("gust")){sc.classList.add("gust");if(A.ctx){A.noise(2.6,.025+.012*lvl,"bandpass",420,0,1.2,900);A.noise(1.8,.012,"highpass",2400,.5)}
   setTimeout(()=>sc.classList.remove("gust"),2600+600*lvl);
   if(Math.random()<.14+.13*lvl&&!sc.classList.contains("dark")){setTimeout(()=>{if(!S||R.modal)return;sc.classList.add("brown");if(A.ctx){A.genOn(false);A.tone(96,.5,"sawtooth",.05,0,38);A.tone(60,.12,"square",.05,.55);setTimeout(()=>{if(S&&R.phase!=="menu")A.genOn(true)},1300)}
    if(!S.flags.brownTold){S.flags.brownTold=1;msg("Порыв ветра рвёт провода: свет мигает. В бурю линия едва держится.")}

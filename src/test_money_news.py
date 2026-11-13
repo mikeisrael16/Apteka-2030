@@ -231,5 +231,14 @@ with sync_playwright() as p:
     pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:7,tp:300,kdoc:300,pers:50}});"+FULL+";__G.S.stock.ointment=0;__G.S.doc.ointment=0;__G.startCheckpoint(4)"); tap_until("__G.R.phase==='client'",30); measure(); docs(); checks('Петрова Н.К.'); census('Лютый Захар Васильевич'); stamp_on('ok'); pg.click('#iClose'); pg.click('#s_journal')
     ck(pg.is_visible('#bNoSt'),'два препарата, одного нет — кнопка есть сразу'); take('strept'); give(); pg.click('#bNoSt'); tap_until("__G.S.cp===5",30); s=S(); ck(s['flags']['zahar']=='partial' and s['desk']==80 and s['kdoc']==380 and s['stock']['strept']==2,'частичная выдача: оплата только за выданное (80 из 150)')
     pg.evaluate(f"Object.assign(__G.S,{BASE},{{day:7,tp:300,kdoc:300,pers:50}});"+FULL+";__G.startCheckpoint(4)"); tap_until("__G.R.phase==='client'",30); measure(); docs(); checks('Петрова Н.К.'); census('Лютый Захар Васильевич'); stamp_on('ok'); pg.click('#iClose'); ck(not pg.is_visible('#bNoSt'),'всё есть на полке — кнопки нет')
+    # ---- M. several blanks in one audit
+    pg.evaluate(f"Object.assign(__G.S,{BASE},{{tp:300,kdoc:300,pers:0,items:{{blank:3}},viol:[{{id:'b1',k:'bad',t:'Выдача по неправильному талону — Вера Лебедева',why:'талон просрочен',day:2,status:'open'}},{{id:'b2',k:'bad',t:'Выдача по неправильному талону — Мария Аркадьевна',why:'квота госпиталя исчерпана',day:2,status:'open'}}]}});"+FULL+";__G.S.doc.antibiotic+=1"); at_audit(2,5,"{}")
+    ck(pg.locator('.aurow').count()==3,'ревизия: 1 недостача + 2 неправильных талона, бланков 3')
+    for i in range(3):
+        pg.locator('.aurow').first.click(); ck(not pg.locator('#auBlank').is_disabled(),f'бланк №{i+1} доступен'); 
+        if i==1: shot('34_blanks')
+        pg.click('#auBlank')
+    s=S(); ck(not s['items'].get('blank') and pg.locator('.aurow').count()==0 and all(v['status']=='hidden' for v in s['viol']) and not short(),'три бланка закрыли все три претензии')
+    pg.click('#auDone'); tap_until("__G.S.cp===6",30); ck(S()['warnings']==0,'ревизия закрыта без предупреждения')
     ck(not errs,f'no JS errors: {errs[:4]}')
     print('OK',n_ok,'FAIL',len(fails)); b.close()
